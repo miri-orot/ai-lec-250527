@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 4 Section 2: AI 업무 자동화 아이디어</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module4_section2_styles.css">
+</head>
+<body>
+    <div class="slide-container">
+        <!-- Slide 1: GPT로 뉴스 브리핑 받기 -->
+        <div class="slide" id="slideM4S2_1">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">GPT로 매일 아침, 건설 뉴스 브리핑 받기</div>
+                    <div class="slide-subtitle">간단한 명령으로 정보 수집 시간을 확 줄여보세요!</div>
+                </div>
+                <div class="slide-number">01</div>
+            </div>
+            <div class="slide-content">
+                <p class="idea-intro-text">
+                    ChatGPT와 같은 대화형 AI에게 <span class="highlight">주기적인 작업</span>을 설정해두면, 매일 아침 자동으로 원하는 정보를 요약하여 받아볼 수 있습니다.
+                    <br>예를 들어, 건설 관련 주요 뉴스 사이트의 최신 기사를 확인하고 정리해달라고 요청할 수 있습니다.
+                </p>
+                <div class="image-wrapper">
+                    <img src="https://github.com/miri-orot/ai-lec-image/blob/main/CleanShot%202025-05-20%20at%2000.20.08@2x.png?raw=true" alt="GPT 뉴스 요약 요청 예시" class="automation-image">
+                </div>
+                <div class="key-points-box">
+                    <h4><span class="icon">✨</span> 이런 점이 좋아요!</h4>
+                    <ul>
+                        <li><span class="icon">📰</span> 매일 아침 최신 건설 뉴스를 놓치지 않고 확인 가능</li>
+                        <li><span class="icon">⏱️</span> 여러 사이트를 방문할 필요 없이 한 곳에서 요약 정보 취득</li>
+                        <li><span class="icon">🎯</span> 중요한 키워드와 함께 핵심 내용만 빠르게 파악</li>
+                        <li><span class="icon">🔗</span> 원문 링크 제공으로 필요시 상세 내용 즉시 확인</li>
+                    </ul>
+                </div>
+                <p class="how-to-tip">
+                    <span class="highlight">활용 Tip:</span> ChatGPT의 'Scheduled Send' 기능(유료 플랜), 유사 확장 기능, 또는 AI 모델 API와 스크립트를 연동하여 자동화할 수 있습니다. (세부 방법은 사용 중인 AI 모델 및 서비스 플랜에 따라 다를 수 있습니다.)
+                </p>
+            </div>
+        </div>
+
+        <!-- Slide 2: 자동화 툴로 국토부 공지 받기 -->
+        <div class="slide" id="slideM4S2_2">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">자동화 툴 연동: 국토부 공지, 슬랙으로 실시간 알림!</div>
+                    <div class="slide-subtitle">Make, Zapier 등 노코드 툴로 중요 정보를 놓치지 않고 받아보세요.</div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+            <div class="slide-content">
+                <p class="idea-intro-text">
+                    Make(구 Integromat), Zapier, n8n과 같은 <span class="highlight">워크플로우 자동화 툴</span>을 사용하면,
+                    <br>국토교통부 웹사이트의 새로운 공지사항을 주기적으로 확인하고, AI로 요약하여 팀 메신저(예: Slack)로 자동 발송할 수 있습니다.
+                </p>
+                <div class="image-wrapper">
+                     <img src="https://github.com/miri-orot/ai-lec-image/blob/main/CleanShot%202025-05-20%20at%2000.18.46.png?raw=true" alt="자동화 툴로 국토부 공지 슬랙 전송 예시" class="automation-image">
+                </div>
+                <div class="key-points-box">
+                    <h4><span class="icon">🚀</span> 자동화의 강력한 효과!</h4>
+                    <ul>
+                        <li><span class="icon">🔔</span> 중요한 정부 공지사항 및 보도자료를 실시간으로 파악</li>
+                        <li><span class="icon">🤖</span> AI가 핵심 내용을 요약해주어 정보 확인 시간 단축</li>
+                        <li><span class="icon">💬</span> 팀원 전체에게 슬랙 등 메신저로 즉시 공유하여 빠른 대응 가능</li>
+                        <li><span class="icon">🔄</span> 반복적인 수동 확인 업무를 제거하여 업무 효율성 극대화</li>
+                    </ul>
+                </div>
+                <p class="how-to-tip">
+                    <span class="highlight">활용 Tip:</span> 자동화 툴에서 웹사이트 RSS 피드를 모니터링하거나, HTTP 요청으로 웹페이지 내용을 주기적으로 가져와 변경 사항을 감지합니다. <br>새로운 내용이 감지되면 OpenAI API 등을 호출하여 요약 후, 슬랙 메시지로 전송하는 워크플로우를 구성합니다.
+                </p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) {
+                    slideNumberEl.textContent = (index + 1).toString().padStart(2, '0');
+                }
+                if (index === 0) { 
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+            
+            // 스크롤에 따른 .active 클래스 추가/제거는 spa_page.html의 로직이 담당.
+            // 여기서는 초기 로드 시 첫 번째 슬라이드만 활성화합니다.
+            // 필요시 spa_page.html의 initializeSlidesForCurrentPage 함수에서
+            // 이 페이지의 슬라이드에 대한 추가적인 초기화 로직을 수행할 수 있습니다.
+            const scroller = document.getElementById('mainContent') || window;
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? { top: 0, height: window.innerHeight } : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                    if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            if (scroller) {
+                scroller.addEventListener('scroll', currentScrollListener);
+                setTimeout(() => { // DOM 업데이트 후 실행 보장
+                    if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                       slides[0].classList.add('active'); // 초기 로드 시 첫 슬라이드 활성화
+                    }
+                    currentScrollListener(); // 초기 뷰에 있는 슬라이드 활성화
+                }, 100);
+            }
+        });
+    </script>
+</body>
+</html>
