@@ -1,0 +1,303 @@
+/* Styles specific to module1_section3.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+.slide-container {
+    max-width: var(--content-max-width-m1s3, 1000px);
+}
+
+#contentDisplay .slide {
+    min-height: 75vh; 
+    display: flex;
+    flex-direction: column;
+}
+
+#contentDisplay .slide-content {
+    padding: 3rem; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.centered-text {
+    text-align: center;
+    width: 100%;
+}
+
+/* 슬라이드 1: 인트로 */
+.ai-definition-main {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+    line-height: 1.3;
+    max-width: 90%;
+}
+.ai-definition-main .highlight-box {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.2em 0.5em;
+    border-radius: 8px;
+    display: inline-block;
+}
+.ai-definition-sub {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    margin-bottom: 2.5rem;
+    font-style: italic;
+    max-width: 80%;
+}
+.ai-definition-sub .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+.ai-intro-question {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-top: 1rem;
+}
+
+/* 슬라이드 2: AI 핵심 능력 */
+.highlight-text { 
+    color: var(--primary-color);
+    font-weight: 700;
+}
+.ai-capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem; 
+    width: 100%;
+    max-width: 950px; 
+    margin-top: 1rem;
+}
+.capability-card {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 230px; 
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.capability-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+.capability-card.main-capability { 
+    border-top: 5px solid var(--primary-color);
+}
+.capability-card.sub-capability { 
+    border-top: 5px solid var(--secondary-color);
+    opacity: 0.85; 
+}
+.capability-card .card-icon {
+    font-size: 2.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+.capability-card.sub-capability .card-icon {
+    color: var(--light-text); 
+}
+.capability-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+}
+.capability-card.main-capability .card-title {
+    color: var(--primary-color); 
+}
+.capability-card .card-desc {
+    font-size: 1rem;
+    color: var(--light-text);
+    line-height: 1.6;
+    flex-grow: 1;
+}
+
+/* 슬라이드 3: 왜 지금 AI인가? (2x2 그리드) */
+.why-ai-now-grid-2x2 { /* 클래스명 변경 */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    gap: 2rem; /* 카드 간 간격 */
+    width: 100%;
+    max-width: 900px; /* 그리드 전체 너비 */
+    margin: 1.5rem 0 2rem 0;
+}
+.reason-card-grid { /* 새로운 카드 클래스명 */
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+    border-left: 6px solid var(--primary-color);
+    display: flex;
+    flex-direction: column; 
+    min-height: 180px; /* 카드의 최소 높이 지정 */
+}
+.reason-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+.reason-number-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.3rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.2rem;
+    flex-shrink: 0;
+}
+.reason-title-card { 
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+.reason-desc-card { 
+    font-size: 1.1rem;
+    color: var(--dark-text);
+    line-height: 1.7;
+    /* padding-left는 제거하거나, 필요시 .reason-header 내부의 요소들과 정렬 맞추도록 수정 */
+    flex-grow: 1; /* 설명이 카드의 남은 공간을 채우도록 */
+}
+.reason-desc-card .highlight-arrow {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.reason-desc-card .highlight-bold {
+    font-weight: 600;
+}
+/* .mobile-break 는 현재 HTML 구조에서 사용되지 않으므로 제거 또는 주석 처리 */
+
+.ai-necessity-message {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #fff;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    display: inline-block;
+}
+.ai-necessity-message .highlight-box {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.1em 0.4em;
+    border-radius: 5px;
+}
+
+
+/* 슬라이드 4: AI 모델 맛보기 (3x2 카드형 그리드) */
+.ai-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 1.8rem; 
+    width: 100%;
+    max-width: 900px; 
+    margin: 2rem 0;
+}
+.tool-card-large {
+    background-color: var(--secondary-color);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.1);
+    min-height: 160px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+.tool-card-large:hover {
+    transform: scale(1.03);
+}
+.tool-card-large .tool-name {
+    font-size: 1.6rem; 
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+}
+.tool-card-large .tool-description {
+    font-size: 1.1rem; 
+    color: var(--dark-text);
+    line-height: 1.5;
+}
+.next-module-preview {
+    font-size: 1.3rem;
+    color: var(--light-text);
+    margin-top: 1.5rem;
+    font-style: italic;
+}
+
+
+.footer {
+    /* common_styles.css에서 처리 */
+}
+
+/* 반응형 조정 */
+@media (max-width: 992px) {
+    #contentDisplay .slide {
+        min-height: 70vh;
+    }
+    #contentDisplay .slide-content { padding: 2.5rem; }
+    .ai-definition-main { font-size: 2.4rem; }
+    
+    .ai-capabilities-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;}
+    .capability-card .card-icon { font-size: 2.5rem; }
+    .capability-card .card-title { font-size: 1.2rem; }
+    .capability-card .card-desc { font-size: 0.95rem; }
+    
+    .why-ai-now-grid-2x2 { grid-template-columns: 1fr; gap: 1.5rem;} /* 태블릿에서 1열로 변경 */
+    .reason-card-grid { min-height: auto; } /* 1열일 때 최소 높이 자동 조정 */
+    .reason-title-card { font-size: 1.3rem; }
+    .reason-desc-card { font-size: 1.05rem; }
+    .ai-necessity-message { font-size: 1.3rem; }
+
+    .ai-tools-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem;} 
+    .tool-card-large .tool-name { font-size: 1.4rem; }
+    .tool-card-large .tool-description { font-size: 1rem; }
+    .next-module-preview { font-size: 1.2rem; }
+}
+
+@media (max-width: 768px) {
+    #contentDisplay .slide {
+        min-height: 65vh;
+    }
+    #contentDisplay .slide-content { padding: 2rem 1.5rem; }
+    .ai-definition-main { font-size: 2rem; }
+    .ai-definition-sub { font-size: 1rem; }
+    .ai-intro-question { font-size: 1.3rem; }
+
+    .ai-capabilities-grid { grid-template-columns: 1fr; gap: 1.2rem;}
+    .capability-card { min-height: auto; padding: 1.5rem 1.2rem;}
+    .capability-card .card-icon { font-size: 2.2rem; }
+    .capability-card .card-title { font-size: 1.1rem; }
+    .capability-card .card-desc { font-size: 0.9rem; }
+
+    .reason-card-grid { padding: 1.5rem; }
+    .reason-header { margin-bottom: 0.5rem; }
+    .reason-number-circle { width: 30px; height: 30px; font-size: 1.1rem; margin-right: 0.8rem;}
+    .reason-title-card { font-size: 1.2rem; }
+    .reason-desc-card { font-size: 1rem; }
+    /* .reason-desc-card .mobile-break 는 현재 사용되지 않음 */
+    .ai-necessity-message { font-size: 1.2rem; }
+
+    .ai-tools-grid { grid-template-columns: 1fr; gap: 1.2rem;} 
+    .tool-card-large { min-height: 120px; padding: 1.5rem 1.2rem;}
+    .tool-card-large .tool-name { font-size: 1.3rem; }
+    .tool-card-large .tool-description { font-size: 0.95rem; }
+    .next-module-preview { font-size: 1.1rem; }
+}

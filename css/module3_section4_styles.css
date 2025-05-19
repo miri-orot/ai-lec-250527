@@ -1,0 +1,151 @@
+/* Styles specific to module3_section4.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+/* Max width for slide content in this specific section */
+.slide-container {
+    /* max-width: 1200px; /* Default from common_styles.css */
+    /* Or use specific variable like --content-max-width-m3s4 if defined in common_styles.css */
+}
+
+.content-section {
+    background-color: #f9f9f9; /* 연한 배경색 */
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    margin: 1.5rem 0;
+}
+.content-section h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.content-section h4 .icon {
+    margin-right: 0.7rem;
+    font-size: 1.5rem;
+}
+.content-section p, .content-section ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+    text-align: left;
+}
+.content-section ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+.content-section li {
+    margin-bottom: 0.4rem;
+}
+.content-section strong {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.prompt-example-title {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+    text-align: left;
+}
+.prompt-code {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 6px;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 0.5rem;
+    border: 1px dashed var(--primary-color);
+    text-align: left;
+}
+.prompt-code strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.external-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.external-link a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.tool-comparison-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+.tool-comparison-item {
+    background-color: #fff; /* 흰색 배경 */
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.tool-comparison-item h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.tips-cautions-container {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+.tips-box, .cautions-box {
+    flex: 1;
+    min-width: 300px;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+.tips-box {
+    background-color: #e6f7ff; /* 연한 하늘색 */
+    border-left: 5px solid #1890ff; /* 파란색 계열 */
+}
+.cautions-box {
+    background-color: #fff1f0; /* 연한 빨강 */
+    border-left: 5px solid #f5222d; /* 빨강 계열 */
+}
+.tips-box h4, .cautions-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.tips-box h4 { color: #1890ff; }
+.cautions-box h4 { color: #f5222d; }
+.tips-box h4 .icon, .cautions-box h4 .icon {
+    margin-right: 0.7rem;
+}
+.tips-box ul, .cautions-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.tips-box li, .cautions-box li {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.footer { /* From common_styles.css */ }
+
+@media (max-width: 768px) {
+    /* .slide-title from common_styles.css */
+    .tool-comparison-grid { grid-template-columns: 1fr; }
+    .tips-cautions-container { flex-direction: column; }
+    /* .learning-goals-box from common_styles.css if used, or define here */
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 3 Section 2: 내 자료 활용의 신세계!</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module3_section2_styles.css">
+</head>
+<body>
+    <!-- Header REMOVED -->
+    <div class="slide-container">
+        <!-- Slide 1: Section Introduction -->
+        <div class="slide" id="slide1">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">Module 3: 실전! AI로 건설 업무 효율 UP!</div>
+                    <div class="slide-subtitle">Section 2: 내 자료 활용의 신세계! (NotebookLM & Gemini 중심)</div>
+                </div>
+                <div class="slide-number">01</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    AI 도구들이 강력하지만, 정말 내 업무에 딱 맞는 도움을 받으려면 <span class="highlight">"내가 가진 자료"</span>를 AI가 이해하게 만들어야 합니다.<br>
+                    이번 시간에는 <span class="highlight">NotebookLM</span>을 중심으로, 여러분의 문서를 AI의 지식 기반으로 만들어<br>
+                    똑똑한 <span class="highlight">개인 맞춤형 AI 연구 비서</span>를 활용하는 방법을 자세히 알아봅니다.
+                </div>
+                 <div style="text-align:center; margin: 2rem 0;">
+                    <img src="https://github.com/miri-orot/ai-lec-image/blob/main/CleanShot%202025-05-11%20at%2015.45.24@2x.png?raw=true" alt="NotebookLM Concept" style="max-width: 70%; height: auto; border-radius:8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);">
+                    <p style="font-size:0.9em; color:var(--light-text); margin-top:0.5rem;">(여러분의 문서를 학습하여 맞춤형 답변을 제공하는 NotebookLM)</p>
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px;">
+                    <h4 style="text-align:center; color: var(--primary-color); margin-bottom: 0.8rem;">이번 시간 학습 목표</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 1.05rem; text-align: left;">
+                        <li style="margin-bottom: 0.5rem;">✅ NotebookLM의 핵심 기능(문서 업로드, 요약, Q&A, 자동 콘텐츠 생성 등) 이해하기</li>
+                        <li style="margin-bottom: 0.5rem;">✅ 건설 업무 문서(시방서, 계약서, 보고서 등)를 NotebookLM으로 분석하고 활용하는 방법 익히기</li>
+                        <li style="margin-bottom: 0.5rem;">✅ Gemini 모델 기반의 멀티모달 질의응답, Audio Overview 등 최신 기능 활용법 알기</li>
+                        <li>✅ NotebookLM을 ChatGPT, Google Workspace 등 다른 도구와 연계하여 시너지 내는 방법 배우기</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: What is NotebookLM? -->
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">NotebookLM이란 무엇인가?</div>
+                    <div class="slide-subtitle">내 손안의 개인 맞춤형 AI 연구 조수</div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    NotebookLM은 Google에서 개발한 <span class="highlight">사용자의 문서와 자료를 기반으로 작동하는 AI 노트 도구</span>입니다.<br>
+                    일반적인 챗봇과 달리, 인터넷의 방대한 정보가 아닌 <span class="highlight">내가 직접 업로드한 '소스(Source)'</span>에만 집중하여<br>
+                    더욱 정확하고 신뢰도 높은 답변과 분석을 제공하는 것이 특징입니다.
+                </div>
+                <div class="feature-grid" style="grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div class="feature-box" style="background-color: #e6f7ff; border-left-color: #1890ff;">
+                        <h4 style="color:#1890ff;">핵심 컨셉: Grounded in Your Sources</h4>
+                        <p>NotebookLM은 여러분이 제공한 문서(PDF, Google Docs, 웹사이트, 텍스트 등)를 '소스'로 삼아, 해당 내용에 대해서만 학습하고 답변합니다. 이를 통해 AI의 '환각(Hallucination)' 현상을 최소화하고, 답변의 근거를 명확히 제시합니다.</p>
+                    </div>
+                    <div class="feature-box" style="background-color: #f6ffed; border-left-color: #52c41a;">
+                        <h4 style="color:#52c41a;">주요 기능</h4>
+                        <ul>
+                            <li>문서 자동 요약 및 핵심 내용 분석</li>
+                            <li>내 문서 기반 질의응답 (Q&A)</li>
+                            <li>인라인 출처 표시로 답변 근거 확인</li>
+                            <li>다양한 형식의 맞춤형 콘텐츠 자동 생성 (FAQ, 스터디 가이드 등)</li>
+                            <li>오디오 요약(Audio Overview), 마인드맵 등 부가 기능</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-block">
+                    건설 업무에서 다루는 수많은 시방서, 계약서, 기술 보고서, 회의록 등을 NotebookLM에 올려두면,<br> 마치 <span class="highlight">해당 자료들을 모두 숙지하고 있는 AI 비서</span>처럼 활용할 수 있습니다.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: NotebookLM Free vs Plus -->
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">NotebookLM: 무료 버전 vs Plus 버전 비교</div>
+                    <div class="slide-subtitle">주요 기능 및 사용 한도 차이 (2025년 5월 기준)</div>
+                </div>
+                <div class="slide-number">03</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    NotebookLM은 누구나 무료로 사용할 수 있으며, 더 많은 기능과 확장된 한도를 원한다면 유료 Plus 버전을 구독할 수 있습니다.<br>
+                    두 버전의 주요 차이점을 표로 정리했습니다. (제공 자료 1페이지 내용 기반)
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>항목</th>
+                                <th>NotebookLM (무료)</th>
+                                <th>NotebookLM Plus (유료)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr> <td>가격 및 제공 대상</td> <td>무료 (개인 사용자 대상)<br>&lt;br&gt;Google 계정만 있으면 사용 가능</td> <td>유료 구독 (개인/기업/교육 기관 대상)<br>&lt;br&gt;Google Workspace 엔터프라이즈 플랜 또는 Google One AI Premium에 포함</td> </tr>
+                            <tr> <td>노트북 개수 한도</td> <td>최대 100개</td> <td>최대 500개 (5배 증가)</td> </tr>
+                            <tr> <td>소스(자료) 업로드 한도</td> <td>노트북당 최대 50개 자료 (각 50만 단어 이내)</td> <td>노트북당 최대 300개 자료 (5배 증가)</td> </tr>
+                            <tr> <td>일일 질문(Chat) 한도</td> <td>최대 50회</td> <td>최대 500회 (10배 증가)</td> </tr>
+                            <tr> <td>일일 Audio Overview 생성 한도</td> <td>최대 3개</td> <td>최대 20개 (약 6배 증가)</td> </tr>
+                            <tr> <td>지원 입력 자료 형식</td> <td>Google Docs/Slides, PDF, 텍스트, Markdown, 웹 URL, YouTube 동영상(URL), 오디오 파일 등 지원</td> <td>동일 (무료 버전과 동일하게 모든 형식 지원)</td> </tr>
+                            <tr> <td>AI 답변 인용 출처 표시</td> <td>지원 (챗봇 답변에 근거 출처 표시)</td> <td>동일 (출처 표시 지원)</td> </tr>
+                            <tr> <td>Audio Overview (오디오 요약)</td> <td>지원 (2개의 AI 음성이 대화 형식으로 요약)</td> <td>동일 (5배 많이 생성 가능)</td> </tr>
+                            <tr> <td>자동 요약/FAQ/타임라인 생성</td> <td>지원 (노트북 가이드에서 원클릭 생성)</td> <td>동일</td> </tr>
+                            <tr> <td>마인드맵 기능</td> <td>지원</td> <td>동일</td> </tr>
+                            <tr> <td>고급 채팅 설정 (응답 스타일/길이 조절)</td> <td>제한됨 (기본 스타일만)</td> <td>지원 - 응답 구어체/분석가/가이드 등 스타일 선택 및 출력 길이 조절</td> </tr>
+                            <tr> <td>노트북 공유 옵션</td> <td>다른 사용자와 전체 노트북 공유 가능 (소스 및 노트 전체 공개)</td> <td>확장됨 - 채팅만 공유 모드 지원 (소스 비공개 채팅 공유) + 노트북 열람 분석 제공</td> </tr>
+                            <tr> <td>보안 및 프라이버시</td> <td>개인용 (Google 계정 개인 데이터로 사용, 모델 학습에 데이터 미사용)</td> <td>향상된 보안 (엔터프라이즈급 데이터 보호, 기업용 관리 기능)</td> </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-block" style="font-size:0.95rem; margin-top:1rem;">
+                     <span class="highlight">건설 현장이나 소규모 팀</span>에서는 무료 버전으로도 충분히 많은 기능을 활용할 수 있으며,<br>
+                     더 많은 자료 처리, 고급 기능, 협업이 필요하다면 Plus 버전을 고려해볼 수 있습니다.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Core Feature 1 - Summary & Overview -->
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">핵심 기능 ①: 문서 자동 요약 및 개요 생성</div>
+                    <div class="slide-subtitle">방대한 자료도 한눈에 파악하기</div>
+                </div>
+                <div class="slide-number">04</div>
+            </div>
+            <div class="slide-content">
+                <div class="feature-grid">
+                    <div class="feature-box">
+                        <h4>소스 업로드와 자동 개요 (Source Overview)</h4>
+                        <p>문서(PDF, DOC, 웹 URL 등)를 업로드하면 NotebookLM이 즉시 해당 자료의 핵심 내용 요약, 주요 주제, 생각해볼 질문 목록까지 자동으로 생성해 보여줍니다. (이를 'Source Overview'라고 합니다.)</p>
+                        <p class="demo-point">시연: 건설 표준 시방서 PDF 일부 업로드 후 자동 생성된 개요 확인</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>여러 소스 종합 요약 (빅픽처 요약)</h4>
+                        <p>하나의 노트북에 여러 문서를 추가하면, NotebookLM이 모든 자료를 아우르는 종합적인 요약('노트북 가이드')을 제공합니다. 이를 통해 여러 출처에 흩어진 정보를 한눈에 파악하고 공통 주제나 상충되는 내용을 발견할 수 있습니다.</p>
+                        <p class="demo-point">시연: 여러 개의 공사 관련 보고서를 한 노트북에 넣고 종합 요약 확인</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>원클릭 요약 문서 생성 (Briefing Doc)</h4>
+                        <p>Studio 패널(노트북 가이드)에서 'Briefing Doc' 생성 버튼을 클릭하면, 현재 노트북의 내용을 일목요연하게 정리한 요약 문서를 즉시 만들 수 있습니다. 중요한 포인트를 명확하게 제시하여 회의 전 자료 검토나 보고서 초안 작성에 유용합니다.</p>
+                        <p class="demo-point">시연: 여러 소스가 포함된 노트북에서 Briefing Doc 생성 시연</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Core Feature 2 - Q&A and Citations -->
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">핵심 기능 ②: AI 질의응답(Q&A)과 신뢰도 높은 출처</div>
+                    <div class="slide-subtitle">내 문서에 직접 물어보고 근거까지 확인</div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+            <div class="slide-content">
+                <div class="slide5-feature-layout">
+                    <div class="feature-box">
+                        <h4>자연어 질문 및 맥락 기반 응답</h4>
+                        <p>채팅 인터페이스를 통해 업로드한 자료에 대해 자연스러운 문장으로 질문하고 답변을 받을 수 있습니다. NotebookLM은 외부 지식이 아닌, <span class="highlight">오직 업로드된 자료만을 근거로 답변</span>하여 정보의 정확성을 높입니다. (RAG 방식)</p>
+                        <p class="demo-point">시연: 공사 계약서 업로드 후 "지체상금 조건은 무엇인가?" 질문 및 답변 확인</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>인라인 출처 표시 (Citations)</h4>
+                        <p>AI가 제공하는 모든 답변에는 <span class="highlight">해당 내용의 근거가 된 원문 자료의 특정 부분</span>이 인용[숫자] 형태로 표시됩니다. 이 인용 표시를 클릭하면 즉시 원문 위치로 이동하여 사용자가 직접 사실을 검증할 수 있습니다.</p>
+                        <p class="demo-point">시연: AI 답변에 표시된 출처 클릭하여 원문 확인 과정 시연</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>질문 예시 및 흐름 / 멀티소스 질문</h4>
+                        <p>자료를 처음 올리면 NotebookLM이 생각해볼 만한 '스타터 질문'을 제안하며, 사용자의 질문에 이어 관련된 '후속 질문'도 추천하여 대화를 심화시킵니다. 또한, 여러 소스를 선택하여 동시에 참조하며 질문할 수도 있습니다.</p>
+                        <p class="demo-point">시연: 스타터 질문 활용 및 여러 시방서 동시 선택 후 비교 질문</p>
+                    </div>
+                    <div class="feature-box">
+                        <h4>응답 형식과 스타일 조정 (Plus 기능)</h4>
+                        <p>NotebookLM Plus 사용자는 AI 답변의 어조(기본, 분석가, 안내자 등)와 길이(짧게, 길게)를 세밀하게 조정하여 목적에 맞는 답변을 얻을 수 있습니다.</p>
+                        <p class="demo-point">시연 (가능 시): Plus 기능의 응답 스타일 변경 효과 비교</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Core Feature 3 - Multi-format & Multimodal -->
+        <div class="slide" id="slide6">
+            <div class="slide-header"> <div><div class="slide-title">핵심 기능 ③: 다양한 자료 형식 및 멀티모달 지원</div><div class="slide-subtitle">텍스트를 넘어 이미지와 음성까지</div></div><div class="slide-number">06</div></div>
+            <div class="slide-content">
+                <div class="feature-grid">
+                    <div class="feature-box"><h4>다양한 파일 형식 지원</h4><p>PDF, Google Docs/Slides, 텍스트, Markdown, 웹 URL, YouTube 동영상(URL), 오디오 파일(MP3 등)까지 다양한 형식의 자료를 소스로 추가할 수 있습니다. 영상이나 음성 파일은 자동으로 텍스트로 변환되어 분석됩니다.</p> <p class="demo-point">시연: 웹페이지 URL 및 유튜브 영상 링크 추가</p></div>
+                    <div class="feature-box"><h4>멀티모달 질의응답 (Gemini 기반)</h4><p>문서 내에 포함된 <span class="highlight">이미지, 도표, 차트</span>에 대해서도 질문하고 답변을 받을 수 있습니다. 예를 들어, 기술 제안서의 다이어그램이나 공정표 이미지를 분석하여 의미를 설명받거나 데이터를 읽어낼 수 있습니다.</p> <p class="demo-point">시연: 공정표 이미지 업로드 후 특정 기간 작업 내용 질문</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Core Feature 4 - Auto Content Generation -->
+        <div class="slide" id="slide7">
+            <div class="slide-header"> <div><div class="slide-title">핵심 기능 ④: 자동 콘텐츠 생성 (노트북 가이드)</div><div class="slide-subtitle">클릭 한 번으로 맞춤형 자료 만들기</div></div><div class="slide-number">07</div></div>
+            <div class="slide-content">
+                <div class="text-block">NotebookLM의 Studio 패널(또는 노트북 가이드)에서는 업로드된 자료를 기반으로 <span class="highlight">다양한 형식의 유용한 콘텐츠를 자동으로 생성</span>해줍니다.</div>
+                <div class="slide7-feature-layout">
+                    <div class="feature-row">
+                        <div class="feature-box"><h4>FAQ (자주 묻는 질문)</h4><p>자료 내용 기반 예상 질문과 답변 생성</p></div>
+                        <div class="feature-box"><h4>Study Guide (학습 가이드)</h4><p>주요 개념, 학습 목표, 연습 문제 등 생성</p></div>
+                        <div class="feature-box"><h4>Table of Contents (목차)</h4><p>문서 구조 분석 및 계층적 목차 생성</p></div>
+                    </div>
+                    <div class="feature-row two-items">
+                        <div class="feature-box"><h4>Timeline (연대표)</h4><p>시간 순서가 있는 사건/단계 정렬</p></div>
+                        <div class="feature-box"><h4>Briefing Doc (브리핑 문서)</h4><p>핵심 요약 보고서 형태로 내용 압축</p></div>
+                    </div>
+                </div>
+                 <p class="demo-point" style="text-align:center; margin-top:1rem;">시연: 여러 건설 보고서 취합 후 'Timeline' 및 'Briefing Doc' 자동 생성</p>
+            </div>
+        </div>
+
+        <!-- Slide 8: Core Feature 5 - Audio Overview -->
+        <div class="slide" id="slide8">
+            <div class="slide-header"> <div><div class="slide-title">핵심 기능 ⑤: 오디오 요약 (Audio Overview)</div><div class="slide-subtitle">듣는 AI, 대화형 팟캐스트로 정보 습득</div></div><div class="slide-number">08</div></div>
+            <div class="slide-content">
+                <div class="feature-grid">
+                    <div class="feature-box"><h4>대화형 오디오 요약 생성</h4><p>업로드된 자료를 기반으로 AI가 <span class="highlight">두 명의 진행자가 대화하는 형식의 오디오 팟캐스트</span>를 생성합니다. 단순히 텍스트를 읽어주는 것을 넘어, 주요 내용을 토론하듯 요약해줘 이동 중에도 쉽게 정보를 습득할 수 있습니다.</p></div>
+                    <div class="feature-box"><h4>인터랙티브 및 다국어 지원</h4><p>오디오를 듣는 중 <span class="highlight">음성으로 추가 질문</span>을 하여 대화를 이어갈 수 있습니다 (베타). 또한, 50여 개 언어로 오디오 요약을 생성할 수 있어 언어 장벽 없이 지식 습득이 가능합니다. (자료에 영어 자막/텍스트 필요)</p> <p class="demo-point">시연: 기술 세미나 자료(영문)를 한국어 오디오 요약으로 생성</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Core Feature 6 - Mind Map & Discover Sources -->
+        <div class="slide" id="slide9">
+             <div class="slide-header"> <div><div class="slide-title">핵심 기능 ⑥: 마인드맵 및 자료 검색</div><div class="slide-subtitle">시각적 정리와 웹 리서치까지 한번에</div></div><div class="slide-number">09</div></div>
+             <div class="slide-content">
+                 <div class="feature-grid">
+                     <div class="feature-box"><h4>마인드맵 (Mind Map) 기능</h4><p>업로드한 자료를 토대로 주요 주제와 하위 아이디어를 <span class="highlight">가지치기 형태의 다이어그램</span>으로 시각화합니다. 복잡한 내용을 구조화하여 한눈에 파악하고, 아이디어 간의 연관성을 발견하는 데 유용합니다. (인터랙티브 활용 및 이미지 다운로드 가능)</p><p class="demo-point">시연: 복합 프로젝트 기획안을 마인드맵으로 자동 생성</p></div>
+                     <div class="feature-box"><h4>자료 검색 (Discover Sources) 기능</h4><p>NotebookLM 내에서 관심 주제를 입력하면 AI가 <span class="highlight">웹상의 관련 자료(기사, 논문 등)를 검색하고 요약</span>하여 추천해줍니다. 마음에 드는 자료는 원클릭으로 내 노트북에 바로 추가하여 기존 자료와 함께 분석할 수 있습니다. (2025년 도입)</p><p class="demo-point">시연: "스마트 건설 최신 동향" 검색 및 추천 자료 노트북에 추가</p></div>
+                 </div>
+             </div>
+        </div>
+
+
+        <!-- Slide 10: NotebookLM Construction Scenarios -->
+        <div class="slide" id="slide10">
+            <div class="slide-header"> <div><div class="slide-title">NotebookLM: 건설 분야 활용 시나리오</div><div class="slide-subtitle">실제 업무에 적용해보기</div></div><div class="slide-number">10</div></div>
+            <div class="slide-content">
+                <div class="text-block">NotebookLM의 다양한 기능은 건설 현장과 사무실의 여러 업무에 유용하게 활용될 수 있습니다.</div>
+                <ul class="scenario-list">
+                    <li><strong>기술 제안서/입찰 제안서 검토 및 비교:</strong> 여러 제안서를 업로드하여 주요 내용 요약, 특정 조건 비교 분석, 장단점 파악</li>
+                    <li><strong>공사 계약서 및 법규 검토:</strong> 복잡한 계약 조항에 대한 질의응답, 특정 법규 저촉 여부 확인 (주의: 법률 자문 대체 불가)</li>
+                    <li><strong>표준 시방서 및 기술 문서 이해:</strong> 방대한 시방서 내용 중 필요한 부분만 빠르게 찾아 요약, 특정 공법/자재 기준 확인</li>
+                    <li><strong>현장 보고서 및 회의록 관리:</strong> 다수의 일일/주간 보고서, 회의록을 통합하여 주요 진행 상황, 결정 사항, 이슈 추적</li>
+                    <li><strong>안전 관리 규정 및 교육 자료 생성:</strong> 사내 안전 규정 및 관련 법규를 기반으로 FAQ 자동 생성, 현장 맞춤형 교육 자료 초안 작성</li>
+                    <li><strong>신입 직원 온보딩 및 교육:</strong> 회사 내부 규정, 프로젝트 히스토리, 업무 매뉴얼 등을 NotebookLM에 올려 신입이 스스로 학습하고 질문하도록 지원</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 11: Integration with Other Tools -->
+        <div class="slide" id="slide11">
+            <div class="slide-header"> <div><div class="slide-title">다른 도구와의 효율적 연동</div><div class="slide-subtitle">AI 시너지를 통한 업무 효율 극대화</div></div><div class="slide-number">11</div></div>
+            <div class="slide-content">
+                <div class="feature-grid">
+                    <div class="feature-box"><h4>ChatGPT와의 시너지</h4><p><span class="highlight">NotebookLM (정보 정확성/출처 기반):</span> 내 문서 기반 내용 파악, 정확한 정보 요약, 초안 생성<br>➡️ <span class="highlight">ChatGPT (창의성/표현력):</span> NotebookLM 결과물을 바탕으로 문장 다듬기, 다양한 어투로 변경, 창의적 아이디어 확장, 보고서 서식 맞춤 등</p></div>
+                    <div class="feature-box"><h4>Google Workspace 연동</h4><p><span class="highlight">Google Drive:</span> Drive에 저장된 Docs, Slides 등 직접 소스로 추가 및 동기화 (PDF는 직접 업로드 권장).<br><span class="highlight">Google Docs:</span> NotebookLM 분석 결과를 복사하여 Docs에서 문서 최종 편집.<br><span class="highlight">Google Slides:</span> 슬라이드 자료 업로드 후 내용 분석, 발표 자료 기반 보고서 작성 등.</p></div>
+                </div>
+                <div class="text-block" style="margin-top:1.5rem;">NotebookLM은 <span class="highlight">정확한 정보 분석</span>에, ChatGPT 등은 <span class="highlight">유연한 표현과 창작</span>에 강점이 있으므로, 각 도구의 장점을 살려 워크플로우를 구성하면 더욱 강력한 결과물을 얻을 수 있습니다.</div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Summary & Conclusion -->
+        <div class="slide" id="slide12">
+            <div class="slide-header"> <div><div class="slide-title">요약 및 결론</div><div class="slide-subtitle">NotebookLM으로 스마트한 지식 관리 시작하기</div></div><div class="slide-number">12</div></div>
+            <div class="slide-content">
+                <div class="text-block">
+                    NotebookLM은 단순한 노트 앱을 넘어, <span class="highlight">사용자의 문서를 지능적으로 이해하고 활용</span>할 수 있도록 돕는 강력한 AI 도구입니다.<br>
+                    건설 업무의 방대한 문서들을 효과적으로 관리하고, 필요한 정보를 빠르게 찾아내며, 새로운 인사이트를 발견하는 데 큰 도움을 줄 수 있습니다.
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem 2rem; border-radius:10px; margin: 2rem auto; max-width: 800px;">
+                    <h4 style="text-align:center; color:var(--primary-color); margin-bottom:1rem;">NotebookLM 활용 핵심 포인트</h4>
+                    <ul style="list-style-type: '💡'; padding-left: 20px; font-size:1.1rem;">
+                        <li style="margin-bottom:0.7rem;"><strong>내 문서 기반:</strong> 환각 없이 정확한 정보 제공</li>
+                        <li style="margin-bottom:0.7rem;"><strong>다양한 자동화:</strong> 요약, Q&A, 콘텐츠 생성으로 시간 절약</li>
+                        <li style="margin-bottom:0.7rem;"><strong>통합적 분석:</strong> 여러 문서를 연결하여 숨겨진 맥락 파악</li>
+                        <li style="margin-bottom:0.7rem;"><strong>멀티모달/다국어:</strong> 텍스트 외 자료 활용 및 언어 장벽 해소</li>
+                        <li><strong>협업 강화:</strong> 팀원과 지식 공유 및 공동 분석 (Plus 기능)</li>
+                    </ul>
+                </div>
+                <div class="text-block">
+                    지금까지 살펴본 기능과 활용법을 참고하여, 여러분의 업무와 학습에 NotebookLM을 적극적으로 도입해보세요.<br>
+                    <span class="highlight">쌓여있는 문서는 더 이상 부담이 아닌, 강력한 지식 자산</span>이 될 수 있습니다!
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) { slideNumberEl.textContent = (index + 1).toString().padStart(2, '0'); }
+                if (index === 0) { slide.classList.add('active'); }
+                else { slide.classList.remove('active'); }
+            });
+
+            const mainContentArea = document.getElementById('mainContent') || window;
+            const scroller = document.getElementById('mainContent') || window;
+
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? {top: 0, height: window.innerHeight} : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                    if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            scroller.addEventListener('scroll', currentScrollListener);
+            
+            setTimeout(() => {
+                 if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                   slides[0].classList.add('active');
+                }
+                 currentScrollListener(); 
+            }, 100);
+        });
+    </script>
+</body>
+</html>

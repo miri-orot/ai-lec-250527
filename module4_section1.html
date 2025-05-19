@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 4 Section 1: AI 핵심 주의사항</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module4_section1_styles.css">
+</head>
+<body>
+    <!-- Header REMOVED -->
+    <div class="slide-container">
+        <!-- Slide 1: Section Introduction -->
+        <div class="slide" id="slide1">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">Module 4: 똑똑하고 안전한 AI 활용</div>
+                    <div class="slide-subtitle">Section 1: AI 사용, 이것만은 꼭! (핵심 주의사항)</div>
+                </div>
+                <div class="slide-number">01</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="font-size: 1.2rem; margin-bottom:2rem;">
+                    AI는 건설 업무 혁신의 강력한 도구이지만,<br>
+                    <span class="highlight">"어떻게 사용하느냐"</span>에 따라 그 결과는 크게 달라집니다.<br>
+                    안전하고 책임감 있는 AI 활용법, 지금부터 알아봅니다.
+                </div>
+                <div class="learning-goals-box">
+                    <h4 style="font-size: 1.15rem;">이번 시간, AI 안전 사용법 마스터하기!</h4>
+                    <ul>
+                        <li><span class="icon">🛡️</span>정보 보안: AI에게 무엇을 말해도 괜찮을까요?</li>
+                        <li><span class="icon">🤔</span>AI 답변의 신뢰도: 어디까지 믿고 어떻게 검증할까요?</li>
+                        <li><span class="icon">📜</span>저작권과 편향성: AI 시대의 새로운 윤리적 고민들</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: 정보 보안 - 핵심 원칙 (2x2 Grid로 수정) -->
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 보안 제1원칙: 🔒 정보 보호</div>
+                    <div class="slide-subtitle">"우리 정보는 소중하니까요!" - 민감 정보 입력은 절대 금물!</div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom:1rem;">
+                    AI 서비스에 정보를 입력하는 것은 <span class="highlight">외부에 데이터를 전송</span>하는 것과 같습니다.<br>
+                    다음 정보들은 <span class="highlight" style="color: var(--danger-color-m4s1, var(--danger-color));">절대로 AI에 직접 입력하지 마세요!</span>
+                </div>
+                <!-- 2x2 Grid로 변경 -->
+                <div class="grid-2x2 item-card-container-slide2">
+                    <div class="item-card danger">
+                        <h5 class="item-card-title"><span class="icon">🤫</span> 회사 내부 기밀</h5>
+                        <p class="item-card-description">사업 계획, 입찰 정보, 원가 내역, 핵심 기술 자료, 미공개 프로젝트 정보 등</p>
+                    </div>
+                    <div class="item-card danger">
+                        <h5 class="item-card-title"><span class="icon">👤</span> 개인 식별 정보</h5>
+                        <p class="item-card-description">임직원/고객의 주민번호, 주소, 상세 연락처, 금융 정보, 건강 정보 등</p>
+                    </div>
+                    <div class="item-card danger">
+                        <h5 class="item-card-title"><span class="icon">🏢</span> 보안 관련 정보</h5>
+                        <p class="item-card-description">주요 시설의 구체적인 설계 도면, 접근 권한, 시스템 계정 정보 등</p>
+                    </div>
+                    <div class="item-card danger">
+                        <h5 class="item-card-title"><span class="icon">📅</span> 미공개 중요 정보</h5>
+                        <p class="item-card-description">아직 외부에 공개되지 않은 신규 프로젝트의 상세 내용, 주요 계약 조건 등</p>
+                    </div>
+                </div>
+                 <div class="text-block" style="font-size: 0.95rem; margin-top: 1.5rem; color: var(--light-text);">
+                    <span class="highlight">기억하세요:</span> AI는 편리하지만, 정보 유출의 위험은 항상 존재합니다.
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: 보안 - 안전한 질문법 -->
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 보안 제2원칙: 🛡️ 안전한 질문법</div>
+                    <div class="slide-subtitle">정보는 지키면서 AI의 도움 받기</div>
+                </div>
+                <div class="slide-number">03</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    민감 정보를 직접 입력하지 않고도 AI의 도움을 받을 수 있는 방법이 있습니다.
+                </div>
+                <div class="item-card-container" style="grid-template-columns: 1fr 1fr;">
+                    <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon">🔄</span> 정보 일반화 (Generalization)</h5>
+                        <p class="item-card-description">구체적인 명칭, 숫자, 장소 대신 <span class="highlight">대표 용어나 가상의 상황</span>으로 바꾸어 질문합니다.<br><span class="example-text">"A건설의 B현장 문제" ➡️ "일반적인 건설 현장의 유사 문제"</span></p>
+                    </div>
+                    <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon">👤</span> 정보 익명화 (Anonymization)</h5>
+                        <p class="item-card-description">개인이나 특정 기업을 식별할 수 있는 정보를 <span class="highlight">제거하거나 가명으로 대체</span>합니다.<br><span class="example-text">"김부장님의 성과" ➡️ "특정 팀장의 성과"</span></p>
+                    </div>
+                </div>
+                 <div class="info-card info" style="margin-top:1.5rem; width:100%; max-width:100%;">
+                    <h4 style="justify-content: center; font-size:1.2rem;"><span class="icon" style="font-size:1.4rem;">📜</span> 회사 규정 준수 및 전문가 협의는 필수!</h4>
+                    <p style="text-align:center; font-size:1rem;">사내 AI 활용 가이드라인 및 보안 규정을 반드시 확인하고, 중요한 정보는 <span class="highlight">보안 담당자 또는 법무팀과 상의</span> 후 처리하세요.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: 정확성 - 환각 현상 이해 -->
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 답변의 함정: 🎯 환각 현상</div>
+                    <div class="slide-subtitle">"AI가 너무 자신있게 틀린 말을 해요!"</div>
+                </div>
+                <div class="slide-number">04</div>
+            </div>
+            <div class="slide-content">
+                 <div class="info-card warning">
+                    <div class="info-card-header">
+                        <span class="info-card-icon">👻</span>
+                        <h3 class="info-card-title">AI의 '환각'이란?</h3>
+                    </div>
+                    <div class="info-card-content" style="text-align:center;">
+                        <p>AI가 학습 데이터에 없거나 부족한 정보를 바탕으로,<br><span class="highlight">사실이 아니거나 맥락에 맞지 않는 내용</span>을<br>마치 실제 사실인 것처럼 <span class="highlight">자신 있게 생성</span>하는 현상입니다.</p>
+                        <p style="font-size:0.95rem; color:var(--dark-text); margin-top:1rem;">(문법적으로 완벽하고 논리적으로 보일 수 있어 주의가 필요합니다!)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: 정확성 - 환각의 위험 -->
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 환각, 건설 현장의 <span style="color:var(--danger-color-m4s1, var(--danger-color));">시한폭탄!</span></div>
+                    <div class="slide-subtitle">부정확한 정보가 초래하는 심각한 위험들</div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom:1rem;">건설 분야는 <span class="highlight">정확성과 안전</span>이 무엇보다 중요합니다. <br>AI의 부정확한 정보는 다음과 같은 심각한 문제로 이어질 수 있습니다.</div>
+                <div class="item-card-container" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:1rem;">
+                    <div class="item-card danger">
+                        <h5 class="item-card-title" style="justify-content: center;"><span class="icon">⚖️</span> 법적 문제</h5>
+                        <p class="item-card-description" style="text-align:center;">잘못된 법규/기준 적용<br>➡️ 공사 지연, 재시공, 분쟁</p>
+                    </div>
+                    <div class="item-card danger">
+                        <h5 class="item-card-title" style="justify-content: center;"><span class="icon">📉</span> 품질 저하</h5>
+                        <p class="item-card-description" style="text-align:center;">부정확한 기술/자재 정보<br>➡️ 시공 불량, 안전사고 위험</p>
+                    </div>
+                    <div class="item-card danger">
+                        <h5 class="item-card-title" style="justify-content: center;"><span class="icon">💸</span> 비용 손실</h5>
+                        <p class="item-card-description" style="text-align:center;">틀린 데이터 기반 의사결정<br>➡️ 예산 초과, 사업 차질</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: 정확성 - 교차 확인 방법 -->
+        <div class="slide" id="slide6">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 답변 검증: 🔍 교차 확인은 필수!</div>
+                    <div class="slide-subtitle">정보의 신뢰도를 높이는 4가지 방법</div>
+                </div>
+                <div class="slide-number">06</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom:1.5rem;">
+                    AI가 제공한 정보는 <span class="highlight">반드시 여러 경로로 교차 확인</span>하는 습관이 중요합니다.
+                </div>
+                <div class="grid-2x2">
+                    <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon" style="font-size:1.3em;">🔗</span> 출처 직접 확인</h5>
+                        <p class="item-card-description">Perplexity 등 출처 제공 AI 사용 시, <span class="highlight">원본 링크를 방문</span>하여 내용 일치 여부와 신뢰성을 검증합니다.</p>
+                    </div>
+                    <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon" style="font-size:1.3em;">🔄</span> 다중 AI 교차 검증</h5>
+                        <p class="item-card-description">같은 질문을 여러 AI 모델에게 해보고, 답변의 <span class="highlight">일관성과 차이점</span>을 비교 분석합니다.</p>
+                    </div>
+                    <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon" style="font-size:1.3em;">📚</span> 공식 자료/전문가 확인</h5>
+                        <p class="item-card-description">정부 웹사이트, 공인 기술 표준, 법규 원문, 사내 전문가 등 <span class="highlight">신뢰할 수 있는 정보원</span>과 대조합니다.</p>
+                    </div>
+                     <div class="item-card info">
+                        <h5 class="item-card-title"><span class="icon" style="font-size:1.3em;">🤔</span> 비판적/상식적 사고</h5>
+                        <p class="item-card-description">AI 답변이 일반 상식, 현장 경험, 논리에 부합하는지 <span class="highlight">스스로 질문하고 판단</span>합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: 저작권 -->
+        <div class="slide" id="slide7">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI와 저작권: ©️ 창작의 경계</div>
+                    <div class="slide-subtitle">생성물, 어디까지 내 것일까요?</div>
+                </div>
+                <div class="slide-number">07</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom:1rem;">AI가 만든 콘텐츠의 저작권은 아직 법적 기준이 모호하며, AI 학습 데이터의 저작권 문제도 존재합니다.</div>
+                <div class="info-card ethics">
+                    <div class="info-card-header" style="margin-bottom:1rem;">
+                        <span class="info-card-icon">📜</span>
+                        <h3 class="info-card-title">AI 생성물 저작권, 이렇게 접근하세요!</h3>
+                    </div>
+                    <div class="info-card-content">
+                        <ul>
+                            <li>AI 생성물은 <span class="highlight">아이디어 발상, 초안 작성, 내부 참고용</span>으로 우선 활용!</li>
+                            <li>외부 공개, 상업적 이용 시 <span class="highlight">반드시 법적 검토 및 상당한 수정/보완</span>을 거쳐 독창성 확보!</li>
+                            <li>AI 학습 데이터 및 서비스 약관 확인하는 습관!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: 편향성 -->
+        <div class="slide" id="slide8">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI와 편향성: ⚖️ 숨겨진 함정</div>
+                    <div class="slide-subtitle">균형 잡힌 시각으로 AI 바라보기</div>
+                </div>
+                <div class="slide-number">08</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom:1rem;">AI는 학습 데이터 속 편견(성별, 특정 기술 선호 등)을 그대로 학습하여 <span class="highlight">불공정하거나 차별적인 결과</span>를 낼 수 있습니다.</div>
+                <div class="info-card ethics">
+                    <div class="info-card-header" style="margin-bottom:1rem;">
+                        <span class="info-card-icon">🧐</span>
+                        <h3 class="info-card-title">AI의 편향성, 이렇게 대처하세요!</h3>
+                    </div>
+                    <div class="info-card-content">
+                        <ul>
+                            <li>AI 답변이 특정 관점에 <span class="highlight">치우치지 않았는지 항상 비판적으로 검토</span>하기!</li>
+                            <li>하나의 AI 답변만 믿지 말고, <span class="highlight">다양한 정보 소스로 교차 확인</span>하기!</li>
+                            <li>건설 분야 특정 공법/자재에 대한 <span class="highlight">객관적이지 않은 평가 경계</span>하기!</li>
+                            <li>중요 의사결정 시 편향성 위험 인지하고 신중하게 접근하기!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 9: Summary of Safe AI Usage -->
+        <div class="slide" id="slide9">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 안전 활용 3대 원칙: 최종 점검!</div>
+                    <div class="slide-subtitle">똑똑하고 책임감 있는 AI 전문가 되기!</div>
+                </div>
+                <div class="slide-number">09</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="font-size: 1.15rem; margin-bottom: 1.5rem;">
+                    AI의 강력한 힘을 올바르게 사용하기 위한 <span class="highlight">핵심 원칙</span>을 다시 한번 되새겨 봅시다.
+                </div>
+                <h4 style="text-align:center; color:var(--primary-color); margin-bottom:1.5rem; font-size:1.4rem;">AI 안전 활용 3대 원칙 <span class="icon" style="font-size:1.3em;">🚦</span></h4>
+                <div class="principles-grid" style="margin-top:1rem;">
+                     <div class="info-card danger">
+                        <h4 class="info-card-title" style="color:var(--danger-color-m4s1, var(--danger-color));"><span class="info-card-icon">🔒</span> 정보 보안 최우선</h4>
+                        <p>민감/기밀 정보는 절대 AI에 직접 입력 금지!</p>
+                    </div>
+                    <div class="info-card warning">
+                        <h4 class="info-card-title" style="color:var(--warning-color-alt-m4s1, var(--warning-color));"><span class="info-card-icon">🎯</span> 정확성 교차 확인</h4>
+                        <p>AI 답변은 참고용! 공식 자료, 전문가 통해 반드시 검증!</p>
+                    </div>
+                    <div class="info-card info"> <!-- 윤리적 사용 카드도 .info 클래스 사용 (파란색 계열) -->
+                        <h4 class="info-card-title" style="color:var(--info-color-alt-m4s1, var(--info-color));"><span class="info-card-icon">⚖️</span> 윤리적 사용</h4>
+                        <p>저작권 존중, 편향성 경계하며 책임감 있게 활용!</p>
+                    </div>
+                </div>
+                 <div class="text-block" style="margin-top:2rem; font-size: 1.1rem;">
+                    이 원칙들을 항상 기억하고 AI를 활용하여,<br>
+                    기술의 혜택은 최대로, 잠재적 위험은 최소로 만들어갑시다!
+                 </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) { slideNumberEl.textContent = (index + 1).toString().padStart(2, '0'); }
+                if (index === 0) { slide.classList.add('active'); }
+                else { slide.classList.remove('active'); }
+            });
+
+            const mainContentArea = document.getElementById('mainContent') || window;
+            const scroller = document.getElementById('mainContent') || window;
+
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? {top: 0, height: window.innerHeight} : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                     if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            scroller.addEventListener('scroll', currentScrollListener);
+            
+            setTimeout(() => {
+                 if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                   slides[0].classList.add('active');
+                }
+                 currentScrollListener(); 
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 2 Section 1: AI 프롬프트 기초 마스터하기</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module2_section1_styles.css">
+</head>
+<body>
+    <!-- Header REMOVED -->
+    <div class="slide-container">
+        <!-- Slide 1: Title Slide -->
+        <div class="slide" id="slide1">
+            <div class="slide-header"> <div> <div class="slide-title">모듈 2: AI와 제대로 소통하기: 핵심 도구 & 프롬프트</div> <div class="slide-subtitle">섹션 1: AI 프롬프트 기초 마스터하기</div> </div> <div class="slide-number">01</div> </div>
+            <div class="slide-content"> <div style="padding: 2rem 0;"> <div class="content-box series-list"> <h3>건설업 AI 활용 교육 시리즈</h3> <p>Module 1: 왜 AI인가? 건설업무 혁신의 시작</p> <p class="highlighted-module">Module 2: AI와 제대로 소통하기: 핵심 도구 & 프롬프트</p> <p>Module 3: 실전! AI로 건설 업무 효율 UP!</p> <p style="margin-bottom: 0;">Module 4: 똑똑하고 안전한 AI 활용 & 마무리</p> </div> <div class="content-box key-topics-list"> <h3>이번 시간 주요 내용</h3> <ul> <li><span class="topic-number">1</span><span>AI 프롬프트의 중요성 - 왜 필요한가?</span></li> <li><span class="topic-number">2</span><span>좋은 프롬프트의 5가지 핵심 요소 분석 (역할, 목표, 맥락, 형식, 어조)</span></li> <li><span class="topic-number">3</span><span>프롬프트 작성 비교 실습 (Bad vs Good)</span></li> <li><span class="topic-number">4</span><span>핵심 내용 요약 및 다음 단계 안내</span></li> </ul> </div> </div> </div>
+        </div>
+
+        <!-- Slide 2: Why Prompts Matter? -->
+        <div class="slide" id="slide2">
+            <div class="slide-header"> <div> <div class="slide-title">AI와의 대화, '프롬프트'에 달렸다!</div> <div class="slide-subtitle">좋은 프롬프트가 왜 중요한가?</div> </div> <div class="slide-number">02</div> </div>
+            <div class="slide-content">
+                 <div class="text-block" style="margin-bottom: 2.5rem;"> AI는 우리가 '<span class="highlight">어떻게 질문하느냐</span>'에 따라 전혀 다른 답변을 내놓습니다.<br> 원하는 목적지를 정확히 알려줘야 내비게이션이 길을 안내하듯,<br> AI에게도 <span class="highlight">명확하고 구체적인 지시(프롬프트)</span>가 필요합니다. </div>
+                 <div class="comparison-section">
+                     <div class="comparison-card bad"> <div class="comparison-card-title bad">모호한 지시 <span>👎</span></div> <div class="comparison-card-content"> <p><strong>프롬프트:</strong></p> <p><code>"건설 자료 좀 찾아줘."</code></p> <p><strong>예상 결과:</strong></p> <p>너무 광범위하거나, 원하지 않는 일반적인 정보 제공</p> </div> </div>
+                     <div class="comparison-card good"> <div class="comparison-card-title good">명확한 지시 <span>👍</span></div> <div class="comparison-card-content"> <p><strong>프롬프트:</strong></p> <p><code>"최근 1년 내 개정된 '건축법 시행령' 중 '내화구조' 관련 조항 알려줘."</code></p> <p><strong>예상 결과:</strong></p> <p>정확히 원하는 법규의 특정 부분 정보 제공</p> </div> </div>
+                 </div>
+                 <div class="reminder-box"> <span class="icon">💡</span> 기억하세요: AI 활용 능력 = <span class="highlight">좋은 프롬프트 작성 능력!</span><br> <span style="font-style: italic;">"Garbage In, Garbage Out" (쓰레기를 넣으면 쓰레기가 나온다)</span> </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Core Elements Introduction -->
+        <div class="slide" id="slide3">
+             <div class="slide-header"> <div> <div class="slide-title">좋은 프롬프트는 무엇으로 만들어질까?</div> <div class="slide-subtitle">AI에게 필요한 5가지 핵심 정보 요소</div> </div> <div class="slide-number">03</div> </div>
+             <div class="slide-content">
+                 <div class="text-block"> 효과적인 프롬프트를 만들기 위해 AI에게 전달하면 좋은 <span class="highlight">5가지 핵심 정보 요소</span>가 있습니다.<br> 이 요소들을 잘 조합하면 AI가 우리의 의도를 더 정확하게 파악하도록 도울 수 있습니다. </div>
+                 <div class="step-container" style="max-width: 800px; margin: 2rem auto;">
+                     <div class="step-item"> <div class="step-number">1</div> <div class="step-content"> <div class="step-title">🎭 역할 (Role)</div> <div class="step-desc">AI에게 특정 전문가 역할을 부여합니다. (예: 건설 전문가, 법률 검토자)</div> </div> </div>
+                     <div class="step-item"> <div class="step-number">2</div> <div class="step-content"> <div class="step-title">🎯 목표 (Goal / Task)</div> <div class="step-desc">AI가 수행해야 할 구체적인 작업을 명시합니다. (예: 요약, 번역, 초안 작성)</div> </div> </div>
+                     <div class="step-item"> <div class="step-number">3</div> <div class="step-content"> <div class="step-title">💬 맥락 (Context)</div> <div class="step-desc">작업에 필요한 배경 정보나 상황 설명을 제공합니다. (예: 대상 독자, 프로젝트 개요)</div> </div> </div>
+                     <div class="step-item"> <div class="step-number">4</div> <div class="step-content"> <div class="step-title">📄 형식 (Format)</div> <div class="step-desc">원하는 결과물의 형태를 지정합니다. (예: 표, 목록, 이메일 형식)</div> </div> </div>
+                     <div class="step-item"> <div class="step-number">5</div> <div class="step-content"> <div class="step-title">✨ 어조 (Tone)</div> <div class="step-desc">결과물의 분위기나 스타일을 설정합니다. (예: 공식적, 친근함, 전문가적)</div> </div> </div>
+                 </div>
+                 <div class="text-block"> 모든 프롬프트에 이 5가지 요소를 <span class="highlight">반드시 다 넣어야 하는 것은 아닙니다.</span><br> 하지만 필요한 상황에 맞춰 <span class="highlight">적절히 조합</span>하면 훨씬 더 만족스러운 결과를 얻을 수 있습니다! </div>
+             </div>
+        </div>
+
+        <!-- Slide 4: Elements Explained -->
+        <div class="slide" id="slide4">
+             <div class="slide-header"> <div> <div class="slide-title">프롬프트 5요소, 자세히 알아보기</div> <div class="slide-subtitle">각 요소의 역할과 간단한 작성 예시 (3x2 배치)</div> </div> <div class="slide-number">04</div> </div>
+             <div class="slide-content">
+                 <div class="layout-3-2-container">
+                     <div class="layout-3-2-row top-row">
+                         <div class="grid-item"> <div class="grid-item-title"><span class="icon">🎭</span> 역할 (Role)</div> <div class="grid-item-content"> <strong>설명:</strong> AI가 특정 관점에서 생각하고 답변하도록 유도합니다. 답변의 전문성과 방향성을 설정하는 데 도움이 됩니다. <ul class="example-list"><li>"당신은 20년 경력의 건설 안전 관리자입니다."</li><li>"건설 계약 전문 변호사 역할을 맡아주세요."</li><li>"초보 현장 기사도 이해하기 쉽게 설명하는 멘토처럼."</li></ul></div> </div>
+                         <div class="grid-item"> <div class="grid-item-title"><span class="icon">🎯</span> 목표 (Goal/Task)</div> <div class="grid-item-content"> <strong>설명:</strong> AI에게 원하는 작업을 명확하고 구체적으로 지시합니다. 동사를 사용하여 명료하게 전달하는 것이 좋습니다. <ul class="example-list"><li>"다음 회의록을 3줄로 요약해줘."</li><li>"첨부된 시방서에서 '방수공사' 관련 내용을 찾아 목록으로 만들어줘."</li><li>"신입사원 교육용 안전 수칙 초안을 작성해줘."</li></ul></div> </div>
+                         <div class="grid-item"> <div class="grid-item-title"><span class="icon">💬</span> 맥락 (Context)</div> <div class="grid-item-content"> <strong>설명:</strong> AI가 작업의 배경을 이해하도록 돕습니다. 결과물의 깊이와 관련성을 높일 수 있습니다. <ul class="example-list"><li>"건설 현장 소장님께 보고할 주간 업무 보고서입니다."</li><li>"이 내용은 해외 건설 파트너에게 발송될 이메일입니다."</li><li>"우리는 현재 아파트 건설 프로젝트의 초기 단계입니다."</li></ul></div> </div>
+                     </div>
+                     <div class="layout-3-2-row bottom-row">
+                         <div class="grid-item"> <div class="grid-item-title"><span class="icon">📄</span> 형식 (Format)</div> <div class="grid-item-content"> <strong>설명:</strong> 원하는 결과물의 구조나 양식을 구체적으로 지정합니다. 정보를 정리하고 활용하기 용이하게 만듭니다. <ul class="example-list"><li>"결과는 표 형태로 정리해줘."</li><li>"항목별로 번호를 매겨 목록으로 작성해줘."</li><li>"이메일 초안 형식(제목, 본문, 맺음말)으로."</li><li>"핵심 내용을 5개의 불렛 포인트로 요약해줘."</li></ul></div> </div>
+                         <div class="grid-item"> <div class="grid-item-title"><span class="icon">✨</span> 어조 (Tone)</div> <div class="grid-item-content"> <strong>설명:</strong> 결과물의 전체적인 분위기와 문체를 설정합니다. 대상 독자나 상황에 맞게 조절할 수 있습니다. <ul class="example-list"><li>"매우 공식적이고 전문적인 어조로."</li><li>"친근하고 이해하기 쉬운 말투로 설명해줘."</li><li>"단호하고 명료한 어조를 사용해줘."</li></ul></div> </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Prompt Comparison (Bad vs Good) -->
+        <div class="slide" id="slide5">
+             <div class="slide-header"> <div> <div class="slide-title">백문이 불여일견! 프롬프트 비교</div> <div class="slide-subtitle">좋은 프롬프트가 만드는 차이점 확인하기</div> </div> <div class="slide-number">05</div> </div>
+             <div class="slide-content">
+                 <div class="text-block"> 같은 목표라도 프롬프트를 어떻게 구성하느냐에 따라 결과는 크게 달라집니다.<br> <span class="highlight">안전 교육 자료 아이디어 얻기</span> 예시를 통해 비교해 봅시다. </div>
+                 <div class="prompt-box bad-example"> <div class="prompt-title"><span class="prompt-label bad">아쉬운 프롬프트 👎</span></div> <div class="prompt-content"> <p><strong>프롬프트:</strong></p> <span class="prompt-text">"건설 안전 교육 자료 만들어줘."</span> <p style="margin-top:1rem; font-style: italic; color: var(--light-text);"> <strong>결과 예측:</strong> 🤷‍♂️ 일반적이고 피상적인 내용 나열 (예: 추락 조심, 안전모 착용...). 구체성이 떨어져 바로 활용하기 어려움.</p> </div> </div>
+                 <div class="prompt-box good-example"> <div class="prompt-title"><span class="prompt-label good">개선된 프롬프트 👍</span></div> <div class="prompt-content"> <p><strong>프롬프트:</strong></p> <span class="prompt-text"> "<strong class="prompt-element">[역할]</strong> 당신은 건설 안전 교육 전문가입니다. <strong class="prompt-element">[맥락]</strong> 신입 현장직(경험 1년 미만)을 대상으로 하는 월간 안전 교육 자료를 만들려고 합니다. <strong class="prompt-element">[목표]</strong> 특히 여름철 폭염 및 장마철 감전 사고 예방에 초점을 맞춘 교육 주제 아이디어 5가지를 제안해주세요. <strong class="prompt-element">[형식]</strong> 각 아이디어는 교육 목표와 주요 내용을 포함하여 간단한 목록 형태로 작성해주세요. <strong class="prompt-element">[어조]</strong> 내용은 명확하고 이해하기 쉽게 작성해주세요." </span> <p style="margin-top:1rem; font-style: italic; color: var(--dark-text);"> <strong>결과 예측:</strong> ✨ 구체적인 대상(신입)과 상황(여름철)에 맞는 실용적인 교육 아이디어 목록 제공 (예: 1. 폭염 대비 온열질환 예방 - 목표:..., 내용:... / 2. 장마철 전기 안전 점검 - 목표:..., 내용:...).</p> </div> </div>
+                 <div class="text-block" style="margin-top: 2rem;"> 5가지 핵심 요소를 <span class="highlight">필요에 맞게 조합</span>하자<br> AI가 훨씬 더 <span class="highlight">구체적이고, 똑똑하고, 실용적인 답변</span>을 제공하는 것을 볼 수 있습니다! </div>
+                 <div class="practice-button-container"> <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="practice-button"> 지금 바로 ChatGPT로 연습해보기 → </a> </div>
+             </div>
+        </div>
+
+        <!-- Slide 6: Comprehensive Prompt Example Comparison -->
+        <div class="slide" id="slide6">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">프롬프트 5요소 종합 예시 비교</div>
+                    <div class="slide-subtitle">BIM 도입 이점 문의 시나리오</div>
+                </div>
+                <div class="slide-number">06</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    프롬프트의 5가지 요소를 모두 포함했을 때와 그렇지 않을 때<br>
+                    AI의 답변이 어떻게 달라지는지 <span class="highlight">BIM 도입 검토</span> 예시로 확인해 봅시다.
+                </div>
+
+                <div class="prompt-box bad-example">
+                    <div class="prompt-title"><span class="prompt-label bad">나쁜 프롬프트 👎 (요소 부재)</span></div>
+                    <div class="prompt-content">
+                        <span class="prompt-text">"BIM 장점 알려줘."</span>
+                        <div class="prompt-analysis">
+                            <strong>문제점 분석:</strong>
+                            <ul>
+                                <li>역할, 목표, 맥락, 형식, 어조 등 <span class="highlight">핵심 정보가 대부분 누락</span>되었습니다.</li>
+                                <li>AI는 질문자의 상황이나 원하는 정보의 수준, 형태를 전혀 알 수 없습니다.</li>
+                            </ul>
+                            <strong>예상 결과:</strong>
+                            <p>매우 일반적이고 피상적인 BIM 장점 나열. 질문자에게 실질적인 도움이 되기 어려움.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="prompt-box good-example">
+                     <div class="prompt-title"><span class="prompt-label good">좋은 프롬프트 👍 (5요소 포함)</span></div>
+                     <div class="prompt-content">
+                         <span class="prompt-text">
+                             "<span class="prompt-element">[역할]</span> 당신은 건설 분야 BIM(Building Information Modeling) 도입 전문 컨설턴트입니다.<br><br>
+                             <span class="prompt-element">[맥락]</span> 저는 직원 30명 규모의 중소 종합건설회사를 운영하고 있는데, 최근 BIM 기술 도입을 심각하게 고민하고 있습니다. 아직 BIM 경험이 전무하며, 주로 50억 미만 규모의 근린생활시설이나 소규모 공동주택 공사를 수행합니다. 특히 설계 변경으로 인한 잦은 재작업과 공사 기간 지연 문제로 어려움을 겪고 있습니다.<br><br>
+                             <span class="prompt-element">[목표]</span> 우리 회사 같은 중소 규모의 건설사가 BIM을 도입했을 때 얻을 수 있는 가장 실질적이고 핵심적인 이점 3가지만 선정하여, 그 이유를 구체적인 근거와 함께 설명해주세요.<br><br>
+                             <span class="prompt-element">[형식]</span> 3가지 이점 각각에 대해 명확한 소제목(예: 1. 설계 오류 감소 및 재작업 방지)을 붙여주세요. 각 이점에 대한 설명은 2~3개의 짧은 문장으로 구성하고, 전체 답변은 불렛 포인트 목록 형식으로 정리해주세요.<br><br>
+                             <span class="prompt-element">[어조]</span> BIM 비전문가인 제가 쉽게 이해할 수 있도록 전문 용어 사용은 최소화하고, 실제적인 효과를 중심으로 설득력 있게 작성해주세요. 너무 기술적인 설명보다는 경영적인 관점에서 이점을 강조해주면 좋겠습니다."
+                         </span>
+                         <div class="prompt-analysis">
+                             <strong>개선점 (5요소 반영):</strong>
+                             <ul>
+                                 <li>명확한 <span class="highlight">역할</span> 부여 (BIM 컨설턴트)</li>
+                                 <li>구체적인 <span class="highlight">맥락</span> 제공 (회사 규모, 문제점 등)</li>
+                                 <li>명료한 <span class="highlight">목표</span> 설정 (핵심 이점 3가지 + 근거)</li>
+                                 <li>원하는 결과 <span class="highlight">형식</span> 지정 (소제목 + 목록)</li>
+                                 <li>요구하는 답변 <span class="highlight">어조</span> 설정 (쉬운 용어, 설득력)</li>
+                             </ul>
+                             <strong>예상 결과:</strong>
+                             <p>질문자의 상황에 맞는, 실질적이고 구체적인 BIM 도입 이점 3가지를 이해하기 쉬운 설명과 함께 제공.</p>
+                         </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Summary & Next Steps -->
+        <div class="slide" id="slide7">
+             <div class="slide-header"> <div> <div class="slide-title">프롬프트 기초 다지기 완료!</div> <div class="slide-subtitle">핵심 내용 정리 및 다음 학습 안내</div> </div> <div class="slide-number">07</div> </div>
+             <div class="slide-content">
+                 <div class="text-block"> 이번 시간에는 AI와 효과적으로 소통하기 위한 첫걸음,<br> <span class="highlight">프롬프트의 기초</span>에 대해 함께 알아보았습니다. </div>
+                 <div class="summary-box"> <div class="summary-title">오늘의 핵심 기억하기</div> <ul> <li><strong>중요성:</strong> 좋은 프롬프트는 AI 활용 능력의 <span class="highlight">핵심</span>입니다. (Garbage In, Garbage Out!)</li> <li><strong>핵심 요소 5가지:</strong> <span class="highlight">역할, 목표, 맥락, 형식, 어조</span>를 상황에 맞게 조합하세요.</li> <li><strong>명확성 & 구체성:</strong> AI가 <span class="highlight">정확히 이해</span>할 수 있도록 명확하고 구체적으로 질문하는 것이 중요합니다.</li> <li><strong>연습:</strong> 좋은 프롬프트를 작성하는 것은 <span class="highlight">연습</span>을 통해 향상될 수 있습니다.</li> </ul> </div>
+                 <div class="text-block" style="margin-top: 2.5rem; font-size: 1.3rem; line-height: 1.8;"> 기본기를 탄탄히 다졌으니,<br> 다음 시간에는 <span class="highlight">실제 AI 도구들을 직접 만나보고</span><br> 각 도구의 <span class="highlight">특징과 활용법</span>을 탐색해 보겠습니다! 🚀 </div>
+             </div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) { slideNumberEl.textContent = (index + 1).toString().padStart(2, '0'); }
+                if (index === 0) { slide.classList.add('active'); }
+                else { slide.classList.remove('active'); }
+            });
+
+            const mainContentArea = document.getElementById('mainContent') || window;
+            const scroller = document.getElementById('mainContent') || window;
+
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? {top: 0, height: window.innerHeight} : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                    if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) { // Revised SPA logic
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            scroller.addEventListener('scroll', currentScrollListener);
+            
+            setTimeout(() => {
+                 if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                   slides[0].classList.add('active');
+                }
+                 currentScrollListener(); 
+            }, 100);
+        });
+    </script>
+</body>
+</html>

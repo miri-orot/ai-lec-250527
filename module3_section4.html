@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 3 Section 4: 문서 작성 시간을 반으로!</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module3_section4_styles.css">
+</head>
+<body>
+    <!-- Header REMOVED -->
+    <div class="slide-container">
+        <!-- Slide 1: Section Introduction -->
+        <div class="slide" id="slide1">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">Module 3: 실전! AI로 건설 업무 효율 UP!</div>
+                    <div class="slide-subtitle">Section 4: 문서 작성 시간을 반으로!</div>
+                </div>
+                <div class="slide-number">01</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block" style="margin-bottom: 2.5rem;">
+                    보고서, 기획서, 발표자료까지... 건설 현장의 문서는 끝이 없습니다.<br>
+                    AI를 활용하면 <span class="highlight">아이디어 구상부터 초안 작성, 시각화</span>까지 문서 작업의 전 과정을 혁신적으로 단축할 수 있습니다.<br>
+                    더 이상 문서 작업에 밤새지 마세요!
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; max-width: 650px; margin: 2rem auto;">
+                    <h4 style="text-align:center; color: var(--primary-color); margin-bottom: 1rem; font-size: 1.2rem;">이번 시간 학습 목표 (시연 중심)</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 1.05rem; text-align: left; max-width: 570px; margin:auto;">
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start;"><span style="color: var(--primary-color); margin-right: 0.5rem; font-size: 1.2em; line-height: 1.6;">✅</span><span style="flex: 1;">GPTs를 활용하여 <span class="highlight">보고서 초안</span> 신속하게 생성하기</span></li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start;"><span style="color: var(--primary-color); margin-right: 0.5rem; font-size: 1.2em; line-height: 1.6;">✅</span><span style="flex: 1;">정보수집(Perplexity)부터 GPTs 초안 작성까지 <span class="highlight">기획서 작성 워크플로우</span> 이해하기</span></li>
+                        <li style="margin-bottom: 0.5rem; display: flex; align-items: flex-start;"><span style="color: var(--primary-color); margin-right: 0.5rem; font-size: 1.2em; line-height: 1.6;">✅</span><span style="flex: 1;">다양한 AI 도구를 활용한 <span class="highlight">심층 분석 기획서</span> 제작 방법 배우기</span></li>
+                        <li style="display: flex; align-items: flex-start;"><span style="color: var(--primary-color); margin-right: 0.5rem; font-size: 1.2em; line-height: 1.6;">✅</span><span style="flex: 1;">Genspark를 이용하여 <span class="highlight">기획서 기반 PPT</span> 자동 생성하기</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: AI Report Creation (GPTs) -->
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 보고서 작성: 주간 공정 보고서</div>
+                    <div class="slide-subtitle">GPTs를 활용한 템플릿 기반 초안 생성</div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+            <div class="slide-content">
+                <div class="content-section">
+                    <h4><span class="icon">📑</span> 시나리오: 주간 공정 보고서 신속 작성</h4>
+                    <p><strong>상황:</strong> 매주 반복되는 주간 공정 보고서, AI에게 핵심 정보만 알려주고 템플릿에 맞춰 빠르게 초안을 받아보세요.</p>
+                    <p><strong>활용 도구:</strong> "주간 공정보고서 제작봇" GPTs</p>
+                    <p class="external-link">🔗 <strong>GPTs 바로가기:</strong> <a href="https://chatgpt.com/g/g-6821d73fb0f88191958613f30833bdc4-jugan-gongjeongbogoseo-jejag-gpts" target="_blank">주간 공정보고서 제작봇</a></p>
+                    <div class="prompt-example-title">시연 프롬프트 예시:</div>
+                    <div class="prompt-example-title">다음 정보를 바탕으로 주간 공정 보고서 템플릿에 맞춰 작성해줘:</div>
+                    <div class="prompt-code">
+<strong>- 보고 기간:</strong> 2024년 6월 10일 ~ 2024년 6월 16일
+<strong>- 지난주 주요 실적:</strong>
+  - 지상 2층 골조 공사 70% 완료
+  - 전기 배관 공사 50% 진행
+<strong>- 금주 계획:</strong>
+  - 지상 2층 골조 공사 100% 완료 목표
+  - 전기 배관 공사 80% 진행 목표
+  - 외부 창호 설치 시작
+<strong>- 특이사항:</strong> 금주 목요일(6/13) 현장 안전 특별 점검 예정. 전 인원 안전 교육 실시 완료.
+                    </div>
+                    <p style="margin-top:1rem;"><strong>시연 포인트:</strong></p>
+                    <ul>
+                        <li>GPTs에 접속하여 위와 같은 핵심 정보를 입력합니다.</li>
+                        <li>AI가 사전 학습된 보고서 템플릿에 맞춰 초안을 생성하는 과정을 보여줍니다.</li>
+                        <li>생성된 보고서 초안을 확인하고, 수정 및 보완할 부분을 설명합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: AI Proposal Workflow - Step 1 -->
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 기획서 작성 워크플로우 ①</div>
+                    <div class="slide-subtitle">정보 수집 및 아이디어 구체화 (Perplexity 활용)</div>
+                </div>
+                <div class="slide-number">03</div>
+            </div>
+            <div class="slide-content">
+                <div class="content-section">
+                    <h4><span class="icon">💡</span> 기획서 주제: "건설 현장 안전 강화를 위한 드론 활용 방안 제안"</h4>
+                    <p><strong>1단계: 정보 수집 (Perplexity 활용)</strong></p>
+                    <p>기획의 첫걸음은 정확하고 다양한 정보 수집입니다. Perplexity를 활용하여 관련 자료를 찾아봅니다.</p>
+                    <ul>
+                        <li><strong>검색 키워드 예시:</strong> "건설 현장 드론 활용 사례", "드론 안전 점검 기술", "스마트 건설 안전 기술 동향", "건설업 드론 규제"</li>
+                        <li><strong>찾아볼 자료 유형:</strong> 최신 뉴스 기사, 정부/공공기관 보고서 및 가이드라인, 관련 연구 논문 요약 등.</li>
+                    </ul>
+                    <p class="external-link">🔗 <strong>Perplexity 예시 검색 결과 (참고용):</strong> <a href="https://www.perplexity.ai/search/arae-gihoegseo-hyeongsige-majc-cJBfIiW5SY.nzuzYxepHtw" target="_blank">드론 활용 기획서 관련 검색</a></p>
+                    <p style="margin-top:1rem;"><strong>시연 포인트:</strong></p>
+                    <ul>
+                        <li>Perplexity에 접속하여 실제 키워드로 검색하는 과정을 간략히 보여줍니다.</li>
+                        <li>출처가 명확한 최신 자료를 선별하는 팁을 공유합니다. (예: 정부기관 보고서, 공신력 있는 언론사 기사)</li>
+                        <li>수집된 정보 중 기획서에 활용할 만한 핵심 내용을 요약하거나 메모합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: AI Proposal Workflow - Step 2 -->
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 기획서 작성 워크플로우 ②</div>
+                    <div class="slide-subtitle">수집 정보 기반 초안 생성 (GPTs 활용)</div>
+                </div>
+                <div class="slide-number">04</div>
+            </div>
+            <div class="slide-content">
+                <div class="content-section">
+                    <h4><span class="icon">✍️</span> 2단계: 수집 정보 기반 기획서 초안 작성 (GPTs 활용)</h4>
+                    <p>Perplexity 등에서 수집한 정보를 바탕으로, 기획서의 뼈대를 잡아줄 초안을 AI에게 요청합니다.</p>
+                    <p><strong>활용 도구:</strong> "건설 기획서봇" GPTs</p>
+                    <p class="external-link">🔗 <strong>GPTs 바로가기:</strong> <a href="https://chatgpt.com/g/g-68243b3ebad081919219005228e75d01-geonseol-gihoegseobos" target="_blank">건설 기획서봇</a></p>
+                    <div class="prompt-example-title">시연 프롬프트 예시:</div>
+                    <div class="prompt-code">
+<strong>[기획서 주제]</strong> 건설 현장 안전 강화를 위한 드론 활용 방안 제안
+
+<strong>[기획서 주요 목차 (예시)]</strong>
+1. 제안 배경 및 필요성
+2. 현재 건설 현장 안전관리 현황 및 문제점
+3. 드론 활용 안전관리 시스템 제안 내용
+   3.1. 주요 기능 (예: 실시간 현장 모니터링, 위험 구역 자동 감지, 작업자 안전 수칙 준수 여부 확인 등)
+   3.2. 시스템 구성 방안
+4. 기대 효과 (예: 사고율 감소, 관리 효율 증대, 비용 절감 등)
+5. 도입 예산 및 추진 일정 (개략적)
+
+<strong>[참고 정보 요약 - Perplexity 검색 결과 등]</strong>
+- 최신 드론 기술은 AI 영상 분석과 결합하여... (뉴스 기사 요약)
+- 국토교통부 스마트 건설 기술 도입 가이드라인에 따르면... (보고서 내용 발췌)
+- 드론 활용 시 안전 점검 시간 80% 단축 사례... (연구 자료)
+
+위 목차와 참고 정보를 바탕으로 각 항목별 내용을 채워 기획서 초안을 작성해줘. 설득력 있고 전문적인 어투를 사용하고, 각 목차의 내용은 2~3문단으로 구성해줘.
+                    </div>
+                     <p style="margin-top:1rem;"><strong>시연 포인트:</strong></p>
+                    <ul>
+                        <li>GPTs에 접속하여, 미리 정의된 기획서 목차와 함께 수집한 참고 정보 요약을 입력합니다.</li>
+                        <li>AI가 각 목차에 맞춰 내용을 채워 기획서 초안을 생성하는 과정을 보여줍니다.</li>
+                        <li>생성된 초안에서 수정/보완이 필요한 부분이나, 더 발전시킬 아이디어를 논의합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: In-depth Proposal Creation -->
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">심층 분석 기획서 제작</div>
+                    <div class="slide-subtitle">다양한 AI 도구 활용 및 비교</div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    보다 깊이 있는 분석과 논리가 필요한 기획서는 <span class="highlight">여러 AI 도구의 강점을 조합</span>하여 완성도를 높일 수 있습니다.<br>
+                    상세한 프롬프트 가이드는 아래 Notion 페이지를 참고해주세요.
+                </div>
+                <p class="external-link" style="text-align:center;">🔗 <strong>Notion 가이드:</strong> <a href="https://www.notion.so/1f3eb71475e480a78f42e860e0a6a004?pvs=21" target="_blank">심층 분석 기획서 제작 프롬프트</a></p>
+
+                <div class="content-section">
+                    <h4><span class="icon">🛠️</span> 각 AI 도구별 활용 포인트 (기획서 작성 시)</h4>
+                    <div class="tool-comparison-grid">
+                        <div class="tool-comparison-item">
+                            <h5>ChatGPT / Claude</h5>
+                            <p>PDF 등 참고자료 업로드 후 심층 분석, 논리적 흐름 구성, 설득력 있는 문장 생성, 다양한 관점의 아이디어 확장. (긴 문서 처리는 Claude 유리)</p>
+                            <p class="external-link" style="font-size:0.9em;">🔗 <a href="https://chatgpt.com/share/682445e8-482c-8004-b5fe-cde00eb0f274" target="_blank">ChatGPT 결과 예시</a></p>
+                        </div>
+                        <div class="tool-comparison-item">
+                            <h5>Perplexity</h5>
+                            <p>기존 주장에 대한 추가 근거 자료 검색, 최신 데이터 확인, 생성된 내용을 PDF 또는 DOCX로 내보내기 용이.</p>
+                            <p class="external-link" style="font-size:0.9em;">🔗 <a href="https://www.perplexity.ai/search/arae-gihoegseo-hyeongsige-majc-cJBfIiW5SY.nzuzYxepHtw" target="_blank">Perplexity 결과 예시</a></p>
+                        </div>
+                        <div class="tool-comparison-item">
+                            <h5>Gemini (Google)</h5>
+                            <p>Google 검색 기반 최신 정보 통합, Google Docs로 쉽게 내보내기, 생성된 내용에 대한 AI 음성 개요(Audio Overview) 청취로 검토.</p>
+                        </div>
+                         <div class="tool-comparison-item">
+                            <h5>Genspark</h5>
+                            <p>특정 주제에 대한 심층 리서치와 함께 구조화된 보고서(Spark) 형태로 아이디어를 정리하고 확장하는 데 유용.</p>
+                        </div>
+                    </div>
+                </div>
+                 <p style="margin-top:1rem; text-align:center; font-style:italic;">(시연: 각 도구별 핵심 기능 1~2가지 시연 또는 결과물 화면 비교)</p>
+            </div>
+        </div>
+
+        <!-- Slide 6: PPT Creation with Genspark -->
+        <div class="slide" id="slide6">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">기획서 PPT 제작: Genspark 활용</div>
+                    <div class="slide-subtitle">AI로 시각 자료 초안까지 한번에!</div>
+                </div>
+                <div class="slide-number">06</div>
+            </div>
+            <div class="slide-content">
+                <div class="content-section">
+                    <h4><span class="icon">🚀</span> Genspark로 PPT 자동 생성하기</h4>
+                    <p><strong>상황:</strong> 완성된 기획서 내용을 바탕으로 설득력 있는 발표용 PPT를 빠르게 제작해야 합니다.</p>
+                    <p><strong>활용 도구:</strong> Genspark</p>
+                    <div class="prompt-example-title">시연 프롬프트 예시 (Genspark 입력창):</div>
+                    <div class="prompt-code">
+<strong>[기획서 주요 내용 입력 또는 업로드]</strong>
+(앞서 작성한 "건설 현장 안전 강화를 위한 드론 활용 방안 제안" 기획서의 핵심 내용을 요약하여 입력하거나, Genspark가 파일 업로드를 지원한다면 해당 파일 지정)
+
+<strong>[PPT 제작 요청 지시]</strong>
+이 제안서 내용을 바탕으로, 발표용 PPT를 만들어주세요. 이미지는 전체적으로 깔끔하고 심플한 디자인 톤을 사용하고, 각 슬라이드는 균형 잡힌 레이아웃으로 가독성 좋게 구성해주세요. 핵심 메시지가 잘 드러나도록 해주세요.
+                    </div>
+                    <p style="margin-top:1rem;"><strong>Genspark 결과물 및 추가 활용:</strong></p>
+                    <ul>
+                        <li>AI가 생성한 PPT 초안을 Genspark 내에서 바로 슬라이드 쇼로 확인하거나, PDF 또는 PPTX 파일로 다운로드할 수 있습니다.</li>
+                        <li>Canva 등 다른 디자인 도구와 연동하여 추가 편집 및 디자인 개선 작업이 가능합니다.</li>
+                    </ul>
+                    <p class="external-link" style="text-align:center;">🔗 <strong>Genspark 결과물 예시 링크:</strong> <a href="https://www.genspark.ai/agents?id=a4b93ffe-9fb8-4e8e-b45a-ccb89bb79b4d" target="_blank">Genspark PPT 예시</a></p>
+                    <p style="margin-top:1rem; text-align:center; font-style:italic;">(시연: Genspark에 기획서 내용 기반 PPT 생성 요청 및 결과물 확인, 다운로드/연동 옵션 설명)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Tips and Cautions (복습) -->
+        <div class="slide" id="slide7">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 활용 문서 작성, 이것만은 기억하자!</div>
+                    <div class="slide-subtitle">효율과 정확성을 모두 잡는 방법 (복습)</div>
+                </div>
+                <div class="slide-number">07</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">AI를 활용한 문서 작성은 매우 강력하지만, 몇 가지 핵심 원칙을 지킬 때 그 효과를 극대화할 수 있습니다.</div>
+                <div class="tips-cautions-container">
+                    <div class="tips-box">
+                        <h4><span class="icon">✨</span> AI 활용 효과 UP!</h4>
+                        <ul>
+                            <li><strong>명확하고 구체적인 프롬프트:</strong> AI에게 무엇을 원하는지 정확히 알려주세요.</li>
+                            <li><strong>정보의 질 = 결과의 질:</strong> AI에게 제공하는 참고 자료의 품질이 중요합니다.</li>
+                            <li><strong>단계별 접근:</strong> 긴 문서는 한 번에 완성하려 하기보다, 부분별로 생성 후 조합하세요.</li>
+                            <li><strong>AI는 협업 파트너:</strong> 첫 결과물에 만족하지 말고, 대화를 통해 개선해나가세요.</li>
+                        </ul>
+                    </div>
+                    <div class="cautions-box">
+                        <h4><span class="icon">⚠️</span> 반드시 주의!</h4>
+                        <ul>
+                            <li><strong>사실관계 최종 확인:</strong> AI가 생성한 모든 정보(수치, 통계, 법규 등)는 반드시 검증하세요.</li>
+                            <li><strong>표절 및 저작권:</strong> AI 생성물은 아이디어와 초안으로 활용하고, 최종 결과물은 자신의 것으로 만드세요.</li>
+                            <li><strong>보안 의식:</strong> 회사 내부의 민감한 정보나 기밀 자료는 외부 AI 도구 입력 시 각별히 주의하세요.</li>
+                            <li><strong>인간의 검토는 필수:</strong> AI는 강력한 조수일 뿐, 최종적인 판단과 책임은 사용자에게 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Summary & Conclusion -->
+        <div class="slide" id="slide8">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">문서 작업, AI로 날개를 달다!</div>
+                    <div class="slide-subtitle">핵심 요약 및 마무리</div>
+                </div>
+                <div class="slide-number">08</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    오늘은 AI를 활용하여 보고서 작성부터 기획서 아이디어 구체화, PPT 제작까지<br>
+                    <span class="highlight">문서 작업의 전 과정을 혁신하는 방법</span>들을 살펴보았습니다.
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem 2rem; border-radius:10px; margin: 2rem auto; max-width: 800px; text-align:center;">
+                    <h4 style="color:var(--primary-color); margin-bottom:1rem; font-size:1.3rem;">AI 문서 작성, 이렇게 달라집니다!</h4>
+                    <ul style="list-style-type: '🚀'; padding-left: 20px; font-size:1.1rem; text-align:left; display:inline-block;">
+                        <li style="margin-bottom:0.7rem;">정보 수집부터 초안 작성까지 <span class="highlight">시간 대폭 단축</span></li>
+                        <li style="margin-bottom:0.7rem;">다양한 관점의 <span class="highlight">아이디어와 논리 구조 제안</span></li>
+                        <li style="margin-bottom:0.7rem;">템플릿 기반 반복 작업 <span class="highlight">자동화 및 오류 감소</span></li>
+                        <li>자료 시각화(PPT)의 <span class="highlight">초기 기획 부담 완화</span></li>
+                    </ul>
+                </div>
+                <div class="text-block">
+                    AI는 단순한 글쓰기 도구를 넘어, 우리의 생각을 정리하고, 정보를 분석하며, 효과적으로 전달하는 데<br>
+                    <span class="highlight">강력한 파트너</span>가 될 수 있습니다. 오늘 배운 내용을 업무에 적극적으로 활용하여<br>
+                    문서 작성의 부담은 줄이고, 창의적인 업무에 더 많은 시간을 투자하시길 바랍니다!
+                </div>
+                 <div class="text-block" style="margin-top: 2rem; font-size: 1.1rem;">
+                    이것으로 Module 3의 모든 실전 시나리오 학습을 마칩니다. 수고하셨습니다!
+                 </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) { slideNumberEl.textContent = (index + 1).toString().padStart(2, '0'); }
+                if (index === 0) { slide.classList.add('active'); }
+                else { slide.classList.remove('active'); }
+            });
+
+            const mainContentArea = document.getElementById('mainContent') || window;
+            const scroller = document.getElementById('mainContent') || window;
+
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? {top: 0, height: window.innerHeight} : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                     if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            scroller.addEventListener('scroll', currentScrollListener);
+            
+            setTimeout(() => {
+                 if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                   slides[0].classList.add('active');
+                }
+                 currentScrollListener(); 
+            }, 100);
+        });
+    </script>
+</body>
+</html>

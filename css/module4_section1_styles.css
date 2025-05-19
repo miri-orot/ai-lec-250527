@@ -1,0 +1,277 @@
+
+/* Styles specific to module4_section1.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+/* Max width for slide content in this specific section */
+.slide-container {
+    max-width: var(--content-max-width-m4s1, 900px);
+}
+
+body {
+    color: var(--dark-text);
+}
+
+.slide {
+    /* Added from module1_section3_styles.css for consistent slide structure */
+    min-height: 75vh; 
+    display: flex;
+    flex-direction: column;
+
+    /* Original module4_section1 styles for slide */
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+    margin-bottom: 70px; /* Overrides common_styles.css margin-bottom if more specific or loaded later */
+    /* transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1); */ /* Common transition is in common_styles.css */
+}
+
+.slide-header {
+    padding: 1.5rem 2rem 0.8rem;
+    align-items: center;
+}
+
+.slide-number {
+    font-size: 0.8rem;
+    background-color: var(--secondary-color);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+}
+
+.slide-title {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.slide-subtitle {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.slide-content {
+    /* Original module4_section1 padding */
+    padding: 2rem 2.5rem;
+    
+    /* Added/modified from module1_section3_styles.css for consistent content flow */
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically centers content if it's shorter than slide-content area */
+    align-items: center; /* Keeps horizontal centering */
+    text-align: center; /* Keeps text centering for block elements */
+}
+
+.text-block {
+    line-height: 1.75;
+    max-width: 700px; /* Kept from original m4s1 */
+}
+.text-block .highlight {
+    font-weight: bold;
+}
+
+.learning-goals-box {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+    max-width: 650px;
+    margin: 1.5rem auto 0 auto;
+}
+.learning-goals-box h4 {
+    text-align:center;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.15rem;
+}
+.learning-goals-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    text-align: left;
+    max-width: 580px;
+    margin: auto;
+}
+.learning-goals-box li {
+    margin-bottom: 0.7rem;
+    display: flex;
+    align-items: flex-start;
+}
+.learning-goals-box li .icon {
+    color: var(--primary-color);
+    margin-right: 0.6rem;
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Slide 2: Item Card Container - 2x2 Grid */
+.item-card-container-slide2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 명시적으로 2열 그리드 */
+    gap: 1.2rem; /* 카드 간 간격 */
+    width: 100%;
+    margin-top: 1.5rem;
+}
+/* General Item Card Container (for other slides if needed) */
+.item-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.2rem;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.item-card {
+    background-color: var(--sub-card-bg-m4s1, var(--sub-card-bg));
+    border-radius: 8px;
+    padding: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    text-align: left;
+    border-left: 4px solid;
+}
+.item-card.danger { border-left-color: var(--danger-color-m4s1, var(--danger-color)); background-color: var(--danger-bg-m4s1, var(--danger-bg)); }
+.item-card.warning { border-left-color: var(--warning-color-alt-m4s1, var(--warning-color)); background-color: var(--warning-bg-alt-m4s1, var(--warning-bg)); }
+.item-card.info { border-left-color: var(--info-color-alt-m4s1, var(--info-color)); background-color: var(--info-bg-alt-m4s1, var(--info-bg)); }
+
+.item-card-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+}
+.item-card.danger .item-card-title { color: var(--danger-color-m4s1, var(--danger-color)); }
+.item-card.warning .item-card-title { color: var(--warning-color-alt-m4s1, var(--warning-color)); }
+.item-card.info .item-card-title { color: var(--info-color-alt-m4s1, var(--info-color)); }
+.item-card-title .icon { margin-right: 0.5rem; font-size: 1.1em; }
+
+.item-card-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #555;
+}
+.item-card-description ul {list-style-type: '•'; padding-left: 15px; margin-top:0.5rem;}
+.item-card-description li {font-size:0.9rem; margin-bottom:0.3rem;}
+
+.info-card {
+    padding: 1.8rem;
+    border-radius: 12px;
+    text-align: left;
+    width: 100%;
+    max-width: 700px;
+    margin: 1rem auto;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+.info-card.danger { background-color: var(--danger-bg-m4s1, var(--danger-bg)); border-top: 5px solid var(--danger-color-m4s1, var(--danger-color)); }
+.info-card.warning { background-color: var(--warning-bg-alt-m4s1, var(--warning-bg)); border-top: 5px solid var(--warning-color-alt-m4s1, var(--warning-color)); }
+.info-card.ethics { background-color: var(--info-bg-alt-m4s1, var(--info-bg)); border-top: 5px solid var(--info-color-alt-m4s1, var(--info-color)); }
+
+.info-card-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    text-align: center;
+}
+.info-card-icon {
+    font-size: 3rem;
+    margin-bottom: 0.8rem;
+    line-height: 1;
+}
+.info-card.danger .info-card-icon { color: var(--danger-color-m4s1, var(--danger-color)); }
+.info-card.warning .info-card-icon { color: var(--warning-color-alt-m4s1, var(--warning-color)); }
+.info-card.ethics .info-card-icon { color: var(--info-color-alt-m4s1, var(--info-color)); }
+
+.info-card-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+.info-card.danger .info-card-title { color: var(--danger-color-m4s1, var(--danger-color)); }
+.info-card.warning .info-card-title { color: var(--warning-color-alt-m4s1, var(--warning-color)); }
+.info-card.ethics .info-card-title { color: var(--info-color-alt-m4s1, var(--info-color)); }
+
+.info-card-content p, .info-card-content ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 1rem;
+}
+.info-card-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.info-card-content li {
+    padding-left: 1.8rem;
+    position: relative;
+    margin-bottom: 0.6rem;
+    text-align: left;
+}
+.info-card-content li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+.info-card.danger li::before { color: var(--danger-color-m4s1, var(--danger-color)); }
+.info-card.warning li::before { color: var(--warning-color-alt-m4s1, var(--warning-color)); }
+.info-card.ethics li::before { color: var(--info-color-alt-m4s1, var(--info-color)); }
+
+.example-text {
+    background-color: #f0f0f0;
+    padding: 0.5rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    display: block;
+    font-style: italic;
+}
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    width:100%;
+}
+.grid-2x2 .item-card {width:100%;}
+
+.principles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+.principles-grid .info-card {
+    padding: 1.2rem;
+    text-align: center;
+    border-top-width: 4px;
+}
+.principles-grid .info-card .info-card-icon { font-size: 2rem; margin-bottom: 0.5rem;}
+.principles-grid .info-card .info-card-title { font-size: 1.15rem; margin-bottom: 0.5rem; }
+.principles-grid .info-card p { font-size: 0.9rem; line-height: 1.5; margin-bottom: 0; }
+
+.footer { /* From common_styles.css */ }
+
+@media (max-width: 992px) {
+    .slide { /* Added from module1_section3_styles.css */
+        min-height: 70vh;
+    }
+    /* Original module4_section1 responsive styles */
+    .principles-grid { grid-template-columns: 1fr; }
+    .item-card-container-slide2 { grid-template-columns: 1fr; } /* 슬라이드2 카드도 작은 화면에선 1열 */
+}
+
+@media (max-width: 768px) {
+    .slide { /* Added from module1_section3_styles.css */
+        min-height: 65vh;
+    }
+    /* Original module4_section1 responsive styles */
+    /* .slide-title from common_styles.css */
+    .slide-subtitle { font-size: 0.95rem; }
+    .slide-content { padding: 1.5rem; } /* Original module4_section1 responsive padding */
+    .item-card-container, .grid-2x2, .item-card-container-slide2 { grid-template-columns: 1fr; }
+    .learning-goals-box { max-width: 90%; padding: 1rem;}
+    .learning-goals-box h4 { font-size: 1.1rem; }
+    .learning-goals-box ul { font-size: 1rem; max-width: 100%;}
+    .info-card-icon {font-size: 2.5rem;}
+    .info-card-title {font-size: 1.4rem;}
+    .principles-grid .info-card .info-card-icon {font-size: 1.8rem;}
+    .principles-grid .info-card .info-card-title {font-size: 1.1rem;}
+}

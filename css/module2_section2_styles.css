@@ -1,0 +1,173 @@
+/* Styles specific to module2_section2.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+/* Max width for slide content in this specific section */
+.slide-container {
+    /* max-width: 1200px; /* Default from common, can override */
+    /* Or use specific variable like --content-max-width-m2s2 if defined in common_styles.css */
+}
+
+.tool-intro-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem auto;
+    max-width: 900px;
+}
+.tool-intro-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.tool-intro-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+.tool-intro-card img {
+    max-width: 40px;
+    max-height: 40px;
+    height: auto;
+    margin-bottom: 0.8rem;
+    vertical-align: middle;
+    object-fit: contain;
+}
+.tool-intro-card p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--dark-text);
+}
+
+.overview-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.overview-table th, .overview-table td {
+    padding: 1rem 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+.overview-table th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+}
+.overview-table td {
+    background-color: #fff; /* Explicit white */
+    vertical-align: top;
+}
+.overview-table td:first-child {
+    font-weight: 600;
+    color: var(--dark-text);
+    text-align: center;
+}
+.overview-table tr:last-child td { border-bottom: none; }
+.overview-table ul { margin: 0; padding-left: 18px; list-style-type: disc; }
+.overview-table li { margin-bottom: 0.3rem; }
+
+.tool-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+.tool-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+    padding: 1.5rem;
+    border-top: 5px solid var(--primary-color);
+    display: flex;
+    flex-direction: column;
+}
+.tool-card-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-bottom: 1.2rem;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tool-card-title a {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid var(--primary-color);
+    padding: 0.3rem 0.7rem;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+.tool-card-title a:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+.tool-card-section { margin-bottom: 1.2rem; }
+.tool-card-section h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    color: var(--dark-text);
+    border-left: 3px solid var(--secondary-color);
+    padding-left: 0.5rem;
+}
+.tool-card-section ul { list-style-type: disc; margin-left: 18px; padding-left: 0; font-size: 1rem; color: var(--dark-text); }
+.tool-card-section li { margin-bottom: 0.5rem; line-height: 1.6; }
+.tool-card-section .demo-point { font-style: italic; color: var(--primary-color); }
+
+.guide-list { list-style-type: none; padding: 0; margin: 2rem 0; }
+.guide-list li {
+    background-color: #f8f9fa; /* 연한 배경색 */
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    border-left: 4px solid var(--secondary-color);
+}
+.guide-list .icon { font-size: 1.5rem; margin-right: 1rem; color: var(--primary-color); line-height: 1.6; }
+.guide-list .text strong { font-weight: 600; color: var(--primary-color); }
+.guide-list .text span { display: block; margin-top: 0.3rem; font-size: 1rem; color: var(--dark-text); }
+
+.summary-list {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    display: inline-block;
+    font-size: 1.1rem;
+}
+.summary-list li {
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+}
+.summary-list .icon {
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.footer { /* From common_styles.css */ }
+
+@media (max-width: 768px) {
+    /* .slide-title from common_styles.css */
+    .tool-intro-grid { grid-template-columns: repeat(2, 1fr); }
+    .overview-table { font-size: 0.9rem; }
+    .overview-table th, .overview-table td { padding: 0.8rem 0.5rem; }
+    .tool-grid-container { grid-template-columns: 1fr; }
+    .guide-list .text span { font-size: 0.95rem; }
+}
+ @media (max-width: 480px) {
+     .tool-intro-grid { grid-template-columns: 1fr; }
+ }

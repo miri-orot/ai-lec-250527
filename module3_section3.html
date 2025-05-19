@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>건설업 AI 활용 교육 - Module 3 Section 3: 회의 결과 정리, 스마트하게!</title>
+    <link rel="stylesheet" href="css/common_styles.css">
+    <link rel="stylesheet" href="css/module3_section3_styles.css">
+</head>
+<body>
+    <!-- Header REMOVED -->
+    <div class="slide-container">
+        <!-- Slide 1: Section Introduction -->
+        <div class="slide" id="slide1">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">Module 3: 실전! AI로 건설 업무 효율 UP!</div>
+                    <div class="slide-subtitle">Section 3: 회의 결과 정리, 스마트하게!</div>
+                </div>
+                <div class="slide-number">01</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    "회의는 끝났는데... 정리할 생각에 막막하시죠?"<br>
+                    끝없는 회의와 쌓여가는 회의록, AI를 활용하면 <span class="highlight">핵심만 빠르게 파악하고, 다음 할 일을 명확히</span> 할 수 있습니다.<br>
+                    이제 AI와 함께 스마트한 회의 결과 관리를 시작해 보세요!
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; max-width: 90%; margin: 2rem auto;">
+                    <h4 style="text-align:center; color: var(--primary-color); margin-bottom: 0.8rem;">이번 시간 학습 목표 (시연 중심)</h4>
+                    <ul style="list-style: none; padding: 0; font-size: 1.05rem; text-align: left;">
+                        <li style="margin-bottom: 0.5rem;">✅ GPTs를 활용하여 <span class="highlight">템플릿 기반 회의록</span> 자동 작성하기</li>
+                        <li>✅ Claude, ChatGPT로 긴 회의록 <span class="highlight">핵심 요약 및 Action Item</span> 정확하게 추출하기</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 2: AI Meeting Minutes with GPTs -->
+        <div class="slide" id="slide2">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">회의록 작성, AI에게 맡겨볼까?</div>
+                    <div class="slide-subtitle">GPTs를 활용한 템플릿 기반 회의록 자동 생성</div>
+                </div>
+                <div class="slide-number">02</div>
+            </div>
+            <div class="slide-content">
+                <div class="scenario-box">
+                    <h4><span class="icon">📝</span> 시나리오: 건설 현장 주간 공정 회의록 작성</h4>
+                    <p><strong>상황:</strong> 매주 진행되는 건설 현장 주간 공정 회의 내용을 바탕으로, 정해진 양식에 맞춰 회의록을 신속하게 작성해야 합니다.</p>
+                    <p><strong>준비물:</strong> 회의 내용 녹취록 또는 주요 발언 스크립트 텍스트.</p>
+                    <p><strong>활용 도구:</strong> "건설 회의록 정리봇" GPTs</p>
+                    <p class="tool-link">🔗 <strong>GPTs 바로가기:</strong> <a href="https://chatgpt.com/g/g-6824290409dc8191a873953ab28aa63a-geonseol-hoeyirog-jeongribos" target="_blank">건설 회의록 정리봇</a></p>
+
+                    <div class="prompt-example-code">
+                        <strong>시연 프롬프트 예시:</strong><br>
+                        <code>아래 회의 내용을 바탕으로 정해진 템플릿에 맞춰 회의록을 작성해줘:<br><br><strong>[회의 스크립트 시작]</strong><br>사회자: 오늘 주간 공정회의 시작하겠습니다. 먼저 지난주 진행상황부터 공유해주시죠.<br>김팀장: 네, 지난주 철골 공사는 계획대로 90% 완료되었고, 배관 작업은 자재 수급 문제로 70% 진행되었습니다. 특히 A구역은...<br>(...중략...)<br>박소장: 다음 주까지 각 팀별로 안전점검 결과 및 개선 계획 보고해주시기 바랍니다. 이상입니다.<br><strong>[회의 스크립트 끝]</strong></code>
+                    </div>
+                    <p style="margin-top:1rem;"><strong>AI 결과 확인 포인트 (시연 시):</strong></p>
+                    <ul>
+                        <li>GPTs가 회의 스크립트를 이해하고 회의명, 일시, 참석자(추론 또는 별도 입력 요청), 주요 논의 내용, 결정 사항, 실행 항목 등을 템플릿에 맞춰 정리하는지 확인합니다.</li>
+                        <li><span class="highlight">템플릿은 GPTs 제작 시 사전 지시하거나, 위 프롬프트처럼 실행 시점에 명시할 수 있습니다.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Summarizing Minutes & Extracting Action Items -->
+        <div class="slide" id="slide3">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">회의록 요약 및 Action Item 추출</div>
+                    <div class="slide-subtitle">Claude, ChatGPT로 핵심만 빠르게!</div>
+                </div>
+                <div class="slide-number">03</div>
+            </div>
+            <div class="slide-content">
+                <div class="scenario-box">
+                    <h4><span class="icon">🎯</span> 시나리오: 장시간 회의 후 핵심 내용 및 할 일 정리</h4>
+                    <p><strong>상황:</strong> 여러 부서가 참여한 2시간짜리 프로젝트 회의가 끝났습니다. 방대한 회의록에서 주요 결정사항과 각 담당자가 해야 할 일을 빠르게 파악해야 합니다.</p>
+                    <p><strong>준비물:</strong> 상세 회의록 텍스트 파일.</p>
+                    <p><strong>활용 도구:</strong> Claude (긴 텍스트 처리에 강점), ChatGPT</p>
+
+                    <div class="prompt-example-code">
+                        <strong>시연 프롬프트 예시 1 (회의록 요약 - Claude/ChatGPT):</strong><br>
+                        <code>다음 회의록 내용을 3가지 핵심 주제로 요약해주고, 각 주제별 주요 논의 내용을 2문장 이내로 간결하게 설명해줘:<br><br>[여기에 회의록 전체 텍스트를 붙여넣습니다.]</code>
+                    </div>
+                    <div class="prompt-example-code" style="margin-top:1rem;">
+                        <strong>시연 프롬프트 예시 2 (Action Item 추출 - Claude/ChatGPT):</strong><br>
+                        <code>위 회의록에서 반드시 실행해야 할 Action Item(실행 항목)들을 목록으로 정리해줘. 각 항목에는 담당자(부서 또는 개인)와 완료 기한(언급된 경우)을 명시해줘.</code>
+                    </div>
+                     <p style="margin-top:1rem;"><strong>AI 결과 확인 포인트 (시연 시):</strong></p>
+                    <ul>
+                        <li>AI가 긴 회의록에서 핵심 주제를 정확히 식별하고 간결하게 요약하는지 확인합니다.</li>
+                        <li>Action Item을 누락 없이 추출하고, 담당자와 기한 정보를 정확히 연결하는지 확인합니다.</li>
+                        <li><span class="highlight">Claude는 특히 긴 문서를 한 번에 처리하는 데 유리하며, ChatGPT는 단계별 지시에 잘 반응합니다.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Tips & Cautions for AI Meeting Summary -->
+        <div class="slide" id="slide4">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 회의록 정리: 효과 극대화 팁 & 주의사항</div>
+                    <div class="slide-subtitle">스마트한 회의 관리를 위한 조언</div>
+                </div>
+                <div class="slide-number">04</div>
+            </div>
+            <div class="slide-content">
+                <div class="tips-cautions-container">
+                    <div class="tips-box">
+                        <h4><span class="icon">✨</span> 회의록 정리 효과 UP! (Tips)</h4>
+                        <ul>
+                            <li><strong>음성-텍스트 변환(STT) 활용:</strong> 회의 녹음 후 Otter.ai, 클로바노트 등으로 텍스트 변환하여 AI에 입력하면 편리합니다.</li>
+                            <li><strong>명확한 템플릿 제공:</strong> GPTs나 프롬프트에 원하는 회의록 양식을 명시하면 일관된 결과물을 얻을 수 있습니다.</li>
+                            <li><strong>Action Item 구체화:</strong> "누가, 무엇을, 언제까지"를 명확히 하도록 AI에게 지시하세요.</li>
+                            <li><strong>회의 중 주요 키워드 메모:</strong> AI에게 요약이나 검색을 요청할 때 핵심 키워드를 함께 제공하면 정확도가 높아집니다.</li>
+                        </ul>
+                    </div>
+                    <div class="cautions-box">
+                        <h4><span class="icon">⚠️</span> 이것만은 꼭! (Cautions)</h4>
+                        <ul>
+                            <li><strong>민감 정보 주의:</strong> 회사 기밀이나 개인정보가 포함된 회의 내용은 외부 AI 도구 사용 시 보안 정책을 확인하세요.</li>
+                            <li><strong>정확성 검증 필수:</strong> AI가 생성한 참석자 명단, 발언자, 결정 사항 등은 반드시 사람이 최종 검토해야 합니다.</li>
+                            <li><strong>녹취록 품질의 중요성:</strong> 음질이 낮거나 발음이 불분명한 녹취록은 AI의 이해도를 저하시킬 수 있습니다.</li>
+                            <li><strong>AI는 보조 도구:</strong> 최종적인 회의록의 내용과 책임은 사용자에게 있습니다.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: Summary & Next Steps -->
+        <div class="slide" id="slide5">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">회의 정리, 이제 AI와 함께!</div>
+                    <div class="slide-subtitle">핵심 요약 및 다음 학습 안내</div>
+                </div>
+                <div class="slide-number">05</div>
+            </div>
+            <div class="slide-content">
+                <div class="text-block">
+                    AI를 활용하면 회의록 작성부터 핵심 요약, 실행 항목 관리까지<br>
+                    <span class="highlight">회의 후속 업무의 효율을 크게 향상</span>시킬 수 있습니다.
+                </div>
+                <div style="background-color: var(--secondary-color); padding: 1.5rem 2rem; border-radius:10px; margin: 2rem auto; max-width: 700px; text-align:center;">
+                    <h4 style="color:var(--primary-color); margin-bottom:1rem; font-size:1.3rem;">AI 회의록 정리의 핵심 이점</h4>
+                    <ul style="list-style-type: '✅ '; list-style-position: inside; padding-left: 0; font-size:1.1rem; text-align:left; display:inline-block;">
+                        <li style="margin-bottom:0.7rem;">신속한 회의록 초안 작성</li>
+                        <li style="margin-bottom:0.7rem;">긴 회의 내용의 핵심만 빠르게 파악</li>
+                        <li style="margin-bottom:0.7rem;">실행 항목(Action Item) 누락 방지</li>
+                        <li>효율적인 후속 조치 및 업무 진행</li>
+                    </ul>
+                </div>
+                <div class="text-block">
+                    오늘 배운 내용을 바탕으로 여러분의 회의 관리 방식에 AI를 도입하여,<br>
+                    <span class="highlight">더 생산적인 팀워크와 명확한 소통</span>을 경험해 보세요!
+                </div>
+                 <div class="text-block" style="margin-top: 2.5rem; font-size: 1.3rem; line-height: 1.8;">
+                     다음 시간에는 AI를 활용하여 <span class="highlight">보고서와 기획서 작성 시간을 획기적으로 단축</span>하는<br>
+                     다양한 방법들을 자세히 알아보겠습니다!
+                 </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Copyright © 2025 OROT. All rights reserved.
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) { slideNumberEl.textContent = (index + 1).toString().padStart(2, '0'); }
+                if (index === 0) { slide.classList.add('active'); }
+                else { slide.classList.remove('active'); }
+            });
+
+            const mainContentArea = document.getElementById('mainContent') || window;
+            const scroller = document.getElementById('mainContent') || window;
+
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    const scrollerRect = (scroller === window) ? {top: 0, height: window.innerHeight} : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                    if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                });
+            };
+            
+            scroller.addEventListener('scroll', currentScrollListener);
+            
+            setTimeout(() => {
+                 if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                   slides[0].classList.add('active');
+                }
+                 currentScrollListener(); 
+            }, 100);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+/* Styles specific to module3_section3.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+/* Max width for slide content in this specific section */
+.slide-container {
+    /* max-width: 1200px; /* Default from common_styles.css */
+    /* Or use specific variable like --content-max-width-m3s3 if defined in common_styles.css */
+}
+
+.scenario-box {
+    background-color: #f9f9f9; /* 연한 배경색 */
+    border-radius: 10px;
+    padding: 1.5rem;
+    border-left: 5px solid var(--primary-color);
+    margin: 1.5rem 0;
+}
+.scenario-box h4 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.scenario-box h4 .icon {
+    margin-right: 0.7rem;
+    font-size: 1.5rem;
+}
+.scenario-box p, .scenario-box ul {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 0.8rem;
+}
+.scenario-box ul {
+    list-style-position: inside; /* 마커를 안쪽으로 */
+    padding-left: 0; /* 내부 패딩 제거 */
+}
+.scenario-box li {
+    margin-bottom: 0.4rem;
+}
+.scenario-box strong {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+.prompt-example-code {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-top: 1rem;
+    border: 1px dashed var(--primary-color);
+}
+.prompt-example-code code {
+    display: block;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    text-align: left;
+}
+.prompt-example-code strong {
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.tool-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.tool-link a:hover {
+    text-decoration: underline;
+}
+
+.tips-cautions-container {
+    display: flex;
+    gap: 2rem;
+    margin: 2rem 0;
+    flex-wrap: wrap; /* 작은 화면에서 세로 정렬되도록 */
+}
+.tips-box, .cautions-box {
+    flex: 1; /* 공간을 동일하게 차지 */
+    min-width: 300px; /* 최소 너비 보장 */
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+.tips-box {
+    background-color: #e6f7ff; /* 연한 하늘색 */
+    border-left: 5px solid #1890ff; /* 파란색 계열 */
+}
+.cautions-box {
+    background-color: #fff1f0; /* 연한 빨강 */
+    border-left: 5px solid #f5222d; /* 빨강 계열 */
+}
+.tips-box h4, .cautions-box h4 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.tips-box h4 { color: #1890ff; }
+.cautions-box h4 { color: #f5222d; }
+.tips-box h4 .icon, .cautions-box h4 .icon {
+    margin-right: 0.7rem;
+}
+.tips-box ul, .cautions-box ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+.tips-box li, .cautions-box li {
+    margin-bottom: 0.7rem;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.footer { /* From common_styles.css */ }
+
+@media (max-width: 768px) {
+    /* .slide-title from common_styles.css */
+    .tips-cautions-container {
+        flex-direction: column; /* 모바일에서는 세로로 쌓임 */
+    }
+}

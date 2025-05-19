@@ -1,0 +1,207 @@
+/* Styles specific to module2_section1.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+/* Max width for slide content in this specific section */
+.slide-container {
+    /* max-width: 1200px; /* Default from common, can override */
+    /* Or use specific variable like --content-max-width-m2s1 if defined in common_styles.css */
+}
+
+/* Slide 2 Specific Styles */
+.comparison-section {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2.5rem 0;
+    flex-wrap: wrap;
+}
+.comparison-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 45%;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    text-align: left;
+}
+.comparison-card.bad {
+    background-color: var(--bad-bg-m2s1, var(--bad-bg)); /* Use specific or fallback */
+    border-left: 5px solid var(--bad-border-m2s1, var(--bad-border));
+}
+.comparison-card.good {
+    background-color: var(--good-bg-m2s1, var(--good-bg));
+    border-left: 5px solid var(--good-border-m2s1, var(--good-border));
+}
+.comparison-card-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+}
+.comparison-card-title.bad { color: var(--bad-border-m2s1, var(--bad-border)); }
+.comparison-card-title.good { color: var(--good-border-m2s1, var(--good-border)); }
+.comparison-card-title span { margin-left: 0.5rem; }
+.comparison-card-content p {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    color: var(--dark-text);
+}
+.comparison-card-content strong {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+    color: #555;
+}
+.comparison-card-content code {
+    display: inline-block;
+    background-color: rgba(0,0,0,0.07);
+    padding: 0.3em 0.6em;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    word-break: keep-all;
+}
+.reminder-box {
+    margin-top: 2.5rem;
+    padding: 1.2rem 1.5rem;
+    background-color: var(--warning-bg-m2s1, var(--warning-bg));
+    border-radius: 8px;
+    border-left: 5px solid var(--warning-border-m2s1, var(--warning-border));
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+.reminder-box .icon { margin-right: 0.5rem; }
+
+/* Prompt box styles (Slide 5 & 6 용) */
+.prompt-box {
+    background-color: #f5f7ff; /* 연한 하늘색 배경 */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+.prompt-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+.prompt-content {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+.prompt-box.bad-example {
+    border-left-color: var(--bad-border-m2s1, var(--bad-border));
+    background-color: var(--bad-bg-m2s1, var(--bad-bg));
+}
+.prompt-box.good-example {
+    border-left-color: var(--good-border-m2s1, var(--good-border));
+    background-color: var(--good-bg-m2s1, var(--good-bg));
+}
+.prompt-box .prompt-label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 1.1rem;
+}
+.prompt-box .prompt-label.bad { color: var(--bad-border-m2s1, var(--bad-border));}
+.prompt-box .prompt-label.good { color: var(--good-border-m2s1, var(--good-border));}
+
+.prompt-text {
+    background-color: rgba(0,0,0,0.03); /* 매우 연한 회색 배경 */
+    padding: 0.8rem 1rem;
+    border-radius: 6px;
+    display: block;
+    margin-bottom: 1rem;
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+.prompt-analysis {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--dark-text);
+}
+.prompt-analysis strong {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #444;
+}
+.prompt-analysis ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    padding-left: 5px;
+}
+.prompt-analysis li { margin-bottom: 0.3rem; }
+.prompt-element { /* 프롬프트 요소 강조 */
+     font-weight: bold;
+     color: #1a237e; /* 진한 남색 계열 */
+     /* background-color: rgba(49, 85, 226, 0.1); 약간의 배경색 추가 가능 */
+     /* padding: 0.1em 0.3em; border-radius: 3px; 약간의 패딩과 둥근 모서리 추가 가능 */
+ }
+
+/* Step container styles (Slide 3용) */
+.step-container { margin: 2rem 0; }
+.step-item { display: flex; margin-bottom: 1.5rem; }
+.step-number { width: 40px; height: 40px; border-radius: 50%; background-color: var(--primary-color); color: white; display: flex; align-items: center; justify-content: center; font-weight: bold; margin-right: 1rem; flex-shrink: 0; }
+.step-content { flex-grow: 1; }
+.step-title { font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem; }
+.step-desc { font-size: 1.1rem; color: var(--light-text); }
+/* ul, li 스타일은 common_styles.css 또는 위의 .prompt-analysis ul/li 에서 상속/적용 가능 */
+.step-desc strong { font-weight: 600; color: var(--dark-text); display: block; margin-bottom: 0.5rem; }
+
+/* Slide 4 Layout styles */
+.layout-3-2-container { display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0; }
+.layout-3-2-row { display: flex; gap: 1.5rem; }
+.layout-3-2-row.top-row { justify-content: space-between; }
+.layout-3-2-row.bottom-row { justify-content: center; max-width: calc(66.66% + 0.75rem); margin: 0 auto; } /* 가운데 정렬 및 너비 조정 */
+.layout-3-2-container .grid-item { flex: 1; min-width: 280px; background-color: white; border-radius: 12px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07); padding: 1.5rem; border: 1px solid var(--border-color); border-top: 5px solid var(--primary-color); }
+.grid-item-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; color: var(--primary-color); display: flex; align-items: center; }
+.grid-item-title .icon { margin-right: 0.75rem; font-size: 1.5rem; }
+.grid-item-content { font-size: 1rem; line-height: 1.7; color: var(--dark-text); }
+.grid-item-content .example-list li { background-color: #f8f9fa; padding: 0.5rem 0.8rem; border-radius: 4px; font-size: 0.95rem; margin-left: 1rem; position: relative; margin-bottom: 0.5rem;} /* margin-bottom 추가 */
+.grid-item-content .example-list li::before { content: '•'; position: absolute; left: -1rem; top: 0.5rem; color: var(--dark-text); font-size: 1.2em; line-height: 1; }
+
+/* Summary box style (Slide 7용) */
+.summary-box { background-color: var(--secondary-color); border-radius: 10px; padding: 1.5rem 2rem; margin: 2rem 0; border-left: 5px solid var(--primary-color); }
+.summary-box .summary-title { font-size: 1.3rem; font-weight: 600; color: var(--primary-color); margin-bottom: 1rem; }
+/* .summary-box ul, li 스타일은 common_styles.css 또는 위의 .step-desc ul/li 에서 상속/적용 가능 */
+.summary-box li { font-size: 1.1rem; display: flex; align-items: flex-start; } /* align-items 변경 */
+.summary-box li::before { content: '✅'; margin-right: 0.75rem; color: var(--primary-color); font-weight: bold; line-height: 1.6; }
+
+/* Slide 1 content box styles */
+.content-box { width: 80%; max-width: 800px; padding: 2rem; border-radius: 12px; margin: 0 auto 2rem auto; text-align: center; }
+.content-box.series-list { background-color: var(--secondary-color); }
+.content-box.key-topics-list { background-color: white; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+.content-box h3 { color: var(--primary-color); font-size: 1.5rem; margin-bottom: 1.5rem; }
+.content-box p { font-size: 1.1rem; margin-bottom: 0.75rem; line-height: 1.7; }
+.content-box .series-list p.highlighted-module { font-weight: 600; color: var(--primary-color); }
+/* .key-topics-list ul, li 스타일은 common_styles.css 또는 위의 .step-desc ul/li 에서 상속/적용 가능 */
+.key-topics-list li { display: flex; align-items: center; font-size: 1.1rem; margin-bottom: 1rem;}
+.key-topics-list .topic-number { background-color: var(--primary-color); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-right: 1rem; flex-shrink: 0; font-weight: bold; }
+
+/* Practice button style */
+.practice-button-container { text-align: center; margin-top: 2.5rem; }
+.practice-button { text-decoration: none; background-color: var(--primary-color); color: white; padding: 0.8rem 1.5rem; border-radius: 8px; font-weight: 500; transition: background-color 0.3s ease; display: inline-block; }
+.practice-button:hover { background-color: #2546d4; /* 살짝 어두운 파랑 */ }
+
+.footer { /* From common_styles.css */ }
+
+@media (max-width: 992px) {
+     .layout-3-2-row { flex-direction: column; align-items: center; max-width: 100%; margin: 0; }
+     .layout-3-2-container .grid-item { width: 90%; max-width: 500px; min-width: unset; }
+}
+@media (max-width: 768px) {
+    /* .slide-title from common_styles.css */
+    .comparison-section { flex-direction: column; align-items: center; }
+    .comparison-card { max-width: 90%; }
+    .content-box { width: 90%; padding: 1.5rem; }
+    .content-box h3 { font-size: 1.3rem; }
+    .content-box p, .content-box li { font-size: 1rem; }
+}

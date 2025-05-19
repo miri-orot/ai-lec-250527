@@ -1,0 +1,459 @@
+/* Styles specific to module3_section1.html, extracted from its original inline <style> tag. */
+/* CSS Variables and body::before are expected to be handled by common_styles.css */
+
+/* body {
+    position: relative; 
+    background-color: #ffffff; 
+    color: var(--dark-text);
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+} */
+/* body::before rule is intentionally omitted here as it's in common_styles.css */
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: var(--dark-text); /* Uses variable from common_styles.css */
+}
+
+.progress-container {
+    width: 200px;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary-color); /* Uses variable from common_styles.css */
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Overriding .slide-container max-width for this specific section if needed, */
+/* but common_styles.css now uses --content-max-width which can be page-specific */
+.slide-container {
+    max-width: 1200px; /* Or use a specific variable like --content-max-width-m3s1 */
+    margin: 100px auto 50px; /* Adjust top margin for fixed header */
+    padding: 0 20px;
+}
+
+/* .slide, .slide.active, .slide-header, .slide-number, .slide-title, .slide-subtitle, .slide-content */
+/* styles are mostly covered by common_styles.css. Only overrides or additions below. */
+
+/* Example of overriding a common style if needed for this specific section */
+/*
+.slide-title {
+    font-size: 2.2rem; 
+    color: #000; 
+}
+*/
+/* Since these are identical to common_styles.css or use variables, */
+/* they are largely redundant if common_styles.css is correctly structured. */
+/* However, keeping them here ensures this page's original appearance if common_styles.css changes. */
+
+/* Copied from original inline styles. Many might be redundant if common_styles.css is robust. */
+.slide {
+    background-color: var(--card-bg); /* Redundant if defined in common_styles.css and var(--card-bg) is same as var(--slide-card-bg) */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease; /* common_styles.css has opacity/transform transition */
+    overflow: hidden;
+}
+
+.slide.active { /* .active is used by this page's JS, common_styles.css uses .active-slide or .active */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-header {
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* background-color: #fdfdff; from common_styles.css */
+}
+
+.slide-number {
+    color: var(--light-text);
+    font-size: 0.9rem;
+}
+
+.slide-title {
+    font-size: 2.2rem; /* Potentially more specific than common_styles.css */
+    font-weight: 700;
+    color: #000; /* Explicit color */
+    margin-bottom: 0.5rem;
+    /* border-bottom: none; padding-bottom: 0; from common_styles.css */
+}
+
+.slide-subtitle {
+    font-size: 1.2rem; /* Potentially more specific */
+    color: var(--light-text);
+    margin-bottom: 1rem;
+}
+
+.slide-content {
+    padding: 2rem;
+}
+
+.text-block {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--dark-text);
+    text-align: center;
+    word-break: keep-all; /* from common_styles.css */
+}
+
+.highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+.feature-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+}
+
+.feature-desc {
+    font-size: 1rem;
+    color: var(--light-text);
+}
+
+.chart-container {
+    margin: 2rem 0;
+    width: 100%;
+    height: 300px;
+    position: relative;
+}
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 2rem 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem;
+}
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.prompt-box {
+    background-color: #f5f7ff;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--primary-color);
+}
+
+.prompt-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.prompt-content {
+    font-family: 'Pretendard', sans-serif; /* Ensure font consistency */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.step-container {
+    margin: 2rem 0;
+}
+
+.step-item {
+    display: flex;
+    margin-bottom: 1.5rem;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex-grow: 1;
+}
+
+.step-title {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.step-desc {
+    font-size: 1.1rem;
+    color: var(--light-text);
+}
+.step-desc ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    padding-left: 0;
+}
+.step-desc li {
+    margin-bottom: 0.5rem;
+}
+.step-desc strong {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+.step-desc a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+.step-desc a:hover {
+    text-decoration: underline;
+}
+
+.image-container {
+    width: 100%;
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.warning-box {
+    background-color: var(--warning-color-bg); /* Uses variable from common_styles.css */
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    border-left: 4px solid var(--warning-color-border); /* Uses variable from common_styles.css */
+}
+
+.warning-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--warning-color-text); /* Uses variable from common_styles.css */
+}
+
+.footer {
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+/* 비교 차트 스타일 */
+.comparison-chart {
+    display: flex;
+    overflow-x: auto;
+    margin: 2rem 0;
+    padding-bottom: 1rem;
+}
+
+.chart-column {
+    min-width: 200px;
+    margin-right: 1rem;
+    text-align: center;
+}
+
+.chart-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+}
+
+.chart-body {
+    padding: 1rem;
+    background-color: white; /* Explicitly white, could use var(--card-bg) */
+    border: 1px solid var(--border-color);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chart-item {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+}
+
+.chart-item.high {
+    background-color: #e3f2fd;
+}
+
+.chart-item.medium {
+    background-color: #e8f5e9;
+}
+
+.chart-item.low {
+    background-color: #fff3e0;
+}
+
+/* 프롬프트 템플릿 카드 */
+.template-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.template-card {
+    background-color: white; /* Explicitly white, could use var(--card-bg) */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+    border-left: 4px solid var(--primary-color);
+}
+
+.template-card:hover {
+    transform: translateY(-5px);
+}
+
+.template-title {
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+.template-content {
+    font-family: 'Pretendard', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--dark-text);
+}
+
+/* 2x2 그리드 레이아웃 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.grid-item {
+    background-color: white; /* Explicitly white, could use var(--card-bg) */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.grid-item-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.grid-item-content {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+.perplexity-results-table th, .perplexity-results-table td {
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.95rem;
+}
+.perplexity-results-table th {
+    background-color: var(--secondary-color);
+}
+.perplexity-results-table {
+    margin-bottom: 1rem;
+}
+
+
+@media (max-width: 768px) {
+    .slide-title { /* Override from common_styles.css specifically for this page if needed */
+        font-size: 1.8rem;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    #slide7 .feature-grid + .text-block + div[style*="display: flex"] > div { /* Specific selector for GPT/Gemini boxes on slide 7 */
+        flex-direction: column;
+    }
+}
