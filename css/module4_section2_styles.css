@@ -1,0 +1,199 @@
+/* Styles specific to module4_section2.html */
+/* CSS Variables and body::before are handled by common_styles.css */
+
+.slide-container {
+    max-width: var(--content-max-width, 1100px); /* common_styles.css의 기본 너비 사용 */
+}
+
+.slide {
+    min-height: 80vh; 
+    display: flex;
+    flex-direction: column;
+    /* common_styles.css의 .slide 기본 스타일 (border-radius, box-shadow, margin-bottom 등)이 적용됨 */
+    /* 여기서는 필요에 따라 덮어쓰거나 추가 */
+}
+
+.slide-header {
+    /* common_styles.css의 .slide-header 기본 스타일 적용됨 */
+    padding-bottom: 0.8rem; /* 부제목과의 간격 조정 */
+}
+
+.slide-title {
+    /* common_styles.css의 .slide-title 기본 스타일 적용됨 */
+    font-size: 1.7em; /* 필요시 크기 조정 */
+}
+
+.slide-subtitle {
+    /* common_styles.css의 .slide-subtitle 기본 스타일 적용됨 */
+    font-size: 1.05em; /* 필요시 크기 조정 */
+}
+
+.slide-content {
+    padding: 2rem 2.5rem; 
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.idea-intro-text {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: var(--dark-text);
+    max-width: 800px; /* 텍스트 가독성을 위한 최대 너비 */
+    margin-bottom: 2rem;
+    word-break: keep-all;
+}
+
+.idea-intro-text .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.image-wrapper {
+    width: 100%;
+    max-width: 750px; 
+    margin: 0 auto 2rem auto;
+    padding: 1rem;
+    background-color: #fdfdfd; /* 이미지 주변 배경색 약간 다르게 */
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    border: 1px solid var(--border-color);
+}
+
+.automation-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px; 
+    display: block;
+    margin: 0 auto;
+    /* common_styles.css 의 img 기본 box-shadow 대신 wrapper에 적용 */
+}
+
+.key-points-box {
+    background-color: var(--secondary-color);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    max-width: 700px;
+    width: 100%;
+    margin: 1rem auto 1.5rem auto;
+    text-align: left;
+    border-left: 5px solid var(--primary-color);
+    box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.key-points-box h4 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: none; /* common_styles.css의 h4 스타일 덮어쓰기 */
+    padding-bottom: 0; /* common_styles.css의 h4 스타일 덮어쓰기 */
+}
+
+.key-points-box h4 .icon {
+    margin-right: 0.6rem;
+    font-size: 1.2em;
+}
+
+.key-points-box ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.key-points-box li {
+    font-size: 1rem;
+    color: var(--dark-text);
+    margin-bottom: 0.7rem;
+    line-height: 1.6;
+    display: flex;
+    align-items: flex-start;
+}
+
+.key-points-box li .icon {
+    color: var(--primary-color);
+    margin-right: 0.7rem;
+    font-size: 1.1em;
+    line-height: 1.6; 
+    flex-shrink: 0; /* 아이콘 크기 유지 */
+}
+.key-points-box li:last-child {
+    margin-bottom: 0;
+}
+
+.how-to-tip {
+    font-size: 0.95rem;
+    color: var(--light-text);
+    max-width: 750px;
+    margin-top: 1rem;
+    padding: 0.8rem 1.2rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    line-height: 1.6;
+    text-align: left;
+}
+.how-to-tip .highlight {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+/* 반응형 조정 */
+@media (max-width: 992px) {
+    .slide {
+        min-height: 75vh;
+    }
+    .slide-content {
+        padding: 2rem 2rem;
+    }
+    .idea-intro-text {
+        font-size: 1.1rem;
+    }
+    .key-points-box h4 {
+        font-size: 1.15rem;
+    }
+    .key-points-box li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .slide {
+        min-height: auto; 
+        padding-bottom: 1.5rem; /* 슬라이드 하단 여백 추가 (모바일에서 내용 짧을 시 대비) */
+        margin-bottom: 30px; /* common_styles.css와 일치 또는 조정 */
+    }
+    .slide-header {
+        padding-left: 1.5rem; /* common_styles.css와 일치 */
+        padding-right: 1.5rem; /* common_styles.css와 일치 */
+    }
+    .slide-content {
+        padding: 1.5rem; /* common_styles.css와 일치 */
+    }
+    .idea-intro-text {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .image-wrapper {
+        margin-bottom: 1.5rem;
+        padding: 0.8rem;
+    }
+    .key-points-box {
+        padding: 1rem 1.2rem;
+    }
+    .key-points-box h4 {
+        font-size: 1.1rem;
+    }
+    .key-points-box li {
+        font-size: 0.9rem;
+    }
+    .how-to-tip {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+}
