@@ -158,6 +158,178 @@
     font-weight: bold;
 }
 
+
+        /* 추가/수정 스타일 - CSS 변수 적극 활용 */
+        body { /* common_styles.css 에서 flex, height, overflow hidden 처리. 여기선 제거 */ }
+
+        #contentDisplay .large-centered-text { /* text-block 과 유사하나 폰트가 더 큼 */
+            font-size: 2rem; /* 기존 2rem 유지 또는 1.8rem 등 조정 */
+            text-align: center;
+            margin: 2rem auto; /* 가운데 정렬을 위해 auto 마진 */
+            font-weight: bold;
+            color: var(--primary-color);
+            max-width: 800px; /* 너무 길어지지 않도록 */
+        }
+
+        /* key-point-box는 tool-card-section과 유사하게 또는 guide-list li 처럼 */
+        #contentDisplay .key-point-box {
+            background-color: var(--secondary-color); /* 연한 파란색 배경 */
+            padding: 1.5rem;
+            border-radius: 10px; /* .tool-intro-card 와 유사한 radius */
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06); /* .tool-intro-card 와 유사한 그림자 */
+        }
+        #contentDisplay .key-point-box h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            font-size: 1.5rem; /* h2보다 작게 */
+            border-bottom: none; /* common_styles.css의 h3 기본 스타일 초기화 */
+        }
+        #contentDisplay .key-point-box p, 
+        #contentDisplay .key-point-box li {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--dark-text);
+        }
+        #contentDisplay .key-point-box ul {
+            padding-left: 20px; /* 기본 ul보다 조금 더 들여쓰기 */
+            list-style-type: disc; /* module2_section2_styles.css의 .tool-card-section ul 과 일치 */
+        }
+
+
+        #contentDisplay .big-icon { /* 이모지 사용 시 텍스트 스타일로 충분 */
+            font-size: 3rem;
+            text-align: center;
+            display: block;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* pros-cons-list는 유지, 색상은 CSS 변수 고려 가능 (이미 green/red 사용중) */
+        #contentDisplay .pros-cons-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 1.5rem 0;
+        }
+        #contentDisplay .pros-cons-list li {
+            padding-left: 2.5em; /* 아이콘 공간 확보 */
+            position: relative;
+            margin-bottom: 0.8em;
+            font-size: 1.05rem; /* overview-table li 보다 약간 크게 */
+            line-height: 1.6;
+            color: var(--dark-text);
+            background-color: var(--slide-card-bg); /* 기본 카드 배경 */
+            padding: 0.8rem 1rem 0.8rem 2.5em;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+        #contentDisplay .pros-cons-list .pro::before {
+            content: '👍';
+            position: absolute;
+            left: 0.8em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+        }
+        #contentDisplay .pros-cons-list .con::before {
+            content: '👎';
+            position: absolute;
+            left: 0.8em;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+        }
+        #contentDisplay .pros-cons-list li strong { /* 장점/단점 내 strong 태그는 기본 색상 유지 */
+            color: var(--dark-text); 
+            font-weight: 600;
+        }
+
+
+        /* pricing-table-custom -> overview-table 스타일 최대한 활용 */
+        /* .overview-table 은 module2_section2_styles.css 에 이미 정의됨. */
+        /* 여기서는 추가적인 커스텀이 필요할 경우에만 정의. */
+        #contentDisplay .overview-table td ul { /* 테이블 내 ul 스타일 재정의 */
+             margin-top: 0.5rem;
+        }
+
+        #contentDisplay .prompt-example {
+            background-color: #2b2b2b; /* 어두운 배경 */
+            color: #f0f0f0; /* 밝은 글씨 */
+            padding: 1.2rem;
+            border-radius: 8px; /* .overview-table radius 와 유사 */
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            white-space: pre-wrap;
+            font-size: 0.9rem; /* common_styles.css code 보다 약간 작게 */
+            margin: 1rem 0;
+            border: 1px solid #444; /* 약간의 테두리 */
+            line-height: 1.5;
+        }
+        #contentDisplay .prompt-example strong { /* 프롬프트 내 strong은 강조색 */
+             color: #87CEFA; /* LightSkyBlue or similar */
+        }
+
+
+        #contentDisplay .platform-logo-container {
+            text-align: center;
+            margin-bottom:1.5rem; /* .tool-intro-card img 마진과 유사하게 */
+        }
+        #contentDisplay .platform-logo-container img {
+            max-height: 50px; /* .tool-intro-card img 보다 약간 크게 */
+            width: auto;
+            object-fit: contain; /* module2_section2_styles.css 와 일치 */
+        }
+
+        #contentDisplay .warning-box {
+            background-color: var(--warning-color-bg, #fff3cd); /* common_styles 변수 우선 */
+            border: 1px solid var(--warning-color-border, #ffeeba);
+            color: var(--warning-color-text, #856404);
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px; /* .overview-table radius 와 유사 */
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--warning-color-border, #ffc107);
+        }
+        #contentDisplay .warning-box h4 {
+            color: var(--warning-color-text, #856404);
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem; /* h3보다 작게 */
+            border-bottom: none; /* common_styles.css의 h4 기본 스타일 초기화 */
+        }
+        #contentDisplay .warning-box p, #contentDisplay .warning-box li {
+            font-size: 1rem;
+            color: var(--warning-color-text, #856404);
+        }
+        #contentDisplay .warning-box ul {
+            padding-left: 20px;
+        }
+
+        /* 기존 tool-card 구조를 활용하기 위해, 일부 요소는 tool-card-section 으로 통합 */
+        /* platform-specific cards */
+        #contentDisplay .platform-card { /* tool-card 스타일을 따름 */
+            /* background-color: white; already by .tool-card */
+            /* border-radius: 12px; already by .tool-card */
+            /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07); already by .tool-card */
+            /* padding: 1.5rem; already by .tool-card */
+            /* border-top: 5px solid var(--primary-color); already by .tool-card */
+            display: flex;
+            flex-direction: column;
+        }
+        #contentDisplay .platform-card .tool-card-section ul {
+            font-size: 1rem; /* .tool-card-section ul 기본 스타일 적용 */
+        }
+        #contentDisplay .platform-card .tool-card-section strong.highlight { /* 섹션 내 strong.highlight */
+            color: var(--primary-color); /* 기본 highlight 색상 */
+            font-weight: 600;
+        }
+        #contentDisplay .platform-card .tool-card-section .highlight { /* 섹션 내 일반 highlight */
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+         /* Slide header에서 slide-number를 사용하지 않기로 결정 (원본 HTML에 없었음) */
+   
+
 .footer { /* From common_styles.css */ }
 
 @media (max-width: 768px) {
