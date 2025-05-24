@@ -330,6 +330,111 @@
          /* Slide header에서 slide-number를 사용하지 않기로 결정 (원본 HTML에 없었음) */
    
 
+        /* 이전 답변에서 제공된 <style> 블록을 그대로 사용합니다. */
+        /* 여기에 추가/수정될 CSS 규칙이 포함됩니다. */
+        body {}
+        #contentDisplay .large-centered-text {font-size: 2rem; text-align: center; margin: 2rem auto; font-weight: bold; color: var(--primary-color); max-width: 800px;}
+        #contentDisplay .key-point-box {background-color: var(--secondary-color); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0; border-left: 5px solid var(--primary-color); box-shadow: 0 4px 15px rgba(0,0,0,0.06);}
+        #contentDisplay .key-point-box h3 {color: var(--primary-color); margin-top: 0; margin-bottom: 1rem; font-size: 1.5rem; border-bottom: none;}
+        #contentDisplay .key-point-box p, #contentDisplay .key-point-box li {font-size: 1.1rem;line-height: 1.7;color: var(--dark-text);}
+        #contentDisplay .key-point-box ul {padding-left: 20px; list-style-type: disc;}
+        #contentDisplay .big-icon {font-size: 3rem;text-align: center;display: block;margin-bottom: 1rem;color: var(--primary-color);}
+        
+        /* 장점/단점 리스트 스타일 수정 */
+        #contentDisplay .pros-cons-list {list-style: none;padding-left: 0;margin: 1.5rem 0;}
+        #contentDisplay .pros-cons-list li {
+            padding: 0.8rem 1rem 0.8rem 2.5em; /* 좌측 아이콘 공간은 유지 */
+            position: relative;
+            margin-bottom: 0.8em;
+            font-size: 1.05rem; 
+            line-height: 1.6;
+            color: var(--dark-text);
+            border-radius: 6px;
+            /* border: 1px solid var(--border-color); 삭제 또는 유지 선택 */
+        }
+        #contentDisplay .pros-cons-list li.pro {
+            background-color: var(--good-bg-m2s1, #e8f5e9); /* 연한 녹색 계열 */
+            border-left: 5px solid var(--good-border-m2s1, #2e7d32); /* 진한 녹색 테두리 */
+            color: var(--dark-text); /* 글자색은 유지 또는 변경 */
+        }
+        #contentDisplay .pros-cons-list li.con {
+            background-color: var(--bad-bg-m2s1, #ffebee); /* 연한 붉은색 계열 */
+            border-left: 5px solid var(--bad-border-m2s1, #c62828); /* 진한 붉은색 테두리 */
+            color: var(--dark-text);
+        }
+        #contentDisplay .pros-cons-list .pro::before {content: '👍';position: absolute;left: 0.8em;top: 50%;transform: translateY(-50%);font-size: 1.2em;}
+        #contentDisplay .pros-cons-list .con::before {content: '👎';position: absolute;left: 0.8em;top: 50%;transform: translateY(-50%);font-size: 1.2em;}
+        #contentDisplay .pros-cons-list li strong {color: var(--dark-text); font-weight: 600;}
+
+        #contentDisplay .overview-table td ul {margin-top: 0.5rem;}
+        #contentDisplay .prompt-example {background-color: #2b2b2b; color: #f0f0f0; padding: 1.2rem; border-radius: 8px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;white-space: pre-wrap;font-size: 0.9rem; margin: 1rem 0;border: 1px solid #444; line-height: 1.5;}
+        #contentDisplay .prompt-example strong {color: #87CEFA;}
+        #contentDisplay .platform-logo-container {text-align: center;margin-bottom:1.5rem;}
+        #contentDisplay .platform-logo-container img {max-height: 50px; width: auto;object-fit: contain;}
+        #contentDisplay .warning-box {background-color: var(--warning-color-bg, #fff3cd); border: 1px solid var(--warning-color-border, #ffeeba);color: var(--warning-color-text, #856404);padding: 1.2rem 1.5rem;border-radius: 8px; margin: 1.5rem 0;border-left: 5px solid var(--warning-color-border, #ffc107);}
+        #contentDisplay .warning-box h4 {color: var(--warning-color-text, #856404);margin-top: 0;margin-bottom: 0.5rem;font-size: 1.2rem; border-bottom: none;}
+        #contentDisplay .warning-box p, #contentDisplay .warning-box li {font-size: 1rem;color: var(--warning-color-text, #856404);}
+        #contentDisplay .warning-box ul {padding-left: 20px;}
+        #contentDisplay .platform-card {display: flex;flex-direction: column;}
+        #contentDisplay .platform-card .tool-card-section ul {font-size: 1rem;}
+        #contentDisplay .platform-card .tool-card-section strong.highlight {color: var(--primary-color); font-weight: 600;}
+        #contentDisplay .platform-card .tool-card-section .highlight {color: var(--primary-color);font-weight: 600;}
+
+        /* 상황별 도구 선택 가이드 스타일 수정 (이미지 참고) */
+        #contentDisplay .guide-list-image-style { list-style-type: none; padding: 0; margin: 2rem 0; }
+        #contentDisplay .guide-list-image-style li {
+            background-color: #f8f9fa; /* 연한 배경색 */
+            border-radius: 8px;
+            padding: 1.5rem; /* 패딩 증가 */
+            margin-bottom: 1.5rem; /* 간격 증가 */
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--secondary-color);
+        }
+        #contentDisplay .guide-list-image-style .guide-question {
+            font-size: 1.2rem; /* 질문 폰트 크기 */
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem; /* 질문과 도구 목록 사이 간격 */
+            display: flex;
+            align-items: center;
+        }
+        #contentDisplay .guide-list-image-style .guide-question .icon { /* 아이콘 스타일 */
+            font-size: 1.5rem;
+            margin-right: 0.8rem;
+            line-height: 1;
+        }
+        #contentDisplay .guide-list-image-style .tool-recommendation {
+            margin-left: 2.3rem; /* 아이콘 너비만큼 들여쓰기 */
+        }
+        #contentDisplay .guide-list-image-style .tool-name {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--dark-text);
+            display: block; /* 한 줄에 하나씩 */
+            margin-bottom: 0.3rem;
+        }
+        #contentDisplay .guide-list-image-style .tool-description {
+            font-size: 0.95rem;
+            color: var(--light-text);
+            display: block;
+            margin-bottom: 0.8rem; /* 각 도구 설명 후 간격 */
+        }
+         /* tool-card-title a 태그가 platform-card 내부에 없을 경우를 위해 일반 링크 스타일 추가 */
+        .tool-card-title-link {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--primary-color);
+            padding: 0.3rem 0.7rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+        .tool-card-title-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
 .footer { /* From common_styles.css */ }
 
 @media (max-width: 768px) {
