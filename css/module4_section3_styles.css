@@ -1,18 +1,18 @@
-/* Styles specific to module4_section_Y.html (마무리 섹션) */
+/* Styles specific to module4_section3.html (마무리 섹션) */
 
-/* 공통: 슬라이드 내용 중앙 정렬 (필요시 common_styles.css 또는 module4 공통 스타일에서 상속) */
+/* 공통: 슬라이드 내용 중앙 정렬 */
 .slide-content.centered-layout {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    text-align: center;
+    text-align: center; /* 내부 자식 요소들의 기본 정렬 (필요시 자식에서 재정의) */
 }
 
 /* 슬라이드 1: 과정 요약 */
 .recap-icon {
     font-size: 4rem;
-    color: var(--success-color, #28a745); /* 성공/완료 느낌의 색상 */
+    color: var(--success-color, #28a745);
     margin-bottom: 1.5rem;
 }
 .recap-main-text {
@@ -24,10 +24,10 @@
 }
 .recap-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 기본 2열 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* 그리드 전체 너비 */
     margin-bottom: 2rem;
 }
 .recap-item {
@@ -35,14 +35,16 @@
     padding: 1.2rem 1.5rem;
     border-radius: 8px;
     display: flex;
-    align-items: center;
+    align-items: center; /* 아이콘과 텍스트 수직 중앙 정렬 */
     gap: 1rem;
     text-align: left;
     box-shadow: 0 3px 10px rgba(var(--primary-color-rgb), 0.05);
+    min-height: 80px; /* 카드 최소 높이 설정으로 들쭉날쭉함 방지 */
 }
 .recap-item-icon {
     font-size: 1.8rem;
     color: var(--primary-color);
+    flex-shrink: 0; /* 아이콘 크기 고정 */
 }
 .recap-item p {
     font-size: 1.05rem;
@@ -58,8 +60,10 @@
     background-color: #fff;
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
-    max-width: 700px;
-    display: inline-block;
+    max-width: 700px; /* 메시지 박스 최대 너비 */
+    width: 90%; /* 부모 요소 대비 너비 */
+    display: inline-block; /* 내용만큼 너비, text-align:center 적용 위해 */
+    text-align: center; /* 내부 텍스트는 다시 중앙 정렬 */
 }
 
 /* 슬라이드 2: 미래 업무 모습 */
@@ -69,7 +73,7 @@
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     width: 100%;
-    max-width: 850px;
+    max-width: 850px; /* 카드 최대 너비 */
     border-top: 5px solid var(--primary-color);
 }
 .vision-icon-header {
@@ -85,20 +89,23 @@
 }
 .vision-points {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.8rem;
     text-align: left;
 }
 .vision-point-item {
     display: flex;
-    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
+    align-items: flex-start;
     gap: 1rem;
+    background-color: #f9f9f9; /* 각 포인트 항목 배경색 추가 */
+    padding: 1rem;
+    border-radius: 6px;
 }
 .vision-point-item .point-icon {
     font-size: 2rem;
     color: var(--primary-color);
-    margin-top: 0.2rem; /* 텍스트와 약간의 수직 정렬 */
-    flex-shrink: 0; /* 아이콘 크기 유지 */
+    margin-top: 0.2rem;
+    flex-shrink: 0;
 }
 .vision-point-item p {
     font-size: 1.05rem;
@@ -108,7 +115,7 @@
 }
 .vision-point-item p strong {
     display: block;
-    font-size: 1.1em; /* strong 태그 약간 크게 */
+    font-size: 1.1em;
     color: var(--dark-text);
     margin-bottom: 0.3rem;
 }
@@ -119,7 +126,7 @@
     padding: 2rem 2.5rem;
     border-radius: 10px;
     width: 100%;
-    max-width: 800px;
+    max-width: 800px; /* 박스 최대 너비 */
     text-align: center;
     border-left: 5px solid var(--primary-color);
 }
@@ -144,7 +151,7 @@
     list-style: none;
     padding: 0;
     text-align: left;
-    max-width: 650px; /* 팁 목록 가독성 위한 너비 */
+    max-width: 650px;
     margin: 0 auto;
 }
 .learning-tips li {
@@ -159,12 +166,12 @@
     font-size: 1.2em;
     color: var(--primary-color);
     margin-right: 0.8rem;
-    line-height: inherit; /* 텍스트와 수직 정렬 */
+    line-height: inherit;
 }
 
 /* 슬라이드 4: 마지막 메시지 */
 .final-message-icon {
-    font-size: 4.5rem; /* 더 큰 아이콘 */
+    font-size: 4.5rem;
     color: var(--primary-color);
     margin-bottom: 1.5rem;
     animation: pulse-star 2.5s infinite;
@@ -176,7 +183,7 @@
 }
 .final-main-text {
     font-size: 1.9rem;
-    font-weight: 700; /* 더 강조 */
+    font-weight: 700;
     color: var(--dark-text);
     margin-bottom: 1.5rem;
     line-height: 1.4;
@@ -185,7 +192,7 @@
     font-size: 1.2rem;
     color: var(--light-text);
     line-height: 1.8;
-    max-width: 750px;
+    max-width: 750px; /* 텍스트 가독성 위한 최대 너비 */
     margin: 0 auto 2.5rem auto;
 }
 .cheering-message {
@@ -194,16 +201,18 @@
     background-color: var(--primary-color);
     border-radius: 10px;
     color: white;
-    display: inline-block; /* 내용만큼 크기 */
+    display: inline-block; /* 내용만큼만 너비 차지 */
+    max-width: 90%; /* 화면 너비에 따라 유동적으로 */
     box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.2);
+    text-align: center; /* 내부 텍스트 중앙 정렬 */
 }
 .cheering-message p {
     font-size: 1.15rem;
     line-height: 1.7;
     margin: 0 0 1rem 0;
 }
-.cheering-message .highlight-text { /* 어두운 배경 위 밝은 텍스트 */
-    color: var(--secondary-color); /* 또는 #fff */
+.cheering-message .highlight-text-on-dark { /* 어두운 배경 위 밝은 텍스트 */
+    color: var(--secondary-color);
     font-weight: 600;
 }
 .cheering-message p:last-child {
@@ -212,7 +221,7 @@
 .course-end-text {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-top: 1rem !important; /* p태그 스타일보다 우선 */
+    margin-top: 1rem !important;
     padding-top: 1rem;
     border-top: 1px dashed rgba(255,255,255,0.3);
 }
@@ -220,10 +229,10 @@
 /* 반응형 조정 */
 @media (max-width: 992px) { /* 태블릿 */
     .recap-grid, .vision-points {
-        grid-template-columns: 1fr; /* 1열로 변경 */
+        grid-template-columns: 1fr;
     }
     .recap-item, .vision-point-item {
-        gap: 0.8rem; /* 아이콘과 텍스트 간격 줄임 */
+        gap: 0.8rem;
     }
     .future-vision-card { padding: 2rem 1.5rem; }
     .continuous-learning-box { padding: 1.5rem 2rem; }
@@ -231,13 +240,21 @@
 
 @media (max-width: 768px) { /* 모바일 */
     .recap-main-text, .vision-title, .learning-title, .final-main-text {
-        font-size: 1.5rem; /* 제목류 폰트 크기 축소 */
+        font-size: 1.5rem;
     }
     .recap-message, .final-sub-text, .cheering-message p {
-        font-size: 1.05rem; /* 본문류 폰트 크기 축소 */
+        font-size: 1.05rem;
     }
     .recap-item p, .vision-point-item p, .learning-tips li {
         font-size: 1rem;
     }
     .course-end-text { font-size: 1.15rem; }
+
+    /* 모바일에서 그리드 아이템들이 너무 붙지 않도록 */
+    .recap-grid, .vision-points {
+        gap: 1rem;
+    }
+     .future-vision-card { padding: 1.5rem 1rem; } /* 모바일 패딩 조정 */
+     .continuous-learning-box { padding: 1.5rem; } /* 모바일 패딩 조정 */
+     .cheering-message { padding: 1rem 1.5rem; } /* 모바일 패딩 조정 */
 }
