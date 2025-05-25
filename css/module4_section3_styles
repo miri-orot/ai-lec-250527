@@ -1,0 +1,243 @@
+/* Styles specific to module4_section_Y.html (마무리 섹션) */
+
+/* 공통: 슬라이드 내용 중앙 정렬 (필요시 common_styles.css 또는 module4 공통 스타일에서 상속) */
+.slide-content.centered-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* 슬라이드 1: 과정 요약 */
+.recap-icon {
+    font-size: 4rem;
+    color: var(--success-color, #28a745); /* 성공/완료 느낌의 색상 */
+    margin-bottom: 1.5rem;
+}
+.recap-main-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+.recap-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 기본 2열 */
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+.recap-item {
+    background-color: var(--secondary-color);
+    padding: 1.2rem 1.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(var(--primary-color-rgb), 0.05);
+}
+.recap-item-icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+.recap-item p {
+    font-size: 1.05rem;
+    color: var(--dark-text);
+    margin: 0;
+    line-height: 1.5;
+}
+.recap-message {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    padding: 1rem;
+    background-color: #fff;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    max-width: 700px;
+    display: inline-block;
+}
+
+/* 슬라이드 2: 미래 업무 모습 */
+.future-vision-card {
+    background-color: #fff;
+    padding: 2.5rem 2rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 850px;
+    border-top: 5px solid var(--primary-color);
+}
+.vision-icon-header {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.vision-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 2rem;
+}
+.vision-points {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
+    gap: 1.8rem;
+    text-align: left;
+}
+.vision-point-item {
+    display: flex;
+    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
+    gap: 1rem;
+}
+.vision-point-item .point-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-top: 0.2rem; /* 텍스트와 약간의 수직 정렬 */
+    flex-shrink: 0; /* 아이콘 크기 유지 */
+}
+.vision-point-item p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--dark-text);
+    margin: 0;
+}
+.vision-point-item p strong {
+    display: block;
+    font-size: 1.1em; /* strong 태그 약간 크게 */
+    color: var(--dark-text);
+    margin-bottom: 0.3rem;
+}
+
+/* 슬라이드 3: 지속적인 학습 제언 */
+.continuous-learning-box {
+    background-color: var(--secondary-color);
+    padding: 2rem 2.5rem;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    border-left: 5px solid var(--primary-color);
+}
+.learning-icon-main {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+.learning-title {
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+}
+.learning-message {
+    font-size: 1.1rem;
+    color: var(--light-text);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+}
+.learning-tips {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+    max-width: 650px; /* 팁 목록 가독성 위한 너비 */
+    margin: 0 auto;
+}
+.learning-tips li {
+    font-size: 1.05rem;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+.learning-tips .tip-icon {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    margin-right: 0.8rem;
+    line-height: inherit; /* 텍스트와 수직 정렬 */
+}
+
+/* 슬라이드 4: 마지막 메시지 */
+.final-message-icon {
+    font-size: 4.5rem; /* 더 큰 아이콘 */
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    animation: pulse-star 2.5s infinite;
+}
+@keyframes pulse-star {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.1); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+.final-main-text {
+    font-size: 1.9rem;
+    font-weight: 700; /* 더 강조 */
+    color: var(--dark-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+}
+.final-sub-text {
+    font-size: 1.2rem;
+    color: var(--light-text);
+    line-height: 1.8;
+    max-width: 750px;
+    margin: 0 auto 2.5rem auto;
+}
+.cheering-message {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background-color: var(--primary-color);
+    border-radius: 10px;
+    color: white;
+    display: inline-block; /* 내용만큼 크기 */
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.2);
+}
+.cheering-message p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin: 0 0 1rem 0;
+}
+.cheering-message .highlight-text { /* 어두운 배경 위 밝은 텍스트 */
+    color: var(--secondary-color); /* 또는 #fff */
+    font-weight: 600;
+}
+.cheering-message p:last-child {
+    margin-bottom: 0;
+}
+.course-end-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1rem !important; /* p태그 스타일보다 우선 */
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(255,255,255,0.3);
+}
+
+/* 반응형 조정 */
+@media (max-width: 992px) { /* 태블릿 */
+    .recap-grid, .vision-points {
+        grid-template-columns: 1fr; /* 1열로 변경 */
+    }
+    .recap-item, .vision-point-item {
+        gap: 0.8rem; /* 아이콘과 텍스트 간격 줄임 */
+    }
+    .future-vision-card { padding: 2rem 1.5rem; }
+    .continuous-learning-box { padding: 1.5rem 2rem; }
+}
+
+@media (max-width: 768px) { /* 모바일 */
+    .recap-main-text, .vision-title, .learning-title, .final-main-text {
+        font-size: 1.5rem; /* 제목류 폰트 크기 축소 */
+    }
+    .recap-message, .final-sub-text, .cheering-message p {
+        font-size: 1.05rem; /* 본문류 폰트 크기 축소 */
+    }
+    .recap-item p, .vision-point-item p, .learning-tips li {
+        font-size: 1rem;
+    }
+    .course-end-text { font-size: 1.15rem; }
+}
