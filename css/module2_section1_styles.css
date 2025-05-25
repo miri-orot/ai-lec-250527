@@ -5,22 +5,35 @@
 .slide-content.centered-layout {
     display: flex;
     flex-direction: column;
-    align-items: center; /* 가로 중앙 정렬 */
-    justify-content: center; /* 세로 중앙 정렬 (내용이 짧을 경우) */
-    text-align: center; /* 내부 텍스트 기본 중앙 정렬 */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
-/* 내부 요소들이 왼쪽 정렬되어야 하는 경우, 각 요소에서 text-align: left;를 다시 지정합니다. */
 
 /* 공통: 어두운 배경 위 밝은 강조 텍스트 */
 .highlight-text-on-dark {
-    color: var(--secondary-color); /* 연한 파랑 또는 흰색 계열 */
-    font-weight: 600;
+    color: #e0e7ff; /* 연한 파란색 계열 (기본값) */
+    font-weight: 500; /* 일반 텍스트와 구분되도록 */
 }
-/* 공통: 파란색 강조 텍스트 */
+.highlight-text-on-dark-strong { /* 더 강한 강조가 필요할 때 */
+    color: #ffffff;
+    font-weight: 700;
+}
+/* 공통: 흰색 텍스트 */
+.white-text {
+    color: white !important; /* 다른 스타일보다 우선 적용 */
+}
+/* 공통: 파란색 강조 텍스트 (일반 배경용) */
 .highlight-blue-text {
     color: var(--primary-color);
     font-weight: 600;
 }
+/* 공통: 노란 배경 위 파란색 강조 텍스트 */
+.highlight-text-blue {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
 
 /* 슬라이드 1: 모듈 인트로 */
 #slideM2S1_1 .slide-content {
@@ -72,9 +85,9 @@
     border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0,0,0,0.08);
     text-align: center;
-    max-width: 600px; /* 카드 최대 너비 */
-    width: 90%; /* 부모 요소 대비 너비 */
-    margin-bottom: 2rem; /* 아래 요소와의 간격 */
+    max-width: 600px;
+    width: 90%;
+    margin-bottom: 2rem;
     border-top: 5px solid var(--primary-color);
 }
 .definition-icon {
@@ -94,15 +107,15 @@
     color: var(--dark-text);
     line-height: 1.6;
     margin-bottom: 0.5rem;
-    text-align: left; /* 내부 p 태그는 왼쪽 정렬 */
+    text-align: left;
 }
 .analogy-box {
     background-color: var(--secondary-color);
     padding: 1rem 1.5rem;
     border-radius: 8px;
     text-align: center;
-    max-width: 500px; /* 박스 최대 너비 */
-    width: 80%; /* 부모 요소 대비 너비 */
+    max-width: 500px;
+    width: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,7 +138,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
-    max-width: 900px; /* 그리드 최대 너비 */
+    max-width: 900px;
     margin-bottom: 2rem;
 }
 .evolution-card {
@@ -133,7 +146,7 @@
     padding: 1.5rem;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-    text-align: left; /* 카드 내부 텍스트 왼쪽 정렬 */
+    text-align: left;
 }
 .evolution-card.past-ai {
     border-left: 5px solid var(--light-text);
@@ -170,7 +183,6 @@
     font-weight: 600;
     color: var(--dark-text);
 }
-/* 슬라이드 3의 .highlight-blue-text 특별 스타일 (strong 태그 내부) */
 .evolution-card p strong.highlight-blue-text {
     color: var(--primary-color);
 }
@@ -190,8 +202,8 @@
     background-color: var(--secondary-color);
     border-radius: 8px;
     text-align: center;
-    max-width: 700px; /* 요약 박스 최대 너비 */
-    width: 90%; /* 부모 요소 대비 너비 */
+    max-width: 700px;
+    width: 90%;
     margin: 0 auto;
 }
 
@@ -244,7 +256,7 @@
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
     width: 100%;
-    max-width: 900px; /* 그리드 최대 너비 */
+    max-width: 900px;
     margin-bottom: 2rem;
 }
 .caution-card {
@@ -273,24 +285,23 @@
     line-height: 1.6;
     color: var(--light-text);
     margin-bottom: 0.8rem;
-    text-align: left; /* 내부 p 태그는 왼쪽 정렬 */
+    text-align: left;
 }
-.caution-card p.highlight { /* 기존 .highlight 와 다르게 특정 배경색 적용 */
+.caution-card p.highlight {
     font-weight: 500;
     background-color: var(--warning-color-bg);
     padding: 0.3rem 0.5rem;
     border-radius: 4px;
     color: var(--warning-color-text);
-    display: inline-block; /* 줄바꿈 없이 내용만큼만 배경 적용 */
+    display: inline-block;
 }
-/* 슬라이드 5의 노란색 배경 강조 */
 .caution-card p.highlight.yellow-bg {
-    background-color: var(--warning-bg-m2s1, #fff8e1); /* module2_section1_styles.css의 변수 또는 기본값 */
+    background-color: var(--warning-bg-m2s1, #fff8e1);
     border: 1px solid var(--warning-border-m2s1, #ffc107);
-    color: var(--dark-text); /* 노란 배경에는 어두운 글씨가 잘 보임 */
+    color: var(--dark-text);
 }
-.caution-card p.highlight.yellow-bg .highlight-text {
-     color: var(--primary-color); /* 내부 highlight-text는 다시 파란색으로 */
+.caution-card p.highlight.yellow-bg .highlight-text-blue { /* 노란 배경 위 파란색 강조 */
+     color: var(--primary-color) !important; /* important로 우선순위 확보 */
 }
 
 .key-takeaway-box {
@@ -300,8 +311,8 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    max-width: 750px; /* 최대 너비 */
-    width: 90%; /* 부모 요소 대비 너비 */
+    max-width: 750px;
+    width: 90%;
     margin: 0 auto;
     border-left: 4px solid var(--primary-color);
     text-align: left;
@@ -311,8 +322,8 @@
     color: #fff;
     border-left-color: var(--primary-color);
 }
-.key-takeaway-box.dark-bg .highlight-text-on-dark { /* 수정된 부분 */
-    color: var(--secondary-color);
+.key-takeaway-box.dark-bg .highlight-text-on-dark {
+    color: var(--secondary-color); /* 어두운 배경에는 밝은 파랑 */
     font-weight: 600;
 }
 .key-takeaway-box.활용팁 {
@@ -329,9 +340,10 @@
     margin-top: 2rem;
 }
 .key-takeaway-box.final-summary .takeaway-icon { color: var(--secondary-color); }
-.key-takeaway-box.final-summary .highlight-text-on-dark { /* 수정된 부분 */
+.key-takeaway-box.final-summary .highlight-text-on-dark {
     color: var(--secondary-color); background-color: rgba(255,255,255,0.1); padding: 0.1em 0.3em; border-radius: 3px;
 }
+
 
 .takeaway-icon {
     font-size: 1.8rem;
@@ -342,6 +354,7 @@
     line-height: 1.6;
     margin: 0;
 }
+.key-takeaway-box p strong { color: inherit; } /* 부모 요소의 색상 상속 */
 
 /* 슬라이드 6: 메타 프롬프팅 소개 */
 .meta-prompting-intro {
@@ -373,7 +386,7 @@
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.07);
     max-width: 600px;
-    width: 90%; /* 부모 요소 대비 너비 */
+    width: 90%;
     margin: 0 auto;
     text-align: left;
 }
@@ -409,7 +422,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     width: 100%;
-    max-width: 800px; /* 그리드 최대 너비 */
+    max-width: 800px;
     margin: 0 auto 2rem auto;
 }
 .element-card {
@@ -451,7 +464,7 @@
     border-radius: 12px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     width: 100%;
-    max-width: 850px; /* 카드 최대 너비 */
+    max-width: 850px;
     margin: 0 auto;
     overflow: hidden;
 }
@@ -465,7 +478,7 @@
 }
 .step-number-badge {
     background-color: white;
-    color: var(--primary-color);
+    color: var(--primary-color); /* 기본 뱃지 글자색 */
     font-weight: bold;
     padding: 0.3rem 0.7rem;
     border-radius: 15px;
@@ -475,21 +488,28 @@
     font-size: 1.4rem;
     font-weight: 600;
     margin: 0;
+    color: white; /* 헤더 내 기본 텍스트는 흰색 */
     border-bottom: none; padding-bottom: 0;
 }
-.step-title.white-text { /* 수정된 부분 */
-    color: white;
+.step-title .highlight-text-on-dark { /* 파란 배경 위 연파랑 하이라이트 */
+    color: var(--secondary-color);
+    font-weight: 600;
 }
-.step-title .highlight-text-on-dark { /* 수정된 부분 */
-    color: var(--secondary-color); /* 어두운 배경 위의 밝은 강조 */
+.step-title .highlight-text-on-dark-strong { /* 더 강한 흰색 하이라이트 */
+    color: #ffffff;
+    font-weight: 700;
 }
+
 
 .workflow-step-card.ai-process .step-header { background-color: #2c3e50; }
 .workflow-step-card.ai-process .step-number-badge.ai-badge { color: #2c3e50; }
+
 .workflow-step-card.optimized-prompt .step-header { background-color: var(--success-color); }
 .workflow-step-card.optimized-prompt .step-number-badge.optimized-badge { color: var(--success-color); }
-.workflow-step-card.feedback-loop .step-header { background-color: var(--warning-color-text); }
+
+.workflow-step-card.feedback-loop .step-header { background-color: var(--warning-color-text); } /* 주황색 계열 */
 .workflow-step-card.feedback-loop .step-number-badge.feedback-badge { color: var(--warning-color-text); }
+
 
 .step-content-wrapper {
     padding: 1.5rem 2rem;
@@ -514,7 +534,12 @@
 }
 .prompt-label.user-prompt { color: var(--primary-color); border-bottom-color: var(--primary-color); }
 .prompt-label.ai-generated-prompt { color: var(--success-color); border-bottom-color: var(--success-color); }
-.prompt-label.user-feedback-prompt { color: var(--warning-color-text); border-bottom-color: var(--warning-color-text); }
+/* 슬라이드 11의 피드백 요청 레이블 색상 변경 */
+.prompt-label.user-feedback-prompt-custom {
+    color: #555; /* 진한 회색으로 변경하여 배경과 구분 */
+    border-bottom-color: #555;
+}
+
 
 .prompt-text {
     background-color: #f8f9fa;
@@ -528,10 +553,9 @@
     white-space: pre-wrap;
     word-break: keep-all;
 }
-/* 슬라이드 8, 11의 사용자 입력 박스 스타일 조정 */
 .prompt-text.user-input-box {
-    padding-left: 1rem; /* 기본 패딩 */
-    text-indent: 0; /* 들여쓰기 제거 */
+    padding-left: 1rem;
+    text-indent: 0;
 }
 
 .prompt-text pre {
@@ -644,12 +668,12 @@
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     width: 100%;
-    max-width: 800px; /* 카드 최대 너비 */
+    max-width: 800px;
     margin: 0 auto 1.5rem auto;
     text-align: left;
     overflow: hidden;
 }
-.example-title {
+.example-title { /* 기본적으로 어두운 배경이므로 흰색 글씨 */
     background-color: var(--primary-color);
     color: white;
     padding: 0.8rem 1.5rem;
