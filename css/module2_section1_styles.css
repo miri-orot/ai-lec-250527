@@ -457,7 +457,18 @@
     color: #888;
     margin-top: 0.3rem;
 }
-
+.analogy-box {
+    background-color: var(--secondary-color);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 700px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+}
 /* 슬라이드 8, 9, 10, 11: 워크플로우 단계별 카드 */
 .workflow-step-card {
     background-color: #fff;
