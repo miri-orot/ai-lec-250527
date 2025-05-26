@@ -20,27 +20,27 @@
 .highlight-box-purple { background-color: #6f42c1; color: white; }
 
 /* ===== Slide 1: Compare Intro VFinal - 확실한 좌우 배치 ===== */
-#contentDisplay #slideM2S3_1 .compare-intro-vfinal { /* ID 추가로 구체성 UP */
+#contentDisplay #slideM2S3_1 .compare-intro-vfinal {
     display: flex;
-    flex-direction: row; /* 데스크탑: 가로 배치 강제 */
-    justify-content: space-between; /* 양쪽 끝으로 최대한 분산, VS는 중간 */
-    align-items: center; /* 수직 중앙 정렬 */
+    flex-direction: row;
+    justify-content: center; /* VS 아이콘 기준으로 중앙 정렬 시도 */
+    align-items: center;
     width: 100%;
-    max-width: 900px; /* 전체 컨테이너 너비 제한 */
+    max-width: 950px; /* 최대 너비 살짝 증가 */
     margin-left: auto;
     margin-right: auto;
-    padding: 3rem 0; /* 상하 패딩 */
+    padding: 2rem 0; /* 패딩 조정 */
+    gap: 1rem; /* 컬럼 간 간격 */
 }
-#contentDisplay #slideM2S3_1 .compare-column-vfinal { /* ID 추가로 구체성 UP */
-    flex-basis: 40%; /* 각 컬럼이 차지할 기본 너비 */
+#contentDisplay #slideM2S3_1 .compare-column-vfinal {
+    flex-basis: 45%; /* 너비 비율 살짝 증가 */
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
-/* ====[요청 반영] Slide 1 폰트 크기 증가 및 구체성 강화==== */
 #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge {
-    font-size: clamp(3.8em, 8vw, 5.5em) !important; /* !important로 최우선 적용 시도, 또는 구체성으로 해결 */
+    font-size: clamp(3.2em, 7vw, 5em) !important; /* 최대 크기 살짝 줄임, 최소/권장 조정 */
     font-weight: 800 !important;
     margin-bottom: 0.4rem;
     line-height: 1.1;
@@ -48,199 +48,193 @@
 #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge.notebooklm-color-vfinal { color: var(--primary-color); }
 #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge.gemini-color-vfinal { color: var(--success-color); }
 
-#contentDisplay #slideM2S3_1 .tool-description-display-vfinal { /* ID 추가로 구체성 UP */
-    font-size: clamp(1.2em, 2.8vw, 1.6em);
+#contentDisplay #slideM2S3_1 .tool-description-display-vfinal {
+    font-size: clamp(1.2em, 2.8vw, 1.6em) !important; /* 구체성 위해 !important 추가 */
     color: var(--dark-text);
     line-height: 1.3;
 }
-#contentDisplay #slideM2S3_1 .vs-icon-vfinal { /* ID 추가로 구체성 UP */
-    font-size: clamp(3.5em, 7vw, 5.5em);
+#contentDisplay #slideM2S3_1 .vs-icon-vfinal {
+    font-size: clamp(3em, 6vw, 4.5em) !important; /* VS 아이콘 크기도 유동적으로 */
     font-weight: bold;
     color: var(--light-text);
-    flex-shrink: 0; /* 크기 고정 */
-    padding: 0 1rem; /* VS 아이콘 좌우 약간의 공간 */
+    flex-shrink: 0;
+    padding: 0 0.5rem; /* VS 아이콘 좌우 공간 살짝 줄임 */
 }
 
 
-/* ===== Slide 13: Compare AI Services VFinal - 확실한 좌우 동일 크기 박스 ===== */
-#contentDisplay #slideM2S3_13 .compare-ai-services-vfinal { /* ID 추가로 구체성 UP */
+/* ===== Slide 13: Compare AI Services VFinal - 확실한 좌우 동일 크기 박스 & 중앙 정렬 ===== */
+#contentDisplay #slideM2S3_13 .compare-ai-services-vfinal {
     display: flex;
-    flex-direction: column; /* 모바일에서는 수직 */
-    gap: 2.5rem; /* 간격 증가 */
+    flex-direction: column; /* 모바일 기본: 수직 */
+    gap: 2.5rem;
     width: 100%;
-    max-width: 1000px; /* 최대 너비 */
-    margin-top: 1.5rem; /* 상단 마진 */
+    max-width: 1000px;
+    margin-top: 1.5rem;
+    align-items: center; /* 모바일/태블릿에서 박스들 자체를 수평 중앙 정렬 */
 }
-/* ====[요청 반영] Slide 13 박스 내부 컨텐츠 상하좌우 가운데 정렬==== */
-#contentDisplay #slideM2S3_13 .ai-service-type-vfinal { /* ID 추가로 구체성 UP */
-    flex: 1; /* 가로 배치 시 동일 너비 */
+#contentDisplay #slideM2S3_13 .ai-service-type-vfinal {
+    flex: 1; /* 데스크탑 row 배치 시 너비 동일하게 */
     padding: 2.5rem;
-    border-radius: 15px; /* 좀 더 둥글게 */
+    border-radius: 15px;
     background-color: #fff;
     border: 1px solid var(--border-color);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.07); /* 그림자 살짝 강조 */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     display: flex;
     flex-direction: column;
-    align-items: center; /* 자식 요소들(h3, p, div.warning-box)을 수평 중앙 정렬 */
-    justify-content: center; /* 전체 콘텐츠 블록을 수직 중앙 정렬 (min-height와 함께 효과적) */
-    text-align: center; /* 내부 텍스트들을 기본적으로 중앙 정렬 */
+    align-items: center; /* 내부 컨텐츠(h3, p, div.warning-box) 수평 중앙 */
+    justify-content: center; /* 내부 컨텐츠 블록을 수직 중앙 */
+    text-align: center; /* 내부 텍스트들 기본 중앙 정렬 */
+    width: 90%; /* 모바일/태블릿에서 카드 너비 */
+    max-width: 450px; /* 모바일/태블릿에서 카드 최대 너비 (데스크탑에선 미디어쿼리로 오버라이드) */
 }
-#contentDisplay #slideM2S3_13 .ai-service-type-vfinal h3 { /* ID 추가로 구체성 UP */
-    font-size: 1.8em; /* 제목 크기 키움 */
+#contentDisplay #slideM2S3_13 .ai-service-type-vfinal h3 {
+    font-size: 1.8em !important; /* 구체성 위해 !important */
     color: var(--primary-color);
     margin-top: 0;
-    margin-bottom: 1.5rem; /* 제목과 내용 사이 간격 */
+    margin-bottom: 1.5rem;
     border-bottom: 3px solid var(--primary-color);
     padding-bottom: 0.8rem;
-    text-align: center; /* 이미 되어있지만 명시 */
-    width: 100%; /* border-bottom이 전체 너비에 적용되도록 */
+    text-align: center;
+    width: 100%;
 }
-#contentDisplay #slideM2S3_13 .ai-service-type-vfinal .desc { /* ID 추가로 구체성 UP */
-    font-size: 1.2em; /* 설명 폰트 크기 키움 */
-    line-height: 1.75; /* 줄간격 넓힘 */
+#contentDisplay #slideM2S3_13 .ai-service-type-vfinal .desc {
+    font-size: 1.2em !important; /* 구체성 위해 !important */
+    line-height: 1.75;
     margin-bottom: 1.2rem;
     color: var(--dark-text);
-    /* flex-grow: 1; 제거 (justify-content:center가 수직 공간 배분) */
 }
-#contentDisplay #slideM2S3_13 .ai-service-type-vfinal .desc-small { /* ID 추가로 구체성 UP */
-    font-size: 1em;
+#contentDisplay #slideM2S3_13 .ai-service-type-vfinal .desc-small {
+    font-size: 1em !important; /* 구체성 위해 !important */
     color: var(--light-text);
-    margin-bottom: 1rem; /* 작은 설명 하단 마진 */
+    margin-bottom: 1rem;
     line-height: 1.6;
 }
-#contentDisplay #slideM2S3_13 .warning-box-inline-vfinal { /* ID 추가로 구체성 UP */
+#contentDisplay #slideM2S3_13 .warning-box-inline-vfinal {
     display: flex;
     align-items: center;
-    justify-content: center; /* 내부 아이콘과 p태그를 중앙으로 */
+    justify-content: flex-start; /* 내부 아이콘과 p태그를 좌측부터 정렬 */
     background-color: var(--warning-bg-m2s1, #fff8e1);
-    padding: 1.2rem 1.5rem; /* 내부 패딩 조정 */
+    padding: 1.2rem 1.5rem;
     border-radius: 8px;
     border-left: 5px solid var(--warning-color-border, #ffc107);
-    /* margin-top: auto; 제거 */
-    width: 90%; /* 박스 너비, 부모의 align-items:center 효과를 보기 위함 */
+    width: 100%; /* 내부 경고 박스는 카드 너비에 맞춤 */
     max-width: 100%;
+    margin-top: 1rem; /* 위 요소와의 간격 */
 }
-#contentDisplay #slideM2S3_13 .warning-icon-inline { font-size: 1.6em; color: var(--warning-color-text); margin-right: 1rem; }
-#contentDisplay #slideM2S3_13 .warning-box-inline-vfinal p { margin: 0; font-size: 1.1em; line-height: 1.55; color: var(--dark-text); text-align: left;} /* 경고 문구는 가독성을 위해 좌측 정렬 유지 */
+#contentDisplay #slideM2S3_13 .warning-icon-inline { font-size: 1.6em; color: var(--warning-color-text); margin-right: 1rem; flex-shrink: 0; }
+#contentDisplay #slideM2S3_13 .warning-box-inline-vfinal p { margin: 0; font-size: 1.1em !important; line-height: 1.55; color: var(--dark-text); text-align: left;}
 #contentDisplay #slideM2S3_13 .ai-service-type-vfinal.enterprise h3 { color: var(--success-color); border-bottom-color: var(--success-color); }
 
 @media (min-width: 768px) { /* 데스크탑에서 가로 배치 */
     #contentDisplay #slideM2S3_13 .compare-ai-services-vfinal {
-        flex-direction: row !important; /* 가로 배치 강제 */
-        align-items: stretch; /* 카드 높이가 다를 경우 동일하게 늘어나도록 */
+        flex-direction: row !important;
+        justify-content: center; /* 카드 그룹 전체를 수평 중앙에 배치 */
+        align-items: stretch;
     }
     #contentDisplay #slideM2S3_13 .ai-service-type-vfinal {
-         min-height: 380px; /* 데스크탑에서 최소 높이 설정하여 시각적 균형 */
+         min-height: 380px;
+         width: 45%; /* 데스크탑에서 각 카드 너비 */
+         max-width: 450px; /* 데스크탑에서도 최대 너비 유지 또는 조정 */
     }
 }
 
 /* ===== Slide 20: Summary Grid VFinal - 확실한 2x2 배치 및 테두리 ===== */
-/* ====[요청 반영] Slide 20 박스 2x2 배치 (기존 코드 유지, 구체성 강화)==== */
-#contentDisplay #slideM2S3_20 .summary-grid-vfinal { /* ID 추가로 구체성 UP */
+#contentDisplay #slideM2S3_20 .summary-grid-vfinal {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
-    gap: 2.5rem; /* 카드 간 간격 */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5rem;
     width: 100%;
-    max-width: 950px; /* 최대 너비 */
-    margin: 2rem auto; /* 상하 마진 */
+    max-width: 950px;
+    margin: 2rem auto;
 }
-#contentDisplay #slideM2S3_20 .summary-card-vfinal { /* ID 추가로 구체성 UP */
+#contentDisplay #slideM2S3_20 .summary-card-vfinal {
     background-color: var(--card-bg);
-    border-radius: 15px; /* 좀 더 둥글게 */
-    padding: 2.5rem 2rem; /* 내부 패딩 증가 */
+    border-radius: 15px;
+    padding: 2.5rem 2rem;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.09); /* 그림자 살짝 더 강조 */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.09);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* 컨텐츠를 위에서부터 채움 */
-    min-height: 300px; /* 최소 높이 증가로 일관성 */
-    border-left-width: 8px !important; /* 테두리 두께 확실히 적용 */
-    border-left-style: solid !important; /* 테두리 스타일 확실히 적용 */
+    justify-content: flex-start;
+    min-height: 300px;
+    border-left-width: 8px !important;
+    border-left-style: solid !important;
 }
-/* 테두리 색상 적용 확인 */
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-blue { border-left-color: var(--info-color) !important; }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-red { border-left-color: var(--danger-color-m4s1) !important; }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-yellow { border-left-color: var(--warning-color-border) !important; }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-green { border-left-color: var(--success-color) !important; }
 
-#contentDisplay #slideM2S3_20 .summary-card-vfinal .summary-icon { /* ID 추가로 구체성 UP */
-    font-size: 3.5rem; /* 아이콘 크기 증가 */
-    margin-bottom: 1.5rem; /* 아이콘과 제목 사이 간격 */
+#contentDisplay #slideM2S3_20 .summary-card-vfinal .summary-icon {
+    font-size: 3.5rem !important; /* 구체성 위해 !important */
+    margin-bottom: 1.5rem;
     line-height: 1;
 }
-/* 아이콘 색상 적용 확인 */
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-blue .summary-icon { color: var(--info-color); }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-red .summary-icon { color: var(--danger-color-m4s1); }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-yellow .summary-icon { color: var(--warning-color-text); }
 #contentDisplay #slideM2S3_20 .summary-card-vfinal.style-green .summary-icon { color: var(--success-color); }
 
-#contentDisplay #slideM2S3_20 .summary-card-vfinal .summary-title { /* ID 추가로 구체성 UP */
-    font-size: 1.7em; /* 제목 폰트 크기 증가 */
+#contentDisplay #slideM2S3_20 .summary-card-vfinal .summary-title {
+    font-size: 1.7em !important; /* 구체성 위해 !important */
     font-weight: 700;
     color: var(--dark-text);
     margin-bottom: 1rem;
 }
-#contentDisplay #slideM2S3_20 .summary-card-vfinal p { /* ID 추가로 구체성 UP */
-    font-size: 1.15em; /* 설명 폰트 크기 증가 */
+#contentDisplay #slideM2S3_20 .summary-card-vfinal p {
+    font-size: 1.15em !important; /* 구체성 위해 !important */
     color: var(--light-text);
-    line-height: 1.7; /* 줄간격 조정 */
-    flex-grow: 1; /* 내용이 적어도 수직 공간 차지하도록 (justify-content: flex-start와 함께) */
+    line-height: 1.7;
+    flex-grow: 1;
 }
-#contentDisplay #slideM2S3_20 .final-caution-vfinal { /* ID 추가로 구체성 UP */
-    grid-column: 1 / -1; margin-top: 2.5rem; font-size: 1.25em; text-align: center;
+#contentDisplay #slideM2S3_20 .final-caution-vfinal {
+    grid-column: 1 / -1; margin-top: 2.5rem; font-size: 1.25em !important; text-align: center; /* 구체성 위해 !important */
     padding: 1.2rem; background-color: var(--bad-bg-m2s1, #ffebee);
     border: 1px solid var(--bad-border-m2s1, #c62828); border-radius: 8px; color: var(--dark-text);
 }
-
-
-/* --- 이하 나머지 슬라이드들의 기존 스타일 (필요시 구체성 추가) --- */
-/* 각 슬라이드별로 최상위 ID (#contentDisplay #slideM2S3_X)를 선택자 앞에 추가하여 구체성을 높입니다. */
-/* 예시: */
-/* #contentDisplay #slideM2S3_2 .feature-grid { ... } */
-/* #contentDisplay #slideM2S3_2 .feature-card { ... } */
 
 /* Slide 2 */
 #contentDisplay #slideM2S3_2 .feature-grid { display: grid; gap: 1.5rem; width: 100%; max-width: 950px; margin: 1.5rem 0; }
 #contentDisplay #slideM2S3_2 .feature-grid.three-cols { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 #contentDisplay #slideM2S3_2 .feature-card { background-color: var(--card-bg); border-radius: 12px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; min-height: 200px; }
 #contentDisplay #slideM2S3_2 .feature-card.style-blue { border-top: 5px solid var(--info-color, #17a2b8); }
-#contentDisplay #slideM2S3_2 .card-icon-large { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; }
-#contentDisplay #slideM2S3_2 .card-title-main { font-size: 1.4em; font-weight: 600; color: var(--dark-text); margin-bottom: 0.8rem; }
-#contentDisplay #slideM2S3_2 .card-desc-main { font-size: 1.05em; color: var(--light-text); line-height: 1.6; }
-#contentDisplay #slideM2S3_2 .important-note { font-size: 1.1em; margin-top: 1.5rem; font-style: italic; }
+#contentDisplay #slideM2S3_2 .card-icon-large { font-size: 3rem !important; color: var(--primary-color); margin-bottom: 1rem; }
+#contentDisplay #slideM2S3_2 .card-title-main { font-size: 1.4em !important; font-weight: 600; color: var(--dark-text); margin-bottom: 0.8rem; }
+#contentDisplay #slideM2S3_2 .card-desc-main { font-size: 1.05em !important; color: var(--light-text); line-height: 1.6; }
+#contentDisplay #slideM2S3_2 .important-note { font-size: 1.1em !important; margin-top: 1.5rem; font-style: italic; }
 
 /* Slide 3 */
 #contentDisplay #slideM2S3_3 .use-case-list-revised { list-style: none; padding: 0; width: 100%; max-width: 800px; }
 #contentDisplay #slideM2S3_3 .use-case-item-revised { background-color: var(--secondary-color); border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1.5rem; border-left: 5px solid var(--primary-color); }
-#contentDisplay #slideM2S3_3 .use-case-icon-revised { font-size: 2.5rem; color: var(--primary-color); }
-#contentDisplay #slideM2S3_3 .use-case-text-revised .use-case-title { font-size: 1.35em; font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 0.5rem; }
-#contentDisplay #slideM2S3_3 .use-case-text-revised p { font-size: 1.1em; line-height: 1.6; color: var(--dark-text); margin:0; }
+#contentDisplay #slideM2S3_3 .use-case-icon-revised { font-size: 2.5rem !important; color: var(--primary-color); }
+#contentDisplay #slideM2S3_3 .use-case-text-revised .use-case-title { font-size: 1.35em !important; font-weight: 700; color: var(--primary-color); display: block; margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_3 .use-case-text-revised p { font-size: 1.1em !important; line-height: 1.6; color: var(--dark-text); margin:0; }
 
 /* Slide 4 */
 #contentDisplay #slideM2S3_4 .synergy-section-final { display: flex; flex-direction: column; align-items: center; width: 100%; gap: 1rem; }
 #contentDisplay #slideM2S3_4 .synergy-top-row { display: flex; justify-content: space-around; align-items: flex-start; width: 100%; max-width: 900px; gap: 1rem; }
 #contentDisplay #slideM2S3_4 .synergy-tool-block { flex: 1; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem; }
-#contentDisplay #slideM2S3_4 .synergy-tool-icon { font-size: 4rem; margin-bottom: 0.8rem; }
+#contentDisplay #slideM2S3_4 .synergy-tool-icon { font-size: 4rem !important; margin-bottom: 0.8rem; }
 #contentDisplay #slideM2S3_4 .synergy-tool-block:first-child .synergy-tool-icon { color: var(--info-color); }
 #contentDisplay #slideM2S3_4 .synergy-tool-block:last-child .synergy-tool-icon { color: var(--success-color); }
-#contentDisplay #slideM2S3_4 .synergy-tool-name-main { font-size: 2em; font-weight: 700; margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_4 .synergy-tool-name-main { font-size: 2em !important; font-weight: 700; margin-bottom: 0.5rem; }
 #contentDisplay #slideM2S3_4 .synergy-tool-name-main.notebooklm-color { color: var(--primary-color); }
 #contentDisplay #slideM2S3_4 .synergy-tool-name-main.gemini-color { color: var(--success-color); }
-#contentDisplay #slideM2S3_4 .synergy-tool-desc { font-size: 1.1em; color: var(--dark-text); line-height: 1.5; }
-#contentDisplay #slideM2S3_4 .synergy-plus-icon { font-size: 3.5rem; font-weight: bold; color: var(--light-text); align-self: center; margin: 0 1rem; }
+#contentDisplay #slideM2S3_4 .synergy-tool-desc { font-size: 1.1em !important; color: var(--dark-text); line-height: 1.5; }
+#contentDisplay #slideM2S3_4 .synergy-plus-icon { font-size: 3.5rem !important; font-weight: bold; color: var(--light-text); align-self: center; margin: 0 1rem; }
 #contentDisplay #slideM2S3_4 .synergy-result-final { width: 100%; max-width: 850px; text-align: center; margin-top: 1rem; }
-#contentDisplay #slideM2S3_4 .synergy-arrow-down { font-size: 3rem; color: var(--light-text); margin-bottom: 0.5rem; }
-#contentDisplay #slideM2S3_4 .result-text-final { font-size: 1.3em; line-height: 1.7; background-color: #f0f2f5; padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
+#contentDisplay #slideM2S3_4 .synergy-arrow-down { font-size: 3rem !important; color: var(--light-text); margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_4 .result-text-final { font-size: 1.3em !important; line-height: 1.7; background-color: #f0f2f5; padding: 2rem; border-radius: 12px; border: 1px solid var(--border-color); }
 
 /* Slide 5 */
 #contentDisplay #slideM2S3_5 .step-list { list-style: none; padding: 0; width: 100%; max-width: 850px; }
 #contentDisplay #slideM2S3_5 .step-item { background-color: #fff; border-radius: 10px; padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: flex-start; gap: 1.5rem; box-shadow: 0 3px 10px rgba(0,0,0,0.05); border: 1px solid var(--border-color); }
-#contentDisplay #slideM2S3_5 .step-number { font-size: 2rem; font-weight: bold; color: var(--primary-color); flex-shrink: 0; line-height: 1.2; }
-#contentDisplay #slideM2S3_5 .step-content h3 { font-size: 1.4em; color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; }
-#contentDisplay #slideM2S3_5 .step-content p { font-size: 1.05em; color: var(--dark-text); line-height: 1.6; margin-bottom: 0.3rem; }
-#contentDisplay #slideM2S3_5 .tip-text { font-size: 0.9em; color: var(--light-text); font-style: italic; }
-#contentDisplay #slideM2S3_5 .example-text { font-size: 0.9em; color: var(--info-color); background-color: #f0f5ff; padding: 0.3em 0.5em; border-radius: 4px; display: inline-block; margin-top: 0.3em;}
+#contentDisplay #slideM2S3_5 .step-number { font-size: 2rem !important; font-weight: bold; color: var(--primary-color); flex-shrink: 0; line-height: 1.2; }
+#contentDisplay #slideM2S3_5 .step-content h3 { font-size: 1.4em !important; color: var(--primary-color); margin-top: 0; margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_5 .step-content p { font-size: 1.05em !important; color: var(--dark-text); line-height: 1.6; margin-bottom: 0.3rem; }
+#contentDisplay #slideM2S3_5 .tip-text { font-size: 0.9em !important; color: var(--light-text); font-style: italic; }
+#contentDisplay #slideM2S3_5 .example-text { font-size: 0.9em !important; color: var(--info-color); background-color: #f0f5ff; padding: 0.3em 0.5em; border-radius: 4px; display: inline-block; margin-top: 0.3em;}
 
 /* Slide 6, 7 */
 #contentDisplay #slideM2S3_6 .use-case-scenario-vfinal,
@@ -248,133 +242,182 @@
 #contentDisplay #slideM2S3_6 .scenario-card-vfinal,
 #contentDisplay #slideM2S3_7 .scenario-card-vfinal { background-color: var(--section-list-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 1.5rem 2rem; width: 100%; box-shadow: 0 3px 10px rgba(0,0,0,0.05); text-align: center; }
 #contentDisplay #slideM2S3_6 .scenario-step-title,
-#contentDisplay #slideM2S3_7 .scenario-step-title { font-size: 1.2em; line-height: 1.6; color: var(--dark-text); margin: 0; }
+#contentDisplay #slideM2S3_7 .scenario-step-title { font-size: 1.2em !important; line-height: 1.6; color: var(--dark-text); margin: 0; }
 #contentDisplay #slideM2S3_6 .scenario-step-title strong,
 #contentDisplay #slideM2S3_7 .scenario-step-title strong { color: var(--primary-color); }
 #contentDisplay #slideM2S3_6 .scenario-card-vfinal.result .scenario-step-title,
 #contentDisplay #slideM2S3_7 .scenario-card-vfinal.result .scenario-step-title { font-weight: 600; }
 #contentDisplay #slideM2S3_6 .scenario-arrow-vertical-vfinal,
-#contentDisplay #slideM2S3_7 .scenario-arrow-vertical-vfinal { font-size: 2em; color: var(--light-text); text-align: center; margin: 0.1rem 0; }
+#contentDisplay #slideM2S3_7 .scenario-arrow-vertical-vfinal { font-size: 2em !important; color: var(--light-text); text-align: center; margin: 0.1rem 0; }
 #contentDisplay #slideM2S3_7 .scenario-card-group-vfinal { display: flex; flex-direction: column; gap: 0.8rem; width: 100%; }
 #contentDisplay #slideM2S3_7 .scenario-card-vfinal.sub-result { display: flex; align-items: center; justify-content: center; gap: 1rem; text-align: center; background-color: #fff; padding: 1.2rem 1.5rem; }
-#contentDisplay #slideM2S3_7 .活用-icon { font-size: 1.8em; color: var(--success-color); }
+#contentDisplay #slideM2S3_7 .活用-icon { font-size: 1.8em !important; color: var(--success-color); }
 
 
 /* Slide 8 */
 #contentDisplay #slideM2S3_8 .layout-revised-m2s3_8 { display: flex; flex-direction: column; align-items: center; gap: 2rem; width: 100%;}
-#contentDisplay #slideM2S3_8 .main-action-box { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; font-size: 1.5em; line-height: 1.6; color: var(--dark-text); text-align: center; max-width: 700px; }
+#contentDisplay #slideM2S3_8 .main-action-box { background-color: var(--secondary-color); padding: 2rem; border-radius: 12px; font-size: 1.5em !important; line-height: 1.6; color: var(--dark-text); text-align: center; max-width: 700px; }
 #contentDisplay #slideM2S3_8 .arrow-point { font-weight: bold; color: var(--primary-color); }
 #contentDisplay #slideM2S3_8 .example-boxes-horizontal { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; width:100%;}
-#contentDisplay #slideM2S3_8 .example-box-revised { padding: 1.5rem; border-radius: 10px; flex: 1; min-width: 280px; max-width: 350px; text-align: center; font-size: 1.1em; line-height: 1.5; box-shadow: 0 3px 8px rgba(0,0,0,0.07); }
+#contentDisplay #slideM2S3_8 .example-box-revised { padding: 1.5rem; border-radius: 10px; flex: 1; min-width: 280px; max-width: 350px; text-align: center; font-size: 1.1em !important; line-height: 1.5; box-shadow: 0 3px 8px rgba(0,0,0,0.07); }
 #contentDisplay #slideM2S3_8 .example-box-revised.style-blue { background-color: var(--card-bg); border-left: 5px solid var(--primary-color); color: var(--dark-text); }
 #contentDisplay #slideM2S3_8 .example-box-revised .highlight-bold { color: var(--primary-color); }
 
 /* Slide 9, 10 */
 #contentDisplay #slideM2S3_9 .large-text-block,
-#contentDisplay #slideM2S3_10 .large-text-block { font-size: 1.6em; font-weight: 500; line-height: 1.5; color: var(--dark-text); margin: 1rem 0 2rem 0; max-width: 80%; }
+#contentDisplay #slideM2S3_10 .large-text-block { font-size: 1.6em !important; font-weight: 500; line-height: 1.5; color: var(--dark-text); margin: 1rem 0 2rem 0; max-width: 80%; }
 #contentDisplay #slideM2S3_9 .example-boxes,
 #contentDisplay #slideM2S3_10 .example-boxes { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem; }
 #contentDisplay #slideM2S3_9 .example-box,
-#contentDisplay #slideM2S3_10 .example-box { padding: 1.5rem; border-radius: 10px; min-width: 250px; text-align: center; font-size: 1.1em; line-height: 1.5; box-shadow: 0 3px 8px rgba(0,0,0,0.07); }
+#contentDisplay #slideM2S3_10 .example-box { padding: 1.5rem; border-radius: 10px; min-width: 250px; text-align: center; font-size: 1.1em !important; line-height: 1.5; box-shadow: 0 3px 8px rgba(0,0,0,0.07); }
 #contentDisplay #slideM2S3_9 .example-box.style-blue,
 #contentDisplay #slideM2S3_10 .example-box.style-blue { background-color: var(--secondary-color); border-left: 5px solid var(--primary-color); color: var(--dark-text); }
 #contentDisplay #slideM2S3_10 .example-box.style-green { background-color: #e6ffed; border-left: 5px solid var(--success-color); color: var(--dark-text); }
 #contentDisplay #slideM2S3_9 .example-box .highlight-bold { color: var(--primary-color); }
 #contentDisplay #slideM2S3_10 .example-box.style-green .highlight-bold { color: var(--success-color); }
 #contentDisplay #slideM2S3_9 .trust-box { background-color: #fff8e1; border: 1px solid var(--warning-color-border); border-left-width: 5px; padding: 1.5rem 2rem; border-radius: 8px; margin: 2rem auto; max-width: 700px; }
-#contentDisplay #slideM2S3_9 .trust-icon { font-size: 2em; color: var(--warning-color-text); float: left; margin-right: 1rem; }
-#contentDisplay #slideM2S3_9 .trust-title { font-size: 1.3em; color: var(--warning-color-text); margin-top:0; margin-bottom: 0.5rem; }
-#contentDisplay #slideM2S3_9 .trust-box p { font-size: 1.05em; color: var(--dark-text); line-height: 1.6; }
-#contentDisplay #slideM2S3_10 .content-types { font-size: 0.9em; color: var(--light-text); display: block; margin-top: 0.5rem; }
+#contentDisplay #slideM2S3_9 .trust-icon { font-size: 2em !important; color: var(--warning-color-text); float: left; margin-right: 1rem; }
+#contentDisplay #slideM2S3_9 .trust-title { font-size: 1.3em !important; color: var(--warning-color-text); margin-top:0; margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_9 .trust-box p { font-size: 1.05em !important; color: var(--dark-text); line-height: 1.6; }
+#contentDisplay #slideM2S3_10 .content-types { font-size: 0.9em !important; color: var(--light-text); display: block; margin-top: 0.5rem; }
 
 /* Slide 11 */
-#contentDisplay #slideM2S3_11 .audio-icon-main { font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem; }
+#contentDisplay #slideM2S3_11 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_11 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_11 .audio-icon-main { font-size: 4rem !important; color: var(--primary-color); margin-bottom: 1rem; }
+#contentDisplay #slideM2S3_11 .large-text-block {
+    font-size: 1.6em !important;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--dark-text);
+    margin: 1rem 0 2rem 0;
+    max-width: 80%;
+}
 #contentDisplay #slideM2S3_11 .benefits-grid-audio { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; width: 100%; max-width: 600px; }
-#contentDisplay #slideM2S3_11 .benefit-item-audio { background-color: var(--card-bg); padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.1em; color: var(--dark-text); box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 0.8rem; }
-#contentDisplay #slideM2S3_11 .benefit-icon-small { font-size: 1.5em; color: var(--primary-color); }
+#contentDisplay #slideM2S3_11 .benefit-item-audio { background-color: var(--card-bg); padding: 1rem 1.5rem; border-radius: 8px; font-size: 1.1em !important; color: var(--dark-text); box-shadow: 0 2px 6px rgba(0,0,0,0.06); display: flex; align-items: center; gap: 0.8rem; }
+#contentDisplay #slideM2S3_11 .benefit-icon-small { font-size: 1.5em !important; color: var(--primary-color); }
 
 /* Slide 12 */
+#contentDisplay #slideM2S3_12 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_12 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_12 .security-qna-intro { padding: 2rem 0; }
-#contentDisplay #slideM2S3_12 .security-icon-main { font-size: 5rem; margin-bottom: 1.5rem; color: var(--danger-color-m4s1, #d9363e); }
-#contentDisplay #slideM2S3_12 .qna-question-big { font-size: 1.8em; font-weight: 600; color: var(--dark-text); margin-bottom: 1rem; line-height: 1.4; }
-#contentDisplay #slideM2S3_12 .qna-answer-prompt { font-size: 1.3em; color: var(--light-text); }
+#contentDisplay #slideM2S3_12 .security-icon-main { font-size: 5rem !important; margin-bottom: 1.5rem; color: var(--danger-color-m4s1, #d9363e); }
+#contentDisplay #slideM2S3_12 .qna-question-big { font-size: 1.8em !important; font-weight: 600; color: var(--dark-text); margin-bottom: 1rem; line-height: 1.4; }
+#contentDisplay #slideM2S3_12 .qna-answer-prompt { font-size: 1.3em !important; color: var(--light-text); }
 
 /* Slide 14 */
+#contentDisplay #slideM2S3_14 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_14 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_14 .feature-grid-security-final { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; width: 100%; max-width: 950px; margin: 1.5rem auto; }
 #contentDisplay #slideM2S3_14 .feature-card-final { background-color: var(--card-bg); border-radius: 12px; padding: 1.8rem 1.5rem; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.07); display: flex; flex-direction: column; align-items: center; min-height: 220px; flex: 0 0 calc(33.333% - 1.5rem); min-width: 200px; box-sizing: border-box;}
 #contentDisplay #slideM2S3_14 .feature-card-final.style-red { border-top: 5px solid var(--danger-color-m4s1, #d9363e); }
-#contentDisplay #slideM2S3_14 .feature-card-final .card-icon-small { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.5rem; }
-#contentDisplay #slideM2S3_14 .feature-card-final .card-title-sub { font-size: 1.1em; font-weight: 600; color: var(--dark-text); margin-bottom: 0.5rem; min-height: 2.2em; }
-#contentDisplay #slideM2S3_14 .feature-card-final .card-desc-sub { font-size: 0.9em; color: var(--light-text); line-height: 1.5; }
+#contentDisplay #slideM2S3_14 .feature-card-final .card-icon-small { font-size: 1.8rem !important; color: var(--primary-color); margin-bottom: 0.5rem; }
+#contentDisplay #slideM2S3_14 .feature-card-final .card-title-sub { font-size: 1.1em !important; font-weight: 600; color: var(--dark-text); margin-bottom: 0.5rem; min-height: 2.2em; }
+#contentDisplay #slideM2S3_14 .feature-card-final .card-desc-sub { font-size: 0.9em !important; color: var(--light-text); line-height: 1.5; }
 
 
 /* Slide 15 */
+#contentDisplay #slideM2S3_15 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_15 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_15 .checklist { list-style: none; padding: 0; width: 100%; max-width: 800px; }
-#contentDisplay #slideM2S3_15 .check-item { background-color: #fff; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-size: 1.1em; line-height: 1.7; }
-#contentDisplay #slideM2S3_15 .check-icon { font-size: 1.8em; line-height: 1.3; }
+#contentDisplay #slideM2S3_15 .check-item { background-color: #fff; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 1.2rem; display: flex; align-items: flex-start; gap: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); font-size: 1.1em !important; line-height: 1.7; }
+#contentDisplay #slideM2S3_15 .check-icon { font-size: 1.8em !important; line-height: 1.3; }
 #contentDisplay #slideM2S3_15 .check-item.critical .check-icon { color: var(--danger-color-m4s1, #d9363e); }
 #contentDisplay #slideM2S3_15 .check-item.important .check-icon { color: var(--info-color, #17a2b8); }
 #contentDisplay #slideM2S3_15 .check-item strong { font-weight: 600; }
 
 /* Slide 16 */
+#contentDisplay #slideM2S3_16 .slide-title { font-size: 1.8em !important; /* 적절한 크기로 조정 */ }
+#contentDisplay #slideM2S3_16 .slide-subtitle { font-size: 1.1em !important; /* 적절한 크기로 조정 */ }
 #contentDisplay #slideM2S3_16 .reliability-qna-intro { padding: 2rem 0; }
-#contentDisplay #slideM2S3_16 .reliability-icon-main { font-size: 5rem; margin-bottom: 1.5rem; color: var(--warning-color-border, #ffc107); }
+#contentDisplay #slideM2S3_16 .reliability-icon-main { font-size: 5rem !important; margin-bottom: 1.5rem; color: var(--warning-color-border, #ffc107); }
+#contentDisplay #slideM2S3_16 .qna-question-big {
+    font-size: 1.8em !important;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+#contentDisplay #slideM2S3_16 .qna-answer-prompt {
+    font-size: 1.3em !important;
+    color: var(--light-text);
+}
 
 /* Slide 17 */
+#contentDisplay #slideM2S3_17 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_17 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_17 .hallucination-info { }
 #contentDisplay #slideM2S3_17 .alert-box-yellow { background-color: var(--warning-bg-m2s1, #fff8e1); border: 1px solid var(--warning-border-m2s1, #ffc107); border-left-width: 5px; padding: 2rem; border-radius: 10px; margin-bottom: 2rem; max-width: 800px; text-align: left; }
-#contentDisplay #slideM2S3_17 .alert-icon { font-size: 2.5em; color: var(--warning-color-text); float: left; margin-right: 1.5rem; line-height: 1;}
-#contentDisplay #slideM2S3_17 .alert-title { font-size: 1.5em; color: var(--warning-color-text); margin-top:0; margin-bottom: 1rem; }
-#contentDisplay #slideM2S3_17 .alert-box-yellow p { font-size: 1.1em; color: var(--dark-text); line-height: 1.7; }
-#contentDisplay #slideM2S3_17 .conclusion-text { font-size: 1.3em; font-weight: 500; }
+#contentDisplay #slideM2S3_17 .alert-icon { font-size: 2.5em !important; color: var(--warning-color-text); float: left; margin-right: 1.5rem; line-height: 1;}
+#contentDisplay #slideM2S3_17 .alert-title { font-size: 1.5em !important; color: var(--warning-color-text); margin-top:0; margin-bottom: 1rem; }
+#contentDisplay #slideM2S3_17 .alert-box-yellow p { font-size: 1.1em !important; color: var(--dark-text); line-height: 1.7; }
+#contentDisplay #slideM2S3_17 .conclusion-text { font-size: 1.3em !important; font-weight: 500; }
 
 /* Slide 18 */
+#contentDisplay #slideM2S3_18 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_18 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_18 .info-box-green { background-color: #e8f5e9; border: 1px solid #a5d6a7; border-left-width: 5px; border-left-color: var(--good-border-m2s1, #2e7d32); padding: 2rem; border-radius: 10px; max-width: 800px; text-align: left; }
-#contentDisplay #slideM2S3_18 .info-icon { font-size: 2.5em; color: var(--good-border-m2s1, #2e7d32); float: left; margin-right: 1.5rem; line-height: 1;}
-#contentDisplay #slideM2S3_18 .info-title { font-size: 1.5em; color: var(--good-border-m2s1, #2e7d32); margin-top:0; margin-bottom: 1rem; }
-#contentDisplay #slideM2S3_18 .info-list { list-style: disc; padding-left: 20px; font-size: 1.1em; color: var(--dark-text); line-height: 1.7; }
+#contentDisplay #slideM2S3_18 .info-icon { font-size: 2.5em !important; color: var(--good-border-m2s1, #2e7d32); float: left; margin-right: 1.5rem; line-height: 1;}
+#contentDisplay #slideM2S3_18 .info-title { font-size: 1.5em !important; color: var(--good-border-m2s1, #2e7d32); margin-top:0; margin-bottom: 1rem; }
+#contentDisplay #slideM2S3_18 .info-list { list-style: disc; padding-left: 20px; font-size: 1.1em !important; color: var(--dark-text); line-height: 1.7; }
 #contentDisplay #slideM2S3_18 .info-list li { margin-bottom: 0.5rem; }
 
 /* Slide 19 */
+#contentDisplay #slideM2S3_19 .slide-title { font-size: 1.8em !important; } /* 필요시 조정 */
+#contentDisplay #slideM2S3_19 .slide-subtitle { font-size: 1.1em !important; } /* 필요시 조정 */
 #contentDisplay #slideM2S3_19 .numbered-list-spaced { list-style: none; padding: 0; width: 100%; max-width: 850px; counter-reset: spaced-list-counter; }
 #contentDisplay #slideM2S3_19 .numbered-list-spaced li { background-color: #fff; border-radius: 8px; padding: 1.5rem 2rem; margin-bottom: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); position: relative; padding-left: 4.5rem; }
-#contentDisplay #slideM2S3_19 .numbered-list-spaced li::before { counter-increment: spaced-list-counter; content: counter(spaced-list-counter); position: absolute; left: 1.5rem; top: 1.5rem; font-size: 1.8em; font-weight: bold; color: var(--primary-color); background-color: var(--secondary-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
-#contentDisplay #slideM2S3_19 .list-item-header { font-size: 1.3em; font-weight: 600; color: var(--dark-text); margin-bottom: 0.5rem; display: flex; align-items: center; }
-#contentDisplay #slideM2S3_19 .list-icon { font-size: 1.3em; margin-right: 0.7rem; color: var(--primary-color); }
-#contentDisplay #slideM2S3_19 .numbered-list-spaced li p { font-size: 1.05em; color: var(--dark-text); line-height: 1.7; }
+#contentDisplay #slideM2S3_19 .numbered-list-spaced li::before { counter-increment: spaced-list-counter; content: counter(spaced-list-counter); position: absolute; left: 1.5rem; top: 1.5rem; font-size: 1.8em !important; font-weight: bold; color: var(--primary-color); background-color: var(--secondary-color); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; line-height: 1; }
+#contentDisplay #slideM2S3_19 .list-item-header { font-size: 1.3em !important; font-weight: 600; color: var(--dark-text); margin-bottom: 0.5rem; display: flex; align-items: center; }
+#contentDisplay #slideM2S3_19 .list-icon { font-size: 1.3em !important; margin-right: 0.7rem; color: var(--primary-color); }
+#contentDisplay #slideM2S3_19 .numbered-list-spaced li p { font-size: 1.05em !important; color: var(--dark-text); line-height: 1.7; }
 
 
 /* 반응형 조정 */
 @media (max-width: 992px) { /* 태블릿 */
     #contentDisplay .slide-content { padding: 2rem 2.5rem; }
-    /* #contentDisplay #slideM2S3_13 .compare-ai-services-vfinal is already column by default */
-    #contentDisplay #slideM2S3_14 .feature-grid-security-final .feature-card-final { width: calc(50% - 1rem); } /* 2-column on tablet */
-    #contentDisplay #slideM2S3_20 .summary-grid-vfinal { grid-template-columns: 1fr; } /* 1-column on tablet and mobile */
+    #contentDisplay #slideM2S3_14 .feature-grid-security-final .feature-card-final { width: calc(50% - 1rem); }
+    #contentDisplay #slideM2S3_20 .summary-grid-vfinal { grid-template-columns: 1fr; }
     
-    #contentDisplay #slideM2S3_1 .compare-intro-vfinal { flex-direction: column; text-align: center; gap: 1.5rem; }
-    #contentDisplay #slideM2S3_1 .vs-icon-vfinal { margin: 1rem 0; font-size: clamp(3.5em, 7vw, 4.5em); }
-    #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge { font-size: clamp(2.8em, 10vw, 4em) !important; } 
-    #contentDisplay #slideM2S3_1 .tool-description-display-vfinal { font-size: clamp(1.2em, 4vw, 1.5em); }
+    #contentDisplay #slideM2S3_1 .compare-intro-vfinal {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+    #contentDisplay #slideM2S3_1 .compare-column-vfinal {
+        flex-basis: auto;
+        width: 100%;
+    }
+    #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge {
+        font-size: clamp(2.8em, 8vw, 4em) !important;
+    }
+    #contentDisplay #slideM2S3_1 .vs-icon-vfinal {
+        margin: 0.5rem 0 !important;
+        font-size: clamp(3em, 7vw, 4em) !important;
+    }
     
     #contentDisplay #slideM2S3_7 .scenario-card-group-vfinal { flex-direction: column; }
 }
 
 @media (max-width: 768px) { /* 모바일 */
     #contentDisplay .slide-content { padding: 1.5rem; }
-    /* Slide titles font size already handled by common_styles or parent, if needed, add specifically: */
-    /* #contentDisplay .slide-title { font-size: 1.5rem; } */
-    /* #contentDisplay .slide-subtitle { font-size: 0.95rem; } */
     
-    #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge { font-size: clamp(2.5em, 12vw, 3.5em) !important; } 
-    #contentDisplay #slideM2S3_1 .tool-description-display-vfinal { font-size: clamp(1.1em, 5vw, 1.3em); }
+    #contentDisplay #slideM2S3_1 .tool-name-display-xxlarge {
+        font-size: clamp(2.5em, 10vw, 3.5em) !important;
+    }
+     #contentDisplay #slideM2S3_13 .ai-service-type-vfinal {
+        width: 100%; /* 모바일에서는 카드 너비 100% */
+        max-width: 100%;
+        padding: 1.5rem; /* 모바일 패딩 조정 */
+    }
+    #contentDisplay #slideM2S3_13 .ai-service-type-vfinal h3 { font-size: 1.5em !important; }
+
 
     #contentDisplay #slideM2S3_4 .synergy-top-row { flex-direction: column; align-items: center; gap: 0.5rem; }
-    #contentDisplay #slideM2S3_4 .synergy-plus-icon { font-size: 2.5rem; margin: 0.5rem 0; }
-    #contentDisplay #slideM2S3_4 .result-text-final { font-size: 1.15em; padding: 1.5rem; }
+    #contentDisplay #slideM2S3_4 .synergy-plus-icon { font-size: 2.5rem !important; margin: 0.5rem 0; }
+    #contentDisplay #slideM2S3_4 .result-text-final { font-size: 1.15em !important; padding: 1.5rem; }
     
-    #contentDisplay #slideM2S3_13 .compare-ai-services-vfinal { flex-direction: column !important; /* Ensure column on mobile */ }
-    #contentDisplay #slideM2S3_13 .ai-service-type-vfinal { padding: 1.5rem; min-height: auto; }
-    #contentDisplay #slideM2S3_13 .ai-service-type-vfinal h3 { font-size: 1.5em; }
+    #contentDisplay #slideM2S3_13 .compare-ai-services-vfinal { flex-direction: column !important; }
     #contentDisplay #slideM2S3_13 .warning-box-inline-vfinal { 
         flex-direction: column; 
         align-items: flex-start; 
@@ -384,13 +427,17 @@
     #contentDisplay #slideM2S3_13 .warning-box-inline-vfinal p { text-align: left;}
     #contentDisplay #slideM2S3_13 .warning-icon-inline { margin-bottom: 0.5rem; margin-right: 0; }
 
-    #contentDisplay #slideM2S3_14 .feature-grid-security-final .feature-card-final { width: 100%; } /* 1-column on mobile */
+    #contentDisplay #slideM2S3_14 .feature-grid-security-final .feature-card-final { width: 100%; }
 
     #contentDisplay #slideM2S3_20 .summary-card-vfinal { min-height: auto; padding: 2rem 1.5rem; }
-    #contentDisplay #slideM2S3_20 .summary-card-vfinal p { font-size: 1.05em; }
+    #contentDisplay #slideM2S3_20 .summary-card-vfinal p { font-size: 1.05em !important; }
 
-    #contentDisplay #slideM2S3_20 .final-caution-vfinal { font-size: 1em; }
+    #contentDisplay #slideM2S3_20 .final-caution-vfinal { font-size: 1em !important; }
 
     #contentDisplay #slideM2S3_19 .numbered-list-spaced li { padding-left: 1.5rem; padding-right: 1.5rem; }
     #contentDisplay #slideM2S3_19 .numbered-list-spaced li::before { display: none; }
+
+    /* 모바일에서 slide-title, slide-subtitle 기본 폰트 크기 조정 */
+    #contentDisplay .slide-title { font-size: 1.6em !important; }
+    #contentDisplay .slide-subtitle { font-size: 1.0em !important; }
 }
