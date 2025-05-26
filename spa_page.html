@@ -11,33 +11,31 @@
             display: none; /* JS로 데스크탑일 때만 보이도록 제어 */
             position: fixed;
             top: 15px;
-            left: 10px; /* 네비게이션 너비 고려해서 조정 가능 */
-            z-index: 105; /* 네비게이션보다 약간 높게 */
+            left: 10px;
+            z-index: 105;
             background-color: var(--primary-color, #3155e2);
             color: white;
             border: none;
             width: 30px;
             height: 30px;
-            font-size: 16px; /* 아이콘 크기 */
-            line-height: 30px; /* 아이콘 수직 중앙 정렬 */
+            font-size: 16px;
+            line-height: 30px;
             text-align: center;
             cursor: pointer;
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
-            transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); /* 네비게이션 확장시 버튼 위치 이동 */
+            transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        /* 네비게이션 고정 상태일 때 버튼 아이콘 변경 (예시) */
         #desktop-pin-toggle-btn.pinned-icon::before {
-            content: "📌"; /* 고정되었을 때 아이콘 (핀 모양) */
+            content: "📌"; /* 고정 아이콘 */
         }
         #desktop-pin-toggle-btn:not(.pinned-icon)::before {
-            content: "☰"; /* 기본/열기 아이콘 (햄버거) */
+            content: "☰"; /* 기본/열기 아이콘 */
         }
-
 
         /* 데스크탑 네비게이션 고정 상태 */
         .page-navigation.pinned {
-            width: var(--nav-expanded-width) !important; /* 고정 시 너비 강제 확장 */
+            width: var(--nav-expanded-width) !important;
             opacity: 1 !important;
             overflow: visible !important;
             background-color: var(--nav-bg-expanded) !important;
@@ -47,23 +45,26 @@
         .page-navigation.pinned .nav-scroll-wrapper {
             opacity: 1 !important;
         }
-        /* 고정 상태일 때 데스크탑 햄버거 버튼 위치 (네비게이션 확장 너비 고려) */
-        /* .page-navigation.pinned + #desktop-pin-toggle-btn {  -- 이렇게 하면 안됨. body 직계 자식이므로 */
+        /* 고정 시 핀 버튼 위치 이동 (body에 클래스 추가 방식) */
         body.desktop-nav-pinned #desktop-pin-toggle-btn {
-            left: calc(var(--nav-expanded-width) + 10px - var(--nav-collapsed-width) - 5px); /* 대략적인 위치, 조정 필요 */
+            /* 네비게이션 너비가 var(--nav-collapsed-width) -> var(--nav-expanded-width)로 변함 */
+            /* 버튼의 left 값도 그 차이만큼 이동해야 함 */
+            /* 예: left: calc(10px + var(--nav-expanded-width) - var(--nav-collapsed-width)); */
+            /* 정확한 계산은 실제 변수값과 디자인에 따라 조정 필요 */
+             left: calc(var(--nav-expanded-width) - 25px); /* 간단 예시, 실제 값에 맞게 조정 */
         }
 
 
         /* --- 모바일 전용 스타일 --- */
         @media (max-width: 768px) {
-            /* 데스크탑 네비게이션 숨기기 또는 비활성화 (모바일에서) */
             .page-navigation {
                 pointer-events: none !important;
                 opacity: 0 !important;
                 width: 0 !important;
                 border-right: none !important;
+                transition: none !important; /* 모바일에서는 데스크탑용 트랜지션 불필요 */
             }
-            #desktop-pin-toggle-btn { /* 데스크탑 핀 버튼도 모바일에선 숨김 */
+            #desktop-pin-toggle-btn {
                 display: none !important;
             }
 
@@ -97,14 +98,11 @@
             }
             #mobile-sidebar-container .nav-header { padding-top: 10px; border-bottom: 1px solid var(--border-color, #eaeaea); }
             #mobile-sidebar-container .nav-scroll-wrapper { padding: 15px 0; }
-            /* 모바일에서 현재 페이지 표시 */
             #mobile-sidebar-container .nav-section-item.current-page a {
-                background-color: var(--nav-active-bg, #3155e2) !important; /* common_styles.css 와 충돌 방지 */
+                background-color: var(--nav-active-bg, #3155e2) !important;
                 color: var(--nav-active-text, #fff) !important;
-                font-weight: 600;
-                border-radius: 4px;
+                font-weight: 600; border-radius: 4px;
             }
-
 
             #mobile-overlay {
                 display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
@@ -118,22 +116,26 @@
 
             #page-navigation-buttons {
                 display: none; position: fixed; bottom: 0; left: 0; width: 100%;
-                padding: 10px 15px; background-color: rgba(250, 250, 250, 0.95);
+                padding: 10px 0px; background-color: rgba(250, 250, 250, 0.95);
                 box-shadow: 0 -2px 8px rgba(0,0,0,0.1); z-index: 999;
-                justify-content: space-between; align-items: center;
+                display: flex; justify-content: space-between; align-items: center;
                 backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
             }
             #page-navigation-buttons button {
                 padding: 10px 15px; font-size: 0.9em; font-weight: 500;
                 background-color: var(--primary-color, #3155e2); color: white; border: none;
                 border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease;
-                min-width: 70px; text-align: center;
+                min-width: 70px; text-align: center; flex-shrink: 0; margin: 0 10px;
+            }
+            #current-section-name-display {
+                flex-grow: 1; text-align: center; font-size: 0.85em;
+                color: var(--dark-text, #333); padding: 0 5px;
+                overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
             }
             #page-navigation-buttons button:hover:not(:disabled) { background-color: #2a49c7; }
             #page-navigation-buttons button:disabled { background-color: #ccc; color: #777; cursor: not-allowed; opacity: 0.7; }
         }
 
-        /* 데스크탑에서는 모바일 UI 요소 숨김 (min-width: 769px) */
         @media (min-width: 769px) {
             #mobile-hamburger-btn,
             #mobile-sidebar-container,
@@ -141,30 +143,36 @@
             #page-navigation-buttons {
                 display: none !important;
             }
-            /* 데스크탑 네비게이션 원상 복구 (모바일 @media에서 변경된 부분) */
-            .page-navigation {
+            .page-navigation { /* 데스크탑 네비게이션 원상 복구 */
                 pointer-events: auto !important;
-                opacity: 0.7 !important; /* common_styles.css 값으로 */
-                width: var(--nav-collapsed-width) !important; /* common_styles.css 값으로 */
-                border-right: 1px solid var(--border-color, #eaeaea) !important;
+                /* opacity와 width는 common_styles.css의 기본값과 hover에 의해 제어되도록 !important 제거 */
+                /* border-right도 common_styles.css 따르도록 */
+                /* transition도 common_styles.css 따르도록 */
             }
-            /* .page-navigation.pinned 상태는 이 규칙보다 우선순위가 높아져야 함 (CSS Specificity) */
-            /* 또는 JS에서 .pinned 시 width 직접 설정 */
+            /* common_styles.css에서 .page-navigation의 opacity, width, border-right, transition이
+               올바르게 설정되어 있는지 확인 필요. 이 미디어쿼리에서는 pinned 상태가 아닐 때
+               common_styles.css의 기본 스타일이 적용되도록 하는 것이 목표. */
+
+            /* .page-navigation.pinned 상태가 아닌 경우, common_styles.css의 기본 스타일이 적용되어야 함. */
+            /* 아래는 만약 common_styles.css의 기본값을 덮어써야 할 경우에만 사용 (권장하지 않음) */
+            /*
+            .page-navigation:not(.pinned) {
+                opacity: 0.7 !important;
+                width: var(--nav-collapsed-width) !important;
+            }
+            */
 
             .main-content-area {
-                padding-top: 30px !important;
-                padding-bottom: 30px !important;
+                padding-top: 30px !important; padding-bottom: 30px !important;
             }
-            #desktop-pin-toggle-btn { /* 데스크탑 핀 버튼은 데스크탑에서 보임 */
+            #desktop-pin-toggle-btn {
                 display: block;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 데스크탑용 네비게이션 (기존 HTML 그대로 사용) -->
     <nav class="page-navigation" id="pageNav">
-        <!-- (내용은 이전과 동일) -->
         <div class="nav-header">커리큘럼</div>
         <div class="nav-scroll-wrapper">
             <ul class="nav-curriculum-list">
@@ -235,16 +243,14 @@
             const contentDisplay = document.getElementById('contentDisplay');
             const mainContentArea = document.getElementById('mainContent');
             const sectionListPadding = 8;
-            let currentActiveLinkElement = null; // 항상 데스크탑 네비게이션의 링크 기준
+            let currentActiveLinkElement = null;
             let currentScrollListener = null;
             let currentModuleStyleLink = null;
             let isMobile = window.innerWidth <= 768;
-            let isDesktopNavPinned = false; // 데스크탑 네비게이션 고정 상태
+            let isDesktopNavPinned = false;
 
-            // --- UI 요소 동적 생성 ---
             const desktopPinToggleBtn = document.createElement('button');
             desktopPinToggleBtn.id = 'desktop-pin-toggle-btn';
-            // 아이콘은 CSS 가상요소로 처리
             document.body.appendChild(desktopPinToggleBtn);
 
             const mobileHamburgerBtn = document.createElement('button');
@@ -269,12 +275,15 @@
             pageNavButtonsContainer.id = 'page-navigation-buttons';
             const prevSectionBtn = document.createElement('button');
             prevSectionBtn.id = 'prev-section-button'; prevSectionBtn.textContent = '이전';
+            const currentSectionNameDisplay = document.createElement('span');
+            currentSectionNameDisplay.id = 'current-section-name-display';
             const nextSectionBtn = document.createElement('button');
             nextSectionBtn.id = 'next-section-button'; nextSectionBtn.textContent = '다음';
-            pageNavButtonsContainer.appendChild(prevSectionBtn); pageNavButtonsContainer.appendChild(nextSectionBtn);
+            pageNavButtonsContainer.appendChild(prevSectionBtn);
+            pageNavButtonsContainer.appendChild(currentSectionNameDisplay);
+            pageNavButtonsContainer.appendChild(nextSectionBtn);
             document.body.appendChild(pageNavButtonsContainer);
 
-            // --- 모바일 사이드바 내용 복제 및 이벤트 설정 ---
             function initializeMobileSidebar() {
                 const desktopNavHeader = desktopNav.querySelector('.nav-header');
                 const desktopNavScrollWrapper = desktopNav.querySelector('.nav-scroll-wrapper');
@@ -286,8 +295,7 @@
             function setupMobileSidebarInteractions() {
                 const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
                 const mobileNavSectionLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
-
-                mobileNavModuleTitles.forEach(titleWrapper => { /* ... (아코디언 로직 - 이전과 동일) ... */
+                mobileNavModuleTitles.forEach(titleWrapper => {
                     titleWrapper.addEventListener('click', function () {
                         const isActive = this.classList.contains('active');
                         const sectionList = this.nextElementSibling;
@@ -307,15 +315,13 @@
                             } else {
                                 sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
                             } } }); });
-
-                mobileNavSectionLinks.forEach(link => { /* ... (링크 클릭 로직 - 이전과 동일, currentActiveLinkElement 업데이트 주의) ... */
+                mobileNavSectionLinks.forEach(link => {
                     link.addEventListener('click', function (event) {
                         event.preventDefault();
                         const filePath = this.dataset.src;
                         const originalLink = Array.from(desktopNavSectionLinks).find(dLink => dLink.dataset.src === filePath);
                         if (originalLink) {
                             loadAndDisplayContent(filePath, originalLink);
-                            // 모바일에서도 현재 페이지 표시 (스타일은 CSS로)
                             mobileNavSectionLinks.forEach(ml => ml.parentElement.classList.remove('current-page'));
                             this.parentElement.classList.add('current-page');
                         }
@@ -323,24 +329,20 @@
                     }); });
             }
 
-            // --- 뷰 모드 및 UI 상태 업데이트 ---
             function updateUIBasedOnMode() {
                 isMobile = window.innerWidth <= 768;
                 if (isMobile) {
                     desktopPinToggleBtn.style.display = 'none';
                     mobileHamburgerBtn.style.display = 'block';
-                    pageNavButtonsContainer.style.display = 'flex'; // 모바일에서 이전/다음 버튼 보이기
-                    desktopNav.classList.remove('pinned'); // 모바일에서는 고정 해제
+                    pageNavButtonsContainer.style.display = 'flex';
+                    desktopNav.classList.remove('pinned');
                     document.body.classList.remove('desktop-nav-pinned');
-                    // CSS에서 .page-navigation은 이미 모바일에서 숨겨짐
-                } else { // 데스크탑
+                } else {
                     desktopPinToggleBtn.style.display = 'block';
                     mobileHamburgerBtn.style.display = 'none';
                     mobileSidebarContainer.classList.remove('open');
                     mobileOverlay.classList.remove('active');
-                    pageNavButtonsContainer.style.display = 'none'; // 데스크탑에서 이전/다음 버튼 숨기기
-
-                    // 데스크탑 네비게이션 상태 업데이트 (고정 여부)
+                    pageNavButtonsContainer.style.display = 'none';
                     if (isDesktopNavPinned) {
                         desktopNav.classList.add('pinned');
                         desktopPinToggleBtn.classList.add('pinned-icon');
@@ -350,14 +352,13 @@
                         desktopNav.classList.remove('pinned');
                         desktopPinToggleBtn.classList.remove('pinned-icon');
                         desktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정');
-                         document.body.classList.remove('desktop-nav-pinned');
+                        document.body.classList.remove('desktop-nav-pinned');
                     }
                 }
-                updatePageNavigationButtons(); // 이전/다음 버튼 상태 업데이트
+                updatePageNavigationButtonsState(); // 이전/다음 버튼 활성화/비활성화 상태만 업데이트
             }
 
-            // --- 모바일 사이드바 토글 ---
-            function toggleMobileSidebar(show) { /* ... (이전과 동일) ... */
+            function toggleMobileSidebar(show) {
                 if (show) {
                     mobileSidebarContainer.classList.add('open'); mobileOverlay.classList.add('active');
                 } else {
@@ -368,55 +369,55 @@
             mobileOverlay.addEventListener('click', () => toggleMobileSidebar(false));
             mobileSidebarCloseBtn.addEventListener('click', () => toggleMobileSidebar(false));
 
-
-            // --- 데스크탑 네비게이션 고정 토글 ---
             desktopPinToggleBtn.addEventListener('click', function() {
-                if (isMobile) return; // 모바일에선 이 버튼 사용 안함
+                if (isMobile) return;
                 isDesktopNavPinned = !isDesktopNavPinned;
-                updateUIBasedOnMode(); // UI 상태 업데이트 (pinned 클래스 등)
+                updateUIBasedOnMode();
             });
 
-            // --- 데스크탑 네비게이션 아코디언 (기존 로직) ---
-            desktopNavModuleTitles.forEach(titleWrapper => { /* ... (이전과 동일, isMobile 체크 추가) ... */
+            desktopNavModuleTitles.forEach(titleWrapper => {
                 titleWrapper.addEventListener('click', function () {
-                    if (isMobile) return; // 모바일이면 데스크탑 아코디언 동작 안함
+                    if (isMobile) return;
                     const isActive = this.classList.contains('active');
                     const sectionList = this.nextElementSibling;
-                    if (!isActive) { /* ... (다른 모듈 닫기) ... */
+                    if (!isActive) {
                          desktopNavModuleTitles.forEach(otherHeader => {
                             if (otherHeader !== this && otherHeader.classList.contains('active')) {
                                 otherHeader.classList.remove('active');
                                 const otherList = otherHeader.nextElementSibling;
                                 if (otherList && otherList.classList.contains('nav-section-list')) {
                                     otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
-                                } } });
-                    }
+                                } } }); }
                     this.classList.toggle('active');
                     if (sectionList && sectionList.classList.contains('nav-section-list')) {
-                        if (this.classList.contains('active')) { /* ... (섹션 열기) ... */
+                        if (this.classList.contains('active')) {
                             sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
                             sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
-                        } else { /* ... (섹션 닫기) ... */
+                        } else {
                              sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
                         } } }); });
 
-            // --- 데스크탑 네비게이션 링크 클릭 (기존 로직) ---
-            desktopNavSectionLinks.forEach(link => { /* ... (이전과 동일, isMobile 체크 추가) ... */
+            desktopNavSectionLinks.forEach(link => {
                  link.addEventListener('click', function (event) {
                     event.preventDefault();
-                    // 모바일에서는 이 링크 직접 클릭을 막고 모바일 사이드바 사용 유도 (CSS에서 pointer-events:none 처리)
-                    // JS에서는 혹시 모를 경우 대비
                     if (isMobile && event.target.closest('#pageNav')) return;
-
                     loadAndDisplayContent(this.dataset.src, this);
                 }); });
 
-
-            // --- 콘텐츠 로드 함수 (currentActiveLinkElement는 항상 데스크탑 링크) ---
-            async function loadAndDisplayContent(filePath, linkElementToHighlight) { /* ... (이전과 동일) ... */
+            async function loadAndDisplayContent(filePath, linkElementToHighlight) {
                 if (currentActiveLinkElement) currentActiveLinkElement.parentElement.classList.remove('current-page');
                 linkElementToHighlight.parentElement.classList.add('current-page');
                 currentActiveLinkElement = linkElementToHighlight;
+
+                if (isMobile && currentSectionNameDisplay) {
+                    let sectionName = linkElementToHighlight.textContent || "";
+                    const dotIndex = sectionName.indexOf('.');
+                    if (dotIndex !== -1 && sectionName.length > dotIndex + 1) {
+                        sectionName = sectionName.substring(dotIndex + 1).trim();
+                    }
+                    currentSectionNameDisplay.textContent = sectionName;
+                }
+
                 const newHash = filePath.split('.')[0];
                 if(window.location.hash !== `#${newHash}`) history.replaceState(null, null, `#${newHash}`);
                 contentDisplay.classList.remove('loaded'); contentDisplay.style.opacity = '0';
@@ -448,8 +449,7 @@
                 } finally {
                     setTimeout(() => { contentDisplay.style.opacity = '1'; contentDisplay.classList.add('loaded'); }, 50);
                     mainContentArea.scrollTop = 0;
-                    updatePageNavigationButtons();
-                    // 모바일 사이드바에도 현재 페이지 표시 업데이트
+                    updatePageNavigationButtonsState(); // 버튼 상태만 업데이트
                     if (isMobile) {
                         const mobileLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
                         mobileLinks.forEach(ml => ml.parentElement.classList.remove('current-page'));
@@ -458,7 +458,7 @@
                     }
                 }
             }
-            function initializeSlidesForCurrentPage(container, scroller, filePath) { /* ... (이전과 동일) ... */
+            function initializeSlidesForCurrentPage(container, scroller, filePath) {
                 const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null;
                 const checkSlidesInView = function() {
                     slides.forEach(slide => {
@@ -469,30 +469,23 @@
                         } }); }; return checkSlidesInView;
             }
 
-            // --- URL 해시 및 초기 로드 (데스크탑 링크 기준, 아코디언은 각 모드에 맞게) ---
-            function activateParentModuleOfLink(linkElement) { // linkElement는 desktopNav의 링크
+            function activateParentModuleOfLink(linkElement) {
                 const parentModuleTitleWrapperDesktop = linkElement.closest('.nav-module-group').querySelector('.nav-module-title-wrapper');
                 if (!parentModuleTitleWrapperDesktop) return;
-
                 const moduleId = parentModuleTitleWrapperDesktop.dataset.moduleId;
-
-                // 데스크탑 아코디언 처리
                 if (!isMobile && !parentModuleTitleWrapperDesktop.classList.contains('active')) {
                     desktopNavModuleTitles.forEach(otherHeader => {
                         if (otherHeader !== parentModuleTitleWrapperDesktop && otherHeader.classList.contains('active')) {
                             otherHeader.classList.remove('active');
                             const otherList = otherHeader.nextElementSibling;
                             if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
-                        }
-                    });
+                        } });
                     parentModuleTitleWrapperDesktop.classList.add('active');
                     const sectionListToOpenDesktop = parentModuleTitleWrapperDesktop.nextElementSibling;
                     if (sectionListToOpenDesktop) {
                         sectionListToOpenDesktop.style.paddingTop = sectionListPadding + "px"; sectionListToOpenDesktop.style.paddingBottom = sectionListPadding + "px";
                         sectionListToOpenDesktop.style.maxHeight = (sectionListToOpenDesktop.scrollHeight + sectionListPadding * 2) + "px";
-                    }
-                }
-                // 모바일 아코디언 처리
+                    } }
                 if (isMobile) {
                     const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
                     const parentModuleTitleMobile = Array.from(mobileNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === moduleId);
@@ -502,18 +495,14 @@
                                 otherHeader.classList.remove('active');
                                 const otherList = otherHeader.nextElementSibling;
                                 if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
-                            }
-                        });
+                            } });
                         parentModuleTitleMobile.classList.add('active');
                         const sectionListToOpenMobile = parentModuleTitleMobile.nextElementSibling;
                         if (sectionListToOpenMobile) {
                             sectionListToOpenMobile.style.paddingTop = sectionListPadding + "px"; sectionListToOpenMobile.style.paddingBottom = sectionListPadding + "px";
                             sectionListToOpenMobile.style.maxHeight = (sectionListToOpenMobile.scrollHeight + sectionListPadding * 2) + "px";
-                        }
-                    }
-                }
-            }
-            function loadContentFromHash() { /* ... (이전과 동일, desktopNavSectionLinks 사용) ... */
+                        } } } }
+            function loadContentFromHash() {
                 const hash = window.location.hash.substring(1);
                 if (hash) {
                     const targetLink = Array.from(desktopNavSectionLinks).find(link => link.dataset.src.split('.')[0] === hash);
@@ -521,19 +510,24 @@
                     else { loadInitialContent(); }
                 } else { loadInitialContent(); }
             }
-            function loadInitialContent() { /* ... (이전과 동일, desktopNav.querySelector 사용) ... */
+            function loadInitialContent() {
                 const firstValidLink = desktopNav.querySelector('.nav-section-item a[data-src]');
                 if (firstValidLink) { loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink); activateParentModuleOfLink(firstValidLink); }
                 else {
                     contentDisplay.innerHTML = '<h1>환영합니다!</h1><p>학습할 내용을 선택해주세요.</p>';
-                    contentDisplay.classList.add('loaded'); updatePageNavigationButtons();
+                    contentDisplay.classList.add('loaded');
+                    if (isMobile && currentSectionNameDisplay) currentSectionNameDisplay.textContent = '환영합니다!';
+                    updatePageNavigationButtonsState();
                 }
             }
-            function updatePageNavigationButtons() { /* ... (이전과 동일, desktopNavSectionLinks 사용) ... */
-                if (!isMobile || !currentActiveLinkElement) {
-                    pageNavButtonsContainer.style.display = 'none'; return;
+
+            // 이전/다음 버튼 상태만 업데이트하는 함수 (표시 여부는 updateUIBasedOnMode에서)
+            function updatePageNavigationButtonsState() {
+                if (!currentActiveLinkElement) { // currentActiveLinkElement는 데스크탑 nav의 링크
+                    prevSectionBtn.disabled = true;
+                    nextSectionBtn.disabled = true;
+                    return;
                 }
-                pageNavButtonsContainer.style.display = 'flex';
                 const allDesktopLinksArray = Array.from(desktopNavSectionLinks);
                 const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
                 prevSectionBtn.disabled = !(currentIndex > 0);
@@ -548,9 +542,8 @@
                 } : null;
             }
 
-            // --- 초기화 ---
             initializeMobileSidebar();
-            updateUIBasedOnMode(); // 초기 UI 상태 설정
+            updateUIBasedOnMode();
             window.addEventListener('resize', updateUIBasedOnMode);
             loadContentFromHash();
             window.addEventListener('hashchange', loadContentFromHash);
