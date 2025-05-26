@@ -1,0 +1,328 @@
+/* Styles specific to module3_section2.html */
+
+/* --- 기본 슬라이드 및 콘텐츠 스타일 (common_styles.css 보완/재정의) --- */
+.slide-container {
+    max-width: var(--content-max-width-m3s2, 1100px); /* 이 섹션의 최대 너비 변수 사용 */
+    margin: 2rem auto;
+    padding: 0 15px;
+}
+
+.text-block {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+}
+.text-block.centered-text {
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.highlight { color: var(--primary-color); font-weight: 600; }
+
+/* --- 슬라이드 1: Section Introduction --- */
+#slide1 .slide-content .image-link-wrapper { /* 기존 style="" div */
+    text-align:center;
+    margin: 2rem 0;
+}
+#slide1 .slide-content .image-link-wrapper img {
+    max-width: 70%; /* 웹에서 이미지 크기 */
+    height: auto;
+    border-radius:8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#slide1 .slide-content .image-link-wrapper p {
+    font-size:0.9em;
+    color:var(--light-text);
+    margin-top:0.5rem;
+}
+#slide1 .slide-content .learning-objectives-box { /* 기존 style="" div */
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+#slide1 .slide-content .learning-objectives-box h4 {
+    text-align:center;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem; /* 제목 크기 조정 */
+    border-bottom: none; padding-bottom: 0;
+}
+#slide1 .slide-content .learning-objectives-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem; /* 리스트 폰트 크기 조정 */
+    text-align: left;
+    line-height: 1.7;
+}
+#slide1 .slide-content .learning-objectives-box li {
+    margin-bottom: 0.5rem;
+    display: flex; /* 아이콘과 텍스트 정렬 */
+    align-items: flex-start;
+}
+#slide1 .slide-content .learning-objectives-box li:last-child { margin-bottom: 0; }
+#slide1 .slide-content .learning-objectives-box li::before { /* ✅ 아이콘 대체 */
+    content: '✅';
+    margin-right: 0.7em;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+
+/* --- Slide 2: What is NotebookLM? --- */
+/* .feature-grid 는 여러 곳에서 사용될 수 있으므로, 슬라이드 ID로 특정화 */
+#slide2 .feature-grid {
+    display: grid;
+    gap: 1.5rem; /* 간격 조정 */
+    margin: 2rem 0;
+}
+@media (min-width: 769px) { /* 데스크탑에서 2열 */
+    #slide2 .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 768px) { /* 모바일에서 1열 */
+    #slide2 .feature-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* .feature-box 는 여러 곳에서 사용될 수 있는 일반 클래스로 정의 */
+.feature-box {
+    background-color: var(--feature-box-bg-m3s2, #f0f5ff); /* 기본 배경색 또는 변수 */
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+}
+.feature-box h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color); /* 기본 제목 색상 */
+    margin-bottom: 0.8rem;
+    border-bottom: none; padding-bottom: 0;
+}
+/* 슬라이드 2의 특정 feature-box 스타일 */
+#slide2 .feature-box:nth-child(1) { background-color: #e6f7ff; border-left-color: #1890ff; }
+#slide2 .feature-box:nth-child(1) h4 { color:#1890ff; }
+#slide2 .feature-box:nth-child(2) { background-color: #f6ffed; border-left-color: #52c41a; }
+#slide2 .feature-box:nth-child(2) h4 { color:#52c41a; }
+
+.feature-box p, .feature-box ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+    text-align: left; /* 내부 텍스트 좌측 정렬 */
+}
+.feature-box ul {
+    list-style-position: inside;
+    padding-left: 0; /* 기본 ul 패딩 제거 */
+}
+.feature-box li {
+    margin-bottom: 0.4rem;
+}
+.feature-box .demo-point { /* common_styles.css 에도 있을 수 있음 */
+    font-style: italic;
+    color: var(--dark-text);
+    background-color: #fff9e6;
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
+    display: inline-block;
+    margin-top: 0.3rem;
+}
+
+
+/* --- Slide 3: NotebookLM Free vs Plus (Table) --- */
+.comparison-table-wrapper { /* 테이블 스크롤용 */
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    -webkit-overflow-scrolling: touch;
+}
+.comparison-table {
+    width: 100%;
+    min-width: 700px; /* 모바일에서 스크롤되도록 최소 너비 */
+    border-collapse: collapse;
+    font-size: 0.9rem; /* 테이블 내 폰트 약간 작게 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05); /* 은은한 그림자 */
+}
+.comparison-table th, .comparison-table td {
+    padding: 0.7rem 0.6rem; /* 패딩 조정 */
+    text-align: left;
+    border: 1px solid var(--border-color);
+    vertical-align: top; /* 내용 길어질 경우 상단 정렬 */
+}
+.comparison-table th {
+    background-color: var(--secondary-color);
+    font-weight: 600;
+    white-space: nowrap;
+}
+.comparison-table td:first-child { /* 항목명 */
+    font-weight: 500;
+    background-color: #f9f9f9;
+    width: 20%; /* 첫 번째 열 너비 고정 시도 */
+}
+.comparison-table td br { /* <br><br> 제거 */
+    display: none;
+}
+.comparison-table td p { /* 혹시 p태그가 있다면 마진 제거 */
+    margin:0;
+}
+
+
+/* --- Slide 4, 5, 6, 7, 8, 9: Core Features (다양한 .feature-grid 와 .feature-box 재활용) --- */
+/* .feature-grid와 .feature-box는 이미 위에서 기본 스타일 정의됨 */
+/* 각 슬라이드별로 grid-template-columns만 필요에 따라 미디어쿼리로 조정 */
+
+#slide4 .feature-grid { margin: 1.5rem 0; } /* 슬라이드 4 feature-grid 마진 조정 */
+
+#slide5 .slide5-feature-layout { /* 슬라이드 5의 2x2 레이아웃 */
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+@media (min-width: 769px) { #slide5 .slide5-feature-layout { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { #slide5 .slide5-feature-layout { grid-template-columns: 1fr; } }
+
+#slide6 .feature-grid { margin: 1.5rem 0; } /* 슬라이드 6 feature-grid 마진 조정 */
+
+#slide7 .slide7-feature-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+#slide7 .feature-row {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    width: 100%;
+}
+#slide7 .feature-row .feature-box { flex: 1; } /* 기본적으로 동일 너비 */
+@media (max-width: 992px) { /* 태블릿 이하에서 세로 정렬 */
+    #slide7 .feature-row { flex-direction: column; align-items: stretch; }
+    #slide7 .feature-row .feature-box { width: 100%; max-width: 100%; }
+}
+@media (min-width: 993px) { /* PC에서만 아이템 개수에 따른 너비 조정 */
+    #slide7 .feature-row.three-items .feature-box { flex-basis: calc(33.333% - 1rem); max-width: calc(33.333% - 1rem); }
+    #slide7 .feature-row.two-items .feature-box { flex-basis: calc(50% - 0.75rem); max-width: calc(50% - 0.75rem); }
+}
+
+
+/* --- Slide 10: NotebookLM Construction Scenarios --- */
+.scenario-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 1.5rem 0;
+}
+.scenario-list li {
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-left: 5px solid var(--secondary-color);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+.scenario-list strong {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- Slide 12: Summary & Conclusion --- */
+#slide12 .summary-box { /* 기존 style="" div */
+    background-color: var(--secondary-color);
+    padding: 1.5rem 2rem;
+    border-radius:10px;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+#slide12 .summary-box h4 {
+    text-align:center;
+    color:var(--primary-color);
+    margin-bottom:1rem;
+    font-size: 1.2rem;
+    border-bottom: none; padding-bottom: 0;
+}
+#slide12 .summary-box ul {
+    list-style-type: none; /* '💡'는 content로 대체 */
+    padding-left: 0px; /* 기본 패딩 제거 */
+    font-size:1.05rem; /* 폰트 크기 조정 */
+    line-height: 1.7;
+}
+#slide12 .summary-box ul li {
+    margin-bottom:0.7rem;
+    display: flex; /* 아이콘 정렬 위해 */
+    align-items: flex-start;
+}
+#slide12 .summary-box ul li::before {
+    content: '💡';
+    margin-right: 0.7em;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+#slide12 .summary-box ul li strong {
+    color: var(--dark-text); /* 강조 텍스트 색상 */
+}
+
+
+.footer { /* common_styles.css 에도 있을 수 있음 */
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+/* --- 모바일 전체 가독성 최종 조정 --- */
+@media (max-width: 768px) {
+    .slide-title { font-size: 1.25rem !important; }
+    .slide-subtitle { font-size: 0.8rem !important; }
+    h2 { font-size: 1.4rem !important; } /* 슬라이드 1의 h2 */
+    h3 { font-size: 1.15rem !important; } /* .feature-box h4 등과 크기 맞춤 */
+    h4 { font-size: 1.1rem !important; }
+
+    .text-block, #slide1 .slide-content .intro-box p, #slide1 .slide-content .main-points-box li,
+    .feature-box p, .feature-box li, .comparison-table td, .scenario-list li, #slide12 .summary-box ul li,
+    .step-desc /* 슬라이드 3에 있다면 */ {
+        font-size: 0.9rem !important;
+        line-height: 1.65 !important;
+    }
+
+    #slide1 .slide-content .intro-box, #slide1 .slide-content .main-points-box,
+    .feature-box, .comparison-table-wrapper, .scenario-list li, #slide12 .summary-box {
+        padding: 1rem !important;
+    }
+    .comparison-table th, .comparison-table td {
+        padding: 0.5rem !important; font-size: 0.85rem !important;
+    }
+    .comparison-table td:first-child { width: 30%; } /* 모바일에서 첫 열 너비 조정 */
+
+
+    #slide1 .slide-content .image-link-wrapper img { max-width: 90%; } /* 이미지 크기 조정 */
+
+    /* Slide 7의 feature-row 내부 box들 100% 너비 (이미 적용된 flex-direction: column 때문) */
+    #slide7 .feature-row .feature-box { width: 100%; max-width: 100%; }
+
+    /* 아이콘 옆 텍스트 흐름 개선을 위해 아이콘에 오른쪽 마진 */
+    #slide1 .slide-content .learning-objectives-box li::before { margin-right: 0.5em; }
+    #slide12 .summary-box ul li::before { margin-right: 0.5em; }
+
+    /* 슬라이드 별 최대 너비 해제 */
+    .intro-box, .main-points-box, .feature-grid, .comparison-table-wrapper, .slide5-feature-layout, .slide7-feature-layout, .scenario-list, #slide12 .summary-box {
+        max-width: 100%; width: 100%; margin-left: auto; margin-right: auto; padding-left:0; padding-right:0;
+    }
+    /* 카드 내부 패딩은 위에서 일괄 조정 */
+    .feature-box, .comparison-table-wrapper {
+         max-width: 100%; width: 100%;
+    }
+}
