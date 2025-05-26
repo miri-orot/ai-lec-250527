@@ -1,511 +1,572 @@
 /* Styles specific to module2_section3.html */
 /* CSS Variables and body::before are handled by common_styles.css */
 
-/* 공통: 슬라이드 내용 정렬 및 패딩 조정 */
-#contentDisplay .slide-content.text-focused-layout,
-#contentDisplay .slide-content.list-focused-layout,
-#contentDisplay .slide-content.grid-focused-layout {
-    align-items: flex-start; /* 기본 중앙 정렬 대신 좌측/상단 정렬 */
-    text-align: left;
-    padding: 2rem 3rem; /* 좌우 패딩 추가 */
+/* --- 기본 & 레이아웃 --- */
+#contentDisplay .slide-content {
+    padding: 2rem 1.5rem; /* 모바일 기본 패딩 */
     width: 100%;
+    box-sizing: border-box;
 }
-#contentDisplay .slide-content.centered-layout { /* 기존 중앙 정렬 유지용 */
+
+#contentDisplay .slide-content.centered-layout {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
 }
 
-/* 공통: 강조 텍스트 */
-.highlight { color: var(--primary-color); font-weight: 600; }
-.highlight-box-m2s3 { /* 기존 highlight-box와 구분 또는 병합 고려 */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.2em 0.5em;
-    border-radius: 8px;
-    display: inline-block;
-}
-.bold-text { font-weight: 700; }
-
-/* 슬라이드 1: 섹션 인트로 */
-.impact-phrase {
-    font-size: 2.8rem;
-    font-weight: 700;
-    color: var(--dark-text);
-    margin: 1rem 0 2rem 0;
-    text-align: center;
-    line-height: 1.4;
-}
-.impact-phrase .arrow {
-    color: var(--primary-color);
-    font-size: 0.9em;
-}
-.intro-description-m2s3 {
-    font-size: 1.2rem;
-    color: var(--light-text);
-    text-align: center;
-    margin-bottom: 2.5rem;
-    max-width: 800px;
-}
-.learning-objectives-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 auto 1rem auto;
-    max-width: 600px;
+#contentDisplay .slide-content.content-start-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* 좌측 정렬 */
     text-align: left;
 }
-.learning-objectives-list li {
-    font-size: 1.15rem;
+
+/* --- 텍스트 스타일 --- */
+.main-impact-text { /* 슬라이드 1의 핵심 문구 */
+    font-size: clamp(2.2rem, 6vw, 3rem); /* 반응형 폰트 */
+    font-weight: 700;
+    color: var(--dark-text);
+    margin: 1.5rem auto;
+    text-align: center;
+    line-height: 1.3;
+    max-width: 90%;
+}
+.main-impact-text .arrow {
+    color: var(--primary-color);
+}
+
+.section-intro-desc { /* 슬라이드 1의 부가 설명 */
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: var(--light-text);
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 700px;
+    line-height: 1.7;
+}
+
+.learning-objectives { /* 슬라이드 1의 학습 목표 */
+    list-style: none;
+    padding: 0;
+    margin: 1rem auto;
+    max-width: 550px;
+    text-align: left;
+}
+.learning-objectives li {
+    font-size: clamp(1.05rem, 3.5vw, 1.25rem);
     color: var(--dark-text);
     margin-bottom: 1rem;
     display: flex;
     align-items: center;
+    line-height: 1.5;
 }
-.learning-objectives-list .icon {
-    font-size: 1.5em;
+.learning-objectives .icon {
+    font-size: 1.6em;
     margin-right: 0.8rem;
     color: var(--primary-color);
+    flex-shrink: 0;
 }
 
-/* 슬라이드 2: NotebookLM 첫인상 */
-.big-question {
-    font-size: 2.2rem;
-    font-weight: 600;
+.slide-main-question { /* 슬라이드별 핵심 질문/메시지 (파란색 하이라이트) */
+    font-size: clamp(1.8rem, 5.5vw, 2.5rem);
+    font-weight: 700;
     color: var(--primary-color);
     margin: 1rem auto 2rem auto;
     text-align: center;
+    line-height: 1.4;
+    padding: 0 1rem; /* 긴 질문이 화면 벗어나지 않도록 */
 }
-.feature-list-box {
-    background-color: var(--secondary-color-light, #e9f5ff); /* 연한 파란색 배경 */
-    padding: 1.5rem 2rem;
-    border-radius: 12px;
-    margin: 1rem auto;
-    max-width: 700px;
-    width: 100%;
-}
-.feature-list-box .feature-item {
-    display: flex;
-    align-items: center;
-    font-size: 1.1rem;
-    color: var(--dark-text);
-    margin-bottom: 0.8rem;
-}
-.feature-list-box .feature-item .icon {
-    font-size: 1.8em;
-    margin-right: 1rem;
-    color: var(--primary-color);
-    width: 30px; /* 아이콘 정렬을 위해 */
-    text-align: center;
-}
-.feature-list-box .feature-item:last-child { margin-bottom: 0; }
 
-.conclusion-box {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    text-align: center;
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin: 2rem auto 0 auto;
-    max-width: 700px;
-}
-.conclusion-box .highlight-point { font-weight: 700; }
-
-/* 슬라이드 3, 4, 5: NotebookLM 핵심 기능 */
-.empathy-text {
-    font-size: 1.8rem;
+.slide-empathy-text { /* 공감 유도 텍스트 */
+    font-size: clamp(1.5rem, 5vw, 2rem);
     font-weight: 600;
     color: var(--dark-text);
-    margin: 1rem 0 1.5rem 0;
+    margin: 1.5rem auto;
     text-align: center;
+    line-height: 1.4;
 }
-.solution-text-m2s3 {
-    font-size: 1.15rem;
+
+.slide-solution-text { /* 해결책 제시 텍스트 */
+    font-size: clamp(1rem, 3.5vw, 1.25rem);
     color: var(--light-text);
-    margin-bottom: 2rem;
+    margin: 0 auto 2rem auto;
     line-height: 1.7;
     text-align: center;
-    max-width: 800px;
-}
-.example-box-m2s3 {
-    background-color: #fff;
-    border: 1px solid var(--border-color);
-    border-left: 5px solid var(--primary-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 750px; /* 슬라이드 콘텐츠 영역에 맞게 */
-}
-.example-box-m2s3 h4, .trust-box-m2s3 h4, .pros-box-m2s3 h4, .improvements-box-m2s3 h4,
-.nlm-advantage-box-m2s3 h4, .usage-tips-box-m2s3 h4 { /* 공통 박스 제목 스타일 */
-    font-size: 1.3rem;
-    color: var(--primary-color);
-    margin-top: 0;
-    margin-bottom: 1rem;
-    border-bottom: none; /* common_styles의 h4 스타일 초기화 */
-    padding-bottom: 0;
-    text-align: center;
-}
-.example-box-m2s3 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.example-box-m2s3 li {
-    font-size: 1.05rem;
-    color: var(--dark-text);
-    margin-bottom: 0.6rem;
-    display: flex;
-    align-items: center;
-}
-.example-box-m2s3 .icon {
-    font-size: 1.3em;
-    margin-right: 0.8rem;
-    color: var(--primary-color);
-}
-.trust-box-m2s3 {
-    background-color: var(--secondary-color-light, #e9f5ff);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem 0;
-    text-align: center;
-    width: 100%;
     max-width: 750px;
 }
-.trust-box-m2s3 p {
-    font-size: 1.1rem;
-    color: var(--dark-text);
-    line-height: 1.6;
+.slide-solution-text .highlight {
+    color: var(--primary-color);
+    font-weight: 600;
 }
-.trust-box-m2s3 .source-highlight {
+.slide-solution-text .source-highlight-inline {
     background-color: var(--primary-color);
     color: white;
     padding: 0.1em 0.4em;
     border-radius: 4px;
     font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* --- 카드 및 박스 스타일 --- */
+.feature-box-container,
+.info-box-container,
+.example-usecase-box,
+.security-comparison-container,
+.trust-info-container,
+.summary-box-container {
+    width: 100%;
+    max-width: 800px; /* 기본 최대 너비 */
+    margin: 1.5rem auto;
+    padding: clamp(1.2rem, 4vw, 1.8rem);
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+
+.feature-box-container { /* 슬라이드 2 - NotebookLM 특징 */
+    background-color: var(--secondary-color-light, #e9f5ff);
+}
+.feature-box-container .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.feature-box-container .feature-list li {
+    font-size: clamp(1.1rem, 3.8vw, 1.3rem);
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    line-height: 1.5;
+}
+.feature-box-container .feature-list li:last-child { margin-bottom: 0; }
+.feature-box-container .feature-list .icon {
+    font-size: 1.8em;
+    margin-right: 1rem;
+    color: var(--primary-color);
+    width: 35px; /* 아이콘 정렬 */
+    text-align: center;
+    flex-shrink: 0;
+}
+.feature-box-container.conclusion { /* 슬라이드 2 - 결론 박스 */
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    font-size: clamp(1.1rem, 3.8vw, 1.3rem);
+    font-weight: 500;
+    margin-top: 2rem;
+}
+.feature-box-container.conclusion .highlight-point { font-weight: 700; }
+
+.example-usecase-box { /* 슬라이드 3, 4, 5 - 활용 예시 */
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    border-left: 6px solid var(--primary-color);
+}
+.example-usecase-box h4,
+.info-box-container h4 { /* 모든 박스 공통 제목 */
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    border-bottom: none;
+    padding-bottom: 0;
+    text-align: center;
+    font-weight: 600;
+}
+.example-usecase-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.example-usecase-box li {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start; /* 긴 텍스트의 경우 상단 정렬이 더 자연스러울 수 있음 */
+    line-height: 1.6;
+}
+.example-usecase-box li:last-child { margin-bottom: 0; }
+.example-usecase-box .icon {
+    font-size: 1.5em;
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    padding-top: 0.1em; /* 텍스트와 미세 정렬 */
+    flex-shrink: 0;
+}
+.example-usecase-box .bold-text { font-weight: 600; }
+
+.info-box-container.trust-info { /* 슬라이드 4 - 신뢰도 박스 */
+    background-color: var(--secondary-color-light, #e9f5ff);
+    text-align: center;
+}
+.info-box-container.trust-info p {
+    font-size: clamp(1.05rem, 3.6vw, 1.25rem);
+    color: var(--dark-text);
+    line-height: 1.6;
+}
+
+.content-generation-container { /* 슬라이드 5 - 생성 가능 자료 */
+    width: 100%;
+    max-width: 800px;
+    margin: 1.5rem auto;
+    padding: clamp(1.2rem, 4vw, 1.8rem);
+    border-radius: 12px;
+    background-color: #fff;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+}
+.content-generation-container h4 {
+    font-size: clamp(1.2rem, 4.5vw, 1.6rem);
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
 }
 .content-generation-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
-    margin: 1.5rem 0;
-    width: 100%;
-    max-width: 800px;
 }
-.content-card-m2s3 {
-    background-color: #fff;
-    border: 1px solid var(--border-color);
+.content-card {
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color-light, #e9ecef);
     border-radius: 10px;
     padding: 1.5rem 1rem;
     text-align: center;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.04);
 }
-.content-card-m2s3 .icon {
-    font-size: 2.5rem;
+.content-card .icon {
+    font-size: clamp(2.2rem, 7vw, 2.8rem);
     color: var(--primary-color);
     margin-bottom: 0.8rem;
     display: block;
 }
-.content-card-m2s3 p {
-    font-size: 1.1rem;
+.content-card p {
+    font-size: clamp(1.05rem, 3.5vw, 1.2rem);
     font-weight: 500;
     color: var(--dark-text);
     margin: 0;
 }
 
-/* 슬라이드 6: 오디오 요약 */
-.pros-box-m2s3 { /* example-box-m2s3 와 유사, 내부 리스트 스타일 동일하게 사용 가능 */
+.info-box-container.audio-benefits { /* 슬라이드 6 - 오디오 요약 장점 */
     background-color: #fff;
     border: 1px solid var(--border-color);
-    border-left: 5px solid var(--success-color, #28a745); /* 다른 강조색 */
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 750px;
+    border-left: 6px solid var(--success-color, #28a745);
 }
-.pros-box-m2s3 ul { list-style: none; padding: 0; margin: 0; }
-.pros-box-m2s3 li { font-size: 1.05rem; color: var(--dark-text); margin-bottom: 0.6rem; display: flex; align-items: center; }
-.pros-box-m2s3 .icon { font-size: 1.3em; margin-right: 0.8rem; color: var(--success-color, #28a745); }
+.info-box-container.audio-benefits ul { list-style: none; padding: 0; margin: 0; }
+.info-box-container.audio-benefits li {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+.info-box-container.audio-benefits li:last-child { margin-bottom: 0; }
+.info-box-container.audio-benefits .icon {
+    font-size: 1.5em;
+    margin-right: 0.8rem;
+    color: var(--success-color, #28a745);
+    padding-top: 0.1em;
+    flex-shrink: 0;
+}
 
-/* 슬라이드 7: 시너지 효과 */
-.synergy-explanation {
-    font-size: 1.3rem;
+.synergy-explanation-text { /* 슬라이드 7 - 시너지 설명 */
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
     font-weight: 500;
     color: var(--dark-text);
     text-align: center;
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
     line-height: 1.8;
+    max-width: 600px;
 }
-.synergy-explanation .icon { font-size: 1.5em; vertical-align: middle; margin: 0 0.3em; }
-.synergy-explanation .plus { color: var(--primary-color); font-weight: 700; }
-.synergy-explanation .equals { color: var(--success-color, #28a745); font-weight: 700; }
+.synergy-explanation-text .icon { font-size: 1.6em; vertical-align: middle; margin: 0 0.3em; }
+.synergy-explanation-text .plus { color: var(--primary-color); font-weight: 700; }
+.synergy-explanation-text .equals { color: var(--success-color, #28a745); font-weight: 700; }
+.synergy-explanation-text .highlight { color: var(--primary-color); font-weight: 700; }
 
-.improvements-box-m2s3 { /* example-box-m2s3 와 유사 */
+
+.info-box-container.improvements { /* 슬라이드 7 - 개선점 */
     background-color: #fff;
     border: 1px solid var(--border-color);
-    border-left: 5px solid var(--primary-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 750px;
+    border-left: 6px solid var(--primary-color);
 }
-.improvements-box-m2s3 ul { list-style: none; padding: 0; margin: 0; }
-.improvements-box-m2s3 li { font-size: 1.05rem; color: var(--dark-text); margin-bottom: 0.6rem; display: flex; align-items: center; }
-.improvements-box-m2s3 .icon { font-size: 1.3em; margin-right: 0.8rem; color: var(--primary-color); }
+.info-box-container.improvements ul { list-style: none; padding: 0; margin: 0; }
+.info-box-container.improvements li {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+.info-box-container.improvements li:last-child { margin-bottom: 0; }
+.info-box-container.improvements .icon {
+    font-size: 1.5em;
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    padding-top: 0.1em;
+    flex-shrink: 0;
+}
 
-/* 슬라이드 8: 회사 업무 활용법 */
-.qa-card-grid-m2s3 {
+.qna-grid-container { /* 슬라이드 8 - Q&A 카드 */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin: 1.5rem 0;
+    grid-template-columns: 1fr; /* 모바일 기본 1열 */
+    gap: 1.5rem;
+    margin: 1.5rem auto;
     width: 100%;
     max-width: 900px;
 }
-.qa-card-m2s3 {
+.qna-card {
     background-color: #f8f9fa;
     border-radius: 12px;
-    padding: 1.8rem 1.5rem;
+    padding: clamp(1.5rem, 5vw, 2rem);
     box-shadow: 0 5px 15px rgba(0,0,0,0.07);
 }
-.qa-card-m2s3 .qa-header {
+.qna-card .qna-section { margin-bottom: 1.2rem; }
+.qna-card .qna-section:last-child { margin-bottom: 0; }
+.qna-card .qna-header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
-}
-.qa-card-m2s3 .qa-header .icon {
-    font-size: 2rem;
-    margin-right: 0.8rem;
-    color: var(--primary-color);
-}
-.qa-card-m2s3 .qa-header .question-title,
-.qa-card-m2s3 .qa-header .answer-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--dark-text);
-    margin: 0;
-}
-.qa-card-m2s3 .answer-title { color: var(--success-color, #28a745); }
-.qa-card-m2s3 .qa-content p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: var(--light-text);
     margin-bottom: 0.8rem;
 }
-.qa-card-m2s3 .qa-result {
-    font-size: 1.05rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px dashed var(--border-color);
+.qna-card .qna-header .icon {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
+    margin-right: 0.8rem;
+    flex-shrink: 0;
 }
-.qa-card-m2s3 .qa-result .arrow { font-weight: 700; }
+.qna-card .qna-header.question .icon { color: var(--primary-color); }
+.qna-card .qna-header.answer .icon { color: var(--success-color); }
 
-/* 슬라이드 9: 보안 체크 */
-.info-card-comparison-grid-m2s3 {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin: 1.5rem 0;
-    width: 100%;
-    max-width: 800px;
+.qna-card .qna-title {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.4;
 }
-.info-card-m2s3 {
-    padding: 1.8rem 1.5rem;
+.qna-card .qna-header.question .qna-title { color: var(--dark-text); }
+.qna-card .qna-header.answer .qna-title { color: var(--success-color); }
+
+.qna-card .qna-text {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    line-height: 1.7;
+    color: var(--light-text);
+    padding-left: calc(clamp(1.8rem, 6vw, 2.2rem) + 0.8rem); /* 아이콘 너비만큼 들여쓰기 */
+}
+.qna-card .qna-result-text {
+    font-size: clamp(1.05rem, 3.8vw, 1.25rem);
+    font-weight: 600; /* 강조를 위해 600 */
+    color: var(--primary-color);
+    margin-top: 1.2rem;
+    padding-top: 1.2rem;
+    border-top: 1px dashed var(--border-color);
+    text-align: center;
+}
+.qna-card .qna-result-text .arrow { font-weight: 700; }
+
+
+.security-comparison-container { /* 슬라이드 9 - 보안 비교 */
+    background-color: transparent;
+    box-shadow: none;
+    padding: 0;
+}
+.security-comparison-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 모바일 기본 1열 */
+    gap: 1.5rem;
+}
+.security-info-card {
+    padding: clamp(1.5rem, 5vw, 2rem);
     border-radius: 12px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.07);
     text-align: center;
 }
-.info-card-m2s3.general-ai {
-    background-color: #fff3cd; /* 연한 노랑 */
-    border: 2px solid #ffeeba;
+.security-info-card.general-ai {
+    background-color: var(--warning-bg-m2s1, #fff3cd);
+    border: 2px solid var(--warning-border-m2s1, #ffeeba);
 }
-.info-card-m2s3.enterprise-ai {
-    background-color: #d4edda; /* 연한 초록 */
-    border: 2px solid #c3e6cb;
+.security-info-card.enterprise-ai {
+    background-color: var(--good-bg-m2s1, #e6fff0);
+    border: 2px solid var(--good-border-m2s1, #a7d7c5);
 }
-.info-card-m2s3 .card-icon-m2s3 {
-    font-size: 2.5rem;
+.security-info-card .card-icon {
+    font-size: clamp(2.5rem, 8vw, 3rem);
     margin-bottom: 1rem;
 }
-.info-card-m2s3.general-ai .card-icon-m2s3 { color: #856404; } /* 경고 아이콘 색 */
-.info-card-m2s3.enterprise-ai .card-icon-m2s3 { color: #155724; } /* 성공/보안 아이콘 색 */
-.info-card-m2s3 h4 {
-    font-size: 1.3rem;
+.security-info-card.general-ai .card-icon { color: var(--warning-color-text, #856404); }
+.security-info-card.enterprise-ai .card-icon { color: var(--success-color, #155724); }
+
+.security-info-card h4 {
+    font-size: clamp(1.25rem, 4.8vw, 1.6rem);
     font-weight: 600;
-    margin-bottom: 1rem;
+    margin-bottom: 1.2rem;
     color: var(--dark-text);
 }
-.info-card-m2s3 ul {
+.security-info-card ul {
     list-style: none;
     padding: 0;
     margin: 0;
     text-align: left;
 }
-.info-card-m2s3 li {
-    font-size: 1rem;
+.security-info-card li {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
     line-height: 1.6;
     color: var(--dark-text);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     display: flex;
     align-items: flex-start;
 }
-.info-card-m2s3 li .icon {
-    margin-right: 0.5rem;
-    font-size: 1.1em;
-    line-height: 1.6;
+.security-info-card li:last-child { margin-bottom: 0; }
+.security-info-card li .icon {
+    margin-right: 0.6rem;
+    font-size: 1.2em;
+    line-height: 1.6; /* 아이콘 수직 정렬 */
+    flex-shrink: 0;
 }
-.info-card-m2s3.general-ai li .icon { color: #856404; }
-.info-card-m2s3.enterprise-ai li .icon { color: #155724; }
-.warning-box-critical-m2s3 {
+.security-info-card.general-ai li .icon { color: var(--warning-color-text, #856404); }
+.security-info-card.enterprise-ai li .icon { color: var(--success-color, #155724); }
+
+.critical-warning-box { /* 슬라이드 9 - 핵심 당부 */
     background-color: var(--warning-bg-m2s1, #fff8e1);
     border: 1px solid var(--warning-border-m2s1, #ffc107);
     color: var(--dark-text);
-    padding: 1.5rem;
+    padding: clamp(1.2rem, 4vw, 1.8rem);
     border-radius: 10px;
     margin-top: 2rem;
-    width: 100%;
-    max-width: 800px;
-    border-left: 5px solid var(--warning-border-m2s1, #ffc107);
+    border-left: 6px solid var(--warning-border-m2s1, #ffc107);
 }
-.warning-box-critical-m2s3 .warning-header {
+.critical-warning-box .warning-header {
     display: flex;
     align-items: center;
     margin-bottom: 1rem;
 }
-.warning-box-critical-m2s3 .warning-header .icon {
-    font-size: 2rem;
+.critical-warning-box .warning-header .icon {
+    font-size: clamp(1.8rem, 6vw, 2.2rem);
     color: var(--warning-border-m2s1, #ffc107);
     margin-right: 0.8rem;
+    flex-shrink: 0;
 }
-.warning-box-critical-m2s3 .warning-header h4 {
-    font-size: 1.3rem;
+.critical-warning-box .warning-header h4 {
+    font-size: clamp(1.2rem, 4.5vw, 1.5rem);
     font-weight: 600;
     color: var(--dark-text);
     margin: 0;
 }
-.warning-box-critical-m2s3 ul { list-style: none; padding: 0; margin: 0; }
-.warning-box-critical-m2s3 li {
-    font-size: 1.05rem;
+.critical-warning-box ul { list-style: none; padding: 0; margin: 0; }
+.critical-warning-box li {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
     line-height: 1.7;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.6rem;
 }
+.critical-warning-box li:last-child { margin-bottom: 0; }
+.critical-warning-box .bold-text { font-weight: 600; }
 
-/* 슬라이드 10: 신뢰도 체크 */
-.nlm-advantage-box-m2s3 {
+
+.trust-info-container.nlm-advantage { /* 슬라이드 10 - NotebookLM 장점 */
     background-color: var(--secondary-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem auto;
-    width: 100%;
-    max-width: 750px;
     text-align: center;
 }
-.nlm-advantage-box-m2s3 p {
-    font-size: 1.1rem;
+.trust-info-container.nlm-advantage h4 { margin-bottom: 0.8rem; }
+.trust-info-container.nlm-advantage p {
+    font-size: clamp(1.05rem, 3.6vw, 1.25rem);
     color: var(--dark-text);
     line-height: 1.6;
 }
-.usage-tips-box-m2s3 { /* example-box-m2s3 와 유사 */
+
+.info-box-container.usage-tips { /* 슬라이드 10 - AI 정보 활용법 */
     background-color: #fff;
     border: 1px solid var(--border-color);
-    border-left: 5px solid var(--primary-color);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin: 1.5rem auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    width: 100%;
-    max-width: 750px;
+    border-left: 6px solid var(--primary-color);
 }
-.usage-tips-box-m2s3 ul { list-style: none; padding: 0; margin: 0; }
-.usage-tips-box-m2s3 li { font-size: 1.05rem; color: var(--dark-text); margin-bottom: 0.6rem; display: flex; align-items: center; }
-.usage-tips-box-m2s3 .icon { font-size: 1.3em; margin-right: 0.8rem; color: var(--primary-color); }
+.info-box-container.usage-tips ul { list-style: none; padding: 0; margin: 0; }
+.info-box-container.usage-tips li {
+    font-size: clamp(1rem, 3.5vw, 1.2rem);
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: flex-start;
+    line-height: 1.6;
+}
+.info-box-container.usage-tips li:last-child { margin-bottom: 0; }
+.info-box-container.usage-tips .icon {
+    font-size: 1.5em;
+    margin-right: 0.8rem;
+    color: var(--primary-color);
+    padding-top: 0.1em;
+    flex-shrink: 0;
+}
 
-/* 슬라이드 11: 최종 요약 */
-.summary-principles-list-m2s3 {
+.summary-principles-list { /* 슬라이드 11 - 최종 요약 리스트 */
     list-style: none;
     padding: 0;
     margin: 2rem auto;
     max-width: 700px;
 }
-.summary-principles-list-m2s3 li {
-    font-size: 1.15rem;
+.summary-principles-list li {
+    font-size: clamp(1.1rem, 3.8vw, 1.3rem);
     color: var(--dark-text);
     margin-bottom: 1.2rem;
     display: flex;
-    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
+    align-items: flex-start;
     line-height: 1.7;
 }
-.summary-principles-list-m2s3 .icon {
-    font-size: 1.5em;
+.summary-principles-list li:last-child { margin-bottom: 0; }
+.summary-principles-list .icon {
+    font-size: 1.6em;
     margin-right: 1rem;
     color: var(--primary-color);
-    padding-top: 0.1em; /* 텍스트와 수직 정렬 미세조정 */
+    padding-top: 0.1em;
+    flex-shrink: 0;
 }
-.final-message-m2s3 {
-    font-size: 1.3rem;
+.summary-principles-list .bold-text { font-weight: 600; }
+.summary-principles-list .highlight { color: var(--primary-color); font-weight: 600; }
+
+.final-section-message { /* 슬라이드 11 - 마무리 메시지 */
+    font-size: clamp(1.2rem, 4.2vw, 1.5rem);
     font-weight: 500;
     color: var(--primary-color);
     text-align: center;
-    margin-top: 2rem;
-    padding: 1rem;
+    margin-top: 2.5rem;
+    padding: 1.2rem;
     background-color: var(--secondary-color-light, #e9f5ff);
     border-radius: 8px;
+    line-height: 1.6;
 }
-.final-caution-m2s3 {
-    font-size: 0.9rem;
+.final-section-caution { /* 슬라이드 11 - 마지막 주의사항 */
+    font-size: clamp(0.85rem, 2.8vw, 1rem);
     color: var(--light-text);
     text-align: center;
     margin-top: 2rem;
+    line-height: 1.5;
 }
 
 
-/* 반응형 조정 */
-@media (max-width: 992px) {
-    #contentDisplay .slide-content.text-focused-layout,
-    #contentDisplay .slide-content.list-focused-layout,
-    #contentDisplay .slide-content.grid-focused-layout {
-        padding: 1.5rem 2rem;
+/* --- 반응형: 태블릿 이상 --- */
+@media (min-width: 768px) {
+    #contentDisplay .slide-content {
+        padding: 2.5rem 3rem; /* 태블릿 이상 패딩 */
     }
-    .impact-phrase { font-size: 2.4rem; }
-    .big-question { font-size: 1.8rem; }
-    .empathy-text { font-size: 1.6rem; }
-    .info-card-comparison-grid-m2s3 { grid-template-columns: 1fr; }
+    .qna-grid-container {
+        grid-template-columns: 1fr 1fr; /* 태블릿 Q&A 2열 */
+        gap: 2rem;
+    }
+    .security-comparison-grid {
+        grid-template-columns: 1fr 1fr; /* 태블릿 보안 비교 2열 */
+        gap: 2rem;
+    }
+    .content-generation-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
 }
 
-@media (max-width: 768px) {
-    #contentDisplay .slide-content.text-focused-layout,
-    #contentDisplay .slide-content.list-focused-layout,
-    #contentDisplay .slide-content.grid-focused-layout {
-        padding: 1.5rem;
+/* --- 반응형: 데스크탑 --- */
+@media (min-width: 992px) {
+    #contentDisplay .slide-content {
+        padding: 3rem 4rem; /* 데스크탑 패딩 */
     }
-    .impact-phrase { font-size: 2rem; }
-    .learning-objectives-list li { font-size: 1.05rem; }
-    .big-question { font-size: 1.6rem; }
-    .empathy-text { font-size: 1.4rem; }
-    .content-generation-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
-    .content-card-m2s3 .icon { font-size: 2rem; }
-    .content-card-m2s3 p { font-size: 1rem; }
-
-    .qa-card-grid-m2s3 { grid-template-columns: 1fr; gap: 1.5rem; }
-    .qa-card-m2s3 { padding: 1.5rem 1.2rem; }
-
-    .info-card-m2s3 { padding: 1.5rem 1.2rem; }
-    .info-card-m2s3 h4 { font-size: 1.15rem; }
-    .info-card-m2s3 li { font-size: 0.95rem; }
-    
-    .warning-box-critical-m2s3 .warning-header h4 { font-size: 1.15rem; }
-    .warning-box-critical-m2s3 li { font-size: 1rem; }
-
-    .summary-principles-list-m2s3 li { font-size: 1.05rem; }
-    .final-message-m2s3 { font-size: 1.15rem; }
+     .content-generation-grid {
+        grid-template-columns: repeat(3, 1fr); /* 데스크탑에서 3열 */
+    }
 }
