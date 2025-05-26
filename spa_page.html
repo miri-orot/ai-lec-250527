@@ -26,14 +26,11 @@
             box-shadow: 0 1px 3px rgba(0,0,0,0.2);
             transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-        #desktop-pin-toggle-btn.pinned-icon::before {
-            content: "📌"; /* 고정 아이콘 */
-        }
-        #desktop-pin-toggle-btn:not(.pinned-icon)::before {
-            content: "☰"; /* 기본/열기 아이콘 */
-        }
+        #desktop-pin-toggle-btn.pinned-icon::before { content: "📌"; }
+        #desktop-pin-toggle-btn:not(.pinned-icon)::before { content: "☰"; }
 
         /* 데스크탑 네비게이션 고정 상태 */
+        /* .pinned 클래스가 있을 때만 common_styles.css의 스타일을 덮어씀 */
         .page-navigation.pinned {
             width: var(--nav-expanded-width) !important;
             opacity: 1 !important;
@@ -45,26 +42,26 @@
         .page-navigation.pinned .nav-scroll-wrapper {
             opacity: 1 !important;
         }
-        /* 고정 시 핀 버튼 위치 이동 (body에 클래스 추가 방식) */
         body.desktop-nav-pinned #desktop-pin-toggle-btn {
-            /* 네비게이션 너비가 var(--nav-collapsed-width) -> var(--nav-expanded-width)로 변함 */
-            /* 버튼의 left 값도 그 차이만큼 이동해야 함 */
-            /* 예: left: calc(10px + var(--nav-expanded-width) - var(--nav-collapsed-width)); */
-            /* 정확한 계산은 실제 변수값과 디자인에 따라 조정 필요 */
-             left: calc(var(--nav-expanded-width) - 25px); /* 간단 예시, 실제 값에 맞게 조정 */
+             left: calc(var(--nav-expanded-width) - 25px); /* 고정 시 버튼 위치 조정 */
         }
 
 
         /* --- 모바일 전용 스타일 --- */
         @media (max-width: 768px) {
+            /* 모바일에서 데스크탑 네비게이션의 직접적인 상호작용과 시각적 표현을 제거 */
             .page-navigation {
-                pointer-events: none !important;
+                pointer-events: none !important; /* 클릭, hover 등 이벤트 무시 */
+                /* 시각적으로 완전히 숨기기 위해 */
                 opacity: 0 !important;
                 width: 0 !important;
-                border-right: none !important;
-                transition: none !important; /* 모바일에서는 데스크탑용 트랜지션 불필요 */
+                border: none !important; /* 테두리도 제거 */
+                padding: 0 !important; /* 내부 패딩도 제거 */
+                margin: 0 !important;  /* 외부 마진도 제거 */
+                overflow: hidden !important; /* 확실히 내용 숨김 */
+                transition: none !important; /* 모바일에서 불필요한 트랜지션 제거 */
             }
-            #desktop-pin-toggle-btn {
+            #desktop-pin-toggle-btn { /* 데스크탑 핀 버튼도 모바일에선 숨김 */
                 display: none !important;
             }
 
@@ -115,6 +112,7 @@
             }
 
             #page-navigation-buttons {
+                /* (스타일 이전과 동일) */
                 display: none; position: fixed; bottom: 0; left: 0; width: 100%;
                 padding: 10px 0px; background-color: rgba(250, 250, 250, 0.95);
                 box-shadow: 0 -2px 8px rgba(0,0,0,0.1); z-index: 999;
@@ -136,6 +134,7 @@
             #page-navigation-buttons button:disabled { background-color: #ccc; color: #777; cursor: not-allowed; opacity: 0.7; }
         }
 
+        /* 데스크탑에서는 모바일 UI 요소 숨김 */
         @media (min-width: 769px) {
             #mobile-hamburger-btn,
             #mobile-sidebar-container,
@@ -143,35 +142,32 @@
             #page-navigation-buttons {
                 display: none !important;
             }
-            .page-navigation { /* 데스크탑 네비게이션 원상 복구 */
-                pointer-events: auto !important;
-                /* opacity와 width는 common_styles.css의 기본값과 hover에 의해 제어되도록 !important 제거 */
-                /* border-right도 common_styles.css 따르도록 */
-                /* transition도 common_styles.css 따르도록 */
-            }
-            /* common_styles.css에서 .page-navigation의 opacity, width, border-right, transition이
-               올바르게 설정되어 있는지 확인 필요. 이 미디어쿼리에서는 pinned 상태가 아닐 때
-               common_styles.css의 기본 스타일이 적용되도록 하는 것이 목표. */
 
-            /* .page-navigation.pinned 상태가 아닌 경우, common_styles.css의 기본 스타일이 적용되어야 함. */
-            /* 아래는 만약 common_styles.css의 기본값을 덮어써야 할 경우에만 사용 (권장하지 않음) */
+            /* 데스크탑 네비게이션 스타일: .pinned 클래스가 없을 때는 common_styles.css를 따름 */
+            /* 이 미디어쿼리에서 .page-navigation에 대한 직접적인 스타일 재정의를 최소화해야 함. */
+            /* .page-navigation의 기본 상태는 common_styles.css에 의해 결정되어야 합니다. */
+            /* 아래 주석 처리된 부분은 common_styles.css가 제대로 작동하지 않을 때만 최후의 수단으로 고려 */
             /*
             .page-navigation:not(.pinned) {
+                pointer-events: auto !important;
                 opacity: 0.7 !important;
                 width: var(--nav-collapsed-width) !important;
+                border-right: 1px solid var(--border-color, #eaeaea) !important;
             }
             */
 
-            .main-content-area {
-                padding-top: 30px !important; padding-bottom: 30px !important;
+            .main-content-area { /* 데스크탑 패딩 원상복구 */
+                padding-top: 30px !important;
+                padding-bottom: 30px !important;
             }
-            #desktop-pin-toggle-btn {
+            #desktop-pin-toggle-btn { /* 데스크탑 핀 버튼은 데스크탑에서 보임 */
                 display: block;
             }
         }
     </style>
 </head>
 <body>
+    <!-- (HTML Body 내용은 이전 답변과 동일) -->
     <nav class="page-navigation" id="pageNav">
         <div class="nav-header">커리큘럼</div>
         <div class="nav-scroll-wrapper">
@@ -235,6 +231,8 @@
     </main>
 
     <script>
+        // JavaScript 내용은 이전 답변과 동일하게 유지합니다.
+        // (이전 답변의 script 태그 내부 코드를 여기에 붙여넣으시면 됩니다.)
         document.addEventListener('DOMContentLoaded', function () {
             const desktopNav = document.getElementById('pageNav');
             const desktopNavModuleTitles = desktopNav.querySelectorAll('.nav-module-title-wrapper');
@@ -335,9 +333,9 @@
                     desktopPinToggleBtn.style.display = 'none';
                     mobileHamburgerBtn.style.display = 'block';
                     pageNavButtonsContainer.style.display = 'flex';
-                    desktopNav.classList.remove('pinned');
+                    desktopNav.classList.remove('pinned'); // 모바일에서는 항상 고정 해제
                     document.body.classList.remove('desktop-nav-pinned');
-                } else {
+                } else { // 데스크탑
                     desktopPinToggleBtn.style.display = 'block';
                     mobileHamburgerBtn.style.display = 'none';
                     mobileSidebarContainer.classList.remove('open');
@@ -355,7 +353,7 @@
                         document.body.classList.remove('desktop-nav-pinned');
                     }
                 }
-                updatePageNavigationButtonsState(); // 이전/다음 버튼 활성화/비활성화 상태만 업데이트
+                updatePageNavigationButtonsState();
             }
 
             function toggleMobileSidebar(show) {
@@ -377,7 +375,7 @@
 
             desktopNavModuleTitles.forEach(titleWrapper => {
                 titleWrapper.addEventListener('click', function () {
-                    if (isMobile) return;
+                    if (isMobile) return; // 모바일에선 데스크탑 아코디언 직접 제어 안 함
                     const isActive = this.classList.contains('active');
                     const sectionList = this.nextElementSibling;
                     if (!isActive) {
@@ -400,13 +398,15 @@
             desktopNavSectionLinks.forEach(link => {
                  link.addEventListener('click', function (event) {
                     event.preventDefault();
+                    // 모바일에서는 CSS로 pointer-events: none 처리되어 이벤트 발생 안 함.
+                    // 만약 이벤트가 발생한다면, isMobile 체크로 한번 더 방어.
                     if (isMobile && event.target.closest('#pageNav')) return;
                     loadAndDisplayContent(this.dataset.src, this);
                 }); });
 
             async function loadAndDisplayContent(filePath, linkElementToHighlight) {
                 if (currentActiveLinkElement) currentActiveLinkElement.parentElement.classList.remove('current-page');
-                linkElementToHighlight.parentElement.classList.add('current-page');
+                linkElementToHighlight.parentElement.classList.add('current-page'); // 데스크탑 링크에 적용
                 currentActiveLinkElement = linkElementToHighlight;
 
                 if (isMobile && currentSectionNameDisplay) {
@@ -449,8 +449,8 @@
                 } finally {
                     setTimeout(() => { contentDisplay.style.opacity = '1'; contentDisplay.classList.add('loaded'); }, 50);
                     mainContentArea.scrollTop = 0;
-                    updatePageNavigationButtonsState(); // 버튼 상태만 업데이트
-                    if (isMobile) {
+                    updatePageNavigationButtonsState();
+                    if (isMobile) { // 모바일 사이드바에도 현재 페이지 반영
                         const mobileLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
                         mobileLinks.forEach(ml => ml.parentElement.classList.remove('current-page'));
                         const activeMobileLink = Array.from(mobileLinks).find(ml => ml.dataset.src === filePath);
@@ -469,10 +469,12 @@
                         } }); }; return checkSlidesInView;
             }
 
-            function activateParentModuleOfLink(linkElement) {
+            function activateParentModuleOfLink(linkElement) { // linkElement는 항상 데스크탑 nav의 링크
                 const parentModuleTitleWrapperDesktop = linkElement.closest('.nav-module-group').querySelector('.nav-module-title-wrapper');
                 if (!parentModuleTitleWrapperDesktop) return;
                 const moduleId = parentModuleTitleWrapperDesktop.dataset.moduleId;
+
+                // 데스크탑 아코디언
                 if (!isMobile && !parentModuleTitleWrapperDesktop.classList.contains('active')) {
                     desktopNavModuleTitles.forEach(otherHeader => {
                         if (otherHeader !== parentModuleTitleWrapperDesktop && otherHeader.classList.contains('active')) {
@@ -485,7 +487,9 @@
                     if (sectionListToOpenDesktop) {
                         sectionListToOpenDesktop.style.paddingTop = sectionListPadding + "px"; sectionListToOpenDesktop.style.paddingBottom = sectionListPadding + "px";
                         sectionListToOpenDesktop.style.maxHeight = (sectionListToOpenDesktop.scrollHeight + sectionListPadding * 2) + "px";
-                    } }
+                    }
+                }
+                // 모바일 아코디언
                 if (isMobile) {
                     const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
                     const parentModuleTitleMobile = Array.from(mobileNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === moduleId);
@@ -520,13 +524,9 @@
                     updatePageNavigationButtonsState();
                 }
             }
-
-            // 이전/다음 버튼 상태만 업데이트하는 함수 (표시 여부는 updateUIBasedOnMode에서)
             function updatePageNavigationButtonsState() {
-                if (!currentActiveLinkElement) { // currentActiveLinkElement는 데스크탑 nav의 링크
-                    prevSectionBtn.disabled = true;
-                    nextSectionBtn.disabled = true;
-                    return;
+                if (!currentActiveLinkElement) {
+                    prevSectionBtn.disabled = true; nextSectionBtn.disabled = true; return;
                 }
                 const allDesktopLinksArray = Array.from(desktopNavSectionLinks);
                 const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
