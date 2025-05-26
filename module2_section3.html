@@ -3,328 +3,601 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Module 2 Section 3: NotebookLM & Gemini 첫걸음</title>
+    <title>AI 교육 - M2S3: NotebookLM & Gemini 첫걸음</title>
     <link rel="stylesheet" href="css/common_styles.css">
     <link rel="stylesheet" href="css/module2_section3_styles.css">
 </head>
 <body>
+    <!-- Header REMOVED (SPA Page에서 관리) -->
     <div class="slide-container">
-<!--
-        <!-- Slide 1: 학습 목표 -->
-        <div class="slide active" id="slideM2S3_1">
+
+        <!-- Slide 1 (구 03) -->
+        <div class="slide" id="slideM2S3_1">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">이번 시간, <span class="highlight-text">이것만은 꼭!</span> (학습 목표)</div>
-                    <div class="slide-subtitle">NotebookLM & Gemini 완전 정복을 위한 핵심 체크리스트</div>
+                    <div class="slide-title">궁금해요! 🤔 NotebookLM vs Gemini</div>
+                    <div class="slide-subtitle">두 AI 친구, 무엇이 다르고 어떻게 함께 일할까요?</div>
                 </div>
                 <div class="slide-number">01</div>
             </div>
-            <div class="slide-content">
-                <div class="learning-objectives-container">
-                    <div class="objective-entry">
-                        <div class="objective-entry-icon">🎯</div>
-                        <h3 class="objective-entry-text">NotebookLM & Gemini <span class="highlight">기본 개념 & 활용법</span> 완전 이해!</h3>
-                    </div>
-                    <div class="objective-entry">
-                        <div class="objective-entry-icon">🛡️</div>
-                        <h3 class="objective-entry-text">AI 사용 시 <span class="highlight">정보 보안 & 프라이버시</span> 중요성 각인!</h3>
-                    </div>
-                    <div class="objective-entry">
-                        <div class="objective-entry-icon">✅</div>
-                        <h3 class="objective-entry-text">AI 정보 <span class="highlight">신뢰도 판단 & 검증</span> 방법 학습!</h3>
-                    </div>
+            <div class="slide-content centered-text compare-intro">
+                <div class="compare-item">
+                    <img src="https://raw.githubusercontent.com/miri-orot/ai-lec-image/main/logo/NotebookLM_logo.png" alt="NotebookLM 로고" class="tool-logo notebooklm-logo">
+                    <h3 class="tool-name-display">NotebookLM</h3>
+                    <p class="tool-description-display">나만의 <span class="highlight-box-blue">문서 전문가</span></p>
+                </div>
+                <div class="vs-icon">VS</div>
+                <div class="compare-item">
+                    <img src="https://raw.githubusercontent.com/miri-orot/ai-lec-image/main/logo/Gemini_logo.png" alt="Gemini 로고" class="tool-logo gemini-logo">
+                    <h3 class="tool-name-display">Gemini</h3>
+                    <p class="tool-description-display">다재다능 <span class="highlight-box-green">만능 해결사</span></p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 2: NotebookLM & Gemini 차이 질문 -->
+        <!-- Slide 2 (구 04) -->
         <div class="slide" id="slideM2S3_2">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">NotebookLM & Gemini, <span class="highlight-text">정확히 무엇이 다른가요?</span></div>
-                    <div class="slide-subtitle">두 AI 도구의 핵심 정체성 파헤치기!</div>
+                    <div class="slide-title">NotebookLM = <span class="highlight-text">내 문서 전용</span> 똑똑이! 📚</div>
+                    <div class="slide-subtitle">방대한 자료도 순식간에 핵심만 쏙! 오직 <span class="highlight-box-grey">내가 제공한 정보</span> 안에서만!</div>
                 </div>
                 <div class="slide-number">02</div>
             </div>
             <div class="slide-content">
-                <div class="section-main-title">
-                    <span class="highlight-primary">NotebookLM</span> vs <span class="highlight-primary">Gemini</span> <span class="icon-emphasis">🤔</span><br>
-                    이름은 들어봤는데... 뭐가 다른 거죠?
+                <div class="feature-grid three-cols">
+                    <div class="feature-card style-blue">
+                        <div class="card-icon-large">🗂️</div>
+                        <h3 class="card-title-main">문서 분석 특화</h3>
+                        <p class="card-desc-main">PDF, 워드, PPT, URL 등 <span class="highlight-bold">내 자료만</span> 학습해요.</p>
+                    </div>
+                    <div class="feature-card style-blue">
+                        <div class="card-icon-large">📝</div>
+                        <h3 class="card-title-main">요약 & Q&A</h3>
+                        <p class="card-desc-main">긴 내용 요약, 궁금증은 <span class="highlight-bold">자료 안에서만</span> 답변!</p>
+                    </div>
+                    <div class="feature-card style-blue">
+                        <div class="card-icon-large">🔗</div>
+                        <h3 class="card-title-main">출처 명시</h3>
+                        <p class="card-desc-main">모든 답변은 <span class="highlight-bold">원본 출처[1] 표시</span>로 신뢰도 UP!</p>
+                    </div>
                 </div>
-                <p class="section-sub-text">지금부터 각 도구의 핵심 기능과 특징을 쉽고 명확하게 알려드립니다!</p>
+                <p class="centered-text important-note"><span class="highlight-box-yellow">주의!</span> 외부 인터넷 정보 혼합 <span class="highlight-bold">NO!</span> 오직 내 자료 기반!</p>
             </div>
         </div>
--->
-        <!-- Slide 3: NotebookLM 소개 -->
+
+        <!-- Slide 3 (구 05) -->
         <div class="slide" id="slideM2S3_3">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">NotebookLM: 나만의 <span class="highlight-text">AI 문서 전문가!</span></div>
-                    <div class="slide-subtitle">내가 올린 자료 안에서만 똑똑하게 답을 찾는 AI</div>
+                    <div class="slide-title">NotebookLM, <span class="highlight-text">이럴 때 사용해 보세요!</span> ✨</div>
+                    <div class="slide-subtitle">시간 도둑 잡는 AI 활용법! 업무 효율 UP!</div>
                 </div>
                 <div class="slide-number">03</div>
             </div>
             <div class="slide-content">
-                <div class="info-card-simple nlm-theme">
-                    <div class="card-icon-display">📚</div>
-                    <h3 class="card-main-text">NotebookLM: <span class="highlight">나만의 AI 문서 전문가</span></h3>
-                    <ul class="card-feature-list">
-                        <li><span class="list-item-icon">📄</span>제공된 문서/URL 내용 심층 분석</li>
-                        <li><span class="list-item-icon">💬</span>문서 기반 질의응답 (요약, 질문)</li>
-                        <li><span class="list-item-icon">🎯</span>답변 근거 원본 출처 명확히 제시</li>
-                    </ul>
-                    <div class="card-bottom-banner">오직 내 자료 기반! 외부 인터넷 정보 혼합 NO!</div>
-                </div>
+                <ul class="use-case-list">
+                    <li class="use-case-item">
+                        <span class="use-case-icon">📊</span>
+                        <div class="use-case-text">
+                            <strong>시장 조사 보고서 / 기술 문서 분석:</strong><br>
+                            방대한 분량도 <span class="highlight-box-blue">"핵심 내용 5분 만에 파악!"</span>
+                        </div>
+                    </li>
+                    <li class="use-case-item">
+                        <span class="use-case-icon">📑</span>
+                        <div class="use-case-text">
+                            <strong>여러 회의록 모음 정리:</strong><br>
+                            특정 프로젝트 진행 상황 / 결정 사항 <span class="highlight-box-blue">"한눈에 확인!"</span>
+                        </div>
+                    </li>
+                    <li class="use-case-item">
+                        <span class="use-case-icon">📜</span>
+                        <div class="use-case-text">
+                            <strong>법률 / 계약 문서 검토:</strong><br>
+                            복잡한 내용 속 필요한 정보만 <span class="highlight-box-blue">"쏙쏙 검색!"</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <!-- Slide 4: NotebookLM 활용 예시 -->
+        <!-- Slide 4 (구 08) -->
         <div class="slide" id="slideM2S3_4">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">NotebookLM, <span class="highlight-text">이럴 때 정말 유용해요!</span></div>
-                    <div class="slide-subtitle">실제 업무에서 NotebookLM이 빛을 발하는 순간들</div>
+                    <div class="slide-title">시너지 폭발! 🍯 NotebookLM + Gemini <span class="highlight-text">함께 쓰기</span></div>
+                    <div class="slide-subtitle">환상의 짝꿍, 업무 효율을 두 배로!</div>
                 </div>
                 <div class="slide-number">04</div>
             </div>
-            <div class="slide-content">
-                <div class="usecase-showcase-list">
-                    <div class="usecase-block">
-                        <div class="usecase-block-icon">⏱️</div>
-                        <p class="usecase-block-text"><strong>긴 시장 조사 보고서</strong>나 <span class="highlight-feature">기술 문서 핵심 내용</span>만 빠르게 파악!</p>
-                    </div>
-                    <div class="usecase-block">
-                        <div class="usecase-block-icon">🗂️</div>
-                        <p class="usecase-block-text">여러 <span class="highlight-feature">회의록을 한곳에 모아</span> 특정 프로젝트 진행 상황이나 주요 결정 사항 확인!</p>
-                    </div>
-                    <div class="usecase-block">
-                        <div class="usecase-block-icon">⚖️</div>
-                        <p class="usecase-block-text"><span class="highlight-feature">법률 문서나 복잡한 계약서 내용</span> 쉽게 이해하고 필요한 정보 검색!</p>
-                    </div>
+            <div class="slide-content centered-text synergy-section">
+                <div class="synergy-item">
+                    <img src="https://raw.githubusercontent.com/miri-orot/ai-lec-image/main/logo/NotebookLM_logo.png" alt="NotebookLM" class="tool-logo-small">
+                    <p><span class="highlight-box-grey">내 자료로 만든 '나만의 지식 베이스'</span> 🗄️</p>
+                </div>
+                <div class="plus-icon">➕</div>
+                <div class="synergy-item">
+                     <img src="https://raw.githubusercontent.com/miri-orot/ai-lec-image/main/logo/Gemini_logo.png" alt="Gemini" class="tool-logo-small">
+                    <p><span class="highlight-box-green">이해하고, 분석하고, 창조하는 '다재다능 AI 브레인'</span> 🧠</p>
+                </div>
+                <div class="synergy-result">
+                    <p class="arrow-down">⬇️</p>
+                    <p class="result-text">NotebookLM이 <span class="highlight-bold">정확한 맥락(내 자료)</span>을 제공하면, Gemini는 글쓰기, 아이디어 구상, 복잡한 분석, 심지어 이미지/음성 이해(멀티모달)까지 <span class="highlight-box-purple">더 강력하고 정교하게</span> 수행합니다!</p>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 5: Gemini 소개 -->
+        <!-- Slide 5 (구 09) -->
         <div class="slide" id="slideM2S3_5">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">Gemini: 다재다능 <span class="highlight-text">고성능 만능 AI!</span></div>
-                    <div class="slide-subtitle">글쓰기부터 데이터 분석까지, AI의 새로운 가능성</div>
+                    <div class="slide-title">NotebookLM + Gemini <span class="highlight-text">활용 4단계 레시피</span> 🍳</div>
+                    <div class="slide-subtitle">함께 쓰는 법, 어렵지 않아요! 간단한 4단계로 AI 활용 마스터!</div>
                 </div>
                 <div class="slide-number">05</div>
             </div>
             <div class="slide-content">
-                <div class="info-card-simple gemini-theme">
-                    <div class="card-icon-display">✨</div>
-                    <h3 class="card-main-text">Gemini: <span class="highlight">다재다능 고성능 AI</span></h3>
-                    <ul class="card-feature-list">
-                        <li><span class="list-item-icon">✍️</span>글쓰기, 아이디어 구상, 복잡한 내용 설명</li>
-                        <li><span class="list-item-icon">📊</span>데이터 분석 및 코딩 작업 지원</li>
-                        <li><span class="list-item-icon">🖼️</span>텍스트, 이미지, 음성 등 멀티모달 처리</li>
-                    </ul>
-                    <div class="card-bottom-banner">Google Workspace 통합 및 API 제공!</div>
-                </div>
+                <ol class="step-list">
+                    <li class="step-item">
+                        <div class="step-number">1️⃣</div>
+                        <div class="step-content">
+                            <h3>자료 준비 & 업로드 (NotebookLM)</h3>
+                            <p>분석/활용할 회사 내부 보고서, 업무 매뉴얼 등을 업로드! <br><span class="tip-text">(Tip: 주제별 '노트북'으로 자료를 분류하면 관리 GOOD!)</span></p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">2️⃣</div>
+                        <div class="step-content">
+                            <h3>AI에게 작업 지시 (명확한 요청)</h3>
+                            <p>업로드된 자료 바탕으로 AI에게 원하는 것을 쉽고 명확하게 요청! <br><span class="example-text">(예: "지난 3개 분기 영업 보고서 비교 분석 후, 주요 성공 요인과 개선 필요 사항 요약해줘!")</span></p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">3️⃣</div>
+                        <div class="step-content">
+                            <h3>AI 분석 & 결과 생성 (둘의 협업)</h3>
+                            <p>NotebookLM + Gemini가 사용자의 요청을 이해하고, 제공된 자료를 바탕으로 결과물 생성!</p>
+                        </div>
+                    </li>
+                    <li class="step-item">
+                        <div class="step-number">4️⃣</div>
+                        <div class="step-content">
+                            <h3>결과 검토 & 활용 (출처 확인!)</h3>
+                            <p><span class="highlight-box-red">매우 중요!</span> AI 결과물, 직접 검토는 필수! <br>(NotebookLM의 <span class="highlight-bold">출처[1] 표시</span>로 원본 자료 확인하며 신뢰도 점검!)</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </div>
 
-        <!-- Slide 6: 시너지 효과 -->
+        <!-- Slide 6 (구 10) -->
         <div class="slide" id="slideM2S3_6">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">함께 쓰면 <span class="highlight-text">더 강력해요!</span> (NotebookLM + Gemini)</div>
-                    <div class="slide-subtitle">두 AI의 환상적인 조합이 만들어내는 업무 혁신</div>
+                    <div class="slide-title">실전! 회사 업무 적용 예시 💼 (1/2)</div>
+                    <div class="slide-subtitle"><span class="highlight-text">신규 프로젝트 기획 & 타당성 검토</span>: AI로 아이디어 얻고 초기 검토 시간 단축!</div>
                 </div>
                 <div class="slide-number">06</div>
             </div>
-            <div class="slide-content">
-                <h3 class="section-main-title" style="margin-bottom: 0.5rem;">NotebookLM <span class="icon-emphasis">🤝</span> Gemini: 환상의 시너지!</h3>
-                <p class="section-sub-text" style="font-size:1.2rem; margin-bottom:2.5rem;">NotebookLM은 '정보 창고', Gemini는 '숙련된 사서' 역할을 합니다.</p>
-                <div class="synergy-flow-diagram">
-                    <div class="synergy-element-card">
-                        <h4 class="element-name nlm-color"><span class="element-icon">🗄️</span>NotebookLM</h4>
-                        <div class="element-description">나만의 정보 창고 구축</div>
-                    </div>
-                    <div class="synergy-connector-icon">➕</div>
-                    <div class="synergy-element-card">
-                        <h4 class="element-name gemini-color"><span class="element-icon">🧑‍💼</span>Gemini</h4>
-                        <div class="element-description">정보 탐색, 분석 및 가공</div>
-                    </div>
+            <div class="slide-content use-case-scenario">
+                <div class="scenario-box">
+                    <p class="scenario-problem"><strong>상황:</strong> 시장 분석 자료, 경쟁사 정보, 내부 기술 문건 잔뜩! 🤯</p>
+                    <p class="scenario-arrow">⬇️</p>
+                    <p class="scenario-action"><strong>NotebookLM에 업로드!</strong></p>
+                    <p class="scenario-arrow">⬇️</p>
+                    <p class="scenario-ai-task"><strong>AI에게 질문:</strong> "이 자료들 종합해서, 우리 회사 다음 분기 <span class="highlight-box-blue">신규 서비스 아이템 추천</span>해줘! (예상 장단점도!)"</p>
+                    <p class="scenario-arrow">⬇️</p>
+                    <p class="scenario-result"><strong>결과:</strong> AI가 똑똑하게 분석하고 아이디어 제시! ✅ 초기 검토 시간 대폭 절감!</p>
                 </div>
-                <p class="synergy-outcome-banner"><span class="highlight-bold">➡️ 더 깊이 있는 분석, 맞춤형 결과물 생성!</span></p>
-                <p class="section-sub-text" style="font-size:1.2rem; max-width:850px; margin-top:2rem;">
-                    NotebookLM으로 특정 자료(회사 내부 보고서 등)를 AI에게 제공하면, Gemini는 그 자료의 맥락을 정확히 이해하여 일반 AI보다 훨씬 <span class="highlight-primary" style="font-weight:600;">정확하고 관련성 높은 답변</span>을 할 수 있게 됩니다.
-                </p>
             </div>
         </div>
 
-        <!-- Slide 7: 시너지 STEP 1 -->
+        <!-- Slide 7 (구 11) -->
         <div class="slide" id="slideM2S3_7">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">시너지 STEP 1: <span class="highlight-text">나의 정보 창고 만들기</span></div>
-                    <div class="slide-subtitle">NotebookLM에 분석/활용할 자료를 꼼꼼히 채워 넣어요!</div>
+                    <div class="slide-title">실전! 회사 업무 적용 예시 💼 (2/2)</div>
+                    <div class="slide-subtitle"><span class="highlight-text">고객 지원 & 내부 문의 대응 효율화</span>: AI로 반복 문의 줄이고 정보 접근성 UP!</div>
                 </div>
                 <div class="slide-number">07</div>
             </div>
-            <div class="slide-content">
-                <div class="step-showcase-container">
-                    <div class="step-showcase-header">
-                        <span class="step-indicator-badge">1</span>
-                        <h3 class="step-main-title">자료 준비 및 업로드 (정보 입력)</h3>
-                    </div>
-                    <div class="step-showcase-content">
-                        <p style="display:flex; align-items:center; margin-bottom:2rem;">
-                            <span class="item-icon" style="font-size: 2.2rem; margin-right:1.2rem; color: #4A90E2;">📤</span>
-                            분석하거나 활용하고 싶은 <span class="highlight-text">회사 내부 보고서, 업무 매뉴얼, 고객 피드백 자료, 외부 연구 논문</span> 등을 NotebookLM에 업로드합니다.
-                        </p>
-                        <div class="highlight-info-box protip-box">
-                            <h4 class="box-title-text"><span class="title-icon">✨</span>Pro Tip:</h4>
-                            <p class="box-content-text">프로젝트별 또는 주제별로 <span class="highlight">'노트북'을 만들어 자료를 분류</span>하면 나중에 관리하고 활용하기 편리합니다!</p>
+            <div class="slide-content use-case-scenario">
+                <div class="scenario-box">
+                    <p class="scenario-problem"><strong>상황:</strong> FAQ 문서, 제품 매뉴얼, 기술 가이드 산더미! 😵</p>
+                    <p class="scenario-arrow">⬇️</p>
+                    <p class="scenario-action"><strong>NotebookLM에 학습!</strong></p>
+                    <p class="scenario-arrow">⬇️</p>
+                    <div class="scenario-ai-活用">
+                        <div class="活用-item">
+                            <span class="活用-icon">💬</span>
+                            <p>"<span class="highlight-box-green">고객 문의 1차 답변</span> AI가 대신!" (시간 절약!)</p>
+                        </div>
+                        <div class="活用-item">
+                            <span class="活用-icon">🔍</span>
+                            <p>"<span class="highlight-box-green">사내 정보 검색 시스템</span> 구축!" (직원 궁금증 즉시 해결!)</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 8: 시너지 STEP 2 -->
+        <!-- Slide 8 (구 12) -->
         <div class="slide" id="slideM2S3_8">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">시너지 STEP 2: <span class="highlight-text">똑똑하게 일 시키기</span></div>
-                    <div class="slide-subtitle">AI에게 원하는 것을 명확하고 구체적으로 알려주세요!</div>
+                    <div class="slide-title">NotebookLM 핵심 ①: <span class="highlight-box-blue">자동 요약 & 개요</span> 📄➡️✨</div>
+                    <div class="slide-subtitle">수백 페이지 보고서? <span class="highlight-text">AI가 5분 만에 끝!</span> 핵심 내용 요약 + 주요 토픽 정리까지!</div>
                 </div>
                 <div class="slide-number">08</div>
             </div>
-            <div class="slide-content">
-                <div class="step-showcase-container">
-                    <div class="step-showcase-header">
-                        <span class="step-indicator-badge">2</span>
-                        <h3 class="step-main-title">AI에게 작업 지시 (명확한 질문)</h3>
+            <div class="slide-content centered-text">
+                <p class="large-text-block">문서를 NotebookLM에 올리면 ➡️ AI가 순식간에 <span class="highlight-bold">핵심 내용 요약</span> & <span class="highlight-bold">주요 토픽 정리!</span></p>
+                <div class="example-boxes">
+                    <div class="example-box style-blue">
+                        <p>긴 시방서 내용<br><span class="highlight-bold">5분 만에 파악!</span></p>
                     </div>
-                    <div class="step-showcase-content">
-                        <p style="margin-bottom:1.5rem;">업로드된 자료를 바탕으로 AI에게 <span class="highlight-text">무엇을 원하는지 쉽고 명확한 언어</span>로 요청합니다.</p>
-                        <h4 style="font-size: 1.5rem; color: #50E3C2; margin-top:2rem; margin-bottom:1rem; border-bottom:none; padding-bottom:0; text-align:left;">🗣️ 요청 예시:</h4>
-                        <div class="prompt-example-display">
-                            <p>"지난 3개 분기 영업 보고서들을 비교 분석하고, <strong>주요 성공 요인과 개선 필요 사항</strong>을 요약해 주세요."</p>
-                            <p>"이 기술 문서들을 참고하여, 신입사원을 위한 <strong>제품 교육 자료 초안</strong>을 작성해 주세요."</p>
-                            <p>"첨부된 고객 설문조사 결과에서 반복적으로 언급되는 <strong>불만 사항 상위 3가지</strong>는 무엇인가요?"</p>
-                        </div>
+                    <div class="example-box style-blue">
+                        <p>여러 회의록 핵심만 모아<br><span class="highlight-bold">한눈에 비교!</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 9: 시너지 STEP 3 -->
+        <!-- Slide 9 (구 13) -->
         <div class="slide" id="slideM2S3_9">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">시너지 STEP 3: <span class="highlight-text">AI의 마법!</span> (분석 & 결과 생성)</div>
-                    <div class="slide-subtitle">NotebookLM과 Gemini가 함께 당신의 요청을 해결합니다.</div>
+                    <div class="slide-title">NotebookLM 핵심 ②: <span class="highlight-box-blue">내 문서 기반 Q&A</span> (출처 확인!) 💬🔍</div>
+                    <div class="slide-subtitle">"그 내용 어디 있었지?" <span class="highlight-text">더 이상 직접 찾을 필요 NO!</span> AI에게 물어보면 출처와 함께 정확한 답변!</div>
                 </div>
                 <div class="slide-number">09</div>
             </div>
-            <div class="slide-content">
-                <div class="step-showcase-container">
-                    <div class="step-showcase-header">
-                        <span class="step-indicator-badge">3</span>
-                        <h3 class="step-main-title">AI의 분석 및 결과 생성</h3>
+            <div class="slide-content centered-text">
+                <p class="large-text-block">평소처럼 질문 ➡️ 내 자료 안에서 <span class="highlight-bold">정확한 답변 + 출처[1] 표시!</span></p>
+                <div class="trust-box">
+                    <span class="trust-icon">🛡️</span>
+                    <h3 class="trust-title">믿을 수 있는 이유!</h3>
+                    <p>모든 답변에는 어떤 문서, 몇 페이지에서 가져왔는지 <span class="highlight-bold">출처[1]</span>가 표시되며, <br><span class="highlight-bold">클릭 한 번으로 원본 확인</span>이 가능합니다!</p>
+                </div>
+                <div class="example-boxes">
+                    <div class="example-box style-blue">
+                        <p>계약서에서 특정 조항만<br><span class="highlight-bold">빠르게 확인!</span></p>
                     </div>
-                    <div class="step-showcase-content centered-text">
-                        <p style="margin-bottom:2rem;">NotebookLM이 Gemini의 분석 능력을 활용하여 사용자의 요청을 이해하고, 제공된 자료를 바탕으로 <span class="highlight-text">결과물(요약, 보고서 초안, 질의응답 목록, 데이터 정리 등)을 생성</span>합니다.</p>
-                        <div class="ai-magic-visualization" style="font-size:3rem; margin: 2rem 0;">
-                            <span class="highlight-box magic-icon" style="background-color: var(--info-color); border-radius:12px; padding:0.5em 0.8em; box-shadow: 0 3px 8px rgba(var(--info-color-rgb),0.3);">🧠</span>
-                            <span class="magic-icon" style="color:var(--primary-color); font-weight:bold; font-size:2.8rem; vertical-align: middle;">+</span>
-                            <span class="highlight-box magic-icon" style="background-color: var(--primary-color); border-radius:12px; padding:0.5em 0.8em; box-shadow: 0 3px 8px rgba(var(--primary-color-rgb),0.3);">💡</span>
-                            <span class="magic-icon" style="color:var(--primary-color); font-weight:bold; font-size:2.8rem; vertical-align: middle;">=</span>
-                            <span class="highlight-box magic-icon" style="background-color: var(--success-color); border-radius:12px; padding:0.5em 0.8em; box-shadow: 0 3px 8px rgba(var(--success-color-rgb),0.3);">📄</span>
-                        </div>
-                        <p style="font-size: 1.3rem; margin-top:1.5rem; font-weight:500;">사용자 요청 <span class="highlight-bold">➡️</span> <span class="highlight-text">NLM (정보 제공) + Gemini (분석/가공)</span> <span class="highlight-bold">➡️</span> 맞춤형 결과!</p>
+                    <div class="example-box style-blue">
+                        <p>기술 매뉴얼에서 원하는 사양만<br><span class="highlight-bold">즉시 검색!</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 10: 시너지 STEP 4 -->
+        <!-- Slide 10 (구 14) -->
         <div class="slide" id="slideM2S3_10">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">시너지 STEP 4: <span class="highlight-text">믿을 수 있는 결과!</span> (검토 & 활용)</div>
-                    <div class="slide-subtitle">AI 결과물, 꼼꼼한 검토와 출처 확인은 필수!</div>
+                    <div class="slide-title">NotebookLM 핵심 ③: <span class="highlight-box-blue">맞춤형 콘텐츠 자동 생성</span> 뚝딱! 🪄</div>
+                    <div class="slide-subtitle">"아... 또 자료 만들어야 해..." <span class="highlight-text">이젠 AI에게 맡기세요!</span> 클릭 한 번에 다양한 형식의 콘텐츠 자동 생성!</div>
                 </div>
                 <div class="slide-number">10</div>
             </div>
-            <div class="slide-content">
-                <div class="step-showcase-container">
-                     <div class="step-showcase-header">
-                        <span class="step-indicator-badge">4</span>
-                        <h3 class="step-main-title">결과 검토 및 활용 (출처 확인)</h3>
+            <div class="slide-content centered-text">
+                <p class="large-text-block">내 자료 기반 ➡️ <span class="highlight-bold">클릭 한 번에 다양한 콘텐츠 자동 생성!</span><br>
+                <span class="content-types">(FAQ, 학습 가이드, 목차, 타임라인, 브리핑 문서 등)</span></p>
+                <div class="example-boxes">
+                    <div class="example-box style-green">
+                        <p>기술 문서로<br><span class="highlight-bold">신입용 FAQ 순식간에 완성!</span></p>
                     </div>
-                    <div class="step-showcase-content">
-                        <p style="margin-bottom:2rem;">AI가 생성한 결과물이 <span class="highlight-text">정확하고 업무에 적합한지 직접 검토</span>합니다.</p>
-                        <div class="highlight-info-box" style="border-left-color: var(--info-color); background-color:rgba(var(--info-color-rgb),0.05); max-width:100%;">
-                            <h4 class="box-title-text" style="color:var(--info-color);"><span class="title-icon" style="font-size:1.4em">✨</span>NotebookLM의 핵심! <span class="highlight-box" style="background-color:rgba(var(--info-color-rgb),0.15); color:var(--info-color); padding:0.1em 0.4em; font-size:0.9em; border-radius:4px;">"출처 표시 [1]"</span></h4>
-                            <p class="box-content-text" style="font-size:1.2rem; margin-top:0.5rem; color: var(--dark-text)">답변이나 분석 내용이 어떤 자료의 어느 부분에서 나왔는지 <span class="highlight">출처를 표시</span>해 줍니다. 이 부분을 클릭하면 <span class="highlight">원본 자료를 바로 확인</span>할 수 있어, 정보의 신뢰도를 사용자가 직접 점검하기 용이합니다.</p>
-                        </div>
+                    <div class="example-box style-green">
+                        <p>여러 보고서로<br><span class="highlight-bold">핵심 요약 브리핑 자료 자동 생성!</span></p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Slide 11: 업무 활용 예시 1 (기존 Slide 13) -->
+        <!-- Slide 11 (구 15) -->
         <div class="slide" id="slideM2S3_11">
             <div class="slide-header">
                 <div>
-                    <div class="slide-title">업무 활용 ①: <span class="highlight-text">신규 프로젝트 기획도 뚝딱!</span></div>
-                    <div class="slide-subtitle">시장 분석 자료, 경쟁사 정보, 기술 문건 통합 분석!</div>
+                    <div class="slide-title">NotebookLM 특별 기능! <span class="highlight-box-blue">오디오 요약</span> 🎧</div>
+                    <div class="slide-subtitle">"눈으로 읽기 힘들다면?" <span class="highlight-text">이제 귀로 편하게 들으세요!</span> 문서를 팟캐스트처럼 AI가 대화로 요약!</div>
                 </div>
                 <div class="slide-number">11</div>
             </div>
+            <div class="slide-content centered-text audio-feature-section">
+                <div class="audio-icon-main">🎙️</div>
+                <p class="large-text-block">업로드된 자료 ➡️ AI가 <span class="highlight-bold">두 진행자 대화 형식</span> 오디오 팟캐스트로 요약!</p>
+                <div class="benefits-grid-audio">
+                    <div class="benefit-item-audio"><span class="benefit-icon-small">🚗</span> 이동 중/다른 작업 중 정보 습득 용이!</div>
+                    <div class="benefit-item-audio"><span class="benefit-icon-small">🗣️</span> 단순 낭독 NO! 토론 형식으로 이해도 향상!</div>
+                    <div class="benefit-item-audio"><span class="benefit-icon-small">🌐</span> 다국어 지원!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12 (구 16) -->
+        <div class="slide" id="slideM2S3_12">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">보안 Q&A 시작! 🚨 회사 정보, AI에 맡겨도 <span class="highlight-text">정말 안전할까요?</span></div>
+                    <div class="slide-subtitle">"회사 내부 파일, 고객 정보... AI 서비스에 올려도 괜찮을까?" 가장 중요한 질문!</div>
+                </div>
+                <div class="slide-number">12</div>
+            </div>
+            <div class="slide-content centered-text security-qna-intro">
+                <div class="security-icon-main">🔒</div>
+                <p class="qna-question-big">"외부 유출? 다른 목적 사용? <span class="highlight-box-red">걱정되시죠?</span>"</p>
+                <p class="qna-answer-prompt">지금부터 그 해답을 명쾌하게 알려드립니다!</p>
+            </div>
+        </div>
+
+        <!-- Slide 13 (구 17) -->
+        <div class="slide" id="slideM2S3_13">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">보안의 핵심! <span class="highlight-box-red">일반 AI vs 기업용 AI</span> 구분하기 🛡️</div>
+                    <div class="slide-subtitle">AI 서비스, <span class="highlight-text">다 같은 게 아니에요!</span> 무료 서비스와 기업용 서비스의 결정적 차이!</div>
+                </div>
+                <div class="slide-number">13</div>
+            </div>
+            <div class="slide-content compare-ai-services">
+                <div class="ai-service-type">
+                    <h3>일반 (무료) AI 서비스</h3>
+                    <p class="desc">사용자 입력 데이터, 서비스 개선/AI 모델 <span class="highlight-bold">학습에 사용될 수 있어요!</span></p>
+                    <p class="warning"><span class="highlight-box-yellow">주의!</span> 회사 기밀/민감 정보 입력은 <span class="highlight-bold">매우 신중하게!</span></p>
+                </div>
+                <div class="ai-service-type enterprise">
+                    <h3>기업용 (유료) AI 서비스</h3>
+                    <p class="desc">(예: NotebookLM Enterprise, Google Workspace용 Gemini 등)</p>
+                    <p class="desc">데이터는 <span class="highlight-bold">오직 우리 회사 자산!</span> 동의 없이 AI 모델 학습에 <span class="highlight-box-red">절대 사용 NO!</span> <br>(서비스 이용 약관에서 명시)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 14 (구 18) -->
+        <div class="slide" id="slideM2S3_14">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">기업용 AI의 <span class="highlight-box-red">철통 보안 기능 5가지!</span> 🔒</div>
+                    <div class="slide-subtitle">소중한 우리 회사 정보, 이렇게 지켜줍니다! (믿고 쓰는 기업용 AI)</div>
+                </div>
+                <div class="slide-number">14</div>
+            </div>
             <div class="slide-content">
-                 <div class="step-showcase-container"> <!-- 시너지 단계와 유사한 카드 사용 -->
-                    <div class="step-showcase-header" style="background-color: #6F42C1;"> <!-- 보라색 계열 예시 -->
-                        <span class="step-indicator-badge" style="color:#6F42C1;">🚀</span>
-                        <h3 class="step-main-title">신규 프로젝트 기획 및 타당성 검토</h3>
+                <div class="feature-grid five-cols">
+                    <div class="feature-card style-red">
+                        <div class="card-icon-small">🔑</div> <h4 class="card-title-sub">데이터<br>프라이버시</h4>
+                        <p class="card-desc-sub">우리 정보는 우리 것! (학습 임의 사용 X)</p>
                     </div>
-                    <div class="step-showcase-content">
-                        <h4 class="box-title-text" style="color: #6F42C1; font-size:1.4rem;"><span class="title-icon">🎯</span>상황:</h4>
-                        <p>다음 분기 신규 서비스 아이템 구상 필요!</p>
-                        <h4 class="box-title-text" style="color: #6F42C1; font-size:1.4rem; margin-top:1.5rem;"><span class="title-icon">🛠️</span>NotebookLM 활용:</h4>
-                        <p>여러 시장 분석 자료, 경쟁사 정보, 내부 기술 문건 등을 NotebookLM에 통합!</p>
-                        <h4 class="box-title-text" style="color: #6F42C1; font-size:1.4rem; margin-top:1.5rem;"><span class="title-icon">🗣️</span>Gemini 요청 (예시):</h4>
-                        <div class="prompt-example-display" style="font-size:1.05rem;">"이 자료들을 종합했을 때, 우리 회사가 다음 분기에 시도해 볼 만한 신규 서비스 아이템은 무엇이 있을까요? 각 아이템의 예상 장단점도 함께 알려주세요."</div>
-                        <div class="highlight-info-box" style="margin-top:2rem; border-left-color:#6F42C1; background-color:rgba(111,66,193,0.05);">
-                            <p class="box-content-text" style="text-align:center; font-weight:600; color:#6F42C1; font-size:1.3rem;">💡 아이디어 발상 & 초기 검토 시간 <span class="highlight" style="font-weight:700;">대폭 단축!</span></p>
-                        </div>
+                    <div class="feature-card style-red">
+                        <div class="card-icon-small">🛡️</div> <h4 class="card-title-sub">정보<br>암호화</h4>
+                        <p class="card-desc-sub">데이터 전송/저장 시 강력 암호화! (해킹 방지)</p>
+                    </div>
+                    <div class="feature-card style-red">
+                        <div class="card-icon-small">👤</div> <h4 class="card-title-sub">접근 권한<br>관리</h4>
+                        <p class="card-desc-sub">누가, 어떤 데이터, 어디까지? (세밀 통제!)</p>
+                    </div>
+                    <div class="feature-card style-red">
+                        <div class="card-icon-small">🌍</div> <h4 class="card-title-sub">저장 위치<br>선택 옵션</h4>
+                        <p class="card-desc-sub">데이터 보관 장소 선택 가능! (일부 서비스)</p>
+                    </div>
+                    <div class="feature-card style-red">
+                        <div class="card-icon-small">🏆</div> <h4 class="card-title-sub">국제 보안<br>인증</h4>
+                        <p class="card-desc-sub">SOC 2, ISO 27001 등 객관적 안전성 증명!</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ... (HTML 나머지 슬라이드들도 새로운 디자인 원칙에 따라 수정) ... -->
+        <!-- Slide 15 (구 19) -->
+        <div class="slide" id="slideM2S3_15">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">보안, <span class="highlight-box-red">이것만은 꼭 기억하세요!</span> (결론 & 당부) 📜</div>
+                    <div class="slide-subtitle">안전한 AI 활용을 위한 최종 체크리스트! 회사 정보 보호, 아무리 강조해도 지나치지 않아요!</div>
+                </div>
+                <div class="slide-number">15</div>
+            </div>
+            <div class="slide-content">
+                <ul class="checklist">
+                    <li class="check-item critical">
+                        <span class="check-icon">🚨</span>
+                        <div><strong>회사 기밀 / 고객 민감 정보 / 미공개 자료</strong> ➡️ <span class="highlight-bold">반드시 <span class="highlight-box-red">"기업용 AI"</span> 사용!</span><br>
+                        (일상 정보 / 개인 아이디어는 일반 AI 활용 OK!)</div>
+                    </li>
+                    <li class="check-item important">
+                        <span class="check-icon">📋</span>
+                        <div>어떤 AI 서비스든 사용 전 ➡️ 제공업체 <span class="highlight-bold">데이터 처리 방침, 보안 정책, 이용 약관</span> 꼼꼼히 확인!</div>
+                    </li>
+                    <li class="check-item important">
+                        <span class="check-icon">🏢</span>
+                        <div>회사 내부 <span class="highlight-bold">AI 사용 가이드라인 마련 & 임직원 보안 교육</span> 병행 필수!</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 16 (구 20) -->
+        <div class="slide" id="slideM2S3_16">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">신뢰도 Q&A 시작! 🧐 AI 답변, <span class="highlight-text">어디까지 믿어야 할까요?</span></div>
+                    <div class="slide-subtitle">"AI가 가끔 틀린 정보를 진짜처럼 알려준다던데..." AI 정보, 100% 믿어도 될까?</div>
+                </div>
+                <div class="slide-number">16</div>
+            </div>
+            <div class="slide-content centered-text reliability-qna-intro">
+                <div class="reliability-icon-main">🔎</div>
+                <p class="qna-question-big">"AI가 주는 정보, <span class="highlight-box-yellow">똑똑하게 판단하는 방법</span>은 무엇일까요?"</p>
+                <p class="qna-answer-prompt">함께 알아봅시다!</p>
+            </div>
+        </div>
+
+        <!-- Slide 17 (구 21) -->
+        <div class="slide" id="slideM2S3_17">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI도 완벽하진 않아요! <span class="highlight-box-yellow">"환각 현상"</span> 주의! 😲</div>
+                    <div class="slide-subtitle">AI의 거짓말? 'AI 할루시네이션'을 아시나요? AI는 때로 그럴듯한 가짜 정보를 만들어요!</div>
+                </div>
+                <div class="slide-number">17</div>
+            </div>
+            <div class="slide-content centered-text hallucination-info">
+                <div class="alert-box-yellow">
+                    <span class="alert-icon">⚠️</span>
+                    <h3 class="alert-title">'AI 할루시네이션' (환각 현상) 이란?</h3>
+                    <p>AI는 학습한 데이터를 기반으로 <span class="highlight-bold">'가장 그럴듯한'</span> 답변을 생성합니다.<br>
+                    하지만! 때로는 <span class="highlight-bold">사실과 다르거나 맥락에 맞지 않는 정보</span>를 <br>
+                    마치 <span class="highlight-bold">진짜인 것처럼 제시</span>할 수 있습니다.</p>
+                </div>
+                <p class="conclusion-text"><span class="highlight-box-red">AI가 제공하는 모든 정보를 100% 맹신하는 것은 위험합니다!</span></p>
+            </div>
+        </div>
+
+        <!-- Slide 18 (구 22) -->
+        <div class="slide" id="slideM2S3_18">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">NotebookLM의 강점! <span class="highlight-box-yellow">근거 있는 답변</span> (출처 기반) ✅</div>
+                    <div class="slide-subtitle">정보의 신뢰도, 사용자가 직접 판단 가능! NotebookLM은 달라요! 답변의 근거를 직접 확인!</div>
+                </div>
+                <div class="slide-number">18</div>
+            </div>
+            <div class="slide-content centered-text">
+                 <div class="info-box-green">
+                    <span class="info-icon">💡</span>
+                    <h3 class="info-title">NotebookLM의 신뢰도 UP 비결!</h3>
+                    <ul class="info-list">
+                        <li>사용자가 <span class="highlight-bold">직접 제공한 자료 안에서만</span> 정보를 찾습니다.</li>
+                        <li>답변의 근거가 된 <span class="highlight-bold">원본 자료의 특정 부분을 함께 표시(인용)</span>해 줍니다.</li>
+                        <li>이를 통해 사용자는 AI 답변의 출처를 명확히 인지하고, 필요시 <span class="highlight-bold">원본을 직접 확인하여 정보의 정확성을 검증</span>하기 용이합니다.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 19 (구 23) -->
+        <div class="slide" id="slideM2S3_19">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">AI 정보, <span class="highlight-box-yellow">현명하게 활용하는 4가지 방법!</span> 💡</div>
+                    <div class="slide-subtitle">똑똑한 AI 사용자 되기! AI 정보 활용, 이 4가지만 기억하세요!</div>
+                </div>
+                <div class="slide-number">19</div>
+            </div>
+            <div class="slide-content">
+                <ol class="numbered-list-spaced">
+                    <li>
+                        <div class="list-item-header"><span class="list-icon">🔍</span><strong>출처 확인은 습관처럼!</strong></div>
+                        <p>NotebookLM이 제시하는 인용(출처) 정보를 바탕으로, 중요한 내용이나 수치 등은 <span class="highlight-bold">원본 자료와 반드시 대조</span>하여 사실 관계를 확인하세요.</p>
+                    </li>
+                    <li>
+                        <div class="list-item-header"><span class="list-icon">🔄</span><strong>다른 정보와 비교 검토 (교차 검증)!</strong></div>
+                        <p>특히 중요한 의사결정에 AI 분석 결과를 활용해야 한다면, 해당 결과만을 믿기보다는 다른 신뢰할 수 있는 정보원과 <span class="highlight-bold">비교하여 교차 검증</span>하는 것이 안전합니다.</p>
+                    </li>
+                    <li>
+                        <div class="list-item-header"><span class="list-icon">🤔</span><strong>"정말 그럴까?" 비판적으로 생각하기!</strong></div>
+                        <p>AI가 제시한 답변이 아무리 논리적으로 보이더라도, 상식적인 수준에서 타당한지, 기존의 지식이나 경험과 배치되지는 않는지 <span class="highlight-bold">한 번 더 생각해보는 비판적인 자세</span>가 필요합니다.</p>
+                    </li>
+                    <li>
+                        <div class="list-item-header"><span class="list-icon">🎯</span><strong>질문은 명확하고 구체적으로!</strong></div>
+                        <p>AI에게 모호하거나 너무 광범위한 질문을 하면 의도를 정확히 파악하기 어렵습니다. 원하는 답변의 조건, 포함될 내용, 분석의 범위 등을 <span class="highlight-bold">명확하고 구체적으로 질문</span>할수록 더 정확하고 유용한 답변을 얻을 확률이 높아집니다.</p>
+                    </li>
+                </ol>
+            </div>
+        </div>
+
+        <!-- Slide 20 (구 24) -->
+        <div class="slide" id="slideM2S3_20">
+            <div class="slide-header">
+                <div>
+                    <div class="slide-title">최종 요약: AI 활용 <span class="highlight-text">성공 전략!</span> 🚀</div>
+                    <div class="slide-subtitle">AI 시대, 슬기로운 직장 생활을 위한 핵심! AI, 이렇게 쓰면 당신도 전문가!</div>
+                </div>
+                <div class="slide-number">20</div>
+            </div>
+            <div class="slide-content summary-grid">
+                <div class="summary-card style-blue">
+                    <div class="summary-icon">💡</div>
+                    <h3 class="summary-title">AI = 업무 지원 도구!</h3>
+                    <p>만능 해결사 ❌, 강력한 조력자 ⭕!<br>(최종 판단과 책임은 항상 <span class="highlight-bold">사람</span>에게!)</p>
+                </div>
+                <div class="summary-card style-red">
+                    <div class="summary-icon">🔒</div>
+                    <h3 class="summary-title">정보는 안전하게!</h3>
+                    <p>회사/중요 자료는 <span class="highlight-bold">'기업용 AI'</span>로!<br>(데이터 보안 기능 & 회사 규정 준수!)</p>
+                </div>
+                <div class="summary-card style-yellow">
+                    <div class="summary-icon">🧐</div>
+                    <h3 class="summary-title">정보는 검증 필수!</h3>
+                    <p>AI 정보, 100% 정답 ❌!<br>(출처 확인 & 비판적 수용!)</p>
+                </div>
+                <div class="summary-card style-green">
+                    <div class="summary-icon">📈</div>
+                    <h3 class="summary-title">꾸준한 학습 & 관리!</h3>
+                    <p>성공적인 AI 활용 = 지속적 학습 + 체계적 관리!<br>(기술 발전 + 회사 노력!)</p>
+                </div>
+                 <p class="final-caution"><span class="highlight-box-red">마지막 당부!</span> 회사 중요 정보 사용 시에는 <span class="highlight-bold">반드시 내부 보안 규정을 확인</span>해주세요!</p>
+            </div>
+        </div>
 
         <div class="footer">
-            Copyright © 2025 OROT. All rights reserved. (내용 기반 재구성)
+            Copyright © 2025 OROT. All rights reserved.
         </div>
     </div>
 
     <script>
-        // 이전과 동일한 JavaScript
+        // JavaScript는 common_styles.css를 사용하는 다른 HTML 파일들과 동일하게 유지
         document.addEventListener("DOMContentLoaded", function() {
-            const slides = document.querySelectorAll('.slide-container .slide');
-            if (slides.length > 0) {
-                slides[0].classList.add('active');
-            }
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-            slides.forEach(slide => {
-                observer.observe(slide);
+            const slides = document.querySelectorAll('.slide');
+            
+            slides.forEach((slide, index) => {
+                const slideNumberEl = slide.querySelector('.slide-number');
+                if (slideNumberEl) {
+                    slideNumberEl.textContent = (index + 1).toString().padStart(2, '0');
+                }
+                // 첫 번째 슬라이드 자동 활성화 (스크롤 이벤트 전)
+                if (index === 0) {
+                    slide.classList.add('active');
+                } else {
+                    // 다른 슬라이드들은 초기에 active 클래스 제거 (필요시)
+                    slide.classList.remove('active');
+                }
             });
+            
+            // 스크롤 이벤트 리스너 설정 (mainContent 영역이 있는 경우)
+            // spa_page.html의 JS에서 이 부분을 처리하므로 여기서는 중복될 수 있음.
+            // 이 파일이 단독으로 테스트될 경우를 위해 남겨둘 수 있으나, SPA 환경에서는 spa_page.html의 로직이 우선.
+            const scroller = document.getElementById('mainContent') || window; // spa_page.html 에서는 mainContent
+            let currentScrollListener = () => {
+                slides.forEach((slide) => {
+                    const slideRect = slide.getBoundingClientRect();
+                    // scroller가 window일 경우와 element일 경우를 구분
+                    const scrollerRect = (scroller === window) ? { top: 0, height: window.innerHeight } : scroller.getBoundingClientRect();
+                    const slideTopInScroller = slideRect.top - scrollerRect.top;
+                    const scrollerHeight = scrollerRect.height;
+
+                    // 슬라이드가 뷰포트의 특정 영역에 들어오면 active 클래스 추가
+                    if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                         slide.classList.add('active');
+                    }
+                    // 필요하다면, 뷰포트를 벗어난 슬라이드에서 active 클래스를 제거하는 로직도 추가 가능
+                    // else { slide.classList.remove('active'); }
+                });
+            };
+            
+            if (scroller) {
+                scroller.addEventListener('scroll', currentScrollListener);
+                // 초기 로드 시 한 번 실행하여 현재 보이는 슬라이드 활성화
+                // setTimeout을 사용하여 DOM 렌더링 후 실행 보장
+                setTimeout(() => {
+                    if (slides.length > 0 && !slides[0].classList.contains('active')) {
+                       // 이미 첫 슬라이드는 위에서 .active 클래스를 가짐
+                       // 이 부분은 모든 슬라이드에 대해 한 번 체크하는 용도
+                       slides[0].classList.add('active'); // 만약을 위해 추가
+                    }
+                    currentScrollListener(); 
+                }, 100); // 100ms 지연
+            }
         });
     </script>
 </body>
