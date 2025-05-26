@@ -4,159 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 커리큘럼</title>
+    <link rel="stylesheet" href="css/common_styles.css"> <!-- 기존 CSS 파일 유지 -->
+    <!-- 모듈별 CSS는 JavaScript로 동적 로드 -->
     <style>
-        :root {
-            /* (변수 선언은 이전과 동일하게 유지) */
-            --primary-color: #3155e2; --primary-color-rgb: 49, 85, 226; --secondary-color: #e0e7ff;
-            --dark-text: #333; --light-text: #666; --card-bg: #fff; --border-color: #eaeaea;
-            --nav-collapsed-width: 15px; --nav-expanded-width: 320px; --nav-bg-expanded: var(--card-bg);
-            --nav-active-bg: var(--primary-color); --nav-active-text: #ffffff; --section-list-bg: #f8f9fa;
-            --nav-module-title-color: var(--dark-text); --page-bg: #f0f2f5; --success-color: #28a745;
-            --info-color: #17a2b8; --warning-color-bg: #fff8e1; --warning-color-border: #ffc107;
-            --warning-color-text: #e65100; --slide-card-bg: #fff; --content-max-width: 1100px;
-            /* (나머지 변수들도 동일하게 유지) */
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-        body { position: relative; background-color: var(--page-bg); color: var(--dark-text); line-height: 1.6; display: flex; height: 100vh; overflow: hidden; }
-        body.mobile-sidebar-open { /* 모바일 사이드바 열렸을 때 body 스크롤 방지 (필요시) */
-            /* overflow: hidden; */ /* 메인 콘텐츠 스크롤도 막을 수 있어 주의 */
-        }
-        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.10; z-index: -1; }
-
-        /* --- 데스크탑용 Navigation 스타일 --- */
-        .page-navigation {
-            position: relative; /* 데스크탑에서는 relative */
-            height: 100%;
-            width: var(--nav-collapsed-width);
-            background-color: var(--primary-color);
-            opacity: 0.7;
-            z-index: 100;
-            overflow: hidden;
-            transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            flex-shrink: 0;
-            border-right: 1px solid var(--border-color);
-        }
-        .page-navigation:hover { /* 데스크탑 hover 시 확장 (모바일에서는 이 hover 비활성화) */
-            width: var(--nav-expanded-width);
-            background-color: var(--nav-bg-expanded);
-            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
-            opacity: 1;
-            overflow: visible;
-        }
-        .nav-header {
-            font-size: 1.2em; color: var(--primary-color); padding: 20px 15px 15px 15px;
-            border-bottom: 1px solid var(--border-color); flex-shrink: 0; opacity: 0;
-            transition: opacity 0.2s 0.1s ease; white-space: nowrap; position: relative;
-        }
-        .page-navigation:hover .nav-header { /* 데스크탑 hover 시 표시 */
-            opacity: 1;
-        }
-        .nav-scroll-wrapper {
-            width: var(--nav-expanded-width); flex-grow: 1; overflow-y: auto; padding: 15px 0;
-            opacity: 0; transition: opacity 0.2s 0.1s ease; display: flex; flex-direction: column;
-        }
-        .page-navigation:hover .nav-scroll-wrapper { /* 데스크탑 hover 시 표시 */
-            opacity: 1;
-        }
-        /* (nav-curriculum-list 등 내부 요소 스타일은 이전과 동일하게 유지) */
-        .nav-curriculum-list { list-style: none; padding: 0 20px; margin: 0; flex-grow: 1; }
-        .nav-module-group { margin-bottom: 0; border-bottom: 1px solid var(--border-color); }
-        .nav-module-group:last-child { border-bottom: none; }
-        .nav-module-group:first-child .nav-module-title-wrapper{ border-top: 1px solid var(--border-color); }
-        .nav-module-title-wrapper { font-size: 1em; font-weight: 600; color: var(--nav-module-title-color); padding: 12px 15px; background-color: rgba(var(--primary-color-rgb), 0.03); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s ease; border-left: 4px solid transparent; }
-        .nav-module-title-wrapper:hover { background-color: rgba(var(--primary-color-rgb), 0.08); }
-        .nav-module-title-wrapper.active { border-left-color: var(--primary-color); }
-        .nav-module-title { flex-grow: 1; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
-        .nav-toggle-icon { font-family: 'Arial', sans-serif; font-size: 0.8em; font-weight: bold; color: var(--light-text); margin-left: 10px; transition: transform 0.3s ease; flex-shrink: 0; }
-        .nav-module-title-wrapper.active .nav-toggle-icon { transform: rotate(90deg); }
-        .nav-section-list { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out; background-color: var(--section-list-bg); padding-left: 25px; }
-        .nav-section-item { margin: 0; }
-        .nav-section-item a { display: block; text-decoration: none; color: #555; padding: 10px 15px; border-radius: 0; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; border-bottom: 1px solid #eee; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
-        .nav-section-item:last-child a { border-bottom: none; }
-        .nav-section-item a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
-        .nav-section-item.current-page a { background-color: var(--nav-active-bg); color: var(--nav-active-text) !important; font-weight: 600; border-radius: 4px; }
-        .nav-mainpage-link-wrapper { padding: 15px 20px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
-        .nav-mainpage-link { display: block; padding: 12px 15px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: 500; transition: background-color 0.2s ease; }
-        .nav-mainpage-link:hover { background-color: #2a49c7; }
-
-
-        /* --- Main Content Area & #contentDisplay (이전과 동일) --- */
-        .main-content-area { flex-grow: 1; height: 100vh; overflow-y: auto; padding: 30px; position: relative; }
-        #contentDisplay { margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; max-width: var(--content-max-width); }
-        #contentDisplay.loaded { opacity: 1; transform: translateY(0); }
-        /* (#contentDisplay 내부 태그, 슬라이드, 스크롤바 스타일은 이전과 동일하게 유지) */
-        #contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 { color: var(--primary-color); margin-top: 1.5em; margin-bottom: 0.8em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border-color); }
-        #contentDisplay h1:first-child, #contentDisplay h2:first-child, #contentDisplay h3:first-child, #contentDisplay h4:first-child { margin-top: 0; }
-        #contentDisplay h1 { font-size: 1.8em; } #contentDisplay h2 { font-size: 1.5em; } #contentDisplay h3 { font-size: 1.3em; }
-        #contentDisplay h4 { font-size: 1.1em; color: var(--dark-text); border-bottom: none; }
-        #contentDisplay p { margin-bottom: 1rem; line-height: 1.7; }
-        #contentDisplay ul, #contentDisplay ol { margin-bottom: 1rem; padding-left: 25px; }
-        #contentDisplay li { margin-bottom: 0.5rem; } #contentDisplay a { color: var(--primary-color); text-decoration: none; }
-        #contentDisplay a:hover { text-decoration: underline; }
-        #contentDisplay strong, #contentDisplay b { font-weight: 600; color: var(--primary-color); }
-        #contentDisplay img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-        #contentDisplay code { display: inline-block; background-color: rgba(0,0,0,0.05); padding: 0.2em 0.4em; border-radius: 4px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 0.9em; word-break: keep-all; color: var(--dark-text); }
-        #contentDisplay pre code { display: block; padding: 1em; overflow-x: auto; background-color: #f0f0f0; }
-        #contentDisplay .slide-container { max-width: 100%; margin: 0; padding: 0; }
-        #contentDisplay .slide { background-color: var(--slide-card-bg); margin-bottom: 30px; overflow: hidden; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
-        #contentDisplay .slide.active-slide, #contentDisplay .slide.active { opacity: 1; transform: translateY(0); }
-        #contentDisplay .slide-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; background-color: #fdfdff; border-radius: 12px 12px 0 0; }
-        #contentDisplay .slide-number { color: var(--light-text); font-size: 0.85em; }
-        #contentDisplay .slide-title { font-size: 1.6em; font-weight: 700; color: var(--dark-text); margin-bottom: 0.2rem; border-bottom: none; padding-bottom: 0; }
-        #contentDisplay .slide-subtitle { font-size: 1em; color: var(--light-text); margin-bottom: 0; }
-        #contentDisplay .slide-content { padding: 1.5rem 2rem; }
-        #contentDisplay .text-block { font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; color: var(--dark-text); text-align: center; word-break: keep-all; }
-        #contentDisplay .highlight { color: var(--primary-color); font-weight: 600; }
-        #contentDisplay .footer { text-align: center; padding: 2rem; color: var(--light-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
-        .nav-scroll-wrapper::-webkit-scrollbar, .main-content-area::-webkit-scrollbar { width: 8px; }
-        .nav-scroll-wrapper::-webkit-scrollbar-track, .main-content-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
-        .nav-scroll-wrapper::-webkit-scrollbar-thumb { background-color: rgba(var(--primary-color-rgb), 0.4); border-radius: 10px; }
-        .main-content-area::-webkit-scrollbar-thumb { background-color: rgba(var(--dark-text), 0.3); border-radius: 10px; }
-
-
-        /* --- 모바일 전용 스타일 --- */
+        /* 모바일 전용 스타일 */
         @media (max-width: 768px) {
-            /* 데스크탑용 네비게이션 숨기기 또는 비활성화 */
+            /* 데스크탑 네비게이션의 hover 효과 및 직접적 상호작용 제한 */
             .page-navigation {
-                /* display: none; /* 아예 숨겨버리면 JS에서 참조 불가. 대신 위치나 크기를 조정하여 안보이게 */
-                /* 또는 모바일에서는 너비를 0으로 만들고 overflow hidden 유지 */
-                width: 0 !important; /* JS보다 우선순위 높게 */
+                pointer-events: none; /* 모바일에서는 hover 및 클릭 방지 */
+                opacity: 0 !important; /* 시각적으로도 완전히 숨김 */
+                width: 0 !important; /* 공간 차지하지 않도록 */
                 border-right: none !important;
-                opacity: 0 !important;
-                pointer-events: none; /* 클릭 등 이벤트 무시 */
             }
 
-            /* 모바일용 사이드바 (새로운 요소 또는 기존 요소를 JS로 제어) */
-            /* 여기서는 #mobile-sidebar 라는 ID를 가진 새로운 div를 사용한다고 가정 */
-            #mobile-sidebar {
+            /* 모바일 햄버거 버튼 */
+            #mobile-hamburger-btn {
+                display: block; /* 모바일에서만 보임 */
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1002;
+                background-color: var(--primary-color, #3155e2); /* common_styles.css 변수 사용 시도 */
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                font-size: 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            }
+
+            /* 모바일 사이드바 컨테이너 */
+            #mobile-sidebar-container {
                 position: fixed;
                 top: 0;
-                left: -300px; /* 초기 숨김 (넉넉한 너비) */
+                left: 0;
                 width: 280px; /* 모바일 사이드바 너비 */
                 height: 100vh;
-                background-color: var(--nav-bg-expanded); /* 흰색 배경 등 */
-                z-index: 1005; /* 햄버거 버튼, 오버레이보다 높게 */
+                background-color: var(--nav-bg-expanded, #fff); /* common_styles.css 변수 사용 시도 */
+                z-index: 1001;
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
                 overflow-y: auto;
-                transition: left 0.3s ease-in-out;
-                box-shadow: 2px 0 5px rgba(0,0,0,0.2);
-                padding-top: 50px; /* 닫기 버튼 공간 확보 */
+                box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                padding-top: 50px; /* 닫기 버튼을 위한 공간 */
             }
-            #mobile-sidebar.open {
-                left: 0;
-            }
-            /* 모바일 사이드바 내부 스타일 (기존 .nav-header, .nav-scroll-wrapper 등 활용 가능) */
-            #mobile-sidebar .nav-header,
-            #mobile-sidebar .nav-scroll-wrapper {
-                opacity: 1; /* 항상 보이도록 */
-                width: 100%; /* 내부 너비 꽉 채움 */
-            }
-            #mobile-sidebar .nav-header {
-                padding-top: 15px; /* 닫기 버튼과 겹치지 않도록 */
+            #mobile-sidebar-container.open {
+                transform: translateX(0);
             }
 
+            /* 모바일 사이드바 닫기 버튼 */
             #mobile-sidebar-close-btn {
                 position: absolute;
                 top: 15px;
@@ -164,43 +61,51 @@
                 font-size: 24px;
                 background: none;
                 border: none;
-                color: var(--primary-color);
+                color: var(--primary-color, #3155e2);
                 cursor: pointer;
-                z-index: 1006;
             }
 
-
-            /* 햄버거 버튼 */
-            #hamburger-menu {
-                display: block; /* 모바일에서는 항상 표시 */
-                position: fixed;
-                top: 15px;
-                left: 15px;
-                z-index: 1002; /* 오버레이보다 높게, 사이드바보다는 낮을 수도 있음 (디자인에 따라) */
-                background: var(--primary-color); color: white; border: none;
-                padding: 8px 12px; font-size: 20px; cursor: pointer; border-radius: 5px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.2); line-height: 1;
+            /* 모바일 사이드바 내부 스타일 (기존 .nav-header, .nav-scroll-wrapper 등 재활용) */
+            #mobile-sidebar-container .nav-header,
+            #mobile-sidebar-container .nav-scroll-wrapper {
+                opacity: 1 !important; /* 항상 보이도록 */
+                width: 100% !important;
             }
+            #mobile-sidebar-container .nav-header { /* common_styles.css 와 충돌 피하기 위해 !important 사용 가능성 */
+                padding-top: 10px; /* 위에서 이미 줬으므로 조정 */
+                border-bottom: 1px solid var(--border-color, #eaeaea);
+            }
+             #mobile-sidebar-container .nav-scroll-wrapper {
+                padding: 15px 0; /* common_styles.css 와 동일하게 */
+             }
+
 
             /* 모바일 오버레이 */
             #mobile-overlay {
-                display: none; /* JS로 제어 */
+                display: none;
                 position: fixed;
-                top: 0; left: 0; width: 100%; height: 100%;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
                 background-color: rgba(0,0,0,0.5);
-                z-index: 1004; /* 사이드바보다 낮게 */
+                z-index: 1000;
             }
             #mobile-overlay.active {
                 display: block;
             }
 
-            /* 메인 콘텐츠 영역 패딩 조정 */
+            /* 메인 콘텐츠 영역 패딩 (햄버거 버튼 및 이전/다음 버튼 공간) */
             .main-content-area {
-                padding: 60px 15px 80px 15px; /* 상단: 햄버거, 하단: 이전/다음 버튼 공간 */
+                padding-top: 60px !important; /* !important 로 common_styles.css 우선순위 덮기 */
+                padding-bottom: 80px !important;
             }
-             /* 이전/다음 버튼 스타일은 이전과 동일하게 유지 */
+
+            /* 모바일 이전/다음 버튼 (기존 스타일 유지) */
             #page-navigation-buttons {
-                display: none; position: fixed; bottom: 0; left: 0; width: 100%;
+                display: none; /* JS로 제어 */
+                /* ... (나머지 스타일은 이전과 동일하게 유지) ... */
+                position: fixed; bottom: 0; left: 0; width: 100%;
                 padding: 10px 15px; background-color: rgba(250, 250, 250, 0.95);
                 box-shadow: 0 -2px 8px rgba(0,0,0,0.1); z-index: 999;
                 justify-content: space-between; align-items: center;
@@ -208,32 +113,39 @@
             }
             #page-navigation-buttons button {
                 padding: 10px 15px; font-size: 0.9em; font-weight: 500;
-                background-color: var(--primary-color); color: white; border: none;
+                background-color: var(--primary-color, #3155e2); color: white; border: none;
                 border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease;
                 min-width: 70px; text-align: center;
             }
             #page-navigation-buttons button:hover:not(:disabled) { background-color: #2a49c7; }
             #page-navigation-buttons button:disabled { background-color: #ccc; color: #777; cursor: not-allowed; opacity: 0.7; }
         }
-        /* 모바일이 아닐 때 모바일 UI 숨김 */
+
+        /* 데스크탑에서는 모바일 UI 요소 숨김 */
         @media (min-width: 769px) {
-            #hamburger-menu, #mobile-sidebar, #mobile-overlay, #mobile-sidebar-close-btn {
+            #mobile-hamburger-btn,
+            #mobile-sidebar-container,
+            #mobile-overlay,
+            #page-navigation-buttons { /* 이전/다음 버튼도 데스크탑에선 숨김 */
                 display: none !important;
             }
-            /* 데스크탑에서 .page-navigation이 0으로 된것 복구 */
+            /* 데스크탑 네비게이션 원상 복구 (모바일에서 !important로 변경한 값들) */
             .page-navigation {
-                 width: var(--nav-collapsed-width) !important;
-                 border-right: 1px solid var(--border-color) !important;
-                 opacity: 0.7 !important;
-                 pointer-events: auto !important;
+                pointer-events: auto !important;
+                opacity: 0.7 !important; /* common_styles.css의 기본값으로 */
+                width: var(--nav-collapsed-width) !important; /* common_styles.css의 기본값으로 */
+                border-right: 1px solid var(--border-color, #eaeaea) !important;
+            }
+            .main-content-area { /* 데스크탑 패딩 원상복구 */
+                padding-top: 30px !important;
+                padding-bottom: 30px !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- 데스크탑용 네비게이션 -->
+    <!-- 데스크탑용 네비게이션 (기존 HTML 그대로 사용) -->
     <nav class="page-navigation" id="pageNav">
-        <!-- 기존 nav 내용 복사 (JS에서 모바일용으로 복제하여 사용) -->
         <div class="nav-header">커리큘럼</div>
         <div class="nav-scroll-wrapper">
             <ul class="nav-curriculum-list">
@@ -288,15 +200,6 @@
         </div>
     </nav>
 
-    <!-- 모바일용 사이드바 (JS로 내용 채움) -->
-    <div id="mobile-sidebar">
-        <button id="mobile-sidebar-close-btn">×</button>
-        <!-- 네비게이션 내용이 여기에 복제될 것임 -->
-    </div>
-    <div id="mobile-overlay"></div> <!-- 모바일용 오버레이 -->
-    <button id="hamburger-menu">☰</button> <!-- 모바일용 햄버거 버튼 -->
-
-
     <main class="main-content-area" id="mainContent">
         <article id="contentDisplay">
             <h1>환영합니다!</h1>
@@ -304,47 +207,85 @@
         </article>
     </main>
 
-    <!-- 모바일 이전/다음 버튼 (이전과 동일) -->
-    <div id="page-navigation-buttons">
-        <button id="prev-section-button">이전</button>
-        <button id="next-section-button">다음</button>
-    </div>
+    <!-- 모바일용 UI 요소 (JS로 생성 및 제어) -->
+    <!-- <button id="mobile-hamburger-btn">☰</button> -->
+    <!-- <div id="mobile-sidebar-container"> -->
+        <!-- <button id="mobile-sidebar-close-btn">×</button> -->
+        <!-- (네비게이션 내용이 JS로 복제됨) -->
+    <!-- </div> -->
+    <!-- <div id="mobile-overlay"></div> -->
+    <!-- <div id="page-navigation-buttons">...</div> -->
+
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const desktopNav = document.getElementById('pageNav'); // 데스크탑 네비게이션
-            const mobileSidebar = document.getElementById('mobile-sidebar');
-            const mobileSidebarCloseBtn = document.getElementById('mobile-sidebar-close-btn');
-            const hamburgerBtn = document.getElementById('hamburger-menu');
-            const mobileOverlay = document.getElementById('mobile-overlay');
+            // 기존 (데스크탑) 네비게이션 요소
+            const desktopNav = document.getElementById('pageNav');
+            const desktopNavModuleTitles = desktopNav.querySelectorAll('.nav-module-title-wrapper');
+            const desktopNavSectionLinks = desktopNav.querySelectorAll('.nav-section-item a');
 
             const contentDisplay = document.getElementById('contentDisplay');
-            const mainContentArea = document.getElementById('mainContent');
+            const mainContentArea = document.getElementById('mainContent'); // 스크롤 리스너 및 스크롤 초기화용
             const sectionListPadding = 8;
-            let currentActiveLinkElement = null;
+            let currentActiveLinkElement = null; // 항상 데스크탑 네비게이션의 링크를 기준으로 관리
             let currentScrollListener = null;
             let currentModuleStyleLink = null;
             let isMobile = window.innerWidth <= 768;
 
-            // --- 모바일 사이드바 내용 복제 및 초기화 ---
+            // --- 모바일 UI 요소 생성 ---
+            const hamburgerBtn = document.createElement('button');
+            hamburgerBtn.id = 'mobile-hamburger-btn';
+            hamburgerBtn.innerHTML = '☰';
+            document.body.appendChild(hamburgerBtn);
+
+            const mobileSidebarContainer = document.createElement('div');
+            mobileSidebarContainer.id = 'mobile-sidebar-container';
+            document.body.appendChild(mobileSidebarContainer);
+
+            const mobileSidebarCloseBtn = document.createElement('button');
+            mobileSidebarCloseBtn.id = 'mobile-sidebar-close-btn';
+            mobileSidebarCloseBtn.innerHTML = '×';
+            mobileSidebarContainer.appendChild(mobileSidebarCloseBtn);
+
+            const mobileOverlay = document.createElement('div');
+            mobileOverlay.id = 'mobile-overlay';
+            document.body.appendChild(mobileOverlay);
+
+            const pageNavButtonsContainer = document.createElement('div'); // 이전/다음 버튼용
+            pageNavButtonsContainer.id = 'page-navigation-buttons';
+            const prevSectionBtn = document.createElement('button');
+            prevSectionBtn.id = 'prev-section-button'; prevSectionBtn.textContent = '이전';
+            const nextSectionBtn = document.createElement('button');
+            nextSectionBtn.id = 'next-section-button'; nextSectionBtn.textContent = '다음';
+            pageNavButtonsContainer.appendChild(prevSectionBtn);
+            pageNavButtonsContainer.appendChild(nextSectionBtn);
+            document.body.appendChild(pageNavButtonsContainer);
+
+
+            // --- 모바일 사이드바 내용 복제 및 이벤트 설정 ---
             function initializeMobileSidebar() {
-                // 데스크탑 nav의 내용을 모바일 사이드바로 복제 (구조만)
-                const desktopNavContent = desktopNav.querySelector('.nav-scroll-wrapper');
-                if (desktopNavContent) {
-                    // mobile-sidebar-close-btn 다음에 내용 추가
-                    mobileSidebar.insertBefore(desktopNavContent.cloneNode(true), mobileSidebarCloseBtn.nextSibling);
+                const desktopNavHeader = desktopNav.querySelector('.nav-header');
+                const desktopNavScrollWrapper = desktopNav.querySelector('.nav-scroll-wrapper');
+
+                if (desktopNavHeader) {
+                    const clonedHeader = desktopNavHeader.cloneNode(true);
+                    // 모바일에서는 항상 보이도록 opacity 제거 또는 1로 설정 (CSS에서 처리)
+                    mobileSidebarContainer.appendChild(clonedHeader);
                 }
-                // 모바일 사이드바 내의 링크와 아코디언에 이벤트 다시 연결
+                if (desktopNavScrollWrapper) {
+                    const clonedScrollWrapper = desktopNavScrollWrapper.cloneNode(true);
+                    mobileSidebarContainer.appendChild(clonedScrollWrapper);
+                }
                 setupMobileSidebarInteractions();
             }
 
             function setupMobileSidebarInteractions() {
-                const mobileNavModuleTitles = mobileSidebar.querySelectorAll('.nav-module-title-wrapper');
-                const mobileNavSectionLinks = mobileSidebar.querySelectorAll('.nav-section-item a');
+                const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
+                const mobileNavSectionLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
 
                 mobileNavModuleTitles.forEach(titleWrapper => {
                     titleWrapper.addEventListener('click', function () {
-                        // 아코디언 로직 (기존과 동일, 대상만 모바일 사이드바 내부)
+                        // 모바일 아코디언 로직 (기존과 동일, 대상만 모바일)
                         const isActive = this.classList.contains('active');
                         const sectionList = this.nextElementSibling;
                         if (!isActive) {
@@ -370,107 +311,94 @@
                     link.addEventListener('click', function (event) {
                         event.preventDefault();
                         const filePath = this.dataset.src;
-                        // currentActiveLinkElement 업데이트를 위해 원본 링크(데스크탑)에서 찾아 설정하거나,
-                        // 모바일 링크에도 동일한 처리를 해줘야 함.
-                        // 여기서는 간단히 데스크탑 링크를 기준으로 처리하도록 유도.
-                        const originalLink = Array.from(desktopNav.querySelectorAll('.nav-section-item a')).find(
-                            origLink => origLink.dataset.src === filePath
-                        );
-
+                        const originalLink = Array.from(desktopNavSectionLinks).find(dLink => dLink.dataset.src === filePath);
                         if (originalLink) {
-                             loadAndDisplayContent(filePath, originalLink); // 원본 링크 전달
-                        } else {
-                            // 혹시 모를 경우 대비 (모바일 전용 링크라면 이 부분을 수정해야 함)
-                            loadAndDisplayContent(filePath, this);
+                            loadAndDisplayContent(filePath, originalLink); // 하이라이트는 데스크탑 링크 기준
+                        } else { // 이론상으론 발생 안함
+                            loadAndDisplayContent(filePath, this); // fallback
                         }
-                        toggleMobileNav(false); // 링크 클릭 후 모바일 사이드바 닫기
+                        toggleMobileSidebar(false); // 링크 클릭 후 모바일 사이드바 닫기
                     });
                 });
             }
 
 
-            // --- 뷰 모드 관리 (데스크탑/모바일 UI 전환) ---
+            // --- 뷰 모드에 따른 UI 처리 ---
             function handleViewChange() {
                 isMobile = window.innerWidth <= 768;
                 if (isMobile) {
-                    // 모바일 UI 활성화
                     hamburgerBtn.style.display = 'block';
-                    // 데스크탑 네비게이션 비활성화 (CSS에서 처리 중)
+                    pageNavButtonsContainer.style.display = 'flex'; // 모바일에서 이전/다음 버튼 보이기
+                    // 데스크탑 네비게이션의 hover 비활성화는 CSS에서 처리
                 } else {
-                    // 데스크탑 UI 활성화
                     hamburgerBtn.style.display = 'none';
-                    mobileOverlay.classList.remove('active');
-                    mobileSidebar.classList.remove('open');
-                    // 데스크탑 네비게이션 활성화 (CSS에서 처리 중)
+                    mobileSidebarContainer.classList.remove('open'); // 모바일 사이드바 닫기
+                    mobileOverlay.classList.remove('active');      // 오버레이 닫기
+                    pageNavButtonsContainer.style.display = 'none'; // 데스크탑에서 이전/다음 버튼 숨기기
+                    // 데스크탑 네비게이션 hover 활성화는 CSS에서 처리
                 }
                 updatePageNavigationButtons(); // 이전/다음 버튼 상태 업데이트
             }
 
-            // --- 모바일 사이드바 토글 함수 ---
-            function toggleMobileNav(show) {
+            // --- 모바일 사이드바 토글 ---
+            function toggleMobileSidebar(show) {
                 if (show) {
-                    mobileSidebar.classList.add('open');
+                    mobileSidebarContainer.classList.add('open');
                     mobileOverlay.classList.add('active');
-                    document.body.classList.add('mobile-sidebar-open');
                 } else {
-                    mobileSidebar.classList.remove('open');
+                    mobileSidebarContainer.classList.remove('open');
                     mobileOverlay.classList.remove('active');
-                    document.body.classList.remove('mobile-sidebar-open');
                 }
             }
 
-            hamburgerBtn.addEventListener('click', () => toggleMobileNav(true));
-            mobileOverlay.addEventListener('click', () => toggleMobileNav(false));
-            mobileSidebarCloseBtn.addEventListener('click', () => toggleMobileNav(false));
+            hamburgerBtn.addEventListener('click', () => toggleMobileSidebar(true));
+            mobileOverlay.addEventListener('click', () => toggleMobileSidebar(false));
+            mobileSidebarCloseBtn.addEventListener('click', () => toggleMobileSidebar(false));
 
 
-            // --- 데스크탑 네비게이션 아코디언 (기존 로직 유지, 대상만 desktopNav) ---
-            const desktopNavModuleTitles = desktopNav.querySelectorAll('.nav-module-title-wrapper');
+            // --- 데스크탑 네비게이션 아코디언 (기존 로직 그대로) ---
             desktopNavModuleTitles.forEach(titleWrapper => {
                 titleWrapper.addEventListener('click', function () {
-                    if (isMobile) return; // 모바일에서는 데스크탑 아코디언 동작 안함
+                    if (isMobile) return; // 모바일이면 데스크탑 아코디언 동작 안함
+
                     const isActive = this.classList.contains('active');
                     const sectionList = this.nextElementSibling;
-                    if (!isActive) { /* ... (기존 아코디언 닫기 로직) ... */
+                    if (!isActive) {
                         desktopNavModuleTitles.forEach(otherHeader => {
                             if (otherHeader !== this && otherHeader.classList.contains('active')) {
                                 otherHeader.classList.remove('active');
                                 const otherList = otherHeader.nextElementSibling;
                                 if (otherList && otherList.classList.contains('nav-section-list')) {
                                     otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
-                                } } });
-                    }
+                                } } }); }
                     this.classList.toggle('active');
                     if (sectionList && sectionList.classList.contains('nav-section-list')) {
-                        if (this.classList.contains('active')) { /* ... (기존 아코디언 열기 로직) ... */
+                        if (this.classList.contains('active')) {
                             sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
                             sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
                         } else {
                             sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
-                        }
-                    }
+                        } }
                 });
             });
-            const desktopNavSectionLinks = desktopNav.querySelectorAll('.nav-section-item a');
+
+            // --- 데스크탑 네비게이션 링크 클릭 (기존 로직 그대로) ---
             desktopNavSectionLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
+                link.addEventListener('click', function (event) {
                     event.preventDefault();
+                    if (isMobile) return; // 모바일이면 데스크탑 링크 직접 클릭은 무시 (햄버거 메뉴 사용 유도)
                     loadAndDisplayContent(this.dataset.src, this);
                 });
             });
 
 
-            // --- 콘텐츠 로드 함수 (currentActiveLinkElement를 desktopNav 기준으로 설정) ---
-            async function loadAndDisplayContent(filePath, linkElementForHighlight) {
-                // 이전 활성 링크 스타일 제거 (데스크탑 네비게이션 기준)
+            // --- 콘텐츠 로드 및 표시 함수 (기존 로직 거의 그대로, linkElement는 항상 데스크탑 링크) ---
+            async function loadAndDisplayContent(filePath, linkElementToHighlight) {
                 if (currentActiveLinkElement) {
                     currentActiveLinkElement.parentElement.classList.remove('current-page');
                 }
-                // 새 활성 링크 스타일 적용 (데스크탑 네비게이션 기준)
-                // linkElementForHighlight는 데스크탑 nav 내부의 a 요소여야 함
-                linkElementForHighlight.parentElement.classList.add('current-page');
-                currentActiveLinkElement = linkElementForHighlight;
-
+                linkElementToHighlight.parentElement.classList.add('current-page');
+                currentActiveLinkElement = linkElementToHighlight; // 데스크탑 네비게이션의 링크
 
                 const newHash = filePath.split('.')[0];
                 if(window.location.hash !== `#${newHash}`) history.replaceState(null, null, `#${newHash}`);
@@ -507,9 +435,9 @@
                 }
             }
 
-            // --- 슬라이드 초기화 (이전과 동일) ---
-            function initializeSlidesForCurrentPage(container, scroller, filePath) { /* ... 이전 코드 ... */
-                const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null;
+            // --- 슬라이드 초기화 함수 (기존 로직 그대로) ---
+            function initializeSlidesForCurrentPage(container, scroller, filePath) { /* ... 이전 코드와 동일 ... */
+                 const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null;
                 const checkSlidesInView = function() {
                     slides.forEach(slide => {
                         const slideRect = slide.getBoundingClientRect(), scrollerRect = scroller.getBoundingClientRect();
@@ -519,63 +447,65 @@
                         } }); }; return checkSlidesInView;
             }
 
-            // --- 특정 링크의 부모 모듈 아코디언 열기 (데스크탑/모바일 구분) ---
-            function activateParentModuleOfLink(linkElement) {
-                let navToUse = isMobile ? mobileSidebar : desktopNav;
-                const parentModuleWrapper = linkElement.closest('.nav-module-group')?.querySelector('.nav-module-title-wrapper');
+            // --- URL 해시 변경 감지 및 초기 로드 함수 (기존 로직, 데스크탑 링크 기준) ---
+            function activateParentModuleOfLink(linkElement) { // linkElement는 desktopNav의 링크여야 함
+                const parentModuleTitleWrapper = linkElement.closest('.nav-module-group').querySelector('.nav-module-title-wrapper');
+                const targetNavModuleTitles = isMobile ? mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper')
+                                                     : desktopNavModuleTitles;
+                const targetModuleTitleInScope = isMobile ?
+                    Array.from(targetNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === parentModuleTitleWrapper.dataset.moduleId)
+                    : parentModuleTitleWrapper;
 
-                // 클릭된 링크가 속한 네비게이션(데스크탑 또는 모바일) 내부의 모든 모듈 제목 가져오기
-                const allModuleTitlesInScope = navToUse.querySelectorAll('.nav-module-title-wrapper');
 
-                if (parentModuleWrapper && !parentModuleWrapper.classList.contains('active')) {
-                    allModuleTitlesInScope.forEach(otherHeader => { // 해당 스코프의 다른 모듈 닫기
-                        if (otherHeader !== parentModuleWrapper && otherHeader.classList.contains('active')) {
+                if (targetModuleTitleInScope && !targetModuleTitleInScope.classList.contains('active')) {
+                    targetNavModuleTitles.forEach(otherHeader => {
+                        if (otherHeader !== targetModuleTitleInScope && otherHeader.classList.contains('active')) {
                             otherHeader.classList.remove('active');
                             const otherList = otherHeader.nextElementSibling;
                             if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
                         }
                     });
-                    parentModuleWrapper.classList.add('active');
-                    const sectionListToOpen = parentModuleWrapper.nextElementSibling;
+                    targetModuleTitleInScope.classList.add('active');
+                    const sectionListToOpen = targetModuleTitleInScope.nextElementSibling;
                     if (sectionListToOpen) {
-                        sectionListToOpen.style.paddingTop = sectionListPadding + "px"; sectionListToOpen.style.paddingBottom = sectionListPadding + "px";
+                        sectionListToOpen.style.paddingTop = sectionListPadding + "px";
+                        sectionListToOpen.style.paddingBottom = sectionListPadding + "px";
                         sectionListToOpen.style.maxHeight = (sectionListToOpen.scrollHeight + sectionListPadding * 2) + "px";
                     }
                 }
             }
 
-
-            // --- URL 해시 및 초기 로드 (데스크탑 네비게이션 링크 기준) ---
             function loadContentFromHash() {
                 const hash = window.location.hash.substring(1);
-                // 해시로 링크를 찾을 때는 항상 데스크탑 네비게이션 기준으로 찾음
-                const desktopLinks = desktopNav.querySelectorAll('.nav-section-item a');
                 if (hash) {
-                    const targetLink = Array.from(desktopLinks).find(link => link.dataset.src.split('.')[0] === hash);
+                    const targetLink = Array.from(desktopNavSectionLinks).find(link => link.dataset.src.split('.')[0] === hash);
                     if (targetLink) {
                         loadAndDisplayContent(targetLink.dataset.src, targetLink);
-                        activateParentModuleOfLink(targetLink); // targetLink는 데스크탑 nav의 요소
+                        activateParentModuleOfLink(targetLink);
                     } else { loadInitialContent(); }
                 } else { loadInitialContent(); }
             }
+
             function loadInitialContent() {
                 const firstValidLink = desktopNav.querySelector('.nav-section-item a[data-src]');
                 if (firstValidLink) {
                     loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink);
-                    activateParentModuleOfLink(firstValidLink); // firstValidLink는 데스크탑 nav의 요소
+                    activateParentModuleOfLink(firstValidLink);
                 } else {
-                    contentDisplay.innerHTML = '<h1>환영합니다!</h1><p>학습할 내용을 선택해주세요.</p>';
-                    contentDisplay.classList.add('loaded'); updatePageNavigationButtons();
+                    contentDisplay.innerHTML = '<h1>환영합니다!</h1><p>왼쪽 메뉴에 마우스를 올리면 전체 목차가 나타납니다. 학습할 내용을 선택해주세요.</p>';
+                    contentDisplay.classList.add('loaded');
+                    updatePageNavigationButtons();
                 }
             }
 
-            // --- 이전/다음 버튼 (데스크탑 네비게이션 링크 기준) ---
+            // --- 이전/다음 버튼 로직 (데스크탑 링크 기준) ---
             function updatePageNavigationButtons() {
                 if (!isMobile || !currentActiveLinkElement) { // currentActiveLinkElement는 데스크탑 nav의 링크
                     pageNavButtonsContainer.style.display = 'none'; return;
                 }
-                pageNavButtonsContainer.style.display = 'flex';
-                const allDesktopLinksArray = Array.from(desktopNav.querySelectorAll('.nav-section-item a'));
+                pageNavButtonsContainer.style.display = 'flex'; // 모바일이고 활성 링크 있으면 보임
+
+                const allDesktopLinksArray = Array.from(desktopNavSectionLinks);
                 const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
 
                 prevSectionBtn.disabled = !(currentIndex > 0);
@@ -593,12 +523,14 @@
                 } : null;
             }
 
+
             // --- 초기화 ---
-            initializeMobileSidebar(); // 모바일 사이드바 내용 채우기
-            handleViewChange(); // 초기 뷰 설정
-            window.addEventListener('resize', handleViewChange);
-            loadContentFromHash(); // 초기 콘텐츠 로드
-            window.addEventListener('hashchange', loadContentFromHash);
+            initializeMobileSidebar(); // 모바일 사이드바 설정
+            handleViewChange();        // 초기 뷰(데스크탑/모바일) 설정
+            window.addEventListener('resize', handleViewChange); // 화면 크기 변경 감지
+            loadContentFromHash();     // URL 해시에 따른 초기 콘텐츠 로드
+            window.addEventListener('hashchange', loadContentFromHash); // 해시 변경 감지
+
         });
     </script>
 </body>
