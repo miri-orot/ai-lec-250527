@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 커리큘럼</title>
+    <!-- <link rel="stylesheet" href="css/common_styles.css"> --><!-- 기존 CSS 링크는 제거하고 아래 style 태그 사용 -->
+    <!-- 모듈별 CSS는 JavaScript로 동적 로드 -->
+    <style>
+        :root {
+            /* spa_page.html의 기본 공통 변수들 */
+            --primary-color: #3155e2;
+            --primary-color-rgb: 49, 85, 226;
+            --secondary-color: #e0e7ff;
+            --dark-text: #333;
+            --light-text: #666;
+            --card-bg: #fff; /* 대부분의 카드 배경 */
+            --border-color: #eaeaea;
+            --nav-collapsed-width: 15px; /* 데스크탑 축소 시 너비 */
+            --nav-expanded-width: 320px; /* 네비게이션 확장 시 너비 (모바일에서도 이 너비 사용) */
+            --nav-bg-expanded: var(--card-bg);
+            --nav-active-bg: var(--primary-color);
+            --nav-active-text: #ffffff;
+            --section-list-bg: #f8f9fa; /* 네비게이션 내부 섹션 목록 배경 */
+            --nav-module-title-color: var(--dark-text); /* 네비게이션 모듈 제목 색상 */
+            --page-bg: #f0f2f5;
+            --success-color: #28a745;
+            --info-color: #17a2b8; /* 기본 info color */
+            --warning-color-bg: #fff8e1;
+            --warning-color-border: #ffc107;
+            --warning-color-text: #e65100;
+            --slide-card-bg: #fff; /* 대부분의 슬라이드 배경 */
+
+            /* 기본 콘텐츠 영역 너비 (모듈 2, 3, 4는 이 값을 기본으로 사용) */
+            --content-max-width: 1100px;
+
+            /* 페이지별 특화 너비 변수 선언 */
+            --content-max-width-m1s2: 1200px;
+            --content-max-width-m1s3: 1200px;
+            --content-max-width-m1s4: 1200px;
+            --content-max-width-m4s1: 900px; /* module4_section1은 예외적으로 900px */
+
+            /* 각 모듈별 특화 색상 변수 */
+            /* (이하 생략된 모듈별 색상 변수들은 원본 CSS에 있는 그대로 유지됩니다) */
+            --dark-text-m1s2_3: #333;
+            --light-text-m1s2_3: #666;
+            --slide-title-color-m1s2_3: #000;
+            --accent-color-visible-m1s4: #c92a2a;
+            --dark-text-m1s4: #212529;
+            --light-text-m1s4: #495057;
+            --border-color-m1s4: #dee2e6;
+            --success-color-m1s4: #2f9e44;
+            --info-color-m1s4: #1971c2;
+            --warning-color-m1s4: #f08c00;
+            --warning-bg-m2s1: #fff8e1;
+            --warning-border-m2s1: #ffc107;
+            --bad-bg-m2s1: #ffebee;
+            --bad-border-m2s1: #c62828;
+            --good-bg-m2s1: #e8f5e9;
+            --good-border-m2s1: #2e7d32;
+            --feature-box-bg-m3s2: #f9f9f9;
+            --danger-color-m4s1: #d9363e;
+            --warning-color-alt-m4s1: #fa8c16;
+            --info-color-alt-m4s1: #1677ff;
+            --danger-bg-m4s1: #fff1f0;
+            --warning-bg-alt-m4s1: #fffbe6;
+            --info-bg-alt-m4s1: #f0f5ff;
+            --sub-card-bg-m4s1: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+        body { position: relative; background-color: var(--page-bg); color: var(--dark-text); line-height: 1.6; display: flex; height: 100vh; overflow: hidden; }
+        body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.10; z-index: -1; }
+
+        /* --- SPA Page Navigation 스타일 --- */
+        .page-navigation {
+            position: relative; /* 데스크탑 기본 포지션 */
+            height: 100%;
+            width: var(--nav-collapsed-width);
+            background-color: var(--primary-color);
+            opacity: 0.7;
+            z-index: 100;
+            overflow: hidden;
+            transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+            border-right: 1px solid var(--border-color);
+        }
+        /* 데스크탑 Hover 효과 */
+        .page-navigation:not(.mobile-sidebar):hover {
+            width: var(--nav-expanded-width);
+            background-color: var(--nav-bg-expanded);
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+            opacity: 1;
+            overflow: visible; /* Hover 시 내부 스크롤 보이도록 */
+        }
+        .nav-header {
+            font-size: 1.2em;
+            color: var(--primary-color);
+            padding: 20px 15px 15px 15px;
+            border-bottom: 1px solid var(--border-color);
+            flex-shrink: 0;
+            opacity: 0; /* 초기 숨김 (데스크탑 hover 또는 모바일 open 시 JS로 제어) */
+            transition: opacity 0.2s 0.1s ease;
+            white-space: nowrap;
+            position: relative; /* 모바일 닫기 버튼 포지셔닝 기준 */
+        }
+        .page-navigation:not(.mobile-sidebar):hover .nav-header,
+        .page-navigation.open .nav-header { /* 모바일에서 열렸을 때도 보이도록 */
+            opacity: 1;
+        }
+
+        .nav-scroll-wrapper {
+            width: var(--nav-expanded-width); /* 확장된 너비를 기준으로 내부 요소 배치 */
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 15px 0;
+            opacity: 0;  /* 초기 숨김 (데스크탑 hover 또는 모바일 open 시 JS로 제어) */
+            transition: opacity 0.2s 0.1s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .page-navigation:not(.mobile-sidebar):hover .nav-scroll-wrapper,
+        .page-navigation.open .nav-scroll-wrapper { /* 모바일에서 열렸을 때도 보이도록 */
+            opacity: 1;
+            width: 100%; /* 모바일에서 page-navigation 너비가 고정되므로 100%로 채움 */
+        }
+
+        .nav-curriculum-list { list-style: none; padding: 0 20px; margin: 0; flex-grow: 1; }
+        .nav-module-group { margin-bottom: 0; border-bottom: 1px solid var(--border-color); }
+        .nav-module-group:last-child { border-bottom: none; }
+        .nav-module-group:first-child .nav-module-title-wrapper{ border-top: 1px solid var(--border-color); }
+        .nav-module-title-wrapper { font-size: 1em; font-weight: 600; color: var(--nav-module-title-color); padding: 12px 15px; background-color: rgba(var(--primary-color-rgb), 0.03); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s ease; border-left: 4px solid transparent; }
+        .nav-module-title-wrapper:hover { background-color: rgba(var(--primary-color-rgb), 0.08); }
+        .nav-module-title-wrapper.active { border-left-color: var(--primary-color); }
+        .nav-module-title { flex-grow: 1; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
+        .nav-toggle-icon { font-family: 'Arial', sans-serif; font-size: 0.8em; font-weight: bold; color: var(--light-text); margin-left: 10px; transition: transform 0.3s ease; flex-shrink: 0; }
+        .nav-module-title-wrapper.active .nav-toggle-icon { transform: rotate(90deg); }
+        .nav-section-list { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out; background-color: var(--section-list-bg); padding-left: 25px; }
+        .nav-section-item { margin: 0; }
+        .nav-section-item a { display: block; text-decoration: none; color: #555; padding: 10px 15px; border-radius: 0; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; border-bottom: 1px solid #eee; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
+        .nav-section-item:last-child a { border-bottom: none; }
+        .nav-section-item a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
+        .nav-section-item.current-page a { background-color: var(--nav-active-bg); color: var(--nav-active-text) !important; font-weight: 600; border-radius: 4px; }
+        .nav-mainpage-link-wrapper { padding: 15px 20px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
+        .nav-mainpage-link { display: block; padding: 12px 15px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: 500; transition: background-color 0.2s ease; }
+        .nav-mainpage-link:hover { background-color: #2a49c7; }
+
+        /* --- Main Content Area & #contentDisplay 기본 스타일 --- */
+        .main-content-area { flex-grow: 1; height: 100vh; overflow-y: auto; padding: 30px; position: relative; }
+        #contentDisplay { margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; max-width: var(--content-max-width); }
+        #contentDisplay.loaded { opacity: 1; transform: translateY(0); }
+
+        /* --- #contentDisplay 내부 공통 태그 스타일 --- */
+        #contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 { color: var(--primary-color); margin-top: 1.5em; margin-bottom: 0.8em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border-color); }
+        #contentDisplay h1:first-child, #contentDisplay h2:first-child, #contentDisplay h3:first-child, #contentDisplay h4:first-child { margin-top: 0; }
+        #contentDisplay h1 { font-size: 1.8em; }
+        #contentDisplay h2 { font-size: 1.5em; }
+        #contentDisplay h3 { font-size: 1.3em; }
+        #contentDisplay h4 { font-size: 1.1em; color: var(--dark-text); border-bottom: none; }
+        #contentDisplay p { margin-bottom: 1rem; line-height: 1.7; }
+        #contentDisplay ul, #contentDisplay ol { margin-bottom: 1rem; padding-left: 25px; }
+        #contentDisplay li { margin-bottom: 0.5rem; }
+        #contentDisplay a { color: var(--primary-color); text-decoration: none; }
+        #contentDisplay a:hover { text-decoration: underline; }
+        #contentDisplay strong, #contentDisplay b { font-weight: 600; color: var(--primary-color); }
+        #contentDisplay img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        #contentDisplay code { display: inline-block; background-color: rgba(0,0,0,0.05); padding: 0.2em 0.4em; border-radius: 4px; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 0.9em; word-break: keep-all; color: var(--dark-text); }
+        #contentDisplay pre code { display: block; padding: 1em; overflow-x: auto; background-color: #f0f0f0; }
+
+        /* --- 공통 슬라이드 구조 기본 스타일 --- */
+        #contentDisplay .slide-container { max-width: 100%; margin: 0; padding: 0; }
+        #contentDisplay .slide { background-color: var(--slide-card-bg); margin-bottom: 30px; overflow: hidden; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+        #contentDisplay .slide.active-slide, #contentDisplay .slide.active { opacity: 1; transform: translateY(0); }
+        #contentDisplay .slide-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; background-color: #fdfdff; border-radius: 12px 12px 0 0; }
+        #contentDisplay .slide-number { color: var(--light-text); font-size: 0.85em; }
+        #contentDisplay .slide-title { font-size: 1.6em; font-weight: 700; color: var(--dark-text); margin-bottom: 0.2rem; border-bottom: none; padding-bottom: 0; }
+        #contentDisplay .slide-subtitle { font-size: 1em; color: var(--light-text); margin-bottom: 0; }
+        #contentDisplay .slide-content { padding: 1.5rem 2rem; }
+        #contentDisplay .text-block { font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; color: var(--dark-text); text-align: center; word-break: keep-all; }
+        #contentDisplay .highlight { color: var(--primary-color); font-weight: 600; }
+        #contentDisplay .footer { text-align: center; padding: 2rem; color: var(--light-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+
+        /* --- 스크롤바 스타일 --- */
+        .nav-scroll-wrapper::-webkit-scrollbar, .main-content-area::-webkit-scrollbar { width: 8px; }
+        .nav-scroll-wrapper::-webkit-scrollbar-track, .main-content-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+        .nav-scroll-wrapper::-webkit-scrollbar-thumb { background-color: rgba(var(--primary-color-rgb), 0.4); border-radius: 10px; }
+        .main-content-area::-webkit-scrollbar-thumb { background-color: rgba(var(--dark-text), 0.3); border-radius: 10px; }
+
+        /* --- 모바일 전용 스타일 시작 --- */
+        @media (max-width: 768px) {
+            .page-navigation { /* 모바일에서는 클릭으로 제어 */
+                position: fixed;
+                left: calc(-1 * var(--nav-expanded-width)); /* 초기 숨김 */
+                width: var(--nav-expanded-width);
+                height: 100vh;
+                background-color: var(--nav-bg-expanded); /* 배경색 명확히 지정 */
+                opacity: 1; /* 항상 불투명 */
+                z-index: 1001;
+                box-shadow: 3px 0 10px rgba(0,0,0,0.15);
+                transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+                overflow-y: auto; /* 스크롤 가능하도록 */
+            }
+            .page-navigation.open { /* JS로 .open 클래스 추가 시 */
+                left: 0;
+            }
+            .page-navigation.mobile-sidebar { /* 모바일일 때만 적용되는 클래스 (JS로 추가) */
+                /* 데스크탑 hover 효과 방지 */
+            }
+            .page-navigation.mobile-sidebar:hover {
+                width: var(--nav-expanded-width); /* hover해도 너비 고정 */
+            }
+
+
+            .main-content-area {
+                padding: 20px 15px 80px 15px; /* 하단 이전/다음 버튼 공간 확보 */
+            }
+            #contentDisplay .slide-container { padding:0; }
+            #contentDisplay .slide { margin-bottom: 20px; }
+            #contentDisplay .slide-header { padding: 1rem 1.5rem 0.8rem; }
+            #contentDisplay .slide-content { padding: 1rem 1.5rem; }
+            #contentDisplay .slide-title { font-size: 1.4rem; } /* 모바일에서 제목 크기 약간 줄임 */
+            #contentDisplay .slide-subtitle { font-size: 0.9rem; }
+
+            /* 햄버거 버튼 */
+            #hamburger-menu {
+                display: none; /* JS로 모바일에서만 block 처리 */
+                position: fixed;
+                top: 15px;
+                left: 15px;
+                z-index: 1002;
+                background: var(--primary-color);
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                font-size: 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                line-height: 1;
+            }
+
+            /* 사이드바 내 닫기 버튼 */
+            .close-sidebar-btn {
+                display: none; /* JS로 모바일에서만 block 처리 */
+                position: absolute;
+                top: 18px;
+                right: 20px;
+                background: none;
+                border: none;
+                font-size: 28px; /* 크기 키움 */
+                color: var(--primary-color);
+                padding: 0;
+                line-height: 1;
+                cursor: pointer;
+            }
+            .page-navigation.open .close-sidebar-btn { /* 모바일에서 사이드바 열렸을 때만 표시 */
+                 display:block;
+            }
+
+
+            /* 사이드바 오버레이 */
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0,0,0,0.5);
+                z-index: 1000;
+            }
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            /* 모바일 이전/다음 버튼 */
+            #page-navigation-buttons {
+                display: none; /* JS로 모바일에서만 flex 처리 */
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 10px 15px;
+                background-color: rgba(250, 250, 250, 0.95);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.1);
+                z-index: 999;
+                justify-content: space-between;
+                align-items: center;
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+            }
+            #page-navigation-buttons button {
+                padding: 10px 15px;
+                font-size: 0.9em;
+                font-weight: 500;
+                background-color: var(--primary-color);
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                transition: background-color 0.2s ease;
+                min-width: 70px;
+                text-align: center;
+            }
+            #page-navigation-buttons button:hover:not(:disabled) {
+                background-color: #2a49c7;
+            }
+            #page-navigation-buttons button:disabled {
+                background-color: #ccc;
+                color: #777;
+                cursor: not-allowed;
+                opacity: 0.7;
+            }
+        }
+        /* --- 모바일 전용 스타일 끝 --- */
+    </style>
+</head>
+<body>
+    <!-- 모바일용 햄버거 버튼 (JS로 생성하여 여기에 추가됨) -->
+    <!-- <button id="hamburger-menu">☰</button> -->
+
+    <nav class="page-navigation" id="pageNav">
+        <div class="nav-header">
+            커리큘럼
+            <!-- 사이드바 내 닫기 버튼 (JS로 생성하여 여기에 추가됨) -->
+            <!-- <button class="close-sidebar-btn">×</button> -->
+        </div>
+        <div class="nav-scroll-wrapper">
+            <ul class="nav-curriculum-list">
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module1">
+                        <span class="nav-module-title">Module 1: 왜 AI인가? 반복 업무 해방의 시작</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module1_section1.html">1. 오프닝: AI로 당신의 업무 시간을 되찾으세요!</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section2.html">2. 당신의 하루, 혹시 이렇지 않나요? (업무 Pain Points)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section3.html">3. AI: 당신의 똑똑한 업무 비서 (생성형 AI란?)</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module2">
+                        <span class="nav-module-title">Module 2: AI와 제대로 소통하기 (ft. 핵심 도구)</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module2_section1.html">1. AI의 능력을 100% 끌어내는 '프롬프트' 작성법</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section2.html">2. AI 특공대, 직접 다뤄보기 (주요 도구 시연)</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module3">
+                        <span class="nav-module-title">Module 3: 실전! AI로 업무 효율 2배 UP! (시연 중심)</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                         <li class="nav-section-item"><a href="#" data-src="module3_section1.html">1. 정보 검색 & 수집: AI로 10분 만에 끝내기!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section2.html">2. 내 손안의 자료, AI로 지식 자산 만들기 (NotebookLM 활용)</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section3.html">3. 회의록 정리: AI로 5분 만에 핵심만 쏙!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section4.html">4. 보고서·기획서 작성: AI로 시간 절반으로 줄이기!</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module4">
+                        <span class="nav-module-title">Module 4: AI, 안전하고 똑똑하게 활용하기</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module4_section1.html">1. AI, 안전하게 써야 진짜 전문가! (핵심 주의사항)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section2.html">2. (맛보기) AI로 내 업무 자동화하기 아이디어</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section3.html">3. 마무리: AI 시대, 당신의 업무는 어떻게 바뀔까요?</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="nav-mainpage-link-wrapper">
+                <a href="index.html" class="nav-mainpage-link">메인 페이지</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 사이드바 열렸을 때 배경 어둡게 처리 (JS로 생성하여 여기에 추가됨) -->
+    <!-- <div class="sidebar-overlay" id="sidebar-overlay"></div> -->
+
+    <main class="main-content-area" id="mainContent">
+        <article id="contentDisplay">
+            <h1>환영합니다!</h1>
+            <p>왼쪽 메뉴에 마우스를 올리면 전체 목차가 나타납니다. 학습할 내용을 선택해주세요.</p>
+        </article>
+    </main>
+
+    <!-- 모바일 이전/다음 버튼 컨테이너 (JS로 생성하여 여기에 추가됨) -->
+    <!--
+    <div id="page-navigation-buttons">
+        <button id="prev-section-button">이전</button>
+        <button id="next-section-button">다음</button>
+    </div>
+    -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const pageNav = document.getElementById('pageNav');
+            const navModuleTitles = document.querySelectorAll('.page-navigation .nav-module-title-wrapper');
+            const navSectionLinks = document.querySelectorAll('.page-navigation .nav-section-item a');
+            const contentDisplay = document.getElementById('contentDisplay');
+            const mainContentArea = document.getElementById('mainContent');
+            const sectionListPadding = 8;
+            let currentActiveLinkElement = null;
+            let currentScrollListener = null;
+            let currentModuleStyleLink = null;
+            let isMobileView = window.innerWidth <= 768;
+
+            // --- 모바일 UI 요소 동적 생성 ---
+            const hamburgerBtn = document.createElement('button');
+            hamburgerBtn.id = 'hamburger-menu';
+            hamburgerBtn.innerHTML = '☰';
+            hamburgerBtn.setAttribute('aria-label', '메뉴 열기');
+            hamburgerBtn.setAttribute('aria-expanded', 'false');
+            document.body.insertBefore(hamburgerBtn, pageNav);
+
+            const navHeader = pageNav.querySelector('.nav-header');
+            const closeSidebarBtn = document.createElement('button');
+            closeSidebarBtn.className = 'close-sidebar-btn';
+            closeSidebarBtn.innerHTML = '×';
+            closeSidebarBtn.setAttribute('aria-label', '메뉴 닫기');
+            if (navHeader) navHeader.appendChild(closeSidebarBtn);
+
+            const sidebarOverlay = document.createElement('div');
+            sidebarOverlay.className = 'sidebar-overlay';
+            document.body.appendChild(sidebarOverlay);
+
+            const pageNavButtonsContainer = document.createElement('div');
+            pageNavButtonsContainer.id = 'page-navigation-buttons';
+            const prevSectionBtn = document.createElement('button');
+            prevSectionBtn.id = 'prev-section-button';
+            prevSectionBtn.textContent = '이전';
+            const nextSectionBtn = document.createElement('button');
+            nextSectionBtn.id = 'next-section-button';
+            nextSectionBtn.textContent = '다음';
+            pageNavButtonsContainer.appendChild(prevSectionBtn);
+            pageNavButtonsContainer.appendChild(nextSectionBtn);
+            document.body.appendChild(pageNavButtonsContainer);
+
+            // --- 모바일/데스크탑 뷰 상태 관리 ---
+            function updateViewMode() {
+                isMobileView = window.innerWidth <= 768;
+                if (isMobileView) {
+                    pageNav.classList.add('mobile-sidebar');
+                    hamburgerBtn.style.display = 'block';
+                    pageNavButtonsContainer.style.display = 'flex'; // 모바일이면 이전/다음 버튼 컨테이너 보이기
+                    if (!pageNav.classList.contains('open')) { // 모바일인데 사이드바 닫혀있으면
+                        closeSidebarBtn.style.display = 'none';
+                    } else {
+                        closeSidebarBtn.style.display = 'block';
+                    }
+                } else {
+                    pageNav.classList.remove('mobile-sidebar');
+                    pageNav.classList.remove('open'); // 데스크탑 전환 시 모바일 사이드바 강제 닫기
+                    sidebarOverlay.classList.remove('active');
+                    hamburgerBtn.style.display = 'none';
+                    closeSidebarBtn.style.display = 'none';
+                    pageNavButtonsContainer.style.display = 'none'; // 데스크탑이면 이전/다음 버튼 컨테이너 숨기기
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                }
+                updatePageNavigationButtons(); // 뷰 모드 변경 시 버튼 상태 업데이트
+            }
+
+            // --- 모바일 사이드바 토글 ---
+            function toggleMobileSidebar(forceOpen) {
+                if (!isMobileView) return;
+
+                const isOpen = pageNav.classList.contains('open');
+                let openAction = !isOpen; // 기본 토글 동작
+
+                if (typeof forceOpen === 'boolean') {
+                    openAction = forceOpen;
+                }
+
+                if (openAction) {
+                    pageNav.classList.add('open');
+                    sidebarOverlay.classList.add('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'true');
+                    closeSidebarBtn.style.display = 'block';
+                } else {
+                    pageNav.classList.remove('open');
+                    sidebarOverlay.classList.remove('active');
+                    hamburgerBtn.setAttribute('aria-expanded', 'false');
+                    closeSidebarBtn.style.display = 'none';
+                }
+            }
+
+            hamburgerBtn.addEventListener('click', () => toggleMobileSidebar());
+            closeSidebarBtn.addEventListener('click', () => toggleMobileSidebar(false));
+            sidebarOverlay.addEventListener('click', () => toggleMobileSidebar(false));
+
+            window.addEventListener('resize', updateViewMode);
+            updateViewMode(); // 초기 로드 시 실행
+
+
+            // --- 네비게이션 모듈 아코디언 토글 (기존 로직 유지) ---
+            navModuleTitles.forEach(titleWrapper => {
+                titleWrapper.addEventListener('click', function () {
+                    const isActive = this.classList.contains('active');
+                    const sectionList = this.nextElementSibling;
+
+                    if (!isActive) { // 현재 닫혀있는 것을 열 때, 다른 열린 것들 닫기
+                        navModuleTitles.forEach(otherHeader => {
+                            if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                                otherHeader.classList.remove('active');
+                                const otherList = otherHeader.nextElementSibling;
+                                if (otherList && otherList.classList.contains('nav-section-list')) {
+                                    otherList.style.maxHeight = null;
+                                    otherList.style.paddingTop = "0px";
+                                    otherList.style.paddingBottom = "0px";
+                                }
+                            }
+                        });
+                    }
+
+                    this.classList.toggle('active');
+
+                    if (sectionList && sectionList.classList.contains('nav-section-list')) {
+                        if (this.classList.contains('active')) {
+                            sectionList.style.paddingTop = sectionListPadding + "px";
+                            sectionList.style.paddingBottom = sectionListPadding + "px";
+                            sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
+                        } else {
+                            sectionList.style.maxHeight = null;
+                            sectionList.style.paddingTop = "0px";
+                            sectionList.style.paddingBottom = "0px";
+                        }
+                    }
+                });
+            });
+
+            // --- 콘텐츠 로드 및 표시 함수 (기존 로직에 updatePageNavigationButtons 호출 추가) ---
+            async function loadAndDisplayContent(filePath, linkElement) {
+                if (currentActiveLinkElement) {
+                    currentActiveLinkElement.parentElement.classList.remove('current-page');
+                }
+                linkElement.parentElement.classList.add('current-page');
+                currentActiveLinkElement = linkElement;
+
+                const newHash = filePath.split('.')[0];
+                if(window.location.hash !== `#${newHash}`) {
+                    history.replaceState(null, null, `#${newHash}`);
+                }
+
+                contentDisplay.classList.remove('loaded');
+                contentDisplay.style.opacity = '0';
+                contentDisplay.innerHTML = '<p style="text-align:center; padding: 20px;">로딩 중...</p>';
+                contentDisplay.dataset.loadedFile = filePath;
+
+                if (currentModuleStyleLink) {
+                    currentModuleStyleLink.remove();
+                    currentModuleStyleLink = null;
+                }
+
+                const moduleMatch = filePath.match(/module(\d+)_section(\w+)\.html/);
+                if (moduleMatch && moduleMatch[1]) {
+                    const moduleNumber = moduleMatch[1];
+                    const sectionIdentifier = moduleMatch[2];
+                    const moduleStyleHref = `css/module${moduleNumber}_section${sectionIdentifier}_styles.css`;
+                    const newStyleLink = document.createElement('link');
+                    newStyleLink.rel = 'stylesheet';
+                    newStyleLink.type = 'text/css';
+                    newStyleLink.href = moduleStyleHref;
+                    newStyleLink.setAttribute('data-module-style', `module${moduleNumber}_section${sectionIdentifier}`);
+                    document.head.appendChild(newStyleLink);
+                    currentModuleStyleLink = newStyleLink;
+                }
+
+                if (currentScrollListener) {
+                    mainContentArea.removeEventListener('scroll', currentScrollListener);
+                    currentScrollListener = null;
+                }
+
+                try {
+                    const response = await fetch(filePath);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
+                    }
+                    const htmlContent = await response.text();
+                    contentDisplay.innerHTML = htmlContent;
+
+                    const loadedSlideContainer = contentDisplay.querySelector('.slide-container');
+                    if (loadedSlideContainer) {
+                        currentScrollListener = initializeSlidesForCurrentPage(loadedSlideContainer, mainContentArea, filePath);
+                        if (currentScrollListener) {
+                             mainContentArea.addEventListener('scroll', currentScrollListener);
+                             currentScrollListener();
+                        }
+                    }
+
+                } catch (error) {
+                    console.error('Error loading content:', error);
+                    contentDisplay.innerHTML = `<div style="padding:20px; text-align:center; color:red;"><h2>오류 발생</h2><p>콘텐츠를 불러오는 중 문제가 발생했습니다.</p><p>${error.message}</p><p>파일 경로(${filePath})를 확인해주세요. 로컬 웹 서버에서 실행 중인지도 확인해주세요.</p></div>`;
+                } finally {
+                    setTimeout(() => {
+                        contentDisplay.style.opacity = '1';
+                        contentDisplay.classList.add('loaded');
+                    }, 50);
+                    mainContentArea.scrollTop = 0;
+                    updatePageNavigationButtons(); // 콘텐츠 로드 후 이전/다음 버튼 상태 업데이트
+                }
+            }
+
+            // --- 슬라이드 초기화 함수 (기존 로직 유지) ---
+            function initializeSlidesForCurrentPage(container, scroller, filePath) {
+                const slides = container.querySelectorAll('.slide');
+                if (slides.length === 0) return null;
+                const checkSlidesInView = function() {
+                    slides.forEach(slide => {
+                        const slideRect = slide.getBoundingClientRect();
+                        const scrollerRect = scroller.getBoundingClientRect();
+                        const slideTopInScroller = slideRect.top - scrollerRect.top;
+                        const scrollerHeight = scroller.clientHeight;
+                        if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                            slide.classList.add('active');
+                        }
+                    });
+                };
+                return checkSlidesInView;
+            }
+
+            // --- 네비게이션 링크 클릭 이벤트 (모바일 사이드바 닫기 추가) ---
+            navSectionLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    loadAndDisplayContent(this.dataset.src, this);
+                    if (isMobileView && pageNav.classList.contains('open')) {
+                        toggleMobileSidebar(false); // 링크 클릭 시 모바일 사이드바 닫기
+                    }
+                });
+            });
+
+            // --- URL 해시 변경 감지 및 초기 로드 함수 (활성 모듈 열기 로직 수정) ---
+            function loadContentFromHash() {
+                const hash = window.location.hash.substring(1);
+                if (hash) {
+                    const targetLink = Array.from(navSectionLinks).find(link => link.dataset.src.split('.')[0] === hash);
+                    if (targetLink) {
+                        loadAndDisplayContent(targetLink.dataset.src, targetLink);
+                        activateParentModuleOfLink(targetLink); // 해당 링크의 부모 모듈 열기
+                    } else {
+                        loadInitialContent();
+                    }
+                } else {
+                    loadInitialContent();
+                }
+            }
+
+            // --- 특정 링크의 부모 모듈 아코디언 열기 함수 ---
+            function activateParentModuleOfLink(linkElement) {
+                const parentModuleWrapper = linkElement.closest('.nav-module-group')?.querySelector('.nav-module-title-wrapper');
+                if (parentModuleWrapper && !parentModuleWrapper.classList.contains('active')) {
+                    // 다른 열린 모듈 닫기 (이미 아코디언 로직에 포함되어 있을 수 있으나, 명시적으로 호출)
+                    navModuleTitles.forEach(otherHeader => {
+                        if (otherHeader !== parentModuleWrapper && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            const otherList = otherHeader.nextElementSibling;
+                            if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
+                        }
+                    });
+                    // 현재 모듈 열기
+                    parentModuleWrapper.classList.add('active');
+                    const sectionListToOpen = parentModuleWrapper.nextElementSibling;
+                    if (sectionListToOpen) {
+                        sectionListToOpen.style.paddingTop = sectionListPadding + "px";
+                        sectionListToOpen.style.paddingBottom = sectionListPadding + "px";
+                        sectionListToOpen.style.maxHeight = (sectionListToOpen.scrollHeight + sectionListPadding * 2) + "px";
+                    }
+                }
+            }
+
+            // --- 초기 콘텐츠 로드 함수 (첫 번째 모듈 열기 로직 수정) ---
+            function loadInitialContent() {
+                const firstValidLink = document.querySelector('.page-navigation .nav-section-item a[data-src]');
+                if (firstValidLink) {
+                    loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink);
+                    activateParentModuleOfLink(firstValidLink); // 첫 번째 링크의 부모 모듈 열기
+                } else {
+                    contentDisplay.innerHTML = '<h1>환영합니다!</h1><p>학습할 내용을 선택해주세요.</p>';
+                    contentDisplay.classList.add('loaded');
+                    updatePageNavigationButtons(); // 초기 콘텐츠가 없을 경우에도 버튼 상태 업데이트
+                }
+            }
+
+            // --- 모바일 이전/다음 버튼 업데이트 및 이벤트 핸들러 ---
+            function updatePageNavigationButtons() {
+                if (!isMobileView || !currentActiveLinkElement) {
+                    pageNavButtonsContainer.style.display = 'none';
+                    return;
+                }
+                pageNavButtonsContainer.style.display = 'flex';
+
+                const allLinksArray = Array.from(navSectionLinks);
+                const currentIndex = allLinksArray.findIndex(link => link === currentActiveLinkElement);
+
+                // 이전 버튼
+                if (currentIndex > 0) {
+                    prevSectionBtn.disabled = false;
+                    prevSectionBtn.onclick = () => {
+                        const prevLink = allLinksArray[currentIndex - 1];
+                        loadAndDisplayContent(prevLink.dataset.src, prevLink);
+                        activateParentModuleOfLink(prevLink);
+                    };
+                } else {
+                    prevSectionBtn.disabled = true;
+                    prevSectionBtn.onclick = null;
+                }
+
+                // 다음 버튼
+                if (currentIndex >= 0 && currentIndex < allLinksArray.length - 1) {
+                    nextSectionBtn.disabled = false;
+                    nextSectionBtn.onclick = () => {
+                        const nextLink = allLinksArray[currentIndex + 1];
+                        loadAndDisplayContent(nextLink.dataset.src, nextLink);
+                        activateParentModuleOfLink(nextLink);
+                    };
+                } else {
+                    nextSectionBtn.disabled = true;
+                    nextSectionBtn.onclick = null;
+                }
+            }
+
+            // 페이지 로드 시 및 해시 변경 시 콘텐츠 로드
+            loadContentFromHash();
+            window.addEventListener('hashchange', loadContentFromHash);
+        });
+    </script>
+</body>
+</html>
