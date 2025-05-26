@@ -1,564 +1,602 @@
 /* Styles specific to module2_section3.html */
+/* common_styles.css의 변수 및 스타일 상속 */
 
-/* 슬라이드 기본 설정 */
+:root {
+    /* module2_section3을 위한 특화 변수가 필요하다면 여기에 선언 */
+    /* 예: --content-max-width-m2s3: 1000px; */
+    /* common_styles.css 에 --content-max-width: 1100px; 가 기본값임 */
+}
+
+#contentDisplay .slide-container {
+    max-width: var(--content-max-width-m2s3, 1100px); /* 기본값 또는 m2s3 특화 값 */
+}
+
+/* 슬라이드 기본 최소 높이 및 패딩 (common_styles.css 와 일관성 유지 또는 여기서 재정의) */
 #contentDisplay .slide {
-    min-height: 88vh;
+    min-height: 75vh;
     display: flex;
     flex-direction: column;
-    position: relative;
-    padding-top: 3rem; /* 상단 여백 증가 */
-    padding-bottom: 4rem;
 }
+
 #contentDisplay .slide-content {
+    padding: 2.5rem 3rem; /* 상하 패딩 줄임, 좌우 유지 */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 1;
+}
+
+.centered-text {
     text-align: center;
     width: 100%;
-    padding: 2rem 3rem; /* 슬라이드 콘텐츠 기본 패딩 증가 */
 }
-#contentDisplay .slide-number {
-    position: absolute;
-    top: 2rem;
-    right: 2.5rem;
-    font-size: 1rem;
-    color: #cccccc;
+
+.highlight-text { /* common_styles.css 에 이미 정의됨 */
+    color: var(--primary-color);
     font-weight: 700;
 }
 
-/* --- 공통 강조 텍스트 스타일 --- */
-.section-main-title { /* 슬라이드 내 가장 큰 제목 (기존 main-emphasis-text 대체) */
-    font-size: 2.8rem;
+.highlight-bold {
+    font-weight: 700;
+    color: var(--dark-text); /* 기본적으로 어두운 텍스트, 필요시 변경 */
+}
+
+/* 다양한 색상의 강조 박스 */
+.highlight-box-blue, .highlight-box-green, .highlight-box-red, .highlight-box-yellow, .highlight-box-grey, .highlight-box-purple {
+    padding: 0.25em 0.6em;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-block;
+    line-height: 1.4;
+}
+.highlight-box-blue { background-color: var(--info-color, #17a2b8); color: white; }
+.highlight-box-green { background-color: var(--success-color, #28a745); color: white; }
+.highlight-box-red { background-color: var(--danger-color-m4s1, #d9363e); color: white; } /* m4s1의 danger-color 활용 또는 새 정의 */
+.highlight-box-yellow { background-color: var(--warning-color-border, #ffc107); color: var(--dark-text); }
+.highlight-box-grey { background-color: #e9ecef; color: var(--dark-text); }
+.highlight-box-purple { background-color: #6f42c1; color: white; }
+
+
+/* Slide 1: Compare Intro */
+.compare-intro {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    padding: 2rem 0;
+}
+.compare-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 40%;
+}
+.tool-logo {
+    max-height: 80px;
+    margin-bottom: 1rem;
+}
+.notebooklm-logo { /* 필요시 로고별 미세조정 */ }
+.gemini-logo { max-height: 60px; /* Gemini 로고는 약간 작을 수 있음 */ }
+
+.tool-name-display {
+    font-size: 1.8em;
     font-weight: 700;
     color: var(--dark-text);
-    margin: 1rem auto 1.5rem auto;
-    line-height: 1.4;
-    max-width: 900px;
+    margin-bottom: 0.5rem;
 }
-.section-main-title .highlight-primary { color: var(--primary-color); }
-.section-main-title .icon-emphasis { font-size: 1.2em; vertical-align: middle; margin: 0 0.2em;}
-
-.section-sub-text { /* 설명 텍스트 (기존 sub-guidance-text 대체) */
-    font-size: 1.4rem;
+.tool-description-display {
+    font-size: 1.2em;
     color: var(--light-text);
-    margin: 0 auto 3rem auto;
-    max-width: 800px;
-    line-height: 1.7;
+}
+.vs-icon {
+    font-size: 3em;
+    font-weight: bold;
+    color: var(--primary-color);
 }
 
-/* --- 정보 카드/박스 스타일 (새로운 디자인) --- */
-.info-card-simple { /* 학습 목표, NLM/Gemini 기능 소개 등 */
-    background-color: var(--card-bg);
-    border-radius: 16px;
-    padding: 2.5rem;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+/* Slide 2, 14: Feature Grid (공통 사용 가능) */
+.feature-grid {
+    display: grid;
+    gap: 1.5rem; /* 카드 간 간격 */
     width: 100%;
-    max-width: 680px; /* 카드 최대 너비 */
-    margin-bottom: 2rem;
+    max-width: 950px; /* 그리드 전체 너비 */
+    margin: 1.5rem 0;
+}
+.feature-grid.three-cols { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.feature-grid.five-cols { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+
+.feature-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.8rem 1.5rem;
     text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 200px; /* 카드의 최소 높이 */
 }
-.info-card-simple .card-icon-display {
-    font-size: 4rem;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-}
-.info-card-simple .card-main-text {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-}
-.info-card-simple .card-main-text .highlight { font-weight: 700; }
-.info-card-simple .card-feature-list {
+.feature-card.style-blue { border-top: 5px solid var(--info-color, #17a2b8); }
+.feature-card.style-red { border-top: 5px solid var(--danger-color-m4s1, #d9363e); }
+
+.card-icon-large { font-size: 3rem; color: var(--primary-color); margin-bottom: 1rem; }
+.card-icon-small { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 0.5rem; }
+
+.card-title-main { font-size: 1.4em; font-weight: 600; color: var(--dark-text); margin-bottom: 0.8rem; }
+.card-title-sub { font-size: 1.1em; font-weight: 600; color: var(--dark-text); margin-bottom: 0.5rem; min-height: 2.2em; /*2줄 확보*/}
+.card-desc-main { font-size: 1.05em; color: var(--light-text); line-height: 1.6; }
+.card-desc-sub { font-size: 0.9em; color: var(--light-text); line-height: 1.5; }
+
+.important-note { font-size: 1.1em; margin-top: 1.5rem; font-style: italic; }
+
+/* Slide 3: Use Case List */
+.use-case-list {
     list-style: none;
     padding: 0;
-    margin-top: 1.5rem;
-    display: inline-block; /* 중앙 정렬 위해 */
-    text-align: left;
+    width: 100%;
+    max-width: 750px;
 }
-.info-card-simple .card-feature-list li {
-    font-size: 1.25rem;
-    color: var(--dark-text);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-}
-.info-card-simple .card-feature-list .list-item-icon {
-    font-size: 1.4em; /* 텍스트 기준 */
-    color: var(--primary-color);
-    margin-right: 1rem;
-    width: 30px; /* 아이콘 공간 */
-    text-align: center;
-}
-.info-card-simple .card-bottom-banner { /* NLM/Gemini 특징 배너 */
-    margin-top: 2rem;
-    padding: 0.9rem 2rem;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 1.35rem;
-    display: inline-block;
-    border-width: 2px;
-    border-style: solid;
-}
-/* NLM 테마 */
-.info-card-simple.nlm-theme .card-icon-display,
-.info-card-simple.nlm-theme .card-main-text,
-.info-card-simple.nlm-theme .card-feature-list .list-item-icon { color: var(--info-color); }
-.info-card-simple.nlm-theme .card-bottom-banner {
-    background-color: rgba(var(--info-color-rgb), 0.08);
-    color: var(--info-color);
-    border-color: var(--info-color);
-}
-/* Gemini 테마는 기본 primary-color 사용 */
-.info-card-simple.gemini-theme .card-bottom-banner {
+.use-case-item {
     background-color: var(--secondary-color);
-    color: var(--primary-color);
-    border-color: var(--primary-color);
-}
-
-
-/* 강조 정보 박스 (ProTip, NotebookLM 핵심 등) */
-.highlight-info-box {
-    background-color: #f8f9fa; /* 연한 배경 */
-    border-left: 6px solid var(--primary-color);
-    border-radius: 8px;
-    padding: 2rem;
-    margin: 1.5rem auto;
-    text-align: left;
-    width: 100%;
-    max-width: 720px; /* 박스 최대 너비 */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-.highlight-info-box .box-title-text {
-    font-size: 1.5rem; /* 제목 크게 */
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: center;
-}
-.highlight-info-box .box-title-text .title-icon {
-    font-size: 1.3em;
-    margin-right: 0.8rem;
-}
-.highlight-info-box .box-content-text {
-    font-size: 1.2rem; /* 내용 폰트 크게 */
-    line-height: 1.8;
-    color: var(--dark-text);
-}
-.highlight-info-box .box-content-text strong,
-.highlight-info-box .box-content-text .highlight {
-    font-weight: 600;
-    color: var(--primary-color);
-}
-/* ProTip 박스 변형 */
-.highlight-info-box.protip-box {
-    background-color: rgba(var(--success-color-rgb, 40, 167, 69), 0.05); /* 연한 녹색 배경 */
-    border-left-color: var(--success-color);
-}
-.highlight-info-box.protip-box .box-title-text,
-.highlight-info-box.protip-box .box-title-text .title-icon { color: var(--success-color); }
-.highlight-info-box.protip-box .box-content-text .highlight { color: var(--success-color); }
-
-
-/* 프롬프트 예시 박스 */
-.prompt-example-display {
-    background-color: #2b2b2b;
-    color: #f0f0f0;
-    padding: 2rem; /* 패딩 증가 */
-    border-radius: 10px; /* 더 둥글게 */
-    margin: 2rem auto; /* 상하 마진 증가 */
-    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    font-size: 1.1rem; /* 폰트 크기 증가 */
-    line-height: 1.75;
-    white-space: pre-wrap;
-    word-break: break-word;
-    border: 1px solid #444;
-    text-align: left;
-    max-width: 720px;
-}
-.prompt-example-display strong { color: #87CEFA; }
-.prompt-example-display p { margin-bottom: 1rem; font-size: inherit; line-height: inherit; color:inherit; }
-.prompt-example-display p:last-child { margin-bottom: 0; }
-
-
-/* --- 슬라이드별 특화 스타일 --- */
-
-/* Slide 1 (학습 목표) - ID: slideM2S3_1 */
-#slideM2S3_1 .learning-objectives-container {
-    width: 100%;
-    max-width: 700px; /* 전체 컨테이너 너비 */
-    margin: 2rem auto;
-}
-#slideM2S3_1 .objective-entry { /* 각 목표 항목 */
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.07);
-    border-left: 5px solid var(--primary-color);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-#slideM2S3_1 .objective-entry-icon {
-    font-size: 3.5rem;
-    color: var(--primary-color);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
     margin-bottom: 1.2rem;
-}
-#slideM2S3_1 .objective-entry-text {
-    font-size: 1.7rem; /* 텍스트 크게 */
-    font-weight: 600;
-    color: var(--dark-text);
-    line-height: 1.5;
-}
-#slideM2S3_1 .objective-entry-text .highlight {
-    color: var(--primary-color);
-    font-weight: 700;
-}
-
-/* Slide 4 (NotebookLM 활용 예시) - ID: slideM2S3_4 (새로운 디자인) */
-#slideM2S3_4 .usecase-showcase-list {
-    width: 100%;
-    max-width: 800px;
-    margin: 2rem auto;
-}
-#slideM2S3_4 .usecase-block {
-    text-align: center;
-    padding: 2rem 1rem; /* 상하 패딩 */
-    margin-bottom: 1.5rem; /* 블록 간 간격 */
-    /* border-bottom: 1px dashed var(--border-color); */ /* 구분선 제거 또는 다른 스타일 */
-}
-#slideM2S3_4 .usecase-block:last-child { border-bottom: none; }
-#slideM2S3_4 .usecase-block-icon {
-    font-size: 3.5rem; /* 아이콘 크게 */
-    color: var(--light-text);
-    margin-bottom: 1rem;
-}
-#slideM2S3_4 .usecase-block-text {
-    font-size: 1.5rem; /* 텍스트 크게 */
-    font-weight: 500;
-    color: var(--dark-text);
-    line-height: 1.6;
-}
-#slideM2S3_4 .usecase-block-text .highlight-feature {
-    color: var(--info-color); /* NLM 테마 */
-    font-weight: 600;
-}
-
-/* Slide 6 (시너지 효과) - ID: slideM2S3_6 (새로운 디자인) */
-#slideM2S3_6 .synergy-flow-diagram {
     display: flex;
-    flex-direction: column; /* 기본 세로 배치 */
     align-items: center;
     gap: 1.5rem;
-    margin: 2.5rem auto;
-    width: 100%;
+    border-left: 5px solid var(--primary-color);
 }
-#slideM2S3_6 .synergy-element-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-    text-align: center;
-    width: 100%;
-    max-width: 450px; /* 카드 너비 */
-}
-#slideM2S3_6 .synergy-element-card .element-name {
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-#slideM2S3_6 .synergy-element-card .element-name .element-icon {
-    font-size: 1.3em;
-    margin-right: 0.5rem;
-}
-#slideM2S3_6 .synergy-element-card .element-name.nlm-color { color: var(--info-color); }
-#slideM2S3_6 .synergy-element-card .element-name.gemini-color { color: var(--primary-color); }
-#slideM2S3_6 .synergy-element-card .element-description {
-    font-size: 1.25rem;
-    color: var(--dark-text);
-    background-color: #f8f9fa;
-    padding: 0.8rem 1.2rem;
-    border-radius: 8px;
-    display: inline-block;
-}
-#slideM2S3_6 .synergy-connector-icon {
-    font-size: 3.5rem;
+.use-case-icon {
+    font-size: 2.5rem;
     color: var(--primary-color);
-    font-weight: bold;
-    margin: 0.5rem 0; /* 위아래 간격 */
 }
-#slideM2S3_6 .synergy-outcome-banner {
-    margin-top: 1rem;
-    padding: 1rem 2.5rem;
-    background-color: var(--success-color);
-    color: white;
-    border-radius: 10px;
-    font-weight: 600;
-    font-size: 1.7rem;
-    display: inline-block;
-    box-shadow: 0 5px 15px rgba(var(--success-color-rgb), 0.2);
-}
-@media (min-width: 769px) { /* 데스크탑에서는 가로 배치 */
-    #slideM2S3_6 .synergy-flow-diagram { flex-direction: row; justify-content: center; }
-    #slideM2S3_6 .synergy-connector-icon { margin: 0 1.5rem; }
-}
-
-
-/* Slide 7-10 (시너지 단계 - 새로운 디자인) */
-.step-showcase-container {
-    width: 100%;
-    max-width: 850px; /* 전체 컨테이너 너비 */
-    margin: 2rem auto;
-    background-color: var(--card-bg);
-    border-radius: 16px;
-    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
-    overflow: hidden;
-}
-.step-showcase-header {
-    padding: 2rem 2.5rem;
-    display: flex;
-    align-items: center;
-    color: white;
-    /* 각 단계별 배경색은 HTML 인라인 또는 ID 선택자로 지정 */
-}
-.step-showcase-header .step-indicator-badge {
-    width: 55px; /* 크기 키움 */
-    height: 55px;
-    border-radius: 50%;
-    background-color: white;
-    font-size: 2rem; /* 숫자 크게 */
-    font-weight: 700; /* 두껍게 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1.5rem;
-    flex-shrink: 0;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-}
-.step-showcase-header .step-main-title {
-    font-size: 2.2rem; /* 제목 크게 */
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.3;
-}
-.step-showcase-content {
-    padding: 2.5rem 3rem; /* 내부 패딩 크게 */
-    text-align: left;
-    font-size: 1.25rem; /* 본문 폰트 크게 */
-    line-height: 1.85; /* 줄간격 넓게 */
+.use-case-text {
+    font-size: 1.1em;
+    line-height: 1.6;
     color: var(--dark-text);
 }
-.step-showcase-content p { margin-bottom: 1.5rem; }
-.step-showcase-content .highlight-text { font-weight: 600; color: var(--primary-color); }
-/* 단계별 헤더 색상 및 뱃지 숫자 색상 */
-#slideM2S3_7 .step-showcase-header { background-color: #4A90E2; } /* 밝은 파랑 */
-#slideM2S3_7 .step-indicator-badge { color: #4A90E2; }
-#slideM2S3_8 .step-showcase-header { background-color: #50E3C2; } /* 청록 */
-#slideM2S3_8 .step-indicator-badge { color: #50E3C2; }
-#slideM2S3_9 .step-showcase-header { background-color: var(--success-color); } /* 녹색 */
-#slideM2S3_9 .step-indicator-badge { color: var(--success-color); }
-#slideM2S3_10 .step-showcase-header { background-color: var(--info-color); } /* 정보 파랑 */
-#slideM2S3_10 .step-indicator-badge { color: var(--info-color); }
+.use-case-text strong { color: var(--primary-color); font-weight: 600;}
 
-
-/* 기업용 AI 서비스 장점 (Slide 13) */
-#slideM2S3_13 .security-benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem; /* 카드 간 간격 */
-    width: 100%;
-    max-width: 1050px; /* 그리드 너비 */
-    margin: 2rem auto;
-}
-#slideM2S3_13 .benefit-detail-card {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 2.5rem 2rem; /* 패딩 조정 */
-    box-shadow: 0 8px 25px rgba(var(--success-color-rgb,0,128,0), 0.1); /* 연한 초록 그림자 */
-    border-left: 6px solid var(--success-color); /* 왼쪽 강조선 */
-    text-align: left;
-    display: flex;
-    flex-direction: column;
-}
-#slideM2S3_13 .benefit-detail-card .card-top-icon {
-    font-size: 3rem;
-    color: var(--success-color);
-    margin-bottom: 1rem;
-}
-#slideM2S3_13 .benefit-detail-card .card-emphasis-title {
-    font-size: 1.7rem; /* 제목 크기 */
-    font-weight: 600;
-    color: var(--success-color);
-    margin-bottom: 1rem;
-}
-#slideM2S3_13 .benefit-detail-card .card-explanation-text {
-    font-size: 1.15rem; /* 설명 폰트 */
-    line-height: 1.75;
-    color: var(--dark-text);
-    flex-grow: 1; /* 카드 높이 일정하게 */
-}
-#slideM2S3_13 .benefit-detail-card .card-explanation-text .highlight {
-    font-weight: 600;
-}
-
-
-/* 최종 요약 리스트 (Slide 20-23, ID 재조정 필요) */
-.final-takeaway-list {
-    width: 100%;
-    max-width: 800px; /* 목록 너비 */
-    margin: 2rem auto;
-}
-.final-takeaway-item {
-    background-color: var(--card-bg);
-    border-radius: 12px;
-    padding: 2rem 2.5rem; /* 패딩 조정 */
-    margin-bottom: 1.8rem;
-    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-    display: flex;
-    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
-    text-align: left;
-    border-left: 5px solid; /* 색상은 각 항목별로 지정 */
-}
-.final-takeaway-item .item-leading-icon {
-    font-size: 2.5rem; /* 아이콘 크게 */
-    margin-right: 1.5rem; /* 간격 넓게 */
-    flex-shrink: 0;
-    line-height: 1.5; /* 텍스트와 수직 중앙 정렬 용이 */
-    margin-top: 0.2em; /* 아이콘 살짝 내리기 */
-}
-.final-takeaway-item .item-main-text {
-    font-size: 1.3rem; /* 텍스트 크게 */
-    color: var(--dark-text);
+/* Slide 4: Synergy Section */
+.synergy-section { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+.synergy-item { display: flex; flex-direction: column; align-items: center; margin-bottom: 0.5rem; }
+.tool-logo-small { max-height: 50px; margin-bottom: 0.5rem; }
+.synergy-item p { font-size: 1.2em; }
+.plus-icon { font-size: 2.5em; font-weight: bold; color: var(--primary-color); margin: 0.5rem 0; }
+.arrow-down { font-size: 2.5em; color: var(--light-text); margin: 0.5rem 0; }
+.synergy-result .result-text {
+    font-size: 1.25em;
     line-height: 1.7;
-    flex-grow: 1;
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-top: 1rem;
+    max-width: 800px;
 }
-.final-takeaway-item .item-main-text .highlight-point { font-weight: 600; }
 
-/* 항목별 테마 색상 */
-#slideM2S3_20 .final-takeaway-item { border-left-color: var(--primary-color); }
-#slideM2S3_20 .item-leading-icon { color: var(--primary-color); }
-#slideM2S3_20 .highlight-point { color: var(--primary-color); }
-
-#slideM2S3_21 .final-takeaway-item { border-left-color: var(--warning-color-text); }
-#slideM2S3_21 .item-leading-icon { color: var(--warning-color-text); }
-#slideM2S3_21 .highlight-point { color: var(--warning-color-text); }
-
-#slideM2S3_22 .final-takeaway-item { border-left-color: var(--info-color); }
-#slideM2S3_22 .item-leading-icon { color: var(--info-color); }
-#slideM2S3_22 .highlight-point { color: var(--info-color); }
-
-#slideM2S3_23 .final-takeaway-item { border-left-color: var(--success-color); }
-#slideM2S3_23 .item-leading-icon { color: var(--success-color); }
-#slideM2S3_23 .highlight-point { color: var(--success-color); }
-
-
-/* 마무리 페이지 (Slide 24) */
-#slideM2S3_24 .closing-icon-large {
-    font-size: 5rem; /* 아이콘 아주 크게 */
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-}
-#slideM2S3_24 .closing-primary-message { /* section-main-title 스타일 활용 */
-    font-size: 2.6rem;
-}
-#slideM2S3_24 .closing-secondary-message { /* section-sub-text 스타일 활용 */
-    font-size: 1.5rem;
+/* Slide 5: Step List */
+.step-list {
+    list-style: none;
+    padding: 0;
+    width: 100%;
     max-width: 850px;
 }
-#slideM2S3_24 .final-action-button { /* 버튼 스타일 */
-    margin-top: 2.5rem;
-    padding: 1.2rem 3rem; /* 버튼 크게 */
-    background-color: var(--primary-color);
-    color: white;
-    border: none;
-    border-radius: 10px; /* 버튼 둥글게 */
-    font-size: 1.5rem; /* 버튼 텍스트 크게 */
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+.step-item {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: flex-start; /* 아이콘과 내용 상단 정렬 */
+    gap: 1.5rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    border: 1px solid var(--border-color);
 }
-#slideM2S3_24 .final-action-button:hover {
-    background-color: #2a49c7; /* 호버시 약간 어둡게 */
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(var(--primary-color-rgb), 0.35);
+.step-number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    flex-shrink: 0;
+    line-height: 1.2; /* h3와 수직 중앙 정렬을 위해 */
 }
-#slideM2S3_24 .final-reminder-text {
-    font-size: 1rem; /* 주의 문구는 작게 */
+.step-content h3 {
+    font-size: 1.4em;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+.step-content p {
+    font-size: 1.05em;
+    color: var(--dark-text);
+    line-height: 1.6;
+    margin-bottom: 0.3rem;
+}
+.tip-text { font-size: 0.9em; color: var(--light-text); font-style: italic; }
+.example-text { font-size: 0.9em; color: var(--info-color); background-color: #f0f5ff; padding: 0.3em 0.5em; border-radius: 4px; display: inline-block; margin-top: 0.3em;}
+
+
+/* Slide 6, 7: Use Case Scenario */
+.use-case-scenario .scenario-box {
+    background-color: var(--section-list-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2rem 2.5rem;
+    width: 100%;
+    max-width: 750px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+}
+.scenario-box p {
+    font-size: 1.15em;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    color: var(--dark-text);
+}
+.scenario-box .scenario-problem strong,
+.scenario-box .scenario-action strong,
+.scenario-box .scenario-ai-task strong,
+.scenario-box .scenario-result strong {
+    color: var(--primary-color);
+}
+.scenario-arrow { text-align: center; font-size: 1.8em !important; color: var(--light-text) !important; margin: 0.5rem 0 !important; }
+.scenario-ai-活用 { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+.活用-item { display: flex; align-items: center; gap: 1rem; background-color: #fff; padding: 0.8rem 1.2rem; border-radius: 8px; border: 1px solid #e0e0e0;}
+.活用-icon { font-size: 1.8em; color: var(--success-color); }
+
+/* Slide 8, 9, 10: Large Text Block & Example Boxes */
+.large-text-block {
+    font-size: 1.6em;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--dark-text);
+    margin: 1rem 0 2rem 0;
+    max-width: 80%;
+}
+.example-boxes {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+.example-box {
+    padding: 1.5rem;
+    border-radius: 10px;
+    min-width: 250px;
+    text-align: center;
+    font-size: 1.1em;
+    line-height: 1.5;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+}
+.example-box.style-blue { background-color: var(--secondary-color); border-left: 5px solid var(--primary-color); color: var(--dark-text); }
+.example-box.style-green { background-color: #e6ffed; border-left: 5px solid var(--success-color); color: var(--dark-text); }
+.example-box .highlight-bold { color: var(--primary-color); } /* example-box 내부의 highlight-bold 색상 조정 */
+.example-box.style-green .highlight-bold { color: var(--success-color); }
+
+.trust-box {
+    background-color: #fff8e1;
+    border: 1px solid var(--warning-color-border);
+    border-left-width: 5px;
+    padding: 1.5rem 2rem;
+    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 700px;
+}
+.trust-icon { font-size: 2em; color: var(--warning-color-text); float: left; margin-right: 1rem; }
+.trust-title { font-size: 1.3em; color: var(--warning-color-text); margin-top:0; margin-bottom: 0.5rem; }
+.trust-box p { font-size: 1.05em; color: var(--dark-text); line-height: 1.6; }
+
+.content-types {
+    font-size: 0.9em;
     color: var(--light-text);
-    margin-top: 2.5rem;
+    display: block;
+    margin-top: 0.5rem;
 }
-#slideM2S3_24 .final-reminder-text .highlight-warning {
-    color: var(--warning-color-text);
+
+/* Slide 11: Audio Feature */
+.audio-feature-section { }
+.audio-icon-main { font-size: 4rem; color: var(--primary-color); margin-bottom: 1rem; }
+.benefits-grid-audio {
+    display: flex;
+    flex-direction: column; /* 세로로 나열 */
+    gap: 1rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 600px;
+}
+.benefit-item-audio {
+    background-color: var(--card-bg);
+    padding: 1rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1.1em;
+    color: var(--dark-text);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+.benefit-icon-small { font-size: 1.5em; color: var(--primary-color); }
+
+
+/* Slide 12, 16: QnA Intro */
+.security-qna-intro, .reliability-qna-intro { padding: 2rem 0; }
+.security-icon-main, .reliability-icon-main {
+    font-size: 5rem;
+    margin-bottom: 1.5rem;
+}
+.security-icon-main { color: var(--danger-color-m4s1, #d9363e); }
+.reliability-icon-main { color: var(--warning-color-border, #ffc107); }
+
+.qna-question-big {
+    font-size: 1.8em;
     font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+.qna-answer-prompt {
+    font-size: 1.3em;
+    color: var(--light-text);
+}
+
+/* Slide 13: Compare AI Services */
+.compare-ai-services {
+    display: flex;
+    gap: 2rem;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 1rem;
+}
+.ai-service-type {
+    flex: 1;
+    padding: 2rem;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    border: 1px solid var(--border-color);
+}
+.ai-service-type h3 {
+    font-size: 1.5em;
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 0.5rem;
+}
+.ai-service-type .desc { font-size: 1.1em; line-height: 1.6; margin-bottom: 1rem; }
+.ai-service-type .warning {
+    font-size: 1.1em;
+    line-height: 1.6;
+    background-color: var(--warning-bg-m2s1, #fff8e1);
+    padding: 0.8rem;
+    border-radius: 6px;
+    border-left: 4px solid var(--warning-border-m2s1, #ffc107);
+}
+.ai-service-type.enterprise h3 { color: var(--success-color); border-bottom-color: var(--success-color); }
+
+
+/* Slide 15: Checklist */
+.checklist {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 800px;
+}
+.check-item {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    font-size: 1.1em;
+    line-height: 1.7;
+}
+.check-icon { font-size: 1.8em; line-height: 1.3; }
+.check-item.critical .check-icon { color: var(--danger-color-m4s1, #d9363e); }
+.check-item.important .check-icon { color: var(--info-color, #17a2b8); }
+.check-item strong { font-weight: 600; }
+
+/* Slide 17: Hallucination Info */
+.hallucination-info { }
+.alert-box-yellow {
+    background-color: var(--warning-bg-m2s1, #fff8e1);
+    border: 1px solid var(--warning-border-m2s1, #ffc107);
+    border-left-width: 5px;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    max-width: 800px;
+    text-align: left;
+}
+.alert-icon { font-size: 2.5em; color: var(--warning-color-text); float: left; margin-right: 1.5rem; line-height: 1;}
+.alert-title { font-size: 1.5em; color: var(--warning-color-text); margin-top:0; margin-bottom: 1rem; }
+.alert-box-yellow p { font-size: 1.1em; color: var(--dark-text); line-height: 1.7; }
+.conclusion-text { font-size: 1.3em; font-weight: 500; }
+
+/* Slide 18: Info Box Green */
+.info-box-green {
+    background-color: #e8f5e9; /* good-bg-m2s1 */
+    border: 1px solid #a5d6a7; /* good-border-m2s1 연하게 */
+    border-left-width: 5px;
+    border-left-color: var(--good-border-m2s1, #2e7d32);
+    padding: 2rem;
+    border-radius: 10px;
+    max-width: 800px;
+    text-align: left;
+}
+.info-icon { font-size: 2.5em; color: var(--good-border-m2s1, #2e7d32); float: left; margin-right: 1.5rem; line-height: 1;}
+.info-title { font-size: 1.5em; color: var(--good-border-m2s1, #2e7d32); margin-top:0; margin-bottom: 1rem; }
+.info-list { list-style: disc; padding-left: 20px; font-size: 1.1em; color: var(--dark-text); line-height: 1.7; }
+.info-list li { margin-bottom: 0.5rem; }
+
+/* Slide 19: Numbered List Spaced */
+.numbered-list-spaced {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 850px;
+    counter-reset: spaced-list-counter;
+}
+.numbered-list-spaced li {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    position: relative;
+    padding-left: 4.5rem; /* 아이콘+숫자 공간 */
+}
+.numbered-list-spaced li::before {
+    counter-increment: spaced-list-counter;
+    content: counter(spaced-list-counter);
+    position: absolute;
+    left: 1.5rem;
+    top: 1.5rem;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+.list-item-header {
+    font-size: 1.3em;
+    font-weight: 600;
+    color: var(--dark-text);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+.list-icon { font-size: 1.3em; margin-right: 0.7rem; color: var(--primary-color); }
+.numbered-list-spaced li p {
+    font-size: 1.05em;
+    color: var(--dark-text);
+    line-height: 1.7;
+}
+
+/* Slide 20: Summary Grid */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1000px; /* 더 넓게 */
+    margin: 1rem 0;
+}
+.summary-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* 내용 상단부터 */
+    min-height: 220px;
+}
+.summary-card.style-blue { border-left: 5px solid var(--info-color); }
+.summary-card.style-red { border-left: 5px solid var(--danger-color-m4s1); }
+.summary-card.style-yellow { border-left: 5px solid var(--warning-color-border); }
+.summary-card.style-green { border-left: 5px solid var(--success-color); }
+
+.summary-icon { font-size: 2.8rem; margin-bottom: 1rem; line-height: 1; }
+.summary-card.style-blue .summary-icon { color: var(--info-color); }
+.summary-card.style-red .summary-icon { color: var(--danger-color-m4s1); }
+.summary-card.style-yellow .summary-icon { color: var(--warning-color-text); }
+.summary-card.style-green .summary-icon { color: var(--success-color); }
+
+.summary-title {
+    font-size: 1.4em;
+    font-weight: 700;
+    color: var(--dark-text);
+    margin-bottom: 0.8rem;
+}
+.summary-card p { font-size: 1em; color: var(--light-text); line-height: 1.6; }
+.final-caution {
+    grid-column: 1 / -1; /* 그리드 전체 너비 차지 */
+    margin-top: 2rem;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--bad-bg-m2s1, #ffebee); /* m2s1 색상 활용 */
+    border: 1px solid var(--bad-border-m2s1, #c62828);
+    border-radius: 8px;
+    color: var(--dark-text);
 }
 
 
-/* --- 반응형 스타일 --- */
+/* 반응형 조정 */
+@media (max-width: 992px) {
+    #contentDisplay .slide-content { padding: 2rem 2.5rem; }
+    .large-text-block { font-size: 1.4em; max-width: 90%; }
+    .feature-grid.three-cols, .feature-grid.five-cols { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+    .card-title-sub { font-size: 1em; min-height: auto; }
+    .compare-ai-services { flex-direction: column; }
+    .summary-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .numbered-list-spaced li { padding-left: 1.5rem; }
+    .numbered-list-spaced li::before { display: none; /* 모바일에서는 숫자 아이콘 숨김 또는 다른 방식*/ }
+}
+
 @media (max-width: 768px) {
-    #contentDisplay .slide { min-height: 80vh; padding-top:1.5rem; padding-bottom: 3rem;}
     #contentDisplay .slide-content { padding: 1.5rem; }
-    #contentDisplay .slide-number { top: 1.2rem; right: 1.5rem; font-size: 0.9rem; }
+    .slide-title { font-size: 1.5rem; /* common_styles에 있는 title보다 우선 적용되도록 */ }
+    .slide-subtitle { font-size: 0.95rem; /* common_styles에 있는 subtitle보다 우선 적용되도록 */ }
+    
+    .tool-name-display { font-size: 1.5em; }
+    .tool-description-display { font-size: 1em; }
+    .vs-icon { font-size: 2.5em; }
 
-    .section-main-title { font-size: 2rem; }
-    .section-sub-text { font-size: 1.15rem; }
+    .feature-grid.three-cols, .feature-grid.five-cols { grid-template-columns: 1fr; } /* 모바일 1열 */
+    .feature-card { min-height: auto; padding: 1.5rem; }
+    .card-icon-large { font-size: 2.5rem; }
+    .card-title-main { font-size: 1.3em; }
+    .card-desc-main, .card-desc-sub { font-size: 1em; }
 
-    .info-card-simple { padding: 2rem 1.5rem; max-width: 95%; }
-    .info-card-simple .card-icon-display { font-size: 3rem; }
-    .info-card-simple .card-main-text { font-size: 1.5rem; }
-    .info-card-simple .card-feature-list li { font-size: 1.1rem; }
-    .info-card-simple .card-bottom-banner { font-size: 1.2rem; padding: 0.8rem 1.5rem; }
+    .use-case-list { max-width: 100%; }
+    .use-case-item { flex-direction: column; align-items: flex-start; text-align: left; gap: 0.5rem; padding: 1rem 1.2rem;}
+    .use-case-icon { font-size: 2rem; margin-bottom: 0.5rem; }
 
-    .highlight-info-box { padding: 1.5rem; max-width: 95%; }
-    .highlight-info-box .box-title-text { font-size: 1.3rem; }
-    .highlight-info-box .box-content-text { font-size: 1.1rem; }
+    .synergy-item p { font-size: 1.1em; }
+    .synergy-result .result-text { font-size: 1.1em; padding: 1rem; }
 
-    .prompt-example-display { font-size: 1rem; padding: 1.5rem; max-width: 95%; }
+    .step-item { flex-direction: column; gap: 0.5rem; padding: 1rem 1.2rem;}
+    .step-number { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .step-content h3 { font-size: 1.2em; }
+    .step-content p { font-size: 1em; }
 
-    #slideM2S3_1 .learning-objectives-container { max-width: 95%; }
-    #slideM2S3_1 .objective-entry { padding: 1.5rem; }
-    #slideM2S3_1 .objective-entry-icon { font-size: 3rem; }
-    #slideM2S3_1 .objective-entry-text { font-size: 1.4rem; }
+    .use-case-scenario .scenario-box { padding: 1.5rem; }
+    .scenario-box p { font-size: 1.05em; }
 
-    #slideM2S3_4 .usecase-showcase-list { max-width: 95%; }
-    #slideM2S3_4 .usecase-block-icon { font-size: 3rem; }
-    #slideM2S3_4 .usecase-block-text { font-size: 1.3rem; }
+    .large-text-block { font-size: 1.3em; max-width: 100%; margin: 0.5rem 0 1.5rem 0; }
+    .example-boxes { flex-direction: column; gap: 1rem; }
+    .example-box { min-width: auto; width: 100%; font-size: 1em; }
 
-    #slideM2S3_6 .synergy-flow-diagram { gap: 1rem; }
-    #slideM2S3_6 .synergy-element-card { padding: 1.5rem; max-width: 90%; }
-    #slideM2S3_6 .synergy-element-card .element-name { font-size: 1.6rem; }
-    #slideM2S3_6 .synergy-element-card .element-description { font-size: 1.1rem; }
-    #slideM2S3_6 .synergy-connector-icon { font-size: 2.8rem; }
-    #slideM2S3_6 .synergy-outcome-banner { font-size: 1.4rem; padding: 0.8rem 2rem; }
+    .trust-box, .alert-box-yellow, .info-box-green { padding: 1.5rem; }
+    .trust-icon, .alert-icon, .info-icon { font-size: 1.8em; margin-right: 1rem; }
+    .trust-title, .alert-title, .info-title { font-size: 1.2em; }
+    .trust-box p, .alert-box-yellow p, .info-list { font-size: 1em; }
 
-    .step-showcase-container { max-width: 95%; margin: 1.5rem auto; }
-    .step-showcase-header { padding: 1.5rem; }
-    .step-showcase-header .step-indicator-badge { width: 45px; height: 45px; font-size: 1.6rem; margin-right: 1rem; }
-    .step-showcase-header .step-main-title { font-size: 1.6rem; }
-    .step-showcase-content { padding: 2rem 1.8rem; font-size: 1.1rem; }
+    .qna-question-big { font-size: 1.5em; }
+    .qna-answer-prompt { font-size: 1.1em; }
 
-    #slideM2S3_13 .security-benefits-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    #slideM2S3_13 .benefit-detail-card { padding: 2rem 1.5rem; }
-    #slideM2S3_13 .benefit-detail-card .card-top-icon { font-size: 2.5rem; }
-    #slideM2S3_13 .benefit-detail-card .card-emphasis-title { font-size: 1.4rem; }
-    #slideM2S3_13 .benefit-detail-card .card-explanation-text { font-size: 1.05rem; }
-
-    .final-takeaway-list { max-width: 95%; }
-    .final-takeaway-item { padding: 1.5rem; flex-direction: column; align-items: center; text-align:center; }
-    .final-takeaway-item .item-leading-icon { margin-right: 0; margin-bottom: 0.8rem; }
-    .final-takeaway-item .item-main-text { font-size: 1.15rem; }
-
-    #slideM2S3_24 .closing-icon-large { font-size: 4rem; }
-    #slideM2S3_24 .closing-primary-message { font-size: 2rem; }
-    #slideM2S3_24 .closing-secondary-message { font-size: 1.25rem; }
-    #slideM2S3_24 .final-action-button { font-size: 1.3rem; padding: 1rem 2.5rem; }
-    #slideM2S3_24 .final-reminder-text { font-size: 0.9rem; }
+    .numbered-list-spaced li { padding: 1.2rem 1.5rem; }
+    .list-item-header { font-size: 1.15em; }
+    .list-icon { font-size: 1.1em; }
+    .numbered-list-spaced li p { font-size: 1em; }
+    
+    .summary-grid { grid-template-columns: 1fr; }
+    .summary-card { min-height: auto; padding: 1.5rem; }
+    .summary-icon { font-size: 2.2rem; }
+    .summary-title { font-size: 1.25em; }
+    .final-caution { font-size: 1em; padding: 0.8rem; }
 }
