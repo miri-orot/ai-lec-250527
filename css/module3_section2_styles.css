@@ -1,0 +1,271 @@
+/* Styles specific to module3_section2.html */
+
+/* --- 기본 슬라이드 및 콘텐츠 스타일 (common_styles.css 보완/재정의) --- */
+.slide-container {
+    max-width: var(--content-max-width-m3s2, 1100px); /* 이 섹션의 최대 너비 변수 사용 */
+    margin: 2rem auto;
+    padding: 0 15px;
+}
+
+.text-block {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    text-align: left; /* 기본 좌측 정렬 */
+    word-break: keep-all; /* 한글 단어 단위 */
+    overflow-wrap: break-word; /* 긴 단어 줄바꿈 */
+}
+.text-block.centered-text { /* 중앙 정렬 필요시 HTML에 클래스 추가 */
+    text-align: center;
+    max-width: 800px; /* 너무 길어지지 않도록 */
+    margin-left: auto;
+    margin-right: auto;
+}
+.highlight { color: var(--primary-color); font-weight: 600; }
+
+/* --- 슬라이드 1: Section Introduction --- */
+#slide1 .slide-content .image-link-wrapper {
+    text-align:center;
+    margin: 2rem 0;
+}
+#slide1 .slide-content .image-link-wrapper img {
+    max-width: 70%;
+    height: auto;
+    border-radius:8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#slide1 .slide-content .image-link-wrapper p {
+    font-size:0.9em;
+    color:var(--light-text);
+    margin-top:0.5rem;
+}
+#slide1 .slide-content .learning-objectives-box {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+#slide1 .slide-content .learning-objectives-box h4 {
+    text-align:center;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    border-bottom: none; padding-bottom: 0;
+}
+#slide1 .slide-content .learning-objectives-box ul {
+    list-style: none;
+    padding: 0;
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.7;
+}
+#slide1 .slide-content .learning-objectives-box li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: flex-start;
+}
+#slide1 .slide-content .learning-objectives-box li:last-child { margin-bottom: 0; }
+#slide1 .slide-content .learning-objectives-box li::before {
+    content: '✅';
+    margin-right: 0.7em;
+    color: var(--primary-color);
+    font-weight: bold;
+    line-height: 1.7; /* 텍스트와 수직 정렬 */
+}
+
+/* --- Slide 2: What is NotebookLM? --- */
+#slide2 .text-block { /* 슬라이드 2의 첫 번째 text-block은 중앙 정렬 */
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#slide2 .feature-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+@media (min-width: 769px) { /* 데스크탑: 2열 */
+    #slide2 .feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+@media (max-width: 768px) { /* 모바일: 1열 */
+    #slide2 .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    #slide2 .feature-box { padding: 1.2rem; }
+    #slide2 .feature-box h4 { font-size: 1.1rem !important; } /* 모바일 제목 크기 (Important로 우선순위) */
+    #slide2 .feature-box p,
+    #slide2 .feature-box ul { font-size: 0.9rem !important; line-height: 1.6 !important; } /* 모바일 본문/리스트 크기 */
+    #slide2 .feature-box ul { padding-left: 18px !important; } /* 모바일 리스트 들여쓰기 */
+}
+/* .feature-box 기본 스타일 (다른 슬라이드에서도 재활용 가능) */
+.feature-box {
+    background-color: var(--feature-box-bg-m3s2, #f0f5ff);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+    text-align: left; /* 내부 텍스트는 기본 좌측 정렬 */
+}
+.feature-box h4 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 0.8rem;
+    border-bottom: none; padding-bottom: 0;
+}
+/* 슬라이드 2의 특정 feature-box 배경색 및 제목 색상 (HTML 인라인 스타일 유지 시 이 부분 불필요) */
+/* HTML에서 인라인 스타일 제거 후 CSS로 제어하려면 아래 주석 해제 */
+/*
+#slide2 .feature-box:nth-child(1) { background-color: #e6f7ff; border-left-color: #1890ff; }
+#slide2 .feature-box:nth-child(1) h4 { color:#1890ff; }
+#slide2 .feature-box:nth-child(2) { background-color: #f6ffed; border-left-color: #52c41a; }
+#slide2 .feature-box:nth-child(2) h4 { color:#52c41a; }
+*/
+.feature-box p, .feature-box ul {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+}
+.feature-box ul { list-style-position: inside; padding-left: 0; }
+.feature-box li { margin-bottom: 0.4rem; }
+.feature-box .demo-point {
+    font-style: italic; color: var(--dark-text); background-color: #fff9e6;
+    padding: 0.2em 0.4em; border-radius: 4px; display: inline-block; margin-top: 0.3rem;
+}
+#slide2 .text-block:last-of-type { /* 슬라이드 2의 마지막 text-block도 중앙 정렬 */
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* --- Slide 3: NotebookLM Free vs Plus (Table) --- */
+#slide3 .text-block { text-align: center; max-width: 800px; margin-left:auto; margin-right:auto; }
+.comparison-table-wrapper { overflow-x: auto; margin: 1.5rem 0; -webkit-overflow-scrolling: touch; }
+.comparison-table {
+    width: 100%; min-width: 700px; border-collapse: collapse;
+    font-size: 0.9rem; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+.comparison-table th, .comparison-table td {
+    padding: 0.7rem 0.6rem; text-align: left; border: 1px solid var(--border-color);
+    vertical-align: top;
+}
+.comparison-table th { background-color: var(--secondary-color); font-weight: 600; white-space: nowrap; }
+.comparison-table td:first-child { font-weight: 500; background-color: #f9f9f9; width: 25%; }
+.comparison-table td br { display: none; } /* HTML의 <br><br> 제거 */
+.comparison-table td p { margin:0; }
+#slide3 .text-block:last-of-type { font-size:0.95rem; margin-top:1rem; }
+
+
+/* --- Slide 4, 5, 6, 7, 8, 9: Core Features --- */
+/* .feature-grid 는 슬라이드별로 ID를 사용하여 구체적으로 스타일링 */
+/* 예: #slide4 .feature-grid, #slide5 .slide5-feature-layout 등 */
+#slide4 .feature-grid { display: grid; gap: 1.5rem; margin: 1.5rem 0; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));}
+#slide5 .slide5-feature-layout { display: grid; gap: 1.5rem; margin: 2rem 0; }
+@media (min-width: 769px) { #slide5 .slide5-feature-layout { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { #slide5 .slide5-feature-layout { grid-template-columns: 1fr; } }
+
+#slide6 .feature-grid { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 769px) { #slide6 .feature-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { #slide6 .feature-grid { grid-template-columns: 1fr; } }
+
+#slide7 .text-block {text-align: center; max-width: 800px; margin-left:auto; margin-right:auto;}
+#slide7 .slide7-feature-layout { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin: 2rem 0; }
+#slide7 .feature-row { display: flex; justify-content: center; gap: 1.5rem; width: 100%; }
+#slide7 .feature-row .feature-box { flex: 1; }
+@media (max-width: 992px) { #slide7 .feature-row { flex-direction: column; align-items: stretch; } #slide7 .feature-row .feature-box { width: 100%; max-width: 100%; } }
+@media (min-width: 993px) {
+    #slide7 .feature-row.three-items .feature-box { flex-basis: calc(33.333% - 1rem); max-width: calc(33.333% - 1rem); }
+    #slide7 .feature-row.two-items .feature-box { flex-basis: calc(50% - 0.75rem); max-width: calc(50% - 0.75rem); }
+}
+#slide7 .demo-point, #slide4 .demo-point, #slide5 .demo-point, #slide6 .demo-point, #slide8 .demo-point, #slide9 .demo-point {
+    text-align:center; margin-top:1rem; display: block; font-style: italic; color: var(--dark-text);
+}
+
+
+/* --- Slide 10: NotebookLM Construction Scenarios --- */
+#slide10 .text-block { text-align: center; max-width: 800px; margin-left:auto; margin-right:auto;}
+.scenario-list { list-style-type: none; padding: 0; margin: 1.5rem 0; }
+.scenario-list li {
+    background-color: #fff; border: 1px solid var(--border-color);
+    border-left: 5px solid var(--secondary-color); padding: 1rem 1.5rem;
+    margin-bottom: 1rem; border-radius: 8px; font-size: 1rem; line-height: 1.6;
+}
+.scenario-list strong { color: var(--primary-color); font-weight: 600; display: block; margin-bottom: 0.5rem; }
+
+/* --- Slide 11: Integration with Other Tools --- */
+#slide11 .feature-grid { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 769px) { #slide11 .feature-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { #slide11 .feature-grid { grid-template-columns: 1fr; } }
+#slide11 .text-block { margin-top:1.5rem; text-align: center; max-width: 800px; margin-left:auto; margin-right:auto; }
+
+/* --- Slide 12: Summary & Conclusion --- */
+#slide12 .text-block { text-align: center; max-width: 800px; margin-left:auto; margin-right:auto; }
+#slide12 .summary-box {
+    background-color: var(--secondary-color); padding: 1.5rem 2rem; border-radius:10px;
+    margin: 2rem auto; max-width: 800px;
+}
+#slide12 .summary-box h4 {
+    text-align:center; color:var(--primary-color); margin-bottom:1rem;
+    font-size: 1.2rem; border-bottom: none; padding-bottom: 0;
+}
+#slide12 .summary-box ul { list-style-type: none; padding-left: 0px; font-size:1.05rem; line-height: 1.7; }
+#slide12 .summary-box ul li { margin-bottom:0.7rem; display: flex; align-items: flex-start; }
+#slide12 .summary-box ul li::before { content: '💡'; margin-right: 0.7em; color: var(--primary-color); font-weight: bold; line-height: 1.7; }
+#slide12 .summary-box ul li strong { color: var(--dark-text); }
+#slide12 .text-block:last-of-type { margin-top: 1.5rem; }
+
+
+.footer {
+    text-align: center; padding: 2rem; color: var(--light-text);
+    font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem;
+}
+
+/* --- 최종 모바일 가독성 조정 --- */
+@media (max-width: 768px) {
+    .slide-title { font-size: 1.2rem !important; }
+    .slide-subtitle { font-size: 0.8rem !important; }
+    h2 { font-size: 1.3rem !important; }
+    h3 { font-size: 1.15rem !important; }
+    h4 { font-size: 1.05rem !important; }
+
+    .text-block, #slide1 .slide-content .intro-box p, #slide1 .slide-content .main-points-box .list-text,
+    .feature-box p, .feature-box li, .comparison-table td, .scenario-list li, #slide12 .summary-box ul li,
+    .step-desc {
+        font-size: 0.9rem !important;
+        line-height: 1.65 !important;
+    }
+
+    #slide1 .slide-content .intro-box, #slide1 .slide-content .main-points-box,
+    .feature-box, .comparison-table-wrapper, .scenario-list li, #slide12 .summary-box {
+        padding: 1rem !important;
+    }
+    .comparison-table th, .comparison-table td {
+        padding: 0.5rem !important; font-size: 0.85rem !important;
+    }
+    .comparison-table td:first-child { width: auto !important; } /* 모바일에서는 첫 열 너비 자동 */
+
+
+    #slide1 .slide-content .image-link-wrapper img { max-width: 90%; }
+
+    /* Slide 7의 feature-row 내부 box들 100% 너비 */
+    #slide7 .feature-row .feature-box { width: 100%; max-width: 100%; }
+
+    /* 아이콘 옆 텍스트 흐름 개선을 위해 아이콘에 오른쪽 마진 */
+    #slide1 .slide-content .learning-objectives-box li::before,
+    #slide12 .summary-box ul li::before { margin-right: 0.5em; }
+
+    /* 슬라이드 별 최대 너비 해제 및 내부 패딩으로 조절 */
+    .intro-box, .main-points-box, .feature-grid, .comparison-table-wrapper, .slide5-feature-layout, .slide7-feature-layout, .scenario-list, #slide12 .summary-box {
+        max-width: 100%; width: 100%; margin-left: auto; margin-right: auto; padding-left:0; padding-right:0;
+    }
+    .feature-box, .comparison-table-wrapper {
+         max-width: 100%; width: 100%;
+    }
+}
