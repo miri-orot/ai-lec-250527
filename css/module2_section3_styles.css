@@ -39,7 +39,8 @@
     text-align: center;
 }
 .tool-name-display-xxlarge {
-    font-size: clamp(3em, 6vw, 4.5em); /* 화면 크기에 따른 폰트 조정 */
+    /* MODIFIED: Font size increased significantly */
+    font-size: clamp(3.8em, 8vw, 5.5em); 
     font-weight: 800;
     margin-bottom: 0.4rem;
     line-height: 1.1;
@@ -79,7 +80,10 @@
     box-shadow: 0 6px 20px rgba(0,0,0,0.07); /* 그림자 살짝 강조 */
     display: flex;
     flex-direction: column;
-    /* min-height 제거 또는 상황에 맞게 조정 */
+    /* MODIFIED: Added for content centering */
+    align-items: center; /* Center children horizontally */
+    justify-content: center; /* Center content block vertically */
+    text-align: center; /* Center text within children */
 }
 .ai-service-type-vfinal h3 {
     font-size: 1.8em; /* 제목 크기 키움 */
@@ -88,13 +92,15 @@
     margin-bottom: 1.5rem; /* 제목과 내용 사이 간격 */
     border-bottom: 3px solid var(--primary-color);
     padding-bottom: 0.8rem;
-    text-align: center;
+    text-align: center; /* Already centered, but good to be explicit */
+    width: 100%; /* Ensure h3 takes width for its border-bottom */
 }
 .ai-service-type-vfinal .desc {
     font-size: 1.2em; /* 설명 폰트 크기 키움 */
     line-height: 1.75; /* 줄간격 넓힘 */
     margin-bottom: 1.2rem;
-    flex-grow: 1;
+    /* MODIFIED: Removed flex-grow as justify-content: center handles vertical spacing */
+    /* flex-grow: 1; */ 
     color: var(--dark-text);
 }
 .ai-service-type-vfinal .desc-small {
@@ -105,20 +111,25 @@
 }
 .warning-box-inline-vfinal {
     display: flex;
-    align-items: center;
+    align-items: center; /* Vertical alignment of icon and text */
+    justify-content: center; /* Horizontal centering of icon and text if box is wider */
     background-color: var(--warning-bg-m2s1, #fff8e1);
     padding: 1.2rem 1.5rem; /* 내부 패딩 조정 */
     border-radius: 8px;
     border-left: 5px solid var(--warning-color-border, #ffc107);
-    margin-top: auto; /* 내용이 적을 경우 하단에 위치 */
+    /* MODIFIED: Removed margin-top: auto as justify-content: center on parent handles spacing */
+    /* margin-top: auto; */ 
+    width: 90%; /* Control width to see effect of align-items on parent */
+    max-width: 100%;
 }
 .warning-icon-inline { font-size: 1.6em; color: var(--warning-color-text); margin-right: 1rem; }
-.warning-box-inline-vfinal p { margin: 0; font-size: 1.1em; line-height: 1.55; color: var(--dark-text);}
+.warning-box-inline-vfinal p { margin: 0; font-size: 1.1em; line-height: 1.55; color: var(--dark-text); text-align: left;} /* Keep text left-aligned within warning box for readability */
 .ai-service-type-vfinal.enterprise h3 { color: var(--success-color); border-bottom-color: var(--success-color); }
 
 @media (min-width: 768px) { /* 데스크탑에서 가로 배치 */
     .compare-ai-services-vfinal {
         flex-direction: row !important; /* 가로 배치 강제 */
+        align-items: stretch; /* MODIFIED: Ensure cards stretch to be same height if content differs */
     }
     .ai-service-type-vfinal {
          min-height: 380px; /* 데스크탑에서 최소 높이 설정하여 시각적 균형 */
@@ -126,6 +137,7 @@
 }
 
 /* ===== Slide 20: Summary Grid VFinal - 확실한 2x2 배치 및 테두리 ===== */
+/* NOTE: Existing CSS for 2x2 grid was already correct and robust. No changes needed for the grid structure itself. */
 .summary-grid-vfinal {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* 2열 그리드 */
@@ -143,7 +155,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: flex-start; /* Content starts from top */
     min-height: 300px; /* 최소 높이 증가로 일관성 */
     border-left-width: 8px !important; /* 테두리 두께 확실히 적용 */
     border-left-style: solid !important; /* 테두리 스타일 확실히 적용 */
@@ -175,6 +187,7 @@
     font-size: 1.15em; /* 설명 폰트 크기 증가 */
     color: var(--light-text);
     line-height: 1.7; /* 줄간격 조정 */
+    flex-grow: 1; /* Allows text to take space, helping vertical alignment if needed */
 }
 .final-caution-vfinal { /* 이전 스타일 유지 */
     grid-column: 1 / -1; margin-top: 2.5rem; font-size: 1.25em; text-align: center;
@@ -315,13 +328,15 @@
 /* 반응형 조정 */
 @media (max-width: 992px) { /* 태블릿 */
     #contentDisplay .slide-content { padding: 2rem 2.5rem; }
-    .compare-ai-services-vfinal { flex-direction: column; }
-    .feature-grid-security-final .feature-card-final { width: calc(50% - 1rem); }
-    .summary-grid-vfinal { grid-template-columns: 1fr; }
+    /* .compare-ai-services-vfinal { flex-direction: column; } */ /* This is already the default */
+    .feature-grid-security-final .feature-card-final { width: calc(50% - 1rem); } /* For 2-column on tablet */
+    .summary-grid-vfinal { grid-template-columns: 1fr; } /* 1-column on tablet and mobile */
+    
     .compare-intro-vfinal { flex-direction: column; text-align: center; gap: 1.5rem; }
     .vs-icon-vfinal { margin: 1rem 0; font-size: clamp(3.5em, 7vw, 4.5em); }
-    .tool-name-display-xxlarge { font-size: clamp(2.8em, 6vw, 4em); }
-    .tool-description-display-vfinal { font-size: clamp(1.2em, 3vw, 1.5em); }
+    .tool-name-display-xxlarge { font-size: clamp(2.8em, 10vw, 4em); } /* Adjusted clamp for tablet */
+    .tool-description-display-vfinal { font-size: clamp(1.2em, 4vw, 1.5em); } /* Adjusted clamp for tablet */
+    
     .scenario-card-group-vfinal { flex-direction: column; }
 }
 
@@ -329,24 +344,33 @@
     #contentDisplay .slide-content { padding: 1.5rem; }
     .slide-title { font-size: 1.5rem; } .slide-subtitle { font-size: 0.95rem; }
     
-    .tool-name-display-xxlarge { font-size: clamp(2.5em, 8vw, 3.2em); }
-    .tool-description-display-vfinal { font-size: clamp(1.1em, 4vw, 1.3em); }
+    .tool-name-display-xxlarge { font-size: clamp(2.5em, 12vw, 3.5em); } /* Further adjust for mobile */
+    .tool-description-display-vfinal { font-size: clamp(1.1em, 5vw, 1.3em); } /* Further adjust for mobile */
 
     .synergy-top-row { flex-direction: column; align-items: center; gap: 0.5rem; }
     .synergy-plus-icon { font-size: 2.5rem; margin: 0.5rem 0; }
     .result-text-final { font-size: 1.15em; padding: 1.5rem; }
     
+    .compare-ai-services-vfinal { flex-direction: column !important; /* Ensure column on mobile if overridden */ }
     .ai-service-type-vfinal { padding: 1.5rem; min-height: auto; }
     .ai-service-type-vfinal h3 { font-size: 1.5em; }
-    .warning-box-inline-vfinal { flex-direction: column; align-items: flex-start; text-align: left; }
-    .warning-icon-inline { margin-bottom: 0.5rem; }
+    .warning-box-inline-vfinal { 
+        flex-direction: column; 
+        align-items: flex-start; /* Align icon and text block to start */
+        text-align: left; /* Align text within warning box to left */
+        width: 100%; /* Make warning box full width on mobile */
+    }
+    .warning-box-inline-vfinal p { text-align: left;} /* Ensure p text is left aligned */
+    .warning-icon-inline { margin-bottom: 0.5rem; margin-right: 0; }
 
-    .feature-grid-security-final .feature-card-final { width: calc(100% - 1rem); }
+    .feature-grid-security-final .feature-card-final { width: 100%; } /* 1-column on mobile */
 
-    .summary-grid-vfinal { grid-template-columns: 1fr; }
-    .summary-card-vfinal { min-height: auto; }
+    /* .summary-grid-vfinal is already 1fr from 992px down, so it's fine */
+    .summary-card-vfinal { min-height: auto; padding: 2rem 1.5rem; }
+    .summary-card-vfinal p { font-size: 1.05em; }
+
     .final-caution-vfinal { font-size: 1em; }
 
-    .numbered-list-spaced li { padding-left: 1.5rem; }
+    .numbered-list-spaced li { padding-left: 1.5rem; padding-right: 1.5rem; }
     .numbered-list-spaced li::before { display: none; }
 }
