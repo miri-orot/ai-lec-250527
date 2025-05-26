@@ -1,754 +1,462 @@
 /* Styles specific to module2_section3.html */
 /* CSS Variables and common slide structures are handled by common_styles.css */
 
-/* 이 섹션의 slide-container 최대 너비는 common_styles.css의 --content-max-width를 따름 */
+/* 슬라이드 기본 설정 */
+#contentDisplay .slide {
+    min-height: 85vh; /* 슬라이드 최소 높이 (조정 가능) */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; /* slide-content에서 개별적으로 처리 */
+    position: relative; /* 슬라이드 번호 위치 기준 */
+    padding-bottom: 3rem; /* 하단 여유 공간 */
+}
 
-/* --- Part 1: 인트로 --- */
-/* Slide 1: 섹션 인트로 - AI, 당신의 새로운 업무 파트너! */
-#slideM2S3_1 .intro-emphasis-text {
-    font-size: 2.2rem; /* common_styles.css의 .slide-title보다 약간 작게 */
+#contentDisplay .slide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 기본적으로 수직 중앙 정렬 */
+    align-items: center; /* 기본적으로 수평 중앙 정렬 */
+    flex-grow: 1;
+    text-align: center; /* 내부 텍스트 기본 중앙 정렬 */
+    width: 100%;
+}
+
+/* 슬라이드 번호 */
+#contentDisplay .slide-number {
+    position: absolute;
+    top: 1.8rem;
+    right: 2.2rem;
+    font-size: 0.95rem;
+    color: #c5c5c5; /* 옅은 회색 */
+    font-weight: 600;
+}
+
+/* --- 공통 강조 텍스트 스타일 (M1S2 "하루 8시간..." 참조) --- */
+.main-emphasis-text {
+    font-size: 2.4rem;
     font-weight: 700;
     color: var(--dark-text);
     text-align: center;
-    margin: 2rem auto;
-    line-height: 1.4;
+    margin: 2rem auto 1rem auto;
+    line-height: 1.45;
+    padding: 0 1rem;
+    max-width: 900px;
 }
-#slideM2S3_1 .intro-emphasis-text .highlight-box { /* common_styles.css의 .highlight-box 재활용 또는 유사 스타일 */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.2em 0.5em;
-    border-radius: 8px;
-    display: inline-block;
+.main-emphasis-text .highlight-blue {
+    color: var(--primary-color);
 }
-#slideM2S3_1 .intro-sub-text { /* common_styles.css의 .text-block과 유사 */
-    font-size: 1.2rem;
+.main-emphasis-text .emoji-large {
+    font-size: 1.1em;
+    vertical-align: baseline; /* 이모티콘 정렬 미세 조정 */
+}
+.sub-guidance-text {
+    font-size: 1.25rem;
     text-align: center;
     color: var(--light-text);
-    max-width: 700px;
-    margin: 1rem auto;
+    margin: 0 auto 2.5rem auto;
+    max-width: 750px;
+    padding: 0 1rem;
+    line-height: 1.7;
 }
 
-/* Slide 2: 학습 목표 (M1S1의 .benefits-grid 와 유사한 구조) */
-#slideM2S3_2 .learning-objectives-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    width: 100%;
-    max-width: 900px; /* 그리드 최대 너비 */
-    margin-top: 1.5rem;
-}
-#slideM2S3_2 .objective-card { /* M1S1의 .benefit-item 과 유사 */
+/* --- 카드/박스 공통 스타일 --- */
+.content-card {
     background-color: var(--card-bg);
     border-radius: 12px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-    border-top: 4px solid var(--primary-color);
+    padding: 2rem 2.5rem;
+    box-shadow: 0 8px 25px rgba(var(--primary-color-rgb), 0.08);
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 200px;
+    margin-bottom: 1.5rem;
 }
-#slideM2S3_2 .objective-icon { /* M1S1의 .benefit-icon 과 유사 */
-    font-size: 2.8rem;
+.content-card .card-icon-large {
+    font-size: 3.5rem;
     color: var(--primary-color);
-    margin-bottom: 1rem;
-    line-height: 1;
+    margin-bottom: 1.2rem;
 }
-#slideM2S3_2 .objective-title { /* M1S1의 .benefit-title 과 유사 */
-    font-size: 1.3rem;
+.content-card .card-title-large {
+    font-size: 1.6rem;
     font-weight: 600;
     color: var(--dark-text);
+    line-height: 1.5;
     margin-bottom: 0.5rem;
 }
-#slideM2S3_2 .objective-title .highlight-bold { /* common_styles.css의 .highlight-bold 재활용 가능 */
-    font-weight: 600;
-    color: var(--dark-text); /* 기본 텍스트 색상 유지 또는 primary-color */
-}
-
-
-/* --- Part 2 & 3: NotebookLM vs Gemini, 시너지 효과 --- */
-/* Slide 3: 질문 제시 */
-#slideM2S3_3 .question-text { /* M2S3_1 .intro-emphasis-text와 유사 */
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--dark-text);
-    text-align: center;
-    margin: 2rem auto;
-    line-height: 1.4;
-}
-#slideM2S3_3 .question-text .emoji {
-    font-size: 1.5em; /* 이모지 크기 */
-    vertical-align: middle;
-}
-#slideM2S3_3 .guidance-text { /* M2S3_1 .intro-sub-text와 유사 */
-    font-size: 1.1rem;
-    text-align: center;
-    color: var(--light-text);
-    margin-top: 1rem;
-}
-
-/* Slide 4, 6: 도구 소개 (M1S3의 .capability-card 와 유사한 구조) */
-.tool-introduction-card { /* M1S3 .capability-card 와 거의 동일하게 사용 가능 */
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 1.8rem 1.5rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 230px; /* 높이 통일 */
-    border-top: 5px solid var(--primary-color); /* NotebookLM/Gemini 기본 강조 */
-}
-.tool-introduction-card .tool-icon { /* M1S3 .card-icon 과 유사 */
-    font-size: 2.8rem;
+.content-card .card-title-large .highlight-bold {
+    font-weight: 700;
     color: var(--primary-color);
-    margin-bottom: 1rem;
 }
-.tool-introduction-card .tool-feature-list {
+.content-card .card-list {
     list-style: none;
     padding: 0;
-    margin-top: 0.5rem;
-    text-align: left; /* 리스트 내용은 좌측 정렬 */
-    width: 100%;
-}
-.tool-introduction-card .tool-feature-list li {
-    font-size: 1rem;
-    color: var(--dark-text);
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
-}
-.tool-introduction-card .tool-feature-list li .list-icon {
-    margin-right: 0.5rem;
-    color: var(--primary-color);
-    flex-shrink: 0;
-    line-height: 1.6; /* 텍스트 줄간격과 맞춤 */
-}
-.tool-introduction-card .tool-characteristic { /* M2S3_1 .highlight-box 와 유사 */
     margin-top: 1rem;
-    padding: 0.5rem 1rem;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 1rem;
     display: inline-block;
-}
-/* NotebookLM 소개 카드 특정 스타일 (필요시) */
-#slideM2S3_4 .tool-introduction-card {
-    border-top-color: var(--info-color); /* 예시: NotebookLM은 info color */
-}
-#slideM2S3_4 .tool-introduction-card .tool-icon,
-#slideM2S3_4 .tool-introduction-card .tool-feature-list li .list-icon {
-    color: var(--info-color);
-}
-#slideM2S3_4 .tool-introduction-card .tool-characteristic {
-    background-color: rgba(var(--info-color-rgb), 0.1); /* info-color의 연한 배경 */
-    color: var(--info-color);
-}
-
-/* Slide 5, 7: 활용 예시 및 접근 방법 (M2S1의 .usecase-item 또는 M1S1의 .benefit-item 과 유사한 구조) */
-.usage-example-list, .access-method-container {
-    margin-top: 1.5rem;
-    width: 100%;
-    max-width: 800px; /* 콘텐츠 너비 조절 */
-}
-.usage-example-item, .access-method-card { /* M2S1 .usecase-item과 유사 */
-    background-color: #fff;
-    padding: 1.2rem 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-    margin-bottom: 1rem;
-    display: flex;
-    align-items: flex-start;
     text-align: left;
-    border-left: 4px solid var(--secondary-color);
 }
-.usage-example-item .item-icon, .access-method-card .item-icon { /* M2S1 .usecase-icon과 유사 */
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    margin-right: 1rem;
-    width: 35px;
-    text-align: center;
-    flex-shrink: 0;
-    line-height: 1.5;
-}
-.usage-example-item p, .access-method-card p {
-    font-size: 1rem;
-    line-height: 1.6;
-    margin: 0;
-    flex-grow: 1;
-}
-.usage-example-item p strong, .access-method-card p strong { /* common_styles.css의 strong 재활용 */
+.content-card .card-list li {
+    font-size: 1.15rem;
     color: var(--dark-text);
-    font-weight: 600;
-}
-.access-method-container { /* 2열 그리드 레이아웃 */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-.access-method-card h4 { /* 카드 내부 제목 */
-    font-size: 1.2rem;
-    color: var(--primary-color);
     margin-bottom: 0.8rem;
-    border-bottom: none;
-    padding-bottom: 0;
-}
-.access-method-card ul {
-    padding-left: 5px; /* 아이콘 공간 있으므로 많이 안 밀어도 됨 */
-    margin-top: 0.5rem;
-}
-
-/* Slide 8: 시너지 효과 (M2S1 .analogy-box 또는 M1S3 .ai-definition-main 와 유사한 강조 텍스트) */
-#slideM2S3_8 .synergy-analogy {
-    text-align: center;
-    margin: 1rem 0;
-}
-#slideM2S3_8 .synergy-analogy-text {
-    font-size: 1.8rem; /* M2S3_1 .intro-emphasis-text 보다 약간 작게 */
-    font-weight: 600;
-    color: var(--dark-text);
-    line-height: 1.5;
-    margin-bottom: 0.8rem;
-    display: block; /* 각 줄바꿈 적용되도록 */
-}
-#slideM2S3_8 .synergy-analogy-text .highlight-box { /* M2S3_1 .highlight-box 재활용 */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.2em 0.5em;
-    border-radius: 8px;
-    display: inline-block;
-    margin: 0 0.2em;
-}
-#slideM2S3_8 .synergy-analogy-text .emoji-large {
-    font-size: 1.3em;
-    vertical-align: middle;
-}
-#slideM2S3_8 .synergy-result-text { /* common_styles.css .text-block 과 유사 */
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: var(--primary-color);
-    margin-top: 1.5rem;
-}
-
-/* Slide 9-12: 시너지 단계 (M2S1의 .workflow-step-card 와 유사한 구조) */
-.synergy-step-card { /* M2S1 .workflow-step-card 와 유사 */
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    width: 100%;
-    max-width: 800px; /* 카드 너비 */
-    margin: 1rem auto;
-    overflow: hidden;
-}
-.synergy-step-card .step-header { /* M2S1 .step-header 와 유사 */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 1rem 1.5rem;
     display: flex;
     align-items: center;
-    gap: 0.8rem;
 }
-.synergy-step-card .step-header .step-number-badge { /* M2S1 .step-number-badge 와 유사 */
-    background-color: white;
+.content-card .card-list .list-icon {
+    margin-right: 0.8rem;
     color: var(--primary-color);
-    font-weight: bold;
-    padding: 0.3rem 0.7rem;
-    border-radius: 15px;
-    font-size: 0.9rem;
+    font-size: 1.3em;
 }
-.synergy-step-card .step-header .step-title { /* M2S1 .step-title 와 유사 */
-    font-size: 1.4rem;
+
+/* 정보/경고/성공 박스 공통 스타일 */
+.info-box-styled {
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    margin: 1.5rem auto;
+    max-width: 750px;
+    text-align: left;
+    border-width: 1px;
+    border-style: solid;
+    border-left-width: 6px;
+}
+.info-box-styled h4 { /* 박스 내부 제목 */
+    font-size: 1.3rem;
     font-weight: 600;
-    margin: 0;
-    color: white;
+    margin-top: 0;
+    margin-bottom: 0.8rem;
     border-bottom: none;
     padding-bottom: 0;
+    display: flex;
+    align-items: center;
 }
-.synergy-step-card .step-content-wrapper { /* M2S1 .step-content-wrapper 와 유사 */
-    padding: 1.5rem 2rem;
-    text-align: left;
+.info-box-styled h4 .box-title-icon {
+    font-size: 1.2em;
+    margin-right: 0.6rem;
 }
-.synergy-step-card .step-description p { /* M2S1 .step-description p 와 유사 */
+.info-box-styled p, .info-box-styled ul {
     font-size: 1.1rem;
     line-height: 1.7;
-    color: var(--dark-text);
-    margin-bottom: 1rem;
 }
-.synergy-step-card .synergy-tip-box { /* M2S1 .key-takeaway-box 와 유사한 형태 */
-    background-color: var(--secondary-color);
-    padding: 1rem 1.5rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1.5rem;
-    border-left: 4px solid var(--primary-color);
+.info-box-styled ul {
+    padding-left: 25px; /* 들여쓰기 */
+    margin-top: 0.5rem;
 }
-.synergy-step-card .synergy-tip-box .tip-icon { /* M2S1 .takeaway-icon 과 유사 */
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    flex-shrink: 0;
+.info-box-styled hr {
+    border: none;
+    border-top-width: 1px;
+    border-top-style: dashed;
+    margin: 1.2rem 0;
 }
-.synergy-step-card .synergy-tip-box p {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 0;
-    flex-grow: 1;
-    color: var(--dark-text);
-}
-.synergy-step-card .example-prompt-text { /* M2S1 .prompt-text 와 유사 */
-    background-color: #f8f9fa;
-    padding: 1rem;
-    border-radius: 6px;
-    font-family: 'Pretendard', sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-    border: 1px solid #eee;
-    white-space: pre-wrap;
-    word-break: break-word;
-    overflow-x: auto;
-    margin-top: 1rem;
-}
-#slideM2S3_11 .synergy-step-card .step-header { /* 3단계 AI 마법은 다른 색상 */
-    background-color: var(--success-color);
-}
-#slideM2S3_11 .synergy-step-card .step-header .step-number-badge {
-    color: var(--success-color);
-}
-#slideM2S3_12 .synergy-step-card .step-header { /* 4단계 검토는 다른 색상 */
-    background-color: var(--info-color); /* 예시로 info color */
-}
-#slideM2S3_12 .synergy-step-card .step-header .step-number-badge {
-    color: var(--info-color);
-}
-
-/* Slide 13, 14: 업무 활용 예시 (M2S1의 .example-prompt-card 와 유사한 구조) */
-.real-world-usecase-card { /* M2S1 .example-prompt-card 와 유사 */
-    background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.07);
-    width: 100%;
-    max-width: 800px;
-    margin: 1rem auto;
-    text-align: left;
-    overflow: hidden;
-}
-.real-world-usecase-card .usecase-title-header { /* M2S1 .example-title 과 유사 */
-    background-color: var(--primary-color);
-    color: white;
-    padding: 0.8rem 1.5rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin: 0 0 1rem 0;
-    display: flex;
-    align-items: center;
-    border-bottom: none;
-}
-.real-world-usecase-card .usecase-title-header .title-icon { /* M2S1 .title-icon 과 유사 */
-    margin-right: 0.8rem;
-    font-size: 1.2em;
-}
-.real-world-usecase-card .usecase-content {
-    padding: 0 1.5rem 1.5rem 1.5rem;
-}
-.real-world-usecase-card .usecase-content h5 { /* 내부 작은 제목 */
-    font-size: 1.1rem;
-    color: var(--dark-text);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
-    border-bottom: 1px dashed var(--border-color);
-    padding-bottom: 0.3rem;
-}
-.real-world-usecase-card .usecase-content p,
-.real-world-usecase-card .usecase-content .example-prompt-text { /* common_styles.css p, M2S1 .prompt-text 재활용 */
-    margin-bottom: 0.8rem;
-}
-.real-world-usecase-card .usecase-result-box { /* M2S1 .key-takeaway-box 활용팁과 유사 */
-    background-color: var(--secondary-color); /* 혹은 var(--success-bg-light) 등 */
-    color: var(--primary-color); /* 혹은 var(--success-color) */
-    padding: 1rem 1.2rem;
-    border-radius: 6px;
-    margin-top: 1rem;
-    font-weight: 500;
-    border-left: 4px solid var(--primary-color);
-}
-
-
-/* --- Part 4: NotebookLM 핵심 기능 --- */
-/* Slide 15-18: 기능 소개 카드 (M2S2 .feature-box 또는 M1S3 .capability-card 와 유사) */
-.nlm-feature-grid { /* M1S3 .ai-capabilities-grid 또는 M2S2 .feature-grid 와 유사 */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-    width: 100%;
-    max-width: 950px;
-}
-.nlm-feature-card { /* M2S2 .feature-box 와 거의 동일하게 사용 */
-    background-color: var(--feature-box-bg-m3s2, var(--card-bg));
-    padding: 1.5rem;
-    border-radius: 10px;
-    border-left: 5px solid var(--primary-color);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-/* nlm-feature-card 내부 h4, p, ul 등은 M2S2 .feature-box 하위 요소 스타일 재활용 */
-.nlm-feature-card h4 { /* M2S2 .feature-box h4 와 동일 */
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-    border-bottom: none;
-    padding-bottom: 0;
-    display: flex; /* 아이콘과 제목 정렬 */
-    align-items: center;
-}
-.nlm-feature-card h4 .feature-icon { /* 아이콘 추가시 */
-    margin-right: 0.5rem;
-    font-size: 1.3em;
-}
-.nlm-feature-card p, .nlm-feature-card ul { /* M2S2 .feature-box p, ul 과 동일 */
-    font-size: 1rem;
-    line-height: 1.6;
-    margin-bottom: 0.8rem;
-    color: var(--dark-text);
-}
-.nlm-feature-card ul {
-    list-style-position: outside; /* 기본값 유지 또는 inside */
-    padding-left: 20px; /* 들여쓰기 */
-}
-.nlm-feature-card li { margin-bottom: 0.4rem; }
-
-/* Slide 16 특정: "믿을 수 있는 이유!" 강조 박스 */
-.nlm-feature-card .trust-reason-box {
-    background-color: rgba(var(--primary-color-rgb), 0.05); /* primary-color의 연한 배경 */
-    padding: 0.8rem 1rem;
-    border-radius: 6px;
-    margin-top: 0.8rem;
-    border: 1px dashed var(--primary-color);
-}
-.nlm-feature-card .trust-reason-box .highlight-bold {
-    color: var(--primary-color);
-}
-
-/* Slide 18 Audio Overview 특정: 배경색 변경 */
-#slideM2S3_18 .nlm-feature-card {
-    background-color: #f0f8ff; /* AliceBlue 또는 연한 하늘색 계열 */
-    border-left-color: var(--info-color);
-}
-#slideM2S3_18 .nlm-feature-card h4,
-#slideM2S3_18 .nlm-feature-card h4 .feature-icon {
-    color: var(--info-color);
-}
-
-
-/* --- Part 5 & 6: 보안 및 신뢰도 --- */
-/* Slide 19, 23: 질문 제시 (M2S3_3 .question-text 와 동일하게 사용 가능) */
-/* Slide 20, 24: 주의사항 (M2S2의 .warning-box 와 유사) */
-.security-warning-box { /* M2S2 .warning-box 와 거의 동일 */
+/* 경고 박스 (일반 AI 주의사항) */
+.warning-box-custom {
+    border-color: var(--warning-color-border, #ffeeba);
     background-color: var(--warning-color-bg, #fff3cd);
-    border: 1px solid var(--warning-color-border, #ffeeba);
     color: var(--warning-color-text, #856404);
-    padding: 1.2rem 1.5rem;
-    border-radius: 8px;
-    margin: 1.5rem auto; /* 가운데 정렬 */
-    border-left: 5px solid var(--warning-color-border, #ffc107);
-    max-width: 700px; /* 너비 제한 */
+    border-left-color: var(--warning-color-text, #ffc107); /* 왼쪽 테두리 강조 */
 }
-.security-warning-box h4 { /* M2S2 .warning-box h4 와 동일 */
-    color: inherit; /* 부모 요소 색상 상속 */
-    margin-top: 0;
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    border-bottom: none;
-}
-.security-warning-box p, .security-warning-box ul { /* M2S2 .warning-box p, ul 과 동일 */
-    font-size: 1rem;
-    color: inherit;
-}
-.security-warning-box ul { padding-left: 20px; margin-top: 0.5rem; }
-.security-warning-box .highlight-bold { font-weight: 600; } /* 기본 strong 태그로 대체 가능 */
+.warning-box-custom h4 { color: inherit; }
+.warning-box-custom hr { border-top-color: var(--warning-color-border); }
+.warning-box-custom strong { color: inherit; }
 
-/* Slide 21, 25: 기업용 AI 장점 및 NLM 신뢰도 (M1S3 .reason-card-grid 또는 M2S2 .feature-box 와 유사) */
-.advantage-card-grid { /* M1S3 .reason-card-grid 와 유사 */
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 900px;
-    margin: 1.5rem 0;
+/* 위험/할루시네이션 박스 */
+.danger-box-custom {
+    border-color: var(--danger-color-m4s1, #f5c6cb); /* common_styles의 변수 활용 또는 직접 지정 */
+    background-color: var(--danger-bg-m4s1, #f8d7da);
+    color: var(--danger-color-m4s1, #721c24);
+    border-left-color: var(--danger-color-m4s1, #dc3545);
 }
-.advantage-card { /* M1S3 .reason-card-grid 내부 카드와 유사 */
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 18px rgba(0,0,0,0.06);
-    border-left: 6px solid var(--success-color); /* 성공/신뢰 의미로 green 계열 */
-    display: flex;
-    flex-direction: column;
+.danger-box-custom h4 { color: inherit; }
+.danger-box-custom hr { border-top-color: var(--danger-color-m4s1); }
+.danger-box-custom strong { color: inherit; }
+
+
+/* 신뢰/성공 박스 (기업용 AI 장점, NLM 강점) */
+.success-box-custom {
+    border-color: var(--good-border-m2s1, #c3e6cb);
+    background-color: var(--good-bg-m2s1, #d4edda);
+    color: var(--good-border-m2s1, #155724); /* 텍스트 색상도 success 계열 */
+    border-left-color: var(--success-color, #28a745);
 }
-.advantage-card .advantage-header { /* M1S3 .reason-header 와 유사 */
-    display: flex;
-    align-items: center;
-    margin-bottom: 0.8rem;
-}
-.advantage-card .advantage-icon { /* M1S3 .reason-number-circle 대체 아이콘 */
-    font-size: 1.8rem;
-    color: var(--success-color);
-    margin-right: 0.8rem;
-    flex-shrink: 0;
-}
-.advantage-card .advantage-title { /* M1S3 .reason-title-card 와 유사 */
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--success-color);
-}
-.advantage-card .advantage-desc { /* M1S3 .reason-desc-card 와 유사 */
-    font-size: 1rem;
+.success-box-custom h4 { color: inherit; }
+.success-box-custom strong { color: inherit; }
+
+/* 일반 정보 박스 (보안 결론 등) */
+.general-info-box {
+    border-color: var(--secondary-color);
+    background-color: #f8f9fc; /* 매우 연한 회색/파랑 */
     color: var(--dark-text);
-    line-height: 1.6;
-    flex-grow: 1;
-}
-.advantage-card .advantage-desc .highlight-bold { font-weight: 600; }
-
-#slideM2S3_25 .advantage-card { /* NLM 신뢰도 카드는 primary-color 테마 */
     border-left-color: var(--primary-color);
 }
-#slideM2S3_25 .advantage-card .advantage-icon,
-#slideM2S3_25 .advantage-card .advantage-title {
-    color: var(--primary-color);
-}
-#slideM2S3_25 .user-benefit-text { /* M2S3_8 .synergy-result-text 와 유사 */
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: var(--dark-text);
-    text-align: center;
-    margin-top: 1rem;
-}
-
-/* Slide 22, 26, 27: 결론 및 활용법 (M2S1의 .key-takeaway-box 또는 .tip-card 와 유사) */
-.summary-guideline-box { /* M2S1 .key-takeaway-box 와 유사 */
-    background-color: var(--secondary-color);
-    padding: 1.2rem 1.8rem;
-    border-radius: 8px;
-    display: flex;
-    align-items: flex-start; /* 아이콘과 텍스트 상단 정렬 */
-    gap: 1rem;
-    max-width: 750px;
-    width: 90%;
-    margin: 1rem auto;
-    border-left: 4px solid var(--primary-color);
-    text-align: left;
-}
-.summary-guideline-box .box-icon { /* M2S1 .takeaway-icon 과 유사 */
-    font-size: 1.8rem;
-    color: var(--primary-color);
-    flex-shrink: 0;
-    margin-right: 0.5rem; /* 오른쪽 마진 살짝 줄임 */
-    line-height: 1.6;
-}
-.summary-guideline-box p, .summary-guideline-box ul {
-    font-size: 1.05rem;
-    line-height: 1.6;
-    margin: 0;
-    flex-grow: 1;
-    color: var(--dark-text);
-}
-.summary-guideline-box ul { list-style-position: inside; padding-left: 0; margin-top: 0.5rem; }
-.summary-guideline-box li { margin-bottom: 0.3rem; }
-
-.usage-tips-grid { /* M2S1 .prompting-tips-grid 와 유사 */
-    display: grid;
-    gap: 1.5rem;
-    width: 100%;
-    max-width: 900px;
-    margin: 1.5rem auto;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
-.usage-tip-card { /* M2S1 .tip-card 와 유사 */
-    background-color: #fff;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
-    text-align: left;
-    border-left: 4px solid var(--primary-color);
-}
-.usage-tip-card .tip-icon { /* M2S1 .tip-icon 과 유사 */
-    font-size: 2rem;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-    display: block;
-}
-.usage-tip-card .tip-title { /* M2S1 .tip-title 과 유사 */
-    font-size: 1.2rem;
+.general-info-box h4 { color: var(--primary-color); }
+.general-info-box .highlight-orange { /* 특정 강조 */
+    background-color:var(--warning-color-bg);
+    padding:0.1em 0.3em;
+    border-radius:3px;
+    color:var(--warning-color-text);
     font-weight: 600;
+}
+
+
+/* --- 슬라이드별 특화 스타일 --- */
+/* Slide 1 (학습 목표) */
+#slideM2S3_1 .learning-objectives-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.8rem; /* 카드 간 간격 */
+    width: 100%;
+    max-width: 700px; /* 최대 너비 */
+    margin: 2rem auto;
+}
+#slideM2S3_1 .objective-card { /* .content-card 스타일 상속 및 일부 오버라이드 */
+    border-top: 5px solid var(--primary-color);
+}
+
+/* Slide 3, 5: NotebookLM / Gemini 소개 (기존 tool-intro-box 활용) */
+.tool-intro-display {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 750px;
+}
+.tool-intro-display .tool-main-icon {
+    font-size: 4.5rem; /* 아이콘 크기 키움 */
+    margin-bottom: 1.5rem;
+}
+.tool-intro-display .tool-main-title {
+    font-size: 2rem; /* 제목 크기 키움 */
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+.tool-intro-display .tool-feature-list-centered { /* .card-list 스타일 활용 */
+    font-size: 1.2rem; /* 리스트 폰트 크기 */
+}
+.tool-intro-display .tool-feature-list-centered .list-icon { font-size: 1.35em; }
+.tool-intro-display .tool-characteristic-banner {
+    margin-top: 2rem;
+    padding: 0.9rem 1.8rem; /* 배너 크기 키움 */
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.3rem; /* 배너 폰트 키움 */
+    display: inline-block;
+    border-width: 2px; /* 테두리 두껍게 */
+    border-style: solid;
+}
+/* NotebookLM 테마 */
+#slideM2S3_3 .tool-main-icon { color: var(--info-color); }
+#slideM2S3_3 .tool-main-title { color: var(--info-color); }
+#slideM2S3_3 .tool-feature-list-centered .list-icon { color: var(--info-color); }
+#slideM2S3_3 .tool-characteristic-banner {
+    background-color: rgba(var(--info-color-rgb), 0.08);
+    color: var(--info-color);
+    border-color: var(--info-color);
+}
+/* Gemini 테마 (Slide 5) */
+#slideM2S3_5 .tool-main-icon { color: var(--primary-color); }
+#slideM2S3_5 .tool-main-title { color: var(--primary-color); }
+#slideM2S3_5 .tool-feature-list-centered .list-icon { color: var(--primary-color); }
+#slideM2S3_5 .tool-characteristic-banner {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Slide 4: NotebookLM 활용 예시 (기존 usage-example-list-vertical 활용) */
+#slideM2S3_4 .usage-example-list-vertical {
+    max-width: 750px; /* 너비 조정 */
+}
+#slideM2S3_4 .usage-example-item-large { /* .content-card 와 유사하게 */
+    padding: 1.8rem 2.2rem;
+    border-left-width: 6px; /* 왼쪽 테두리 강조 */
+    border-left-color: var(--info-color); /* NLM 테마 색 */
+}
+#slideM2S3_4 .usage-example-item-large .item-icon-large {
+    color: var(--info-color);
+}
+#slideM2S3_4 .usage-example-item-large p { font-size: 1.25rem; }
+#slideM2S3_4 .usage-example-item-large p strong { color: var(--info-color); }
+
+
+/* Slide 6: 시너지 효과 (디자인 변경) */
+#slideM2S3_6 .synergy-title { /* main-emphasis-text 와 유사 */
+    font-size: 2rem;
+    font-weight: 700;
     color: var(--dark-text);
     margin-bottom: 0.5rem;
-    border-bottom: none;
-    padding-bottom: 0;
 }
-.usage-tip-card .tip-desc { /* M2S1 .tip-desc 와 유사 */
-    font-size: 1rem;
-    color: var(--light-text);
-    line-height: 1.6;
-}
-
-
-/* --- Part 7: 최종 요약 --- */
-/* Slide 28-31: 최종 요약 (M2S1의 .final-checkpoints 와 유사한 리스트 또는 M1S1 .roadmap-item 변형) */
-.final-summary-list { /* M2S1 .final-checkpoints 와 유사 */
-    list-style: none;
-    padding: 0;
-    margin: 1.5rem auto;
-    max-width: 700px;
-    text-align: left;
-}
-.final-summary-item { /* M2S1 .final-checkpoints li 와 유사 */
-    font-size: 1.1rem;
-    color: var(--dark-text);
-    margin-bottom: 1rem;
+#slideM2S3_6 .synergy-equation {
     display: flex;
-    align-items: flex-start;
-    background-color: #fff; /* 카드형 느낌 */
-    padding: 1rem 1.2rem;
-    border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-    border-left: 4px solid var(--primary-color);
+    justify-content: center;
+    align-items: center;
+    margin: 2rem auto;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
-.final-summary-item .item-icon { /* M2S1 .final-checkpoints .check-icon 과 유사 */
-    color: var(--primary-color);
-    font-size: 1.5em; /* 아이콘 크기 약간 키움 */
-    margin-right: 0.8em;
-    flex-shrink: 0;
-    line-height: 1.5;
-}
-.final-summary-item .item-text {
-    flex-grow: 1;
-}
-.final-summary-item .item-text .highlight-bold { font-weight: 600; }
-
-/* Slide 32: 마무리 메시지 (M2S1의 .closing-message 와 유사) */
-#slideM2S3_32 .closing-main-message { /* M2S1 .summary-main-text 와 유사 */
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: var(--dark-text);
-    margin-bottom: 1rem;
-    line-height: 1.4;
+#slideM2S3_6 .synergy-tool-block {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem 2rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
     text-align: center;
+    min-width: 250px;
 }
-#slideM2S3_32 .closing-sub-message { /* M2S1 .summary-sub-text 와 유사 */
-    font-size: 1.15rem;
+#slideM2S3_6 .synergy-tool-block .tool-name {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+#slideM2S3_6 .synergy-tool-block .tool-name.nlm { color: var(--info-color); }
+#slideM2S3_6 .synergy-tool-block .tool-name.gemini { color: var(--primary-color); }
+#slideM2S3_6 .synergy-tool-block .tool-desc {
+    font-size: 1.1rem;
     color: var(--light-text);
-    line-height: 1.7;
-    max-width: 700px;
-    margin: 0 auto 2rem auto;
-    text-align: center;
 }
-#slideM2S3_32 .final-encouragement { /* M2S1 .closing-message 와 유사 */
-    margin-top: 2rem;
-    font-size: 1.3rem;
-    font-weight: 500;
+#slideM2S3_6 .synergy-operator {
+    font-size: 3rem;
+    font-weight: bold;
     color: var(--primary-color);
-    padding: 1rem 1.5rem;
-    background-color: var(--secondary-color);
+}
+#slideM2S3_6 .synergy-result-banner { /* .tool-characteristic-banner 와 유사 */
+    margin-top: 1.5rem;
+    padding: 0.8rem 1.8rem;
+    background-color: var(--success-color);
+    color: white;
     border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.4rem;
     display: inline-block;
-    text-align: center;
 }
-#slideM2S3_32 .final-caution { /* 작은 주의 문구 */
-    font-size: 0.9rem;
-    color: var(--light-text);
-    margin-top: 2rem;
-    text-align: center;
+
+/* Slide 7-10: 시너지 단계 (디자인 변경) */
+.synergy-step-wrapper {
+    background-color: var(--card-bg);
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(var(--primary-color-rgb), 0.12);
+    width: 100%;
+    max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
 }
-#slideM2S3_32 .final-caution .highlight-bold {
-    color: var(--warning-color-text);
+.synergy-step-wrapper .step-header-custom {
+    padding: 1.8rem 2.2rem; /* 패딩 키움 */
+    display: flex;
+    align-items: center;
+    color: white;
+}
+.synergy-step-wrapper .step-header-custom .step-number-badge-custom {
+    width: 45px; /* 크기 키움 */
+    height: 45px;
+    border-radius: 50%;
+    background-color: white;
+    font-size: 1.6rem; /* 숫자 크기 키움 */
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1.2rem; /* 간격 조정 */
+    flex-shrink: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+.synergy-step-wrapper .step-header-custom .step-title-custom {
+    font-size: 1.8rem; /* 제목 폰트 키움 */
     font-weight: 600;
+    margin: 0;
 }
+.synergy-step-wrapper .step-content-custom {
+    padding: 2.2rem 2.5rem; /* 패딩 키움 */
+    text-align: left;
+    font-size: 1.2rem; /* 본문 폰트 키움 */
+    line-height: 1.8;
+    color: var(--dark-text);
+}
+/* 단계별 헤더/뱃지 색상 */
+#slideM2S3_7 .step-header-custom { background-color: #4A90E2; }
+#slideM2S3_7 .step-number-badge-custom { color: #4A90E2; }
+#slideM2S3_8 .step-header-custom { background-color: #50E3C2; }
+#slideM2S3_8 .step-number-badge-custom { color: #50E3C2; }
+#slideM2S3_9 .step-header-custom { background-color: var(--success-color); }
+#slideM2S3_9 .step-number-badge-custom { color: var(--success-color); }
+#slideM2S3_10 .step-header-custom { background-color: var(--info-color); }
+#slideM2S3_10 .step-number-badge-custom { color: var(--info-color); }
+
+#slideM2S3_8 .example-prompt-display { /* 프롬프트 예시 디스플레이 */
+    background-color: #2d2d2d; /* 어두운 배경 */
+    color: #f0f0f0; /* 밝은 글씨 */
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+    font-size: 1.05rem; /* 폰트 크기 */
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+    border: 1px solid #444;
+}
+#slideM2S3_8 .example-prompt-display strong { color: #87CEFA; } /* LightSkyBlue */
+#slideM2S3_8 .example-prompt-display p { margin-bottom: 0.8rem; font-size: inherit; line-height: inherit; color:inherit; }
+#slideM2S3_8 .example-prompt-display p:last-child { margin-bottom: 0; }
 
 
-/* --- 반응형 조정 --- */
+/* NLM 핵심 기능 소개 (Slide 15-18 이전 HTML/CSS 그대로 사용, 반응형에서 1열 처리) */
+/* .nlm-feature-grid, .nlm-feature-card 스타일 등은 이전 CSS와 동일하게 사용 가능. */
+/* 필요시 폰트 크기, 아이콘 크기만 약간 조정. */
+
+/* 최종 요약 (Slide 28-31 이전 HTML/CSS 그대로 사용, 반응형에서 1열 처리) */
+/* .final-summary-list, .final-summary-item 스타일 등은 이전 CSS와 동일하게 사용 가능. */
+/* 필요시 폰트 크기, 아이콘 크기만 약간 조정. */
+
+
+/* --- 반응형 스타일 --- */
 @media (max-width: 768px) {
-    #slideM2S3_1 .intro-emphasis-text { font-size: 1.8rem; }
-    #slideM2S3_1 .intro-sub-text { font-size: 1rem; }
+    #contentDisplay .slide { min-height: 75vh; padding-bottom: 2rem; }
+    #contentDisplay .slide-number { top: 1rem; right: 1.5rem; font-size: 0.85rem; }
+    .main-emphasis-text { font-size: 1.8rem; }
+    .sub-guidance-text { font-size: 1.1rem; }
 
-    #slideM2S3_2 .learning-objectives-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-    #slideM2S3_2 .objective-card { min-height: auto; padding: 1.5rem 1.2rem;}
-    #slideM2S3_2 .objective-icon { font-size: 2.2rem; }
-    #slideM2S3_2 .objective-title { font-size: 1.2rem; }
+    .content-card { padding: 1.5rem; }
+    .content-card .card-icon-large { font-size: 2.8rem; }
+    .content-card .card-title-large { font-size: 1.4rem; }
+    .content-card .card-list li { font-size: 1.05rem; }
 
-    #slideM2S3_3 .question-text { font-size: 1.6rem; }
-    #slideM2S3_3 .guidance-text { font-size: 1rem; }
+    .info-box-styled { padding: 1.2rem 1.5rem; }
+    .info-box-styled h4 { font-size: 1.2rem; }
+    .info-box-styled p, .info-box-styled ul { font-size: 1rem; }
 
-    .tool-introduction-card { min-height: auto; padding: 1.5rem 1.2rem;}
-    .tool-introduction-card .tool-icon { font-size: 2.2rem; }
-    .tool-introduction-card .tool-feature-list li { font-size: 0.95rem;}
-    .tool-introduction-card .tool-characteristic { font-size: 0.9rem; }
+    #slideM2S3_1 .learning-objectives-grid { gap: 1.2rem; margin: 1.5rem auto; }
+    #slideM2S3_1 .objective-card { padding: 1.5rem; }
 
-    .usage-example-item, .access-method-card { padding: 1rem 1.2rem; }
-    .usage-example-item .item-icon, .access-method-card .item-icon { font-size: 1.5rem; margin-right: 0.8rem; }
-    .usage-example-item p, .access-method-card p { font-size: 0.95rem; }
-    .access-method-container { grid-template-columns: 1fr; }
-    .access-method-card h4 { font-size: 1.1rem; }
+    .tool-intro-display .tool-main-icon { font-size: 3.5rem; }
+    .tool-intro-display .tool-main-title { font-size: 1.7rem; }
+    .tool-intro-display .tool-feature-list-centered li { font-size: 1.1rem; }
+    .tool-intro-display .tool-characteristic-banner { font-size: 1.15rem; padding: 0.8rem 1.5rem; }
 
-    #slideM2S3_8 .synergy-analogy-text { font-size: 1.5rem; }
-    #slideM2S3_8 .synergy-result-text { font-size: 1.1rem; }
+    #slideM2S3_4 .usage-example-list-vertical { gap: 1.2rem; }
+    #slideM2S3_4 .usage-example-item-large { padding: 1.5rem; }
+    #slideM2S3_4 .usage-example-item-large .item-icon-large { font-size: 2rem; margin-right: 1rem; }
+    #slideM2S3_4 .usage-example-item-large p { font-size: 1.1rem; }
 
-    .synergy-step-card { max-width: 100%; }
-    .synergy-step-card .step-header { padding: 0.8rem 1rem; }
-    .synergy-step-card .step-header .step-title { font-size: 1.2rem; }
-    .synergy-step-card .step-content-wrapper { padding: 1rem 1.2rem; }
-    .synergy-step-card .step-description p { font-size: 1rem; }
-    .synergy-step-card .synergy-tip-box { padding: 0.8rem 1rem; }
-    .synergy-step-card .synergy-tip-box .tip-icon { font-size: 1.5rem; }
-    .synergy-step-card .synergy-tip-box p { font-size: 0.95rem; }
-    .synergy-step-card .example-prompt-text { font-size: 0.9rem; padding: 0.8rem; }
+    #slideM2S3_6 .synergy-title { font-size: 1.7rem; }
+    #slideM2S3_6 .synergy-equation { flex-direction: column; gap: 0.8rem; }
+    #slideM2S3_6 .synergy-tool-block { min-width: auto; width: 90%; max-width: 350px; padding: 1.2rem; }
+    #slideM2S3_6 .synergy-tool-block .tool-name { font-size: 1.5rem; }
+    #slideM2S3_6 .synergy-tool-block .tool-desc { font-size: 1rem; }
+    #slideM2S3_6 .synergy-operator { font-size: 2.5rem; margin: 0.5rem 0; }
+    #slideM2S3_6 .synergy-result-banner { font-size: 1.2rem; padding: 0.7rem 1.5rem; }
 
-    .real-world-usecase-card { max-width: 100%; }
-    .real-world-usecase-card .usecase-title-header { font-size: 1.15rem; padding: 0.7rem 1rem; }
-    .real-world-usecase-card .usecase-content { padding: 0 1rem 1rem 1rem; }
-    .real-world-usecase-card .usecase-content h5 { font-size: 1rem; }
-    .real-world-usecase-card .usecase-result-box { font-size: 0.95rem; }
+    .synergy-step-wrapper { margin: 1.5rem auto; }
+    .synergy-step-wrapper .step-header-custom { padding: 1.2rem 1.5rem; }
+    .synergy-step-wrapper .step-header-custom .step-number-badge-custom { width: 38px; height: 38px; font-size: 1.4rem; margin-right:1rem;}
+    .synergy-step-wrapper .step-header-custom .step-title-custom { font-size: 1.4rem; }
+    .synergy-step-wrapper .step-content-custom { padding: 1.8rem; font-size: 1.1rem; }
+    #slideM2S3_8 .example-prompt-display { font-size: 0.95rem; padding: 1.2rem; }
+    #slideM2S3_9 .ai-magic-visualization .magic-icon { font-size: 2.5rem; }
 
-    .nlm-feature-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .nlm-feature-card { padding: 1.2rem; }
-    .nlm-feature-card h4 { font-size: 1.1rem; }
-    .nlm-feature-card h4 .feature-icon { font-size: 1.2em; }
-    .nlm-feature-card p, .nlm-feature-card ul { font-size: 0.95rem; }
+    /* 나머지 카드/박스들도 모바일 환경에 맞게 패딩, 폰트 크기 등 축소 */
+    .nlm-feature-grid { grid-template-columns: 1fr; } /* 모바일에서 1열 */
+    .final-summary-list { margin: 1.5rem auto; width: 95%; }
+    .final-summary-item { padding: 1rem 1.2rem; }
+    .final-summary-item .item-icon { font-size: 1.5em; }
+    .final-summary-item .item-text { font-size: 1.05rem; }
 
-    .security-warning-box { padding: 1rem 1.2rem; margin: 1rem auto; }
-    .security-warning-box h4 { font-size: 1.1rem; }
-    .security-warning-box p, .security-warning-box ul { font-size: 0.95rem; }
-
-    .advantage-card-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .advantage-card { padding: 1.2rem; }
-    .advantage-card .advantage-icon { font-size: 1.5rem; }
-    .advantage-card .advantage-title { font-size: 1.15rem; }
-    .advantage-card .advantage-desc { font-size: 0.95rem; }
-    #slideM2S3_25 .user-benefit-text { font-size: 1.1rem; }
-
-    .summary-guideline-box { padding: 1rem 1.2rem; width: 100%; }
-    .summary-guideline-box .box-icon { font-size: 1.5rem; }
-    .summary-guideline-box p, .summary-guideline-box ul { font-size: 1rem; }
-
-    .usage-tips-grid { grid-template-columns: 1fr; gap: 1rem; }
-    .usage-tip-card { padding: 1.2rem; }
-    .usage-tip-card .tip-icon { font-size: 1.8rem; }
-    .usage-tip-card .tip-title { font-size: 1.1rem; }
-    .usage-tip-card .tip-desc { font-size: 0.95rem; }
-
-    .final-summary-list { max-width: 100%; }
-    .final-summary-item { font-size: 1rem; padding: 0.8rem 1rem; }
-    .final-summary-item .item-icon { font-size: 1.3em; }
-
-    #slideM2S3_32 .closing-main-message { font-size: 1.5rem; }
-    #slideM2S3_32 .closing-sub-message { font-size: 1rem; }
-    #slideM2S3_32 .final-encouragement { font-size: 1.1rem; padding: 0.8rem 1rem; }
-    #slideM2S3_32 .final-caution { font-size: 0.85rem; }
+    #slideM2S3_24 .closing-main-message { font-size: 1.6rem; } /* 마무리 페이지 텍스트 조정 */
+    #slideM2S3_24 .closing-sub-message { font-size: 1.1rem; }
+    #slideM2S3_24 .final-encouragement { font-size: 1.2rem; padding: 0.8rem 1.2rem; }
 }
