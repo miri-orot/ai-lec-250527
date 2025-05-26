@@ -3,546 +3,210 @@
 /* --- 기본 슬라이드 및 콘텐츠 스타일 (common_styles.css 보완/재정의) --- */
 .slide-container {
     max-width: var(--content-max-width-m3s1, 1100px); /* 이 섹션의 최대 너비 변수 사용 (없으면 기본값) */
-    margin: 2rem auto; /* common_styles.css 에 의해 slide-container 기본 마진이 있을 수 있음 */
+    margin: 2rem auto;
     padding: 0 15px; /* 좌우 패딩 */
 }
 
-/* .slide, .slide-header 등은 common_styles.css를 따름. 필요시 여기서 재정의. */
-/* 예: 이 섹션의 슬라이드 제목 크기를 다르게 하고 싶다면 */
-/* #contentDisplay #slide1 .slide-title { font-size: 2rem; } */
-
-.text-block { /* common_styles.css 에도 정의되어 있을 수 있음, 필요시 여기서 보완 */
-    font-size: 1.05rem; /* 가독성을 위해 약간 크게 */
+.text-block {
+    font-size: 1.05rem;
     line-height: 1.75;
     margin-bottom: 1.5rem;
-    text-align: left; /* 기본 좌측 정렬, 중앙 정렬 필요시 HTML에 .centered-text 추가 */
-    word-break: keep-all; /* 한글 단어 단위 줄바꿈 */
-    overflow-wrap: break-word; /* 긴 영어 단어 등 강제 줄바꿈 */
+    text-align: left;
+    word-break: keep-all;
+    overflow-wrap: break-word;
 }
-.text-block.centered-text { /* 중앙 정렬이 필요한 텍스트 블록용 */
+.text-block.centered-text {
     text-align: center;
-    max-width: 800px; /* 너무 길어지지 않도록 */
+    max-width: 800px;
     margin-left: auto;
     margin-right: auto;
 }
-
-.highlight { /* common_styles.css 에도 있을 수 있음 */
-    color: var(--primary-color);
-    font-weight: 600;
-}
+.highlight { color: var(--primary-color); font-weight: 600; }
 
 /* --- 슬라이드 1: 표지 --- */
-#slide1 .slide-content .intro-box { /* 기존 style=""을 클래스로 변경 */
-    width: 100%; /* 모바일에서는 꽉 차게 */
-    max-width: 700px; /* PC에서는 적당한 크기 */
-    padding: 2rem;
-    text-align: center;
-    background-color: var(--secondary-color);
-    border-radius: 12px;
-    margin: 0 auto 2rem auto; /* 중앙 정렬 및 하단 마진 */
+#slide1 .slide-content .intro-box {
+    width: 100%; max-width: 700px; padding: 2rem; text-align: center;
+    background-color: var(--secondary-color); border-radius: 12px; margin: 0 auto 2rem auto;
 }
 #slide1 .slide-content .intro-box h2 {
-    color: var(--primary-color);
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-    border-bottom: none; /* common_styles.css의 h2 스타일 재정의 */
-    padding-bottom: 0;
+    color: var(--primary-color); font-size: 1.8rem; margin-bottom: 1rem;
+    border-bottom: none; padding-bottom: 0;
 }
-#slide1 .slide-content .intro-box p {
-    font-size: 1.1rem; /* 기본 p태그보다 약간 크게 */
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
-#slide1 .slide-content .intro-box p.current-module { /* 현재 모듈 강조 */
-    font-weight: 600;
-    color: var(--primary-color);
-}
-
-#slide1 .slide-content .main-points-box { /* 기존 style=""을 클래스로 변경 */
-    width: 100%;
-    max-width: 700px;
-    padding: 2rem;
-    background-color: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    margin: 0 auto;
+#slide1 .slide-content .intro-box p { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.6; }
+#slide1 .slide-content .intro-box p.current-module { font-weight: 600; color: var(--primary-color); }
+#slide1 .slide-content .main-points-box {
+    width: 100%; max-width: 700px; padding: 2rem; background-color: white;
+    border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); margin: 0 auto;
 }
 #slide1 .slide-content .main-points-box h3 {
-    text-align: center;
-    color: var(--primary-color);
-    margin-bottom: 1.5rem;
-    border-bottom: none;
-    padding-bottom: 0;
+    text-align: center; color: var(--primary-color); margin-bottom: 1.5rem;
+    border-bottom: none; padding-bottom: 0;
 }
-#slide1 .slide-content .main-points-box ul {
-    list-style-type: none;
-    padding: 0;
-}
+#slide1 .slide-content .main-points-box ul { list-style-type: none; padding: 0; }
 #slide1 .slide-content .main-points-box li {
-    display: flex;
-    align-items: flex-start; /* 여러 줄일 때 상단 정렬 */
-    margin-bottom: 1rem;
-    font-size: 1rem; /* 리스트 아이템 폰트 크기 */
-    line-height: 1.6;
+    display: flex; align-items: flex-start; margin-bottom: 1rem;
+    font-size: 1rem; line-height: 1.6;
 }
-#slide1 .slide-content .main-points-box li:last-child {
-    margin-bottom: 0;
+#slide1 .slide-content .main-points-box li:last-child { margin-bottom: 0; }
+#slide1 .slide-content .main-points-box .list-number {
+    background-color: var(--primary-color); color: white; width: 28px; height: 28px;
+    border-radius: 50%; display: inline-flex; justify-content: center; align-items: center;
+    margin-right: 1rem; flex-shrink: 0; font-weight: bold;
 }
-#slide1 .slide-content .main-points-box .list-number { /* 기존 style="" span을 클래스로 */
-    background-color: var(--primary-color);
-    color: white;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    display: inline-flex; /* flex-shrink 적용 위해 inline-flex */
-    justify-content: center;
-    align-items: center;
-    margin-right: 1rem;
-    flex-shrink: 0; /* 숫자 원 크기 유지 */
-    font-weight: bold;
-}
-#slide1 .slide-content .main-points-box .list-text { /* 숫자 옆 텍스트 */
-    flex-grow: 1; /* 남은 공간 차지 */
-}
-
+#slide1 .slide-content .main-points-box .list-text { flex-grow: 1; }
 
 /* --- 슬라이드 2: 정보 검색의 중요성과 문제점 --- */
-.problem-grid { /* 기존 style=""을 클래스로 변경 */
-    display: grid;
-    gap: 1.5rem; /* 간격 약간 줄임 */
-    margin: 2rem 0;
+.problem-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
+@media (min-width: 600px) { .problem-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 599px) { .problem-grid { grid-template-columns: 1fr; } }
+.problem-card {
+    background-color: #f5f7ff; border-radius: 10px; padding: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: center;
 }
-@media (min-width: 600px) { /* 화면이 좀 넓어지면 2열 */
-    .problem-grid {
-        grid-template-columns: 1fr 1fr;
-    }
+.problem-card h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 0.8rem; border-bottom: none; padding-bottom: 0; }
+.problem-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0; }
+.warning-box {
+    background-color: var(--warning-color-bg); border-radius: 8px; padding: 1.5rem;
+    margin: 2rem 0; border-left: 4px solid var(--warning-color-border);
 }
-@media (max-width: 599px) { /* 모바일에서는 1열 */
-    .problem-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.problem-card { /* 기존 style=""을 클래스로 변경 */
-    background-color: #f5f7ff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* 그림자 약간 줄임 */
-    text-align: center;
-}
-.problem-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem; /* 마진 조정 */
-    border-bottom: none;
-    padding-bottom: 0;
-}
-.problem-card p {
-    font-size: 0.95rem; /* 폰트 약간 작게 */
-    line-height: 1.6;
-    margin-bottom: 0; /* p 태그 기본 마진 제거 */
-}
-.warning-box { /* common_styles.css 에도 있을 수 있음, 여기서 보완 */
-    background-color: var(--warning-color-bg);
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 2rem 0;
-    border-left: 4px solid var(--warning-color-border);
-}
-.warning-box .warning-title {
-    font-weight: 600;
-    margin-bottom: 0.8rem;
-    font-size: 1.2rem;
-    color: var(--warning-color-text);
-}
-.warning-box ul {
-    list-style-type: disc;
-    margin-left: 20px;
-    padding-left: 0; /* 기본 ul 패딩 제거 */
-    font-size: 1rem;
-    line-height: 1.7;
-}
-.warning-box ul li {
-    margin-bottom: 0.5rem;
-}
-
+.warning-box .warning-title { font-weight: 600; margin-bottom: 0.8rem; font-size: 1.2rem; color: var(--warning-color-text); }
+.warning-box ul { list-style-type: disc; margin-left: 20px; padding-left: 0; font-size: 1rem; line-height: 1.7; }
+.warning-box ul li { margin-bottom: 0.5rem; }
 
 /* --- 슬라이드 3: 학습 목표 --- */
 .step-container { margin: 2rem 0; }
 .step-item { display: flex; align-items: flex-start; margin-bottom: 1.5rem; }
 .step-number {
-    width: 36px; /* 약간 크게 */
-    height: 36px;
-    border-radius: 50%;
-    background-color: var(--primary-color);
-    color: white;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    font-size: 1.1rem; /* 숫자 크기 */
-    margin-right: 1rem;
-    flex-shrink: 0;
+    width: 36px; height: 36px; border-radius: 50%; background-color: var(--primary-color);
+    color: white; display: inline-flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 1.1rem; margin-right: 1rem; flex-shrink: 0;
 }
 .step-content { flex-grow: 1; }
 .step-title { font-weight: 600; font-size: 1.15rem; margin-bottom: 0.5rem; color: var(--dark-text); }
 .step-desc { font-size: 1rem; color: var(--light-text); line-height: 1.6; }
-.expected-effects-box { /* 기존 style=""을 클래스로 변경 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 2rem 0;
-    padding: 1.5rem;
-    background-color: var(--secondary-color);
-    border-radius: 12px;
-    text-align: center;
+.expected-effects-box {
+    display: flex; justify-content: center; align-items: center; margin: 2rem 0;
+    padding: 1.5rem; background-color: var(--secondary-color); border-radius: 12px; text-align: center;
 }
-.expected-effects-box h3 {
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    border-bottom: none; padding-bottom: 0;
-}
-.expected-effects-box p {
-    font-size: 1.1rem; /* 기본 p보다 약간 크게 */
-    margin-bottom: 0.5rem;
-    line-height: 1.6;
-}
-
+.expected-effects-box h3 { margin-bottom: 1rem; color: var(--primary-color); border-bottom: none; padding-bottom: 0; }
+.expected-effects-box p { font-size: 1.1rem; margin-bottom: 0.5rem; line-height: 1.6; }
 
 /* --- 슬라이드 4: AI 도구 비교 분석 (테이블 포함) --- */
-.comparison-matrix-wrapper { /* 기존 style=""을 클래스로 변경 */
-    width: 100%;
-    max-width: 900px; /* 최대 너비 제한 */
-    background-color: #f5f7ff;
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    margin: 1rem auto; /* 상하 마진 및 중앙 정렬 */
+.comparison-matrix-wrapper {
+    width: 100%; max-width: 900px; background-color: #f5f7ff; border-radius: 12px;
+    padding: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.1); margin: 1rem auto;
 }
-.comparison-matrix-wrapper h3 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: var(--primary-color);
-    border-bottom: none; padding-bottom: 0;
-}
-.table-scroll-wrapper { /* 가로 스크롤용 */
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* iOS 부드러운 스크롤 */
-}
-.comparison-matrix-wrapper table { /* 테이블 스타일 */
-    width: 100%;
-    min-width: 800px; /* PC에서 최소 너비 확보, 모바일에서는 스크롤됨 */
-    border-collapse: collapse;
-    font-size: 0.9em; /* 테이블 내 폰트 크기 */
-}
-.comparison-matrix-wrapper th,
-.comparison-matrix-wrapper td {
-    padding: 0.6rem 0.5rem; /* 패딩 조정 */
-    text-align: center; /* 기본 중앙 정렬 */
-    border-bottom: 1px solid #e0e0e0;
-    vertical-align: middle; /* 수직 중앙 정렬 */
-}
-.comparison-matrix-wrapper th {
-    background-color: rgba(var(--primary-color-rgb), 0.1);
-    font-weight: 600;
-    white-space: nowrap; /* 헤더 줄바꿈 방지 (필요시) */
-}
-.comparison-matrix-wrapper tbody td:first-child { /* 첫 번째 열(AI 도구)은 좌측 정렬 */
-    text-align: left;
-    font-weight: bold;
-}
-.comparison-matrix-wrapper tbody tr:nth-child(even) { /* 짝수 행 배경색 */
-    background-color: rgba(var(--primary-color-rgb), 0.03);
-}
-.comparison-matrix-wrapper .total-score { /* 총점 강조 */
-    font-weight: bold;
-    color: #2242c7; /* 기존 색상 유지 */
-}
-.comparison-matrix-wrapper .rank-note { /* 순위 설명 */
-    font-size: 0.8em;
-    text-align: center;
-    margin-top: 0.5rem;
-    color: var(--light-text);
-}
+.comparison-matrix-wrapper h3 { text-align: center; margin-bottom: 1rem; color: var(--primary-color); border-bottom: none; padding-bottom: 0; }
+.table-scroll-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.comparison-matrix-wrapper table { width: 100%; min-width: 800px; border-collapse: collapse; font-size: 0.9em; }
+.comparison-matrix-wrapper th, .comparison-matrix-wrapper td { padding: 0.6rem 0.5rem; text-align: center; border-bottom: 1px solid #e0e0e0; vertical-align: middle; }
+.comparison-matrix-wrapper th { background-color: rgba(var(--primary-color-rgb), 0.1); font-weight: 600; white-space: nowrap; }
+.comparison-matrix-wrapper tbody td:first-child { text-align: left; font-weight: bold; }
+.comparison-matrix-wrapper tbody tr:nth-child(even) { background-color: rgba(var(--primary-color-rgb), 0.03); }
+.comparison-matrix-wrapper .total-score { font-weight: bold; color: #2242c7; }
+.comparison-matrix-wrapper .rank-note { font-size: 0.8em; text-align: center; margin-top: 0.5rem; color: var(--light-text); }
+.table-container { width: 100%; overflow-x: auto; margin: 2rem 0 1rem 0; -webkit-overflow-scrolling: touch; }
+.table-container table { width: 100%; min-width: 700px; border-collapse: collapse; font-size: 0.95rem; }
+.table-container th, .table-container td { padding: 0.8rem; text-align: left; border: 1px solid var(--border-color); }
+.table-container th { background-color: var(--secondary-color); font-weight: 600; }
+.table-container tbody tr:nth-child(even) { background-color: #f9f9f9; }
+.table-container td b { color: var(--primary-color); }
 
-.table-container { /* 슬라이드 4 하단 두 번째 테이블 */
-    width: 100%;
-    overflow-x: auto;
-    margin: 2rem 0 1rem 0; /* 상하 마진 조정 */
-    -webkit-overflow-scrolling: touch;
-}
-.table-container table {
-    width: 100%;
-    min-width: 700px; /* PC 최소 너비, 모바일 스크롤 */
-    border-collapse: collapse;
-    font-size: 0.95rem; /* 폰트 크기 약간 키움 */
-}
-.table-container th, .table-container td {
-    padding: 0.8rem; /* 패딩 조정 */
-    text-align: left;
-    border: 1px solid var(--border-color); /* 모든 셀에 테두리 */
-}
-.table-container th {
-    background-color: var(--secondary-color);
-    font-weight: 600;
-}
-.table-container tbody tr:nth-child(even) {
-    background-color: #f9f9f9; /* 짝수 행 배경 */
-}
-.table-container td b { /* Perplexity AI 등 강조 */
-    color: var(--primary-color);
-}
-
-
-/* --- 슬라이드 5, 6: Perplexity, Genspark 강점 (카드 레이아웃) --- */
-.strengths-grid { /* 기존 style=""을 클래스로 변경 */
-    display: grid;
-    gap: 1.5rem; /* 간격 조정 */
-    margin: 2rem 0;
-}
-@media (min-width: 769px) { /* PC에서 2열 */
-    .strengths-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-    .strengths-grid .full-width-card { /* grid-column: span 2; 를 위한 클래스 */
-        grid-column: span 2;
-    }
-}
-@media (max-width: 768px) { /* 모바일 1열 */
-    .strengths-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.strength-card { /* 기존 style=""을 클래스로 변경 */
-    background-color: #f5f7ff;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-.strength-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-    border-bottom: none; padding-bottom: 0;
-    text-align: left; /* 기본 좌측 정렬 */
-}
-.strength-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-    text-align: left;
-}
-.prompt-box { /* common_styles.css 에도 있을 수 있음, 여기서 보완 */
-    background-color: #f0f5ff; /* 배경색 약간 다르게 */
-    border-radius: 8px;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    border-left: 4px solid var(--primary-color);
-}
-.prompt-box .prompt-title {
-    font-weight: 600;
-    margin-bottom: 0.8rem; /* 간격 조정 */
-    font-size: 1.15rem; /* 크기 조정 */
-    color: var(--primary-color);
-}
-.prompt-box .prompt-content {
-    font-family: 'Pretendard', sans-serif;
-    font-size: 1rem;
-    line-height: 1.65; /* 가독성 좋게 */
-    word-break: break-word; /* 줄바꿈 처리 */
-    overflow-wrap: break-word;
-}
-.prompt-box .prompt-content pre { /* 프롬프트 예시 내부 pre 태그 */
-    white-space: pre-wrap; /* 자동 줄바꿈 */
-    word-break: break-all; /* 강제 줄바꿈 */
-    font-size: 0.9em; /* pre 내부 폰트 약간 작게 */
-    background-color: #e9efff; /* 배경색 살짝 */
-    padding: 0.5em;
-    border-radius: 4px;
-}
-#slide6 .prompt-box ul { /* Genspark 답변 스타일 비교 리스트 */
-    list-style-type: disc;
-    margin-left: 20px;
-    padding-left: 0;
-}
-#slide6 .prompt-box ul li {
-    margin-bottom: 0.75rem;
-    font-size: 1rem; /* 리스트 아이템 폰트 크기 */
-}
-#slide6 .prompt-box ul li strong {
-    color: var(--dark-text);
-}
-#slide6 .prompt-box ul li .highlight { /* 링크 강조 */
-    color: var(--primary-color);
-    text-decoration: underline;
-}
-#slide6 .prompt-box ul li span { /* 설명 텍스트 */
-    display: block; /* 다음 줄로 */
-    font-size: 0.9em;
-    color: var(--light-text);
-    margin-top: 0.2em;
-}
-
+/* --- 슬라이드 5, 6: Perplexity, Genspark 강점 --- */
+.strengths-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
+@media (min-width: 769px) { .strengths-grid { grid-template-columns: 1fr 1fr; } .strengths-grid .full-width-card { grid-column: span 2; } }
+@media (max-width: 768px) { .strengths-grid { grid-template-columns: 1fr; } }
+.strength-card { background-color: #f5f7ff; border-radius: 10px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.strength-card h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 0.8rem; border-bottom: none; padding-bottom: 0; text-align: left; }
+.strength-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.5rem; text-align: left; }
+.prompt-box { background-color: #f0f5ff; border-radius: 8px; padding: 1.5rem; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+.prompt-box .prompt-title { font-weight: 600; margin-bottom: 0.8rem; font-size: 1.15rem; color: var(--primary-color); }
+.prompt-box .prompt-content { font-family: 'Pretendard', sans-serif; font-size: 1rem; line-height: 1.65; word-break: break-word; overflow-wrap: break-word; }
+.prompt-box .prompt-content pre { white-space: pre-wrap; word-break: break-all; font-size: 0.9em; background-color: #e9efff; padding: 0.5em; border-radius: 4px; }
+#slide6 .prompt-box ul { list-style-type: disc; margin-left: 20px; padding-left: 0; }
+#slide6 .prompt-box ul li { margin-bottom: 0.75rem; font-size: 1rem; }
+#slide6 .prompt-box ul li strong { color: var(--dark-text); }
+#slide6 .prompt-box ul li .highlight { color: var(--primary-color); text-decoration: underline; }
+#slide6 .prompt-box ul li span { display: block; font-size: 0.9em; color: var(--light-text); margin-top: 0.2em; }
 
 /* --- 슬라이드 7: GPT와 Gemini 특징 --- */
-.gpt-gemini-wrapper { /* 기존 style="" div */
-    width: 100%;
-    max-width: 850px; /* 최대 너비 */
-    margin: 1.5rem auto; /* 중앙 정렬 */
-}
-.gpt-gemini-flex-container { /* 기존 style="" div */
-    display: flex;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap; /* 모바일에서 줄바꿈 허용 */
-    gap: 1.5rem; /* 카드 사이 간격 */
-}
-.gpt-gemini-card { /* 기존 style="" div */
-    flex: 1;
-    min-width: 280px; /* 최소 너비, 모바일에서는 100% */
-    border-radius: 8px;
-    padding: 1.5rem;
-}
+.gpt-gemini-wrapper { width: 100%; max-width: 850px; margin: 1.5rem auto; }
+.gpt-gemini-flex-container { display: flex; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1.5rem; }
+.gpt-gemini-card { flex: 1; min-width: 280px; border-radius: 8px; padding: 1.5rem; }
 .gpt-gemini-card.gpt { background-color: #e3f2fd; }
 .gpt-gemini-card.gemini { background-color: #fff8e6; }
-.gpt-gemini-card h3 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 1rem;
-    text-align: center;
-    border-bottom: none; padding-bottom: 0;
-}
-.gpt-gemini-card ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-.gpt-gemini-card ul li {
-    margin-bottom: 0.5rem;
-}
-.feature-grid { /* 슬라이드 7 하단 (common_styles.css 재사용 또는 여기서 재정의) */
-    display: grid;
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
+.gpt-gemini-card h3 { font-size: 1.3rem; font-weight: 600; color: var(--primary-color); margin-bottom: 1rem; text-align: center; border-bottom: none; padding-bottom: 0; }
+.gpt-gemini-card ul { list-style-type: disc; padding-left: 20px; font-size: 0.95rem; line-height: 1.6; }
+.gpt-gemini-card ul li { margin-bottom: 0.5rem; }
+.feature-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
 @media (min-width: 769px) { .feature-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 768px) { .feature-grid { grid-template-columns: 1fr; } }
-
-.feature-item { /* common_styles.css 재사용 또는 여기서 재정의 */
-    background-color: #f5f7ff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* 그림자 약간 줄임 */
-    padding: 1.5rem;
-    text-align: left; /* 텍스트 좌측 정렬 */
-}
-.feature-item .feature-title { /* common_styles.css 에 있을 수 있음 */
-    text-align: center;
-    font-size: 1.2rem; /* 크기 조정 */
-    font-weight: 600;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-}
-.feature-item .feature-desc ul {
-    list-style-position: inside;
-    padding-left: 0; /* 기본 패딩 제거 */
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-.feature-item .feature-desc ul li {
-    margin-bottom: 0.4rem;
-}
-
+.feature-item { background-color: #f5f7ff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 1.5rem; text-align: left; }
+.feature-item .feature-title { text-align: center; font-size: 1.2rem; font-weight: 600; color: var(--primary-color); margin-bottom: 0.8rem; }
+.feature-item .feature-desc ul { list-style-position: inside; padding-left: 0; font-size: 0.95rem; line-height: 1.6; }
+.feature-item .feature-desc ul li { margin-bottom: 0.4rem; }
 
 /* --- 슬라이드 8: 도구 선택 가이드 --- */
-.tool-choice-grid { /* 기존 style="" div */
-    display: grid;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
-}
+.tool-choice-grid { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
 @media (min-width: 769px) { .tool-choice-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 768px) { .tool-choice-grid { grid-template-columns: 1fr; } }
-.tool-choice-card { /* 기존 style="" div */
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-}
-.tool-choice-card h3 {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-    margin-bottom: 0.8rem;
-    border-bottom: none; padding-bottom: 0;
-}
-.tool-choice-card p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 0.3rem; /* 문단 간격 줄임 */
-}
+.tool-choice-card { background-color: #f8f9fa; border-radius: 10px; padding: 1.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.tool-choice-card h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 0.8rem; border-bottom: none; padding-bottom: 0; }
+.tool-choice-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.3rem; }
 .tool-choice-card p b { color: var(--dark-text); }
 
-
-/* --- 슬라이드 9: 효과적인 프롬프트 작성법 (슬라이드 8과 유사한 카드 사용) --- */
-/* .tool-choice-grid 와 .tool-choice-card 재활용 가능 */
-#slide9 .prompt-box .prompt-content div { /* 나쁜/좋은 프롬프트 내부 div */
-    margin-bottom: 1rem; /* 간격 확보 */
-    padding: 1rem;
-    border-radius: 6px;
-    font-size: 0.95rem; /* 폰트 크기 통일 */
-    line-height: 1.6;
-}
+/* --- 슬라이드 9: 효과적인 프롬프트 작성법 --- */
+#slide9 .prompt-box .prompt-content div { margin-bottom: 1rem; padding: 1rem; border-radius: 6px; font-size: 0.95rem; line-height: 1.6; }
 #slide9 .prompt-box .prompt-content div:last-child { margin-bottom: 0; }
 #slide9 .prompt-box .prompt-content strong { display: block; margin-bottom: 0.3rem; }
 
-
-/* --- 슬라이드 10, 11: 실제 건설 정보 검색 예시 --- */
-.step-container .prompt-box { margin-top: 1rem; margin-bottom: 1rem; } /* 스텝 내 프롬프트 박스 마진 조정 */
-.image-container { margin: 1.5rem auto; text-align: center; width: 100%; }
-.image-container img {
-    max-width: 80%; /* 이미지 크기 반응형으로, 너무 크지 않게 */
+/* --- 슬라이드 10: Perplexity 검색 결과 예시 이미지 크기 조정 --- */
+#slide10 .image-container img {
+    max-width: 70%; /* 웹에서 약간 작게 */
     height: auto;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
+    border: 1px solid var(--border-color); border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    display: block; margin-left: auto; margin-right: auto; /* 중앙 정렬 */
 }
 @media (max-width: 768px) {
-    .image-container img { max-width: 100%; } /* 모바일에선 꽉차게 */
+    #slide10 .image-container img { max-width: 100%; } /* 모바일에선 꽉 차게 */
 }
-.image-container p { font-size: 0.85em; color: var(--light-text); margin-top: 0.5rem; text-align: center; }
+#slide10 .image-container p { font-size: 0.85em; color: var(--light-text); margin-top: 0.5rem; text-align: center; }
 .perplexity-results-table { width:100%; border-collapse: collapse; margin-bottom: 1rem; font-size: 0.9rem; }
 .perplexity-results-table th, .perplexity-results-table td { border: 1px solid var(--border-color); padding: 0.5rem; text-align: left; }
 .perplexity-results-table th { background-color: var(--secondary-color); font-weight: 600; }
 .perplexity-results-table tbody tr:nth-child(even) { background-color: #f9f9f9; }
+#slide10 .step-container .prompt-box .prompt-content pre { /* 슬라이드 10 프롬프트 박스 내부 pre */
+    white-space: pre-wrap; word-break: break-all; font-size: 0.9em;
+    background-color: #e9efff; padding: 0.5em; border-radius: 4px;
+}
+
+
+/* --- 슬라이드 11: 실제 건설 정보 검색 예시 (사례 2) --- */
+#slide11 .image-container img { max-width: 80%; /* 기존 스타일 유지 */ }
+@media (max-width: 768px) { #slide11 .image-container img { max-width: 100%; } }
+#slide11 .step-container .prompt-box .prompt-content pre { /* 슬라이드 11 프롬프트 박스 내부 pre */
+    white-space: pre-wrap; word-break: break-all; font-size: 0.9em;
+    background-color: #e9efff; padding: 0.5em; border-radius: 4px;
+}
 
 
 /* --- 슬라이드 12: 바로 활용 가능한 프롬프트 템플릿 --- */
-.template-container {
-    display: grid;
-    gap: 1.5rem;
-    margin: 2rem 0;
-}
-@media (min-width: 769px) {
-    .template-container { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); } /* PC 최소 너비 증가 */
-}
-@media (max-width: 768px) {
-    .template-container { grid-template-columns: 1fr; }
-}
+.template-container { display: grid; gap: 1.5rem; margin: 2rem 0; }
+@media (min-width: 769px) { .template-container { grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); } }
+@media (max-width: 768px) { .template-container { grid-template-columns: 1fr; } }
 .template-card {
-    background-color: white; border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* 그림자 약간 연하게 */
-    padding: 1.5rem; transition: transform 0.2s ease-out; /* 트랜지션 간결하게 */
-    border-left: 4px solid var(--primary-color);
-    display: flex; flex-direction: column; /* 내부 요소 정렬 용이 */
+    background-color: white; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+    padding: 1.5rem; transition: transform 0.2s ease-out; border-left: 4px solid var(--primary-color);
+    display: flex; flex-direction: column;
 }
-.template-card:hover { transform: translateY(-4px) scale(1.01); } /* 호버 효과 약간 변경 */
-.template-title {
-    font-weight: 600; margin-bottom: 0.8rem; font-size: 1.1rem;
-    color: var(--primary-color);
-}
-.template-content {
-    font-family: 'Pretendard', sans-serif; font-size: 0.95rem; /* 폰트 크기 조정 */
-    line-height: 1.6; color: var(--dark-text);
-    flex-grow: 1; /* 내용이 카드 높이 채우도록 */
-    word-break: break-word; overflow-wrap: break-word;
+.template-card:hover { transform: translateY(-4px) scale(1.01); }
+.template-title { font-weight: 600; margin-bottom: 0.8rem; font-size: 1.1rem; color: var(--primary-color); }
+.template-content { font-family: 'Pretendard', sans-serif; font-size: 0.95rem; line-height: 1.6; color: var(--dark-text); flex-grow: 1; word-break: break-word; overflow-wrap: break-word; }
+.template-content pre { /* 모바일 가독성 개선 */
+    white-space: pre-wrap; word-break: break-all; overflow-x: auto;
+    background-color: #f9f9f9; padding: 0.8em; border-radius: 4px;
+    font-size: 0.85em; line-height: 1.5; color: #333;
 }
 #slide12 .prompt-box { margin-top: 2rem; background-color: #e0ffe0; border-left-color: #38761d; }
 #slide12 .prompt-box .prompt-title { color: #38761d; }
@@ -550,93 +214,97 @@
 #slide12 .prompt-box .prompt-content a { color: #38761d; font-weight: bold; text-decoration: underline; }
 
 
-/* --- 슬라이드 13: 주요 문서 검색 --- */
-#slide13 .feature-grid { /* 슬라이드 7의 .feature-grid와 유사 */
-    display: grid; gap: 1.5rem; margin: 2rem 0;
+/* --- 슬라이드 13: 주요 문서 검색 - 웹에서 2x2 그리드 --- */
+#slideM3S1_13 .feature-grid { display: grid; gap: 1.5rem; margin: 2rem 0; }
+@media (min-width: 769px) { #slideM3S1_13 .feature-grid { grid-template-columns: repeat(2, 1fr); } } /* 웹에서 항상 2열 */
+@media (max-width: 768px) { #slideM3S1_13 .feature-grid { grid-template-columns: 1fr; } } /* 모바일에선 1열 */
+#slideM3S1_13 .feature-item {
+    padding: 1.5rem; background-color: #f5f7ff; border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left;
+    display: flex; flex-direction: column;
 }
-@media (min-width: 769px) { #slide13 .feature-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 768px) { #slide13 .feature-grid { grid-template-columns: 1fr; } }
-#slide13 .feature-item { padding: 1.5rem; background-color: #f5f7ff; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left; }
-#slide13 .feature-icon { font-size: 2rem; margin-bottom: 0.8rem; color: var(--primary-color); } /* 아이콘 색상 */
-#slide13 .feature-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark-text); }
-#slide13 .feature-desc { font-size: 0.95rem; color: var(--light-text); line-height: 1.6; }
+#slideM3S1_13 .feature-icon { font-size: 2rem; margin-bottom: 0.8rem; color: var(--primary-color); align-self: center; }
+#slideM3S1_13 .feature-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--dark-text); text-align: center; }
+#slideM3S1_13 .feature-desc { font-size: 0.95rem; color: var(--light-text); line-height: 1.6; flex-grow: 1; }
 
 
 /* --- 슬라이드 14: 정보 검증 --- */
-#slide14 .tool-choice-grid { /* 슬라이드 8의 그리드와 유사한 구조 사용 */
-    display: grid; gap: 1.5rem; margin: 1.5rem 0;
-}
-@media (min-width: 769px) { #slide14 .tool-choice-grid { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 768px) { #slide14 .tool-choice-grid { grid-template-columns: 1fr; } }
-#slide14 .tool-choice-card { padding: 1.5rem; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-#slide14 .tool-choice-card h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 0.8rem; display: flex; align-items: center; border-bottom:none; padding-bottom:0; }
-#slide14 .tool-choice-card h3 .list-number { /* 슬라이드 1과 동일한 숫자 스타일 */
+#slideM3S1_14 .tool-choice-grid { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+@media (min-width: 769px) { #slideM3S1_14 .tool-choice-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 768px) { #slideM3S1_14 .tool-choice-grid { grid-template-columns: 1fr; } }
+#slideM3S1_14 .tool-choice-card { padding: 1.5rem; background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+#slideM3S1_14 .tool-choice-card h3 { font-size: 1.2rem; color: var(--primary-color); margin-bottom: 0.8rem; display: flex; align-items: center; border-bottom:none; padding-bottom:0; }
+#slideM3S1_14 .tool-choice-card h3 .list-number {
     background-color: var(--primary-color); color: white; width: 28px; height: 28px;
     border-radius: 50%; display: inline-flex; justify-content: center; align-items: center;
     margin-right: 0.8rem; flex-shrink: 0; font-size: 1rem; font-weight: bold;
 }
-#slide14 .tool-choice-card ul { margin-top: 0.5rem; margin-left: 20px; list-style-type: disc; padding-left: 0; font-size: 0.95rem; line-height: 1.6; }
-#slide14 .tool-choice-card ul li { margin-bottom: 0.4rem; }
+#slideM3S1_14 .tool-choice-card ul { margin-top: 0.5rem; margin-left: 20px; list-style-type: disc; padding-left: 0; font-size: 0.95rem; line-height: 1.6; }
+#slideM3S1_14 .tool-choice-card ul li { margin-bottom: 0.4rem; }
 
 
 /* --- 슬라이드 15: 신뢰할 수 있는 출처 --- */
-/* 슬라이드 14와 동일한 .tool-choice-grid, .tool-choice-card 구조 활용 가능 */
-#slide15 .tool-choice-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.3rem; }
-#slide15 .tool-choice-card p b { color: var(--dark-text); display: block; margin-bottom: 0.1rem; }
-#slide15 .tool-choice-card p a { color: var(--primary-color); text-decoration: underline; word-break: break-all; }
+#slideM3S1_15 .tool-choice-card p { font-size: 0.95rem; line-height: 1.6; margin-bottom: 0.3rem; }
+#slideM3S1_15 .tool-choice-card p b { color: var(--dark-text); display: block; margin-bottom: 0.1rem; }
+#slideM3S1_15 .tool-choice-card p a { color: var(--primary-color); text-decoration: underline; word-break: break-all; }
 
 
 /* --- 슬라이드 16: 핵심 내용 요약 --- */
-.grid-container { /* common_styles.css 재사용 또는 여기서 재정의 */
-    display: grid; gap: 1.5rem; /* 간격 조정 */ margin: 2rem 0;
-}
+.grid-container { display: grid; gap: 1.5rem; margin: 2rem 0; }
 @media (min-width: 769px) { .grid-container { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
-.grid-item {
-    background-color: white; border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07); /* 그림자 조정 */
-    padding: 1.5rem;
-}
-.grid-item-title {
-    font-size: 1.2rem; /* 크기 조정 */ font-weight: 600;
-    margin-bottom: 1rem; color: var(--primary-color);
-    border-bottom: 1px solid var(--border-color); /* 구분선 추가 */
-    padding-bottom: 0.5rem;
-}
-.grid-item-content ul {
-    list-style-type: disc; margin-left: 20px; padding-left: 0;
-    font-size: 0.95rem; /* 폰트 크기 조정 */ line-height: 1.7; /* 줄간격 조정 */
-}
+.grid-item { background-color: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); padding: 1.5rem; }
+.grid-item-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 1rem; color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; }
+.grid-item-content ul { list-style-type: disc; margin-left: 20px; padding-left: 0; font-size: 0.95rem; line-height: 1.7; }
 .grid-item-content ul li { margin-bottom: 0.5rem; }
 
+.footer { text-align: center; padding: 2rem; color: var(--light-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
 
-/* --- 추가적인 모바일 전체 가독성 최종 조정 --- */
+
+/* --- 최종 모바일 가독성 조정 (이전 답변의 내용 통합 및 세부 조정) --- */
 @media (max-width: 768px) {
-    /* 제목 크기 */
     .slide-title { font-size: 1.25rem !important; }
     .slide-subtitle { font-size: 0.8rem !important; }
     h2 { font-size: 1.4rem !important; }
-    h3 { font-size: 1.15rem !important; }
-    h4 { font-size: 1.05rem !important; }
+    h3, .intro-main-text, .meta-prompting-intro h3, .summary-main-text { font-size: 1.2rem !important; } /* h3 크기 일관성 */
+    h4, .definition-text h4, .evolution-card h4, .role-prompting-usecases h4, .caution-card h4, .meta-prompting-reasons h4, .element-title, .step-title, .tip-title, .example-title, .prompt-analysis-box h5, #slideM3S1_13 .feature-title, #slideM3S1_14 .tool-choice-card h3, #slide15 .tool-choice-card h3, .grid-item-title { font-size: 1.1rem !important; }
 
-    /* 본문 텍스트 */
-    .text-block, .problem-card p, .warning-box ul li, .step-desc, .expected-effects-box p, .comparison-matrix-wrapper tbody td, .table-container tbody td, .strength-card p, .prompt-box .prompt-content, #slide6 .prompt-box ul li, .gpt-gemini-card ul li, .feature-item .feature-desc ul li, .tool-choice-card p, .tool-choice-card ul li, #slide15 .tool-choice-card p, .grid-item-content ul li, .template-content {
+    .text-block, .problem-card p, .warning-box ul li, .step-desc, .expected-effects-box p, .comparison-matrix-wrapper tbody td, .table-container tbody td, .strength-card p, .prompt-box .prompt-content, #slide6 .prompt-box ul li, .gpt-gemini-card ul li, .feature-item .feature-desc ul li, .tool-choice-card p, .tool-choice-card ul li, #slide15 .tool-choice-card p, .grid-item-content ul li, .template-content, .intro-sub-text, .summary-sub-text, .final-checkpoints li span:not([class*="icon"]), .meta-prompting-reasons li span:not([class*="icon"]), .ai-thought-process li span:not([class*="icon"]), .iteration-benefit p, .tip-desc, .prompt-analysis-box li span:not([class*="icon"]) {
         font-size: 0.9rem !important;
         line-height: 1.65 !important;
     }
 
-    /* 카드/박스 내부 패딩 */
-    #slide1 .slide-content .intro-box, #slide1 .slide-content .main-points-box, .problem-card, .warning-box, .step-item .step-content, .expected-effects-box, .comparison-matrix-wrapper, .strength-card, .prompt-box, .gpt-gemini-card, .feature-item, .tool-choice-card, .template-card, .grid-item {
+    /* 카드/박스 내부 패딩 일관성 */
+    #slide1 .slide-content .intro-box, #slide1 .slide-content .main-points-box, .problem-card, .warning-box, .step-item .step-content, .expected-effects-box, .comparison-matrix-wrapper, .strength-card, .prompt-box, .gpt-gemini-card, .feature-item, .tool-choice-card, .template-card, .grid-item, .definition-card, .evolution-card, .usecase-item, .caution-card, .meta-prompting-reasons, .element-card, .workflow-step-card .step-content-wrapper, .tip-card, .prompt-analysis-box, .key-takeaway-box {
         padding: 1rem !important;
     }
-    .table-container th, .table-container td, .comparison-matrix-wrapper th, .comparison-matrix-wrapper td {
-        padding: 0.5rem !important;
+    .table-container th, .table-container td, .comparison-matrix-wrapper th, .comparison-matrix-wrapper td, .perplexity-results-table th, .perplexity-results-table td {
+        padding: 0.4rem !important; font-size: 0.8rem !important; /* 테이블 내부 텍스트 더 작게 */
     }
-    .prompt-box .prompt-content pre { padding: 0.5em !important; font-size: 0.75rem !important;}
+    .prompt-box .prompt-content pre, .template-content pre, .evolution-example, .tip-example {
+        font-size: 0.75rem !important; line-height: 1.55 !important; padding: 0.5rem !important;
+    }
+     .example-prompt-card .prompt-label { font-size: 0.9rem !important; }
+    .example-prompt-card .prompt-text { margin: 0 0.8rem 0.8rem 0.8rem !important; }
 
     /* 아이콘 관련 */
-    #slide1 .slide-content .main-points-box .list-number { width: 24px; height: 24px; font-size: 0.9rem; margin-right: 0.8rem; }
-    .step-number { width: 30px; height: 30px; font-size: 1rem; margin-right: 0.8rem; }
-    #slide14 .tool-choice-card h3 .list-number { width: 24px; height: 24px; font-size: 0.9rem; margin-right: 0.6rem; }
-    .feature-icon { font-size: 1.8rem !important; width: 60px; height: 60px; }
+    #slide1 .slide-content .main-points-box .list-number, .step-number, #slideM3S1_14 .tool-choice-card h3 .list-number { width: 24px; height: 24px; font-size: 0.9rem; margin-right: 0.6rem; }
+    .feature-icon, .intro-icon, .definition-icon, .evolution-icon, .usecase-icon, .caution-icon, .meta-icon, .element-icon, .reason-icon, .thought-icon, .benefit-icon, .takeaway-icon, .analysis-icon, .check-icon, .title-icon, .summary-icon, .final-checkpoints .check-icon {
+        font-size: 1.5em !important; /* 텍스트 크기 대비 */
+        margin-right: 0.5em !important;
+    }
+    .intro-icon { font-size: 2.5rem !important; }
+    .meta-icon { font-size: 2.5rem !important; }
+    .summary-icon { font-size: 2.5rem !important; }
+
+    /* max-width 해제 등 */
+    .intro-sub-text, .definition-card, .analogy-box, .evolution-summary, #slideM2S1_4 .text-block, .role-prompting-usecases, .caution-grid, .key-takeaway-box, .meta-prompting-intro p, .meta-prompting-reasons, .meta-request-elements, .workflow-step-card, .prompting-tips-grid, .example-prompt-card, .summary-sub-text, .final-checkpoints, .comparison-matrix-wrapper, .gpt-gemini-wrapper {
+        max-width: 100%; width: 100%; margin-left: auto; margin-right: auto; padding-left:0; padding-right:0;
+    }
+    .definition-card, .evolution-card, .usecase-item, .caution-card, .meta-prompting-reasons, .element-card, .workflow-step-card, .tip-card, .example-prompt-card, .key-takeaway-box, .strength-card, .gpt-gemini-card, .feature-item, .tool-choice-card, .template-card, .grid-item {
+         max-width: 100%; width: 100%;
+    }
+    .workflow-step-card .step-content-wrapper { padding-left: 1rem !important; padding-right: 1rem !important; }
+    .example-prompt-card .prompt-text { margin-left: 1rem !important; margin-right: 1rem !important;}
+    .prompt-analysis-box { margin-left: 1rem !important; margin-right: 1rem !important; padding-left: 1rem !important; padding-right: 1rem !important; }
 }
