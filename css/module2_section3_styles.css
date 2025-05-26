@@ -1,28 +1,50 @@
 /* Styles specific to module2_section3.html */
 
 /* --- 기본 슬라이드 및 콘텐츠 스타일 (common_styles.css 보완/재정의) --- */
-.slide-container { /* 이 섹션의 slide-container 스타일 (필요시 common_styles.css 와 다르게) */
-    max-width: var(--content-max-width-m2s3, 900px); /* 이 섹션의 최대 너비, 없으면 900px */
+#contentDisplay .m2s3-slide-container { /* 이 모듈의 슬라이드 컨테이너에만 적용 */
+    max-width: var(--content-max-width-m2s3, 900px);
     margin: 2rem auto;
     padding: 0 15px;
 }
 
-/* .slide, .slide-header 등은 common_styles.css를 따름. */
-/* 이 섹션만의 특별한 슬라이드 스타일이 있다면 여기에 추가 */
-
-#contentDisplay .m2s3-slide-content { /* 이 섹션의 slide-content 공통 스타일 */
-    padding: 2rem 1.5rem; /* 기본 패딩 */
-    text-align: center; /* 기본 중앙 정렬 */
+/* 이 섹션의 .slide 에만 적용될 기본 스타일 */
+#contentDisplay .m2s3-slide-container .slide {
+    /* common_styles.css의 .slide 스타일을 기반으로 하되, 필요시 재정의 */
+    /* 예: min-height: auto; 등 */
 }
+
+#contentDisplay .m2s3-slide-content {
+    padding: 2rem 1.5rem;
+    text-align: center;
+}
+
+/* 강조 텍스트 스타일 */
+#contentDisplay .m2s3-slide-content .highlight-text,
+#contentDisplay .m2s3-slide-content strong.highlight-text { /* strong 태그에도 적용 가능하도록 */
+    color: var(--primary-color, #3155e2);
+    font-weight: 600; /* strong 기본 굵기 유지 또는 더 강조 */
+}
+#contentDisplay .m2s3-slide-content .highlight,
+#contentDisplay .m2s3-slide-content strong.highlight { /* strong 태그에도 적용 가능하도록 */
+    background-color: var(--secondary-color, #e0e7ff);
+    padding: 0.1em 0.4em; /* 살짝 패딩 변경 */
+    border-radius: 4px; /* 모서리 약간 더 둥글게 */
+    font-weight: 500; /* 기본 strong보다 약간 얇게 할 수도 있음 */
+    color: var(--primary-color, #3155e2); /* 배경색과 어울리도록 */
+}
+
+/* 매우 큰 임팩트 텍스트 */
 #contentDisplay .m2s3-slide-content .main-impact-text {
-    font-size: 2.8rem;
+    font-size: 2.6rem; /* 크기 살짝 조정 */
     font-weight: 700;
     margin-bottom: 1.5rem;
-    line-height: 1.3;
+    line-height: 1.35; /* 줄간격 조정 */
     color: var(--primary-color, #3155e2);
 }
+
+/* 부가 설명 텍스트 */
 #contentDisplay .m2s3-slide-content .sub-intro-text {
-    font-size: 1.2rem;
+    font-size: 1.15rem; /* 크기 살짝 조정 */
     color: var(--dark-text, #333);
     margin-bottom: 2rem;
     line-height: 1.7;
@@ -30,6 +52,8 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+/* 학습 목표 리스트 */
 #contentDisplay .m2s3-slide-content .learning-goals-list {
     list-style: none;
     padding: 0;
@@ -38,60 +62,81 @@
     text-align: left;
 }
 #contentDisplay .m2s3-slide-content .learning-goals-list li {
-    font-size: 1.1rem;
+    font-size: 1.05rem; /* 크기 살짝 조정 */
     margin-bottom: 0.8rem;
     display: flex;
-    align-items: center;
+    align-items: center; /* 아이콘과 텍스트 수직 중앙 정렬 */
 }
 #contentDisplay .m2s3-slide-content .learning-goals-list .icon {
-    font-size: 1.3em; /* 아이콘 크기 */
-    margin-right: 0.7em;
+    font-size: 1.2em; /* 아이콘 크기 (em 단위로 텍스트 크기에 비례) */
+    margin-right: 0.6em; /* 간격 조정 */
     color: var(--primary-color, #3155e2);
+    line-height: 1; /* 아이콘 자체의 줄간격 */
+    min-width: 1.2em; /* 아이콘이 차지할 최소 너비 (줄바꿈 방지) */
+    text-align: center; /* 아이콘이 한 글자일 때 중앙 정렬 */
 }
 
+/* Q&A 박스 */
 #contentDisplay .m2s3-slide-content .qna-box {
     margin: 2rem auto;
     max-width: 750px;
 }
 #contentDisplay .m2s3-slide-content .qna-box .question {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* 크기 살짝 조정 */
     font-weight: 600;
     color: var(--primary-color, #3155e2);
     margin-bottom: 1rem;
 }
 #contentDisplay .m2s3-slide-content .qna-box .answer-point {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* 크기 살짝 조정 */
     line-height: 1.7;
     margin-bottom: 0.8rem;
     color: var(--dark-text, #333);
-    text-align: left;
+    text-align: left; /* 답변 내용은 좌측 정렬 */
+    display: flex; /* 아이콘과 텍스트 정렬 */
+    align-items: flex-start; /* 여러 줄일 때 상단 정렬 */
 }
 #contentDisplay .m2s3-slide-content .qna-box .answer-point .icon {
-    margin-right: 0.5em;
-    font-size: 1.1em;
+    font-size: 1.1em; /* 아이콘 크기 */
+    margin-right: 0.5em; /* 간격 */
+    line-height: 1.7; /* 텍스트 줄간격과 맞춤 */
+    color: var(--primary-color, #3155e2);
+}
+#contentDisplay .m2s3-slide-content .qna-box .answer-point strong { /* strong 태그에 직접 highlight-text 클래스 효과 적용 */
+    color: var(--primary-color, #3155e2);
+    font-weight: 600;
 }
 #contentDisplay .m2s3-slide-content .highlight-box {
     background-color: var(--secondary-color, #e0e7ff);
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.5rem; /* 패딩 조정 */
     border-radius: 8px;
     margin-top: 1.5rem;
-    font-size: 1.1rem;
+    font-size: 1.05rem; /* 폰트 크기 조정 */
     font-weight: 500;
     color: var(--primary-color, #3155e2);
+    text-align: center; /* 내부 텍스트 중앙 정렬 */
+}
+#contentDisplay .m2s3-slide-content .highlight-box strong { /* highlight-box 내부 strong 태그 */
+    font-weight: 600;
 }
 
-/* 카드 레이아웃 (핵심 기능, 활용 예시 등) */
+
+/* 카드 레이아웃 */
 #contentDisplay .m2s3-slide-content .feature-card-layout {
     display: grid;
     gap: 1.5rem;
     margin: 2rem 0;
 }
-@media (min-width: 769px) { /* 데스크탑에서 2열 또는 3열 */
+@media (min-width: 769px) {
     #contentDisplay .m2s3-slide-content .feature-card-layout.two-cols { grid-template-columns: repeat(2, 1fr); }
     #contentDisplay .m2s3-slide-content .feature-card-layout.three-cols { grid-template-columns: repeat(3, 1fr); }
 }
-@media (max-width: 768px) { /* 모바일에서 1열 */
-    #contentDisplay .m2s3-slide-content .feature-card-layout { grid-template-columns: 1fr; }
+@media (max-width: 768px) {
+    #contentDisplay .m2s3-slide-content .feature-card-layout,
+    #contentDisplay .m2s3-slide-content .feature-card-layout.two-cols,
+    #contentDisplay .m2s3-slide-content .feature-card-layout.three-cols {
+        grid-template-columns: 1fr; /* 모바일에서는 무조건 1열 */
+    }
 }
 #contentDisplay .m2s3-slide-content .feature-card {
     background-color: #fff;
@@ -99,74 +144,82 @@
     border-radius: 12px;
     box-shadow: 0 6px 20px rgba(0,0,0,0.07);
     text-align: center;
+    border-left: 4px solid var(--primary-color, #3155e2); /* 카드 좌측 테두리 추가 */
 }
 #contentDisplay .m2s3-slide-content .feature-card .card-icon {
-    font-size: 3rem;
+    font-size: 2.5rem; /* 아이콘 크기 조정 */
     margin-bottom: 1rem;
     color: var(--primary-color, #3155e2);
 }
 #contentDisplay .m2s3-slide-content .feature-card .card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* 제목 크기 조정 */
     font-weight: 600;
     margin-bottom: 0.8rem;
     color: var(--dark-text, #333);
 }
 #contentDisplay .m2s3-slide-content .feature-card .card-desc {
-    font-size: 1rem;
+    font-size: 0.95rem; /* 설명 텍스트 크기 조정 */
     line-height: 1.6;
     color: var(--light-text, #666);
     margin-bottom: 1rem;
+    text-align: left; /* 설명은 좌측 정렬 */
 }
 #contentDisplay .m2s3-slide-content .feature-card .card-example {
     font-size: 0.9rem;
     font-style: italic;
     color: var(--primary-color, #3155e2);
+    text-align: left; /* 예시도 좌측 정렬 */
 }
 #contentDisplay .m2s3-slide-content .feature-card .card-example .icon { margin-right: 0.3em; }
 
-/* 시너지 효과 다이어그램 (간단 텍스트) */
+/* 시너지 효과 다이어그램 */
 #contentDisplay .m2s3-slide-content .synergy-diagram {
     margin: 2rem 0;
-    font-size: 1.3rem;
+    font-size: 1.2rem; /* 폰트 크기 조정 */
     font-weight: 600;
+    display: flex; /* 내부 요소 정렬 */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* 요소 간 간격 */
 }
-#contentDisplay .m2s3-slide-content .synergy-diagram .plus-icon {
-    font-size: 1.8rem;
+#contentDisplay .m2s3-slide-content .synergy-diagram .synergy-item {
+    background-color: #f0f0f0;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+}
+#contentDisplay .m2s3-slide-content .synergy-diagram .icon { /* +, = 아이콘 */
+    font-size: 1.5rem;
     color: var(--primary-color, #3155e2);
-    margin: 0 1rem;
-    vertical-align: middle;
-}
-#contentDisplay .m2s3-slide-content .synergy-diagram .equal-icon {
-    font-size: 1.8rem;
-    margin: 0 1rem;
-    vertical-align: middle;
 }
 
-/* 보안 및 신뢰도 슬라이드 (기존 파트2 내용 재활용) */
+/* 보안 및 신뢰도 슬라이드 */
 #contentDisplay .m2s3-slide-content .security-point {
     display: flex;
     align-items: flex-start;
     text-align: left;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
+    margin-bottom: 1.2rem; /* 간격 조정 */
+    font-size: 1.05rem; /* 폰트 크기 조정 */
     line-height: 1.7;
 }
 #contentDisplay .m2s3-slide-content .security-point .icon {
-    font-size: 1.5em;
+    font-size: 1.4em; /* 아이콘 크기 */
     margin-right: 0.8em;
     color: var(--primary-color, #3155e2);
-    line-height: 1.7; /* 텍스트와 수직 정렬 */
+    line-height: 1.7;
+    flex-shrink: 0; /* 아이콘 찌그러짐 방지 */
 }
 #contentDisplay .m2s3-slide-content .important-notice {
     background-color: var(--warning-color-bg, #fff8e1);
     border-left: 5px solid var(--warning-color-border, #ffc107);
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.5rem; /* 패딩 조정 */
     margin-top: 1.5rem;
     text-align: left;
-    font-size: 1rem;
+    font-size: 0.95rem; /* 폰트 크기 조정 */
     color: var(--warning-color-text, #e65100);
+    border-radius: 8px; /* 모서리 추가 */
 }
-#contentDisplay .m2s3-slide-content .important-notice .icon { margin-right: 0.5em; }
+#contentDisplay .m2s3-slide-content .important-notice .icon { margin-right: 0.5em; font-size: 1.1em; }
+#contentDisplay .m2s3-slide-content .important-notice strong { font-weight: 600; }
 
 
 /* 마무리 슬라이드 */
@@ -178,22 +231,23 @@
     text-align: left;
 }
 #contentDisplay .m2s3-slide-content .final-summary-list li {
-    font-size: 1.15rem;
+    font-size: 1.1rem; /* 폰트 크기 조정 */
     margin-bottom: 1rem;
     display: flex;
-    align-items: center; /* 아이콘과 텍스트 수직 중앙 */
+    align-items: center;
 }
 #contentDisplay .m2s3-slide-content .final-summary-list .icon {
-    font-size: 1.5em; /* 아이콘 크기 */
+    font-size: 1.4em; /* 아이콘 크기 */
     margin-right: 0.8em;
     color: var(--primary-color, #3155e2);
-    min-width: 1.5em; /* 아이콘 영역 확보 */
+    min-width: 1.4em;
     text-align: center;
 }
 #contentDisplay .m2s3-slide-content .start-now-text {
-    font-size: 1.3rem;
+    font-size: 1.25rem; /* 폰트 크기 조정 */
     font-weight: 600;
     margin: 2rem 0 1rem 0;
+    line-height: 1.5;
 }
 #contentDisplay .m2s3-slide-content .final-caution {
     font-size: 0.9rem;
@@ -201,35 +255,35 @@
     margin-top: 1.5rem;
 }
 
-/* 강조 텍스트 공통 */
-.m2s3-slide-content .highlight-text {
-    color: var(--primary-color, #3155e2);
-    font-weight: 600;
-}
-.m2s3-slide-content .highlight { /* 좀 더 일반적인 강조 */
-    background-color: var(--secondary-color, #e0e7ff);
-    padding: 0.1em 0.3em;
-    border-radius: 3px;
-    font-weight: 500;
-}
-
 /* 모바일 화면 최종 가독성 조정 */
 @media (max-width: 768px) {
-    #contentDisplay .m2s3-slide-content .main-impact-text { font-size: 2.2rem !important; }
+    #contentDisplay .m2s3-slide-content .main-impact-text { font-size: 2rem !important; }
     #contentDisplay .m2s3-slide-content .sub-intro-text { font-size: 1rem !important; }
-    #contentDisplay .m2s3-slide-content .learning-goals-list li { font-size: 1rem !important; }
-    #contentDisplay .m2s3-slide-content .qna-box .question { font-size: 1.3rem !important; }
-    #contentDisplay .m2s3-slide-content .qna-box .answer-point { font-size: 1rem !important; }
-    #contentDisplay .m2s3-slide-content .feature-card .card-icon { font-size: 2.5rem !important; }
-    #contentDisplay .m2s3-slide-content .feature-card .card-title { font-size: 1.15rem !important; }
-    #contentDisplay .m2s3-slide-content .feature-card .card-desc { font-size: 0.9rem !important; }
-    #contentDisplay .m2s3-slide-content .synergy-diagram { font-size: 1.1rem !important; }
-    #contentDisplay .m2s3-slide-content .security-point { font-size: 1rem !important; }
-    #contentDisplay .m2s3-slide-content .final-summary-list li { font-size: 1.05rem !important; }
-    #contentDisplay .m2s3-slide-content .start-now-text { font-size: 1.15rem !important; }
+    #contentDisplay .m2s3-slide-content .learning-goals-list li { font-size: 0.95rem !important; }
+    #contentDisplay .m2s3-slide-content .learning-goals-list .icon { font-size: 1.1em !important; margin-right: 0.5em;}
+    #contentDisplay .m2s3-slide-content .qna-box .question { font-size: 1.2rem !important; }
+    #contentDisplay .m2s3-slide-content .qna-box .answer-point { font-size: 0.95rem !important; }
+    #contentDisplay .m2s3-slide-content .qna-box .answer-point .icon { font-size: 1em !important; }
+    #contentDisplay .m2s3-slide-content .highlight-box { font-size: 0.95rem !important; padding: 1rem; }
 
-    #contentDisplay .m2s3-slide-content .feature-card-layout.two-cols,
-    #contentDisplay .m2s3-slide-content .feature-card-layout.three-cols {
-        grid-template-columns: 1fr; /* 모바일에서는 무조건 1열 */
-    }
+    #contentDisplay .m2s3-slide-content .feature-card .card-icon { font-size: 2rem !important; }
+    #contentDisplay .m2s3-slide-content .feature-card .card-title { font-size: 1.1rem !important; }
+    #contentDisplay .m2s3-slide-content .feature-card .card-desc { font-size: 0.85rem !important; }
+    #contentDisplay .m2s3-slide-content .feature-card .card-example { font-size: 0.8rem !important; }
+
+
+    #contentDisplay .m2s3-slide-content .synergy-diagram { font-size: 1rem !important; flex-wrap: wrap; } /* 작게하고 줄바꿈 허용 */
+    #contentDisplay .m2s3-slide-content .synergy-diagram .icon { font-size: 1.3rem !important; }
+
+
+    #contentDisplay .m2s3-slide-content .security-point { font-size: 0.95rem !important; }
+    #contentDisplay .m2s3-slide-content .security-point .icon { font-size: 1.3em !important; }
+    #contentDisplay .m2s3-slide-content .important-notice { font-size: 0.9rem !important; padding: 1rem; }
+    #contentDisplay .m2s3-slide-content .important-notice .icon { font-size: 1em !important; }
+
+
+    #contentDisplay .m2s3-slide-content .final-summary-list li { font-size: 1rem !important; }
+    #contentDisplay .m2s3-slide-content .final-summary-list .icon { font-size: 1.3em !important; }
+    #contentDisplay .m2s3-slide-content .start-now-text { font-size: 1.1rem !important; }
+    #contentDisplay .m2s3-slide-content .final-caution { font-size: 0.85rem !important; }
 }
