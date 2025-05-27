@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 강의 - 학습 페이지</title>
-    <!-- 외부 common_styles.css 링크 (원본 spa_page.html 에 이미 있다면 그대로 사용) -->
+    <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 학습 페이지</title> <!-- SPA 페이지 타이틀 변경 -->
     <link rel="stylesheet" href="css/common_styles.css">
     <style>
-        /* --- 데스크탑 핀 버튼, 모바일 사이드바 등 SPA UI 제어 스타일 --- */
-        /* (이전에 제가 제공했던 SPA 최종 코드의 <style> 태그 내용과 거의 동일) */
+        /* --- 제공해주신 spa_page.html의 <style> 내용 그대로 유지 --- */
+        /* (데스크탑 핀 버튼, 모바일 사이드바 등의 스타일) */
         #desktop-pin-toggle-btn { display: none; position: fixed; top: 15px; left: 10px; z-index: 105; background-color: var(--primary-color, #3155e2); color: white; border: none; width: 30px; height: 30px; font-size: 16px; line-height: 30px; text-align: center; cursor: pointer; border-radius: 5px; box-shadow: 0 1px 3px rgba(0,0,0,0.2); transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1); }
         #desktop-pin-toggle-btn.pinned-icon::before { content: "📌"; }
         #desktop-pin-toggle-btn:not(.pinned-icon)::before { content: "☰"; }
@@ -25,9 +24,24 @@
             #mobile-sidebar-container .nav-header, #mobile-sidebar-container .nav-scroll-wrapper { opacity: 1 !important; width: 100% !important; }
             #mobile-sidebar-container .nav-header { padding-top: 10px; border-bottom: 1px solid var(--border-color, #eaeaea); }
             #mobile-sidebar-container .nav-scroll-wrapper { padding: 15px 0; }
-            #mobile-sidebar-container .nav-section-item.current-page a, #mobile-sidebar-container .nav-instructor-profile-link-wrapper.current-page a { background-color: var(--nav-active-bg, #3155e2) !important; color: var(--nav-active-text, #fff) !important; font-weight: 600; border-radius: 4px; }
-            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a { display: block; text-decoration: none; color: #555; padding: 10px 35px; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; border-bottom: 1px solid #eee; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
-            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
+            /* 모바일에서 현재 페이지 링크 스타일 (강사소개 포함) */
+            #mobile-sidebar-container .nav-section-item.current-page a,
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper.current-page a {
+                background-color: var(--nav-active-bg, #3155e2) !important;
+                color: var(--nav-active-text, #fff) !important;
+                font-weight: 600; border-radius: 4px;
+            }
+            /* 모바일 강사소개 링크 기본 스타일 */
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a {
+                display: block; text-decoration: none; color: #555; padding: 10px 35px; /* 섹션 아이템과 패딩 맞춤 */
+                font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease;
+                border-bottom: 1px solid #eee; white-space: normal;
+                overflow-wrap: break-word; word-break: keep-all;
+            }
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a:hover {
+                background-color: var(--secondary-color); color: var(--primary-color);
+            }
+
             #mobile-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); z-index: 1000; }
             #mobile-overlay.active { display: block; }
             .main-content-area { padding-top: 60px !important; padding-bottom: 80px !important; }
@@ -42,50 +56,64 @@
             .main-content-area { padding-top: 30px !important; padding-bottom: 30px !important; }
             #desktop-pin-toggle-btn { display: block; }
         }
-        .page-navigation .nav-instructor-profile-link-wrapper { border-bottom: 1px solid var(--border-color); }
-        .page-navigation .nav-instructor-profile-link-wrapper a { display: block; text-decoration: none; color: #555; padding: 10px 15px; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; white-space: normal; overflow-wrap: break-word; word-break: keep-all; background-color: var(--section-list-bg); padding-left: 35px; }
-        .page-navigation .nav-instructor-profile-link-wrapper a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
-        .page-navigation .nav-instructor-profile-link-wrapper.current-page a { background-color: var(--nav-active-bg) !important; color: var(--nav-active-text) !important; font-weight: 600; border-radius: 4px; }
+        /* 데스크탑 강사소개 링크 스타일 */
+        .page-navigation .nav-instructor-profile-link-wrapper {
+            border-bottom: 1px solid var(--border-color); /* 모듈 그룹과 유사한 구분선 */
+        }
+        .page-navigation .nav-instructor-profile-link-wrapper a {
+            display: block; text-decoration: none; color: #555; padding: 10px 15px; /* 다른 링크들과 유사하게 */
+            font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease;
+            white-space: normal; overflow-wrap: break-word; word-break: keep-all;
+            background-color: var(--section-list-bg); /* nav-section-list와 유사한 배경 */
+            padding-left: 35px; /* 들여쓰기 */
+        }
+        .page-navigation .nav-instructor-profile-link-wrapper a:hover {
+            background-color: var(--secondary-color); color: var(--primary-color);
+        }
+        .page-navigation .nav-instructor-profile-link-wrapper.current-page a {
+            background-color: var(--nav-active-bg) !important;
+            color: var(--nav-active-text) !important;
+            font-weight: 600; border-radius: 4px;
+        }
     </style>
 </head>
 <body>
     <nav class="page-navigation" id="pageNav">
-        <div class="nav-header">강의 목차</div>
+        <div class="nav-header">강의 목차</div> <!-- 원본 spa_page.html의 네비 헤더 -->
         <div class="nav-scroll-wrapper">
             <ul class="nav-curriculum-list">
-                <!-- Module 1 (data-src 경로가 원본과 동일한지 확인) -->
+                <!-- 원본 spa_page.html의 모듈 리스트 (data-src 경로가 실제 조각 파일과 일치하는지 확인) -->
                 <li class="nav-module-group">
-                    <div class="nav-module-title-wrapper" data-module-id="module1"><span class="nav-module-title">Module 1: 왜 AI인가?</span><span class="nav-toggle-icon">></span></div>
+                    <div class="nav-module-title-wrapper" data-module-id="module1"><span class="nav-module-title">Module 1: 왜 AI인가? 반복 업무 해방의 시작</span><span class="nav-toggle-icon">></span></div>
                     <ul class="nav-section-list">
-                        <li class="nav-section-item"><a href="#" data-src="module1_section1.html">1. 오프닝</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module1_section2.html">2. 업무 Pain Points</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module1_section3.html">3. 생성형 AI란?</a></li>
-                    </ul>
-                </li>
-                <!-- Module 2, 3, 4 (data-src 경로가 원본과 동일한지 확인) -->
-                <li class="nav-module-group">
-                    <div class="nav-module-title-wrapper" data-module-id="module2"><span class="nav-module-title">Module 2: AI와 소통하기</span><span class="nav-toggle-icon">></span></div>
-                    <ul class="nav-section-list">
-                        <li class="nav-section-item"><a href="#" data-src="module2_section1.html">1. 프롬프트 작성법</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module2_section2.html">2. 주요 도구 시연</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module2_section3.html">3. NotebookLM & Gemini</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section1.html">1. 오프닝: AI로 당신의 업무 시간을 되찾으세요!</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section2.html">2. 당신의 하루, 혹시 이렇지 않나요? (업무 Pain Points)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section3.html">3. AI: 당신의 똑똑한 업무 비서 (생성형 AI란?)</a></li>
                     </ul>
                 </li>
                 <li class="nav-module-group">
-                    <div class="nav-module-title-wrapper" data-module-id="module3"><span class="nav-module-title">Module 3: 실전! 효율 UP!</span><span class="nav-toggle-icon">></span></div>
+                    <div class="nav-module-title-wrapper" data-module-id="module2"><span class="nav-module-title">Module 2: AI와 제대로 소통하기 (ft. 핵심 도구)</span><span class="nav-toggle-icon">></span></div>
                     <ul class="nav-section-list">
-                         <li class="nav-section-item"><a href="#" data-src="module3_section1.html">1. 정보 검색 & 수집</a></li>
-                         <li class="nav-section-item"><a href="#" data-src="module3_section2.html">2. NotebookLM 활용</a></li>
-                         <li class="nav-section-item"><a href="#" data-src="module3_section3.html">3. 회의록 정리</a></li>
-                         <li class="nav-section-item"><a href="#" data-src="module3_section4.html">4. 보고서·기획서 작성</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section1.html">1. AI의 능력을 100% 끌어내는 '프롬프트' 작성법</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section2.html">2. AI 특공대, 직접 다뤄보기 (주요 도구 시연)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section3.html">3. NotebookLM & Gemini 첫걸음</a></li>
                     </ul>
                 </li>
                 <li class="nav-module-group">
-                    <div class="nav-module-title-wrapper" data-module-id="module4"><span class="nav-module-title">Module 4: 안전한 활용</span><span class="nav-toggle-icon">></span></div>
+                    <div class="nav-module-title-wrapper" data-module-id="module3"><span class="nav-module-title">Module 3: 실전! AI로 업무 효율 2배 UP! (시연 중심)</span><span class="nav-toggle-icon">></span></div>
                     <ul class="nav-section-list">
-                        <li class="nav-section-item"><a href="#" data-src="module4_section1.html">1. 핵심 주의사항</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module4_section2.html">2. 업무 자동화 아이디어</a></li>
-                        <li class="nav-section-item"><a href="#" data-src="module4_section3.html">3. 마무리</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section1.html">1. 정보 검색 & 수집: AI로 10분 만에 끝내기!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section2.html">2. 내 손안의 자료, AI로 지식 자산 만들기 (NotebookLM 활용)</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section3.html">3. 회의록 정리: AI로 5분 만에 핵심만 쏙!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section4.html">4. 보고서·기획서 작성: AI로 시간 절반으로 줄이기!</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module4"><span class="nav-module-title">Module 4: AI, 안전하고 똑똑하게 활용하기</span><span class="nav-toggle-icon">></span></div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module4_section1.html">1. AI, 안전하게 써야 진짜 전문가! (핵심 주의사항)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section2.html">2. (맛보기) AI로 내 업무 자동화하기 아이디어</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section3.html">3. 마무리: AI 시대, 당신의 업무는 어떻게 바뀔까요?</a></li>
                     </ul>
                 </li>
             </ul>
@@ -94,7 +122,7 @@
                 <a href="#" data-src="instructor_profile.html">강사 소개</a>
             </div>
             <div class="nav-mainpage-link-wrapper">
-                <!-- 중요: 이 링크를 index.html 로 수정 -->
+                <!-- 수정: 메인 커리큘럼 목록(index.html)으로 돌아가는 링크 -->
                 <a href="index.html" class="nav-mainpage-link">메인 커리큘럼 목록</a>
             </div>
         </div>
@@ -102,114 +130,102 @@
 
     <main class="main-content-area" id="mainContent">
         <article id="contentDisplay">
-            <!-- 콘텐츠가 여기에 로드됩니다. 초기에는 비어있거나 로딩 메시지. -->
+            <!-- 초기 메시지 또는 콘텐츠가 여기에 로드됩니다. -->
+            <h1>환영합니다!</h1>
+            <p>왼쪽 메뉴에서 학습할 내용을 선택하거나, URL 해시를 통해 직접 접근할 수 있습니다.</p>
         </article>
     </main>
 
     <script>
-        // ==== 여기서부터 spa_page.html의 JavaScript 로직 (원본 기반으로 수정) ====
+        // ==== 제공해주신 원본 spa_page.html의 JavaScript를 기반으로 수정 ====
         document.addEventListener('DOMContentLoaded', function () {
             const desktopNav = document.getElementById('pageNav');
             const desktopNavModuleTitles = desktopNav.querySelectorAll('.nav-module-title-wrapper');
             const desktopNavSectionLinks = desktopNav.querySelectorAll('.nav-section-item a');
+            // 강사 소개 링크 요소 추가
             const desktopInstructorProfileLinkWrapper = desktopNav.querySelector('.nav-instructor-profile-link-wrapper');
             const desktopInstructorProfileLink = desktopNav.querySelector('.nav-instructor-profile-link-wrapper a');
 
             const contentDisplay = document.getElementById('contentDisplay');
             const mainContentArea = document.getElementById('mainContent');
-            const sectionListPadding = 8; // 원본 JS에 있던 값 유지 또는 필요시 조정
+            const sectionListPadding = 8; // 원본 값 유지
             let currentActiveLinkElement = null;
-            let currentScrollListener = null; // 슬라이드용 스크롤 리스너
-            let currentModuleStyleLink = null; // 동적으로 로드된 CSS 링크
+            let currentScrollListener = null;
+            let currentModuleStyleLink = null;
             let isMobile = window.innerWidth <= 768;
             let isDesktopNavPinned = false;
 
-            // --- UI 요소 동적 생성 (원본 JS에 없었다면 추가, 있었다면 유지) ---
-            const desktopPinToggleBtn = document.createElement('button');
-            desktopPinToggleBtn.id = 'desktop-pin-toggle-btn';
-            document.body.appendChild(desktopPinToggleBtn);
+            // UI 요소 생성 (원본에 이미 있다면 해당 로직 사용, 없다면 아래 코드 사용)
+            const desktopPinToggleBtn = document.getElementById('desktop-pin-toggle-btn') || document.createElement('button');
+            if (!desktopPinToggleBtn.id) {
+                desktopPinToggleBtn.id = 'desktop-pin-toggle-btn'; document.body.appendChild(desktopPinToggleBtn);
+            }
+            // ... (mobileHamburgerBtn, mobileSidebarContainer 등 나머지 UI 요소들도 유사하게 확인 후 생성 또는 참조) ...
+            // 간결하게 하기 위해 이전 답변의 UI 요소 생성 코드를 그대로 사용합니다.
+            if (!document.getElementById('desktop-pin-toggle-btn')) { // 중복 생성 방지
+                const btn = document.createElement('button'); btn.id = 'desktop-pin-toggle-btn'; document.body.appendChild(btn);
+            }
+            if (!document.getElementById('mobile-hamburger-btn')) {
+                const btn = document.createElement('button'); btn.id = 'mobile-hamburger-btn'; btn.innerHTML = '☰'; document.body.appendChild(btn);
+            }
+            if (!document.getElementById('mobile-sidebar-container')) {
+                const container = document.createElement('div'); container.id = 'mobile-sidebar-container';
+                const closeBtn = document.createElement('button'); closeBtn.id = 'mobile-sidebar-close-btn'; closeBtn.innerHTML = '×';
+                container.appendChild(closeBtn); document.body.appendChild(container);
+            }
+            if (!document.getElementById('mobile-overlay')) {
+                const overlay = document.createElement('div'); overlay.id = 'mobile-overlay'; document.body.appendChild(overlay);
+            }
+            if (!document.getElementById('page-navigation-buttons')) {
+                const navButtons = document.createElement('div'); navButtons.id = 'page-navigation-buttons';
+                const prevBtn = document.createElement('button'); prevBtn.id = 'prev-section-button'; prevBtn.textContent = '이전';
+                const nameDisplay = document.createElement('span'); nameDisplay.id = 'current-section-name-display';
+                const nextBtn = document.createElement('button'); nextBtn.id = 'next-section-button'; nextBtn.textContent = '다음';
+                navButtons.appendChild(prevBtn); navButtons.appendChild(nameDisplay); navButtons.appendChild(nextBtn);
+                document.body.appendChild(navButtons);
+            }
+            // UI 요소 변수 할당 (getElementById를 다시 호출하여 동적으로 생성된 요소도 잡도록 함)
+            const actualDesktopPinToggleBtn = document.getElementById('desktop-pin-toggle-btn');
+            const actualMobileHamburgerBtn = document.getElementById('mobile-hamburger-btn');
+            const actualMobileSidebarContainer = document.getElementById('mobile-sidebar-container');
+            const actualMobileSidebarCloseBtn = document.getElementById('mobile-sidebar-close-btn');
+            const actualMobileOverlay = document.getElementById('mobile-overlay');
+            const actualPageNavButtonsContainer = document.getElementById('page-navigation-buttons');
+            const actualPrevSectionBtn = document.getElementById('prev-section-button');
+            const actualCurrentSectionNameDisplay = document.getElementById('current-section-name-display');
+            const actualNextSectionBtn = document.getElementById('next-section-button');
 
-            const mobileHamburgerBtn = document.createElement('button');
-            mobileHamburgerBtn.id = 'mobile-hamburger-btn';
-            mobileHamburgerBtn.innerHTML = '☰';
-            document.body.appendChild(mobileHamburgerBtn);
 
-            const mobileSidebarContainer = document.createElement('div');
-            mobileSidebarContainer.id = 'mobile-sidebar-container';
-            document.body.appendChild(mobileSidebarContainer);
-
-            const mobileSidebarCloseBtn = document.createElement('button');
-            mobileSidebarCloseBtn.id = 'mobile-sidebar-close-btn';
-            mobileSidebarCloseBtn.innerHTML = '×';
-            mobileSidebarContainer.appendChild(mobileSidebarCloseBtn);
-
-            const mobileOverlay = document.createElement('div');
-            mobileOverlay.id = 'mobile-overlay';
-            document.body.appendChild(mobileOverlay);
-
-            const pageNavButtonsContainer = document.createElement('div');
-            pageNavButtonsContainer.id = 'page-navigation-buttons';
-            const prevSectionBtn = document.createElement('button');
-            prevSectionBtn.id = 'prev-section-button'; prevSectionBtn.textContent = '이전';
-            const currentSectionNameDisplay = document.createElement('span');
-            currentSectionNameDisplay.id = 'current-section-name-display';
-            const nextSectionBtn = document.createElement('button');
-            nextSectionBtn.id = 'next-section-button'; nextSectionBtn.textContent = '다음';
-            pageNavButtonsContainer.appendChild(prevSectionBtn);
-            pageNavButtonsContainer.appendChild(currentSectionNameDisplay);
-            pageNavButtonsContainer.appendChild(nextSectionBtn);
-            document.body.appendChild(pageNavButtonsContainer);
-
-
-            // --- 이하 원본 spa_page.html의 JavaScript 로직을 최대한 유지하면서 필요한 부분 수정 ---
-
-            function initializeMobileSidebar() { /* 원본 코드의 이 함수 내용 유지 */
+            function initializeMobileSidebar() { // 원본 함수 유지
                 const desktopNavHeader = desktopNav.querySelector('.nav-header');
                 const desktopNavScrollWrapper = desktopNav.querySelector('.nav-scroll-wrapper');
-                if (desktopNavHeader) mobileSidebarContainer.appendChild(desktopNavHeader.cloneNode(true));
-                if (desktopNavScrollWrapper) mobileSidebarContainer.appendChild(desktopNavScrollWrapper.cloneNode(true));
+                if (desktopNavHeader) actualMobileSidebarContainer.appendChild(desktopNavHeader.cloneNode(true));
+                if (desktopNavScrollWrapper) actualMobileSidebarContainer.appendChild(desktopNavScrollWrapper.cloneNode(true));
                 setupMobileSidebarInteractions();
             }
 
-            function setupMobileSidebarInteractions() { /* 원본 코드의 이 함수 내용 유지하되, 강사소개 링크 처리 추가 */
-                const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
-                const mobileNavSectionLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
-                const mobileInstructorProfileLink = mobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper a');
+            function setupMobileSidebarInteractions() { // 강사소개 링크 이벤트 추가
+                const mobileNavModuleTitles = actualMobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
+                const mobileNavSectionLinks = actualMobileSidebarContainer.querySelectorAll('.nav-section-item a');
+                const mobileInstructorProfileLink = actualMobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper a');
 
                 mobileNavModuleTitles.forEach(titleWrapper => { /* ... 원본 아코디언 로직 ... */
                     titleWrapper.addEventListener('click', function () {
-                        const isActive = this.classList.contains('active');
-                        const sectionList = this.nextElementSibling;
-                        if (!isActive) {
-                            mobileNavModuleTitles.forEach(otherHeader => {
-                                if (otherHeader !== this && otherHeader.classList.contains('active')) {
-                                    otherHeader.classList.remove('active');
-                                    const otherList = otherHeader.nextElementSibling;
-                                    if (otherList && otherList.classList.contains('nav-section-list')) {
-                                        otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
-                                    } } }); }
+                        const isActive = this.classList.contains('active'); const sectionList = this.nextElementSibling;
+                        if (!isActive) { mobileNavModuleTitles.forEach(otherHeader => { if (otherHeader !== this && otherHeader.classList.contains('active')) { otherHeader.classList.remove('active'); const otherList = otherHeader.nextElementSibling; if (otherList && otherList.classList.contains('nav-section-list')) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; } } }); }
                         this.classList.toggle('active');
-                        if (sectionList && sectionList.classList.contains('nav-section-list')) {
-                            if (this.classList.contains('active')) {
-                                sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
-                                sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
-                            } else {
-                                sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
-                            } }
+                        if (sectionList && sectionList.classList.contains('nav-section-list')) { if (this.classList.contains('active')) { sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px"; sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px"; } else { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; } }
                     });
                 });
                 mobileNavSectionLinks.forEach(link => { /* ... 원본 섹션 링크 로직 ... */
                     link.addEventListener('click', function (event) {
-                        event.preventDefault();
-                        const filePath = this.dataset.src;
+                        event.preventDefault(); const filePath = this.dataset.src;
                         const originalLink = Array.from(desktopNavSectionLinks).find(dLink => dLink.dataset.src === filePath);
-                        if (originalLink) {
-                            loadAndDisplayContent(filePath, originalLink, false);
-                        }
+                        if (originalLink) { loadAndDisplayContent(filePath, originalLink, false); }
                         toggleMobileSidebar(false);
                     });
                 });
-                if (mobileInstructorProfileLink) { // 강사소개 링크 처리 추가
+                if (mobileInstructorProfileLink) {
                     mobileInstructorProfileLink.addEventListener('click', function(event) {
                         event.preventDefault();
                         loadAndDisplayContent(this.dataset.src, desktopInstructorProfileLink, true);
@@ -218,337 +234,146 @@
                 }
             }
 
-            function updateUIBasedOnMode() { /* 원본 코드의 이 함수 내용 유지 */
+            function updateUIBasedOnMode() { // 원본 함수 유지
                 isMobile = window.innerWidth <= 768;
                 if (isMobile) {
-                    desktopPinToggleBtn.style.display = 'none';
-                    mobileHamburgerBtn.style.display = 'block';
-                    pageNavButtonsContainer.style.display = 'flex';
-                    if (desktopNav.classList.contains('pinned')) {
-                        desktopNav.classList.remove('pinned');
-                        document.body.classList.remove('desktop-nav-pinned');
-                        isDesktopNavPinned = false;
-                    }
+                    actualDesktopPinToggleBtn.style.display = 'none'; actualMobileHamburgerBtn.style.display = 'block'; actualPageNavButtonsContainer.style.display = 'flex';
+                    if (desktopNav.classList.contains('pinned')) { desktopNav.classList.remove('pinned'); document.body.classList.remove('desktop-nav-pinned'); isDesktopNavPinned = false; }
                 } else {
-                    desktopPinToggleBtn.style.display = 'block';
-                    mobileHamburgerBtn.style.display = 'none';
-                    mobileSidebarContainer.classList.remove('open');
-                    mobileOverlay.classList.remove('active');
-                    pageNavButtonsContainer.style.display = 'none';
-                    if (isDesktopNavPinned) {
-                        desktopNav.classList.add('pinned');
-                        desktopPinToggleBtn.classList.add('pinned-icon');
-                        desktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정 해제');
-                        document.body.classList.add('desktop-nav-pinned');
-                    } else {
-                        desktopNav.classList.remove('pinned');
-                        desktopPinToggleBtn.classList.remove('pinned-icon');
-                        desktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정');
-                        document.body.classList.remove('desktop-nav-pinned');
-                    }
+                    actualDesktopPinToggleBtn.style.display = 'block'; actualMobileHamburgerBtn.style.display = 'none'; actualMobileSidebarContainer.classList.remove('open'); actualMobileOverlay.classList.remove('active'); actualPageNavButtonsContainer.style.display = 'none';
+                    if (isDesktopNavPinned) { desktopNav.classList.add('pinned'); actualDesktopPinToggleBtn.classList.add('pinned-icon'); actualDesktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정 해제'); document.body.classList.add('desktop-nav-pinned'); }
+                    else { desktopNav.classList.remove('pinned'); actualDesktopPinToggleBtn.classList.remove('pinned-icon'); actualDesktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정'); document.body.classList.remove('desktop-nav-pinned'); }
                 }
                 updatePageNavigationButtonsState();
             }
 
-            function toggleMobileSidebar(show) { /* 원본 코드의 이 함수 내용 유지 */
-                if (show) {
-                    mobileSidebarContainer.classList.add('open'); mobileOverlay.classList.add('active');
-                } else {
-                    mobileSidebarContainer.classList.remove('open'); mobileOverlay.classList.remove('active');
-                }
+            function toggleMobileSidebar(show) { /* 원본 함수 유지 */
+                if (show) { actualMobileSidebarContainer.classList.add('open'); actualMobileOverlay.classList.add('active'); }
+                else { actualMobileSidebarContainer.classList.remove('open'); actualMobileOverlay.classList.remove('active'); }
             }
-            mobileHamburgerBtn.addEventListener('click', () => toggleMobileSidebar(true));
-            mobileOverlay.addEventListener('click', () => toggleMobileSidebar(false));
-            mobileSidebarCloseBtn.addEventListener('click', () => toggleMobileSidebar(false));
-            desktopPinToggleBtn.addEventListener('click', function() { /* 원본 코드의 이 함수 내용 유지 */
-                if (isMobile) return;
-                isDesktopNavPinned = !isDesktopNavPinned;
-                updateUIBasedOnMode();
+            actualMobileHamburgerBtn.addEventListener('click', () => toggleMobileSidebar(true));
+            actualMobileOverlay.addEventListener('click', () => toggleMobileSidebar(false));
+            actualMobileSidebarCloseBtn.addEventListener('click', () => toggleMobileSidebar(false));
+            actualDesktopPinToggleBtn.addEventListener('click', function() { /* 원본 함수 유지 */
+                if (isMobile) return; isDesktopNavPinned = !isDesktopNavPinned; updateUIBasedOnMode();
             });
             desktopNavModuleTitles.forEach(titleWrapper => { /* 원본 데스크탑 아코디언 로직 유지 */
-                titleWrapper.addEventListener('click', function () {
-                    if (isMobile) return;
-                    const isActive = this.classList.contains('active');
-                    const sectionList = this.nextElementSibling;
-                    if (!isActive) {
-                         desktopNavModuleTitles.forEach(otherHeader => {
-                            if (otherHeader !== this && otherHeader.classList.contains('active')) {
-                                otherHeader.classList.remove('active');
-                                const otherList = otherHeader.nextElementSibling;
-                                if (otherList && otherList.classList.contains('nav-section-list')) {
-                                    otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
-                                } } }); }
+                 titleWrapper.addEventListener('click', function () {
+                    if (isMobile) return; const isActive = this.classList.contains('active'); const sectionList = this.nextElementSibling;
+                    if (!isActive) { desktopNavModuleTitles.forEach(otherHeader => { if (otherHeader !== this && otherHeader.classList.contains('active')) { otherHeader.classList.remove('active'); const otherList = otherHeader.nextElementSibling; if (otherList && otherList.classList.contains('nav-section-list')) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; } } }); }
                     this.classList.toggle('active');
-                    if (sectionList && sectionList.classList.contains('nav-section-list')) {
-                        if (this.classList.contains('active')) {
-                            sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
-                            sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
-                        } else {
-                             sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
-                        } }
+                    if (sectionList && sectionList.classList.contains('nav-section-list')) { if (this.classList.contains('active')) { sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px"; sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px"; } else { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; } }
                 });
             });
 
             desktopNavSectionLinks.forEach(link => { /* 원본 데스크탑 섹션 링크 로직 유지 */
                  link.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    if (isMobile && event.target.closest('#pageNav')) return;
+                    event.preventDefault(); if (isMobile && event.target.closest('#pageNav')) return;
                     loadAndDisplayContent(this.dataset.src, this, false);
                 });
             });
-            if (desktopInstructorProfileLink) { // 강사소개 링크 처리 추가
+            if (desktopInstructorProfileLink) { // 강사소개 링크 이벤트 추가
                 desktopInstructorProfileLink.addEventListener('click', function(event){
-                    event.preventDefault();
-                    if (isMobile && event.target.closest('#pageNav')) return;
+                    event.preventDefault(); if (isMobile && event.target.closest('#pageNav')) return;
                     loadAndDisplayContent(this.dataset.src, this, true);
                 });
             }
 
             async function loadAndDisplayContent(filePath, linkElementToHighlight, isProfilePage = false) {
-                // --- 이 함수는 이전 SPA 최종 코드의 로직을 거의 그대로 사용 ---
-                // (스타일 적용, 활성 링크 처리, 해시 변경, CSS 동적 로드, fetch, 슬라이드 초기화 등)
-                // 1. 이전 활성 링크 스타일 제거
+                // --- 이 함수는 이전 SPA 최종 코드의 로직과 거의 동일하게 사용 ---
                 if (currentActiveLinkElement) {
-                    if(currentActiveLinkElement.parentElement.classList.contains('nav-section-item') ||
-                       currentActiveLinkElement.parentElement.classList.contains('nav-instructor-profile-link-wrapper')) {
+                    if(currentActiveLinkElement.parentElement.classList.contains('nav-section-item') || currentActiveLinkElement.parentElement.classList.contains('nav-instructor-profile-link-wrapper')) {
                         currentActiveLinkElement.parentElement.classList.remove('current-page');
                     }
                 }
                 desktopNavSectionLinks.forEach(l => l.parentElement.classList.remove('current-page'));
-                if (desktopInstructorProfileLinkWrapper) {
-                    desktopInstructorProfileLinkWrapper.classList.remove('current-page');
-                }
+                if (desktopInstructorProfileLinkWrapper) desktopInstructorProfileLinkWrapper.classList.remove('current-page');
 
-                // 2. 새 활성 링크 스타일 적용
                 linkElementToHighlight.parentElement.classList.add('current-page');
                 currentActiveLinkElement = linkElementToHighlight;
 
-                // 3. 모바일 하단 바에 현재 섹션 이름 표시
-                if (isMobile && currentSectionNameDisplay) {
+                if (isMobile && actualCurrentSectionNameDisplay) {
                     let sectionName = linkElementToHighlight.textContent || "";
-                    if (!isProfilePage) { // 강사소개는 번호 없음
-                        const dotIndex = sectionName.indexOf('.');
-                        if (dotIndex !== -1 && sectionName.length > dotIndex + 1) {
-                            sectionName = sectionName.substring(dotIndex + 1).trim();
-                        }
-                    }
-                    currentSectionNameDisplay.textContent = sectionName;
+                    if (!isProfilePage) { const dotIndex = sectionName.indexOf('.'); if (dotIndex !== -1 && sectionName.length > dotIndex + 1) sectionName = sectionName.substring(dotIndex + 1).trim(); }
+                    actualCurrentSectionNameDisplay.textContent = sectionName;
                 }
 
-                // 4. 브라우저 히스토리 및 해시 업데이트
                 const newHash = filePath.split('.')[0];
-                if(window.location.hash.substring(1) !== newHash) { // 현재 해시와 다를때만 변경
-                    history.pushState({ path: `#${newHash}` }, '', `#${newHash}`);
-                }
+                if(window.location.hash.substring(1) !== newHash) history.pushState({ path: `#${newHash}` }, '', `#${newHash}`);
 
-                // 5. 콘텐츠 로딩 애니메이션 시작
-                contentDisplay.classList.remove('loaded');
-                contentDisplay.style.opacity = '0';
+                contentDisplay.classList.remove('loaded'); contentDisplay.style.opacity = '0';
                 contentDisplay.innerHTML = '<p style="text-align:center; padding: 20px;">로딩 중...</p>';
                 contentDisplay.dataset.loadedFile = filePath;
 
-                // 6. 이전 모듈/페이지 특정 스타일 제거
-                if (currentModuleStyleLink) {
-                    currentModuleStyleLink.remove();
-                    currentModuleStyleLink = null;
-                }
-
-                // 7. 새 모듈/페이지 특정 스타일 로드
+                if (currentModuleStyleLink) currentModuleStyleLink.remove(); currentModuleStyleLink = null;
                 let styleHref = '';
-                if (isProfilePage) { // filePath === 'instructor_profile.html' 과 동일
-                    styleHref = 'css/instructor_profile_styles.css';
-                } else {
-                    const moduleMatch = filePath.match(/module(\d+)_section(\w+)\.html/);
-                    if (moduleMatch && moduleMatch[1]) {
-                        styleHref = `css/module${moduleMatch[1]}_section${moduleMatch[2]}_styles.css`;
-                    }
-                }
+                if (isProfilePage) { styleHref = 'css/instructor_profile_styles.css'; }
+                else { const moduleMatch = filePath.match(/module(\d+)_section(\w+)\.html/); if (moduleMatch && moduleMatch[1]) styleHref = `css/module${moduleMatch[1]}_section${moduleMatch[2]}_styles.css`; }
+                if (styleHref) { const newStyleLink = document.createElement('link'); newStyleLink.rel = 'stylesheet'; newStyleLink.type = 'text/css'; newStyleLink.href = styleHref; document.head.appendChild(newStyleLink); currentModuleStyleLink = newStyleLink; }
 
-                if (styleHref) {
-                    const newStyleLink = document.createElement('link');
-                    newStyleLink.rel = 'stylesheet'; newStyleLink.type = 'text/css'; newStyleLink.href = styleHref;
-                    document.head.appendChild(newStyleLink); currentModuleStyleLink = newStyleLink;
-                }
-
-                // 8. 이전 스크롤 리스너 제거
-                if (currentScrollListener) {
-                    mainContentArea.removeEventListener('scroll', currentScrollListener);
-                    currentScrollListener = null;
-                }
-
-                // 9. 새 콘텐츠 fetch 및 표시
+                if (currentScrollListener) mainContentArea.removeEventListener('scroll', currentScrollListener); currentScrollListener = null;
                 try {
-                    const response = await fetch(filePath);
-                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
+                    const response = await fetch(filePath); if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
                     contentDisplay.innerHTML = await response.text();
-
-                    // 10. 슬라이드가 있는 페이지의 경우 슬라이드 초기화 및 스크롤 리스너 설정
-                    if (!isProfilePage) { // 강사소개 페이지는 슬라이드 없음
-                        const loadedSlideContainer = contentDisplay.querySelector('.slide-container');
-                        if (loadedSlideContainer) {
-                            currentScrollListener = initializeSlidesForCurrentPage(loadedSlideContainer, mainContentArea);
-                            if (currentScrollListener) { mainContentArea.addEventListener('scroll', currentScrollListener); currentScrollListener(); }
-                        }
-                    }
-                } catch (error) {
-                    console.error('Error loading content:', error);
-                    contentDisplay.innerHTML = `<div style="padding:20px; text-align:center; color:red;"><h2>오류 발생</h2><p>콘텐츠를 불러오는 중 문제가 발생했습니다.</p><p>${error.message}</p><p>파일 경로(${filePath})를 확인해주세요.</p></div>`;
+                    if (!isProfilePage) { const loadedSlideContainer = contentDisplay.querySelector('.slide-container'); if (loadedSlideContainer) { currentScrollListener = initializeSlidesForCurrentPage(loadedSlideContainer, mainContentArea); if (currentScrollListener) { mainContentArea.addEventListener('scroll', currentScrollListener); currentScrollListener(); } } }
+                } catch (error) { console.error('Error loading content:', error); contentDisplay.innerHTML = `<div style="padding:20px; text-align:center; color:red;"><h2>오류 발생</h2><p>콘텐츠를 불러오는 중 문제가 발생했습니다.</p><p>${error.message}</p><p>파일 경로(${filePath})를 확인해주세요.</p></div>`;
                 } finally {
-                    // 11. 콘텐츠 로딩 애니메이션 완료 및 스크롤 상단 이동
                     setTimeout(() => { contentDisplay.style.opacity = '1'; contentDisplay.classList.add('loaded'); }, 50);
-                    mainContentArea.scrollTop = 0;
-                    updatePageNavigationButtonsState();
-                    // 13. 모바일 사이드바에도 현재 페이지 반영
+                    mainContentArea.scrollTop = 0; updatePageNavigationButtonsState();
                     if (isMobile) {
-                        const mobileLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
-                        const mobileProfileLinkWrapper = mobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper');
+                        const mobileLinks = actualMobileSidebarContainer.querySelectorAll('.nav-section-item a');
+                        const mobileProfileLinkWrapper = actualMobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper');
                         mobileLinks.forEach(ml => ml.parentElement.classList.remove('current-page'));
                         if (mobileProfileLinkWrapper) mobileProfileLinkWrapper.classList.remove('current-page');
-                        if (isProfilePage) {
-                             if (mobileProfileLinkWrapper) mobileProfileLinkWrapper.classList.add('current-page');
-                        } else {
-                            const activeMobileLink = Array.from(mobileLinks).find(ml => ml.dataset.src === filePath);
-                            if (activeMobileLink) activeMobileLink.parentElement.classList.add('current-page');
-                        }
+                        if (isProfilePage) { if (mobileProfileLinkWrapper) mobileProfileLinkWrapper.classList.add('current-page'); }
+                        else { const activeMobileLink = Array.from(mobileLinks).find(ml => ml.dataset.src === filePath); if (activeMobileLink) activeMobileLink.parentElement.classList.add('current-page'); }
                     }
                 }
             }
 
-            function initializeSlidesForCurrentPage(container, scroller) { /* 원본 또는 이전 SPA 코드의 슬라이드 초기화 로직 */
-                const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null;
-                slides.forEach(slide => slide.classList.remove('active'));
-                const checkSlidesInView = function() {
-                    slides.forEach(slide => {
-                        const slideRect = slide.getBoundingClientRect(), scrollerRect = scroller.getBoundingClientRect();
-                        const slideTopInScroller = slideRect.top - scrollerRect.top, scrollerHeight = scroller.clientHeight;
-                        if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
-                            slide.classList.add('active');
-                        } }); }; return checkSlidesInView;
+            function initializeSlidesForCurrentPage(container, scroller) { /* 원본 슬라이드 초기화 로직 */
+                const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null; slides.forEach(slide => slide.classList.remove('active'));
+                const checkSlidesInView = function() { slides.forEach(slide => { const slideRect = slide.getBoundingClientRect(), scrollerRect = scroller.getBoundingClientRect(); const slideTopInScroller = slideRect.top - scrollerRect.top, scrollerHeight = scroller.clientHeight; if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) slide.classList.add('active'); }); }; return checkSlidesInView;
             }
 
-            function activateParentModuleOfLink(linkElement) { /* 원본 또는 이전 SPA 코드의 부모 모듈 활성화 로직 */
+            function activateParentModuleOfLink(linkElement) { /* 강사소개 시 모듈 닫기 추가 */
                  if (linkElement.dataset.src === 'instructor_profile.html') {
-                    desktopNavModuleTitles.forEach(header => {
-                        if (header.classList.contains('active')) {
-                            header.classList.remove('active');
-                            const sectionList = header.nextElementSibling;
-                            if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; }
-                        }
-                    });
-                    if (isMobile) {
-                        const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
-                        mobileNavModuleTitles.forEach(header => {
-                            if (header.classList.contains('active')) {
-                                header.classList.remove('active');
-                                const sectionList = header.nextElementSibling;
-                                if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; }
-                            }
-                        });
-                    }
-                    return;
+                    desktopNavModuleTitles.forEach(header => { if (header.classList.contains('active')) { header.classList.remove('active'); const sectionList = header.nextElementSibling; if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; } } });
+                    if (isMobile) { const mobileNavModuleTitles = actualMobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper'); mobileNavModuleTitles.forEach(header => { if (header.classList.contains('active')) { header.classList.remove('active'); const sectionList = header.nextElementSibling; if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; } } }); } return;
                 }
-                const parentModuleGroup = linkElement.closest('.nav-module-group');
-                if (!parentModuleGroup) return;
-                const parentModuleTitleWrapperDesktop = parentModuleGroup.querySelector('.nav-module-title-wrapper');
-                if (!parentModuleTitleWrapperDesktop) return;
-                const moduleId = parentModuleTitleWrapperDesktop.dataset.moduleId;
-                if (!isMobile && !parentModuleTitleWrapperDesktop.classList.contains('active')) {
-                    desktopNavModuleTitles.forEach(otherHeader => {
-                        if (otherHeader !== parentModuleTitleWrapperDesktop && otherHeader.classList.contains('active')) {
-                            otherHeader.classList.remove('active');
-                            const otherList = otherHeader.nextElementSibling;
-                            if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
-                        } });
-                    parentModuleTitleWrapperDesktop.classList.add('active');
-                    const sectionListToOpenDesktop = parentModuleTitleWrapperDesktop.nextElementSibling;
-                    if (sectionListToOpenDesktop) {
-                        sectionListToOpenDesktop.style.paddingTop = sectionListPadding + "px"; sectionListToOpenDesktop.style.paddingBottom = sectionListPadding + "px";
-                        sectionListToOpenDesktop.style.maxHeight = (sectionListToOpenDesktop.scrollHeight + sectionListPadding * 2) + "px";
-                    }
-                }
-                if (isMobile) {
-                    const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
-                    const parentModuleTitleMobile = Array.from(mobileNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === moduleId);
-                    if (parentModuleTitleMobile && !parentModuleTitleMobile.classList.contains('active')) {
-                        mobileNavModuleTitles.forEach(otherHeader => {
-                            if (otherHeader !== parentModuleTitleMobile && otherHeader.classList.contains('active')) {
-                                otherHeader.classList.remove('active');
-                                const otherList = otherHeader.nextElementSibling;
-                                if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
-                            } });
-                        parentModuleTitleMobile.classList.add('active');
-                        const sectionListToOpenMobile = parentModuleTitleMobile.nextElementSibling;
-                        if (sectionListToOpenMobile) {
-                            sectionListToOpenMobile.style.paddingTop = sectionListPadding + "px"; sectionListToOpenMobile.style.paddingBottom = sectionListPadding + "px";
-                            sectionListToOpenMobile.style.maxHeight = (sectionListToOpenMobile.scrollHeight + sectionListPadding * 2) + "px";
-                        } } }
+                const parentModuleGroup = linkElement.closest('.nav-module-group'); if (!parentModuleGroup) return; const parentModuleTitleWrapperDesktop = parentModuleGroup.querySelector('.nav-module-title-wrapper'); if (!parentModuleTitleWrapperDesktop) return; const moduleId = parentModuleTitleWrapperDesktop.dataset.moduleId;
+                if (!isMobile && !parentModuleTitleWrapperDesktop.classList.contains('active')) { desktopNavModuleTitles.forEach(otherHeader => { if (otherHeader !== parentModuleTitleWrapperDesktop && otherHeader.classList.contains('active')) { otherHeader.classList.remove('active'); const otherList = otherHeader.nextElementSibling; if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; } } }); parentModuleTitleWrapperDesktop.classList.add('active'); const sectionListToOpenDesktop = parentModuleTitleWrapperDesktop.nextElementSibling; if (sectionListToOpenDesktop) { sectionListToOpenDesktop.style.paddingTop = sectionListPadding + "px"; sectionListToOpenDesktop.style.paddingBottom = sectionListPadding + "px"; sectionListToOpenDesktop.style.maxHeight = (sectionListToOpenDesktop.scrollHeight + sectionListPadding * 2) + "px"; } }
+                if (isMobile) { const mobileNavModuleTitles = actualMobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper'); const parentModuleTitleMobile = Array.from(mobileNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === moduleId); if (parentModuleTitleMobile && !parentModuleTitleMobile.classList.contains('active')) { mobileNavModuleTitles.forEach(otherHeader => { if (otherHeader !== parentModuleTitleMobile && otherHeader.classList.contains('active')) { otherHeader.classList.remove('active'); const otherList = otherHeader.nextElementSibling; if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; } } }); parentModuleTitleMobile.classList.add('active'); const sectionListToOpenMobile = parentModuleTitleMobile.nextElementSibling; if (sectionListToOpenMobile) { sectionListToOpenMobile.style.paddingTop = sectionListPadding + "px"; sectionListToOpenMobile.style.paddingBottom = sectionListPadding + "px"; sectionListToOpenMobile.style.maxHeight = (sectionListToOpenMobile.scrollHeight + sectionListPadding * 2) + "px"; } } }
             }
 
-            function loadContentFromHash() { // URL 해시로부터 콘텐츠 로드
-                let hash = window.location.hash.substring(1); // # 제거
-                if (!hash) { // spa_page.html로 직접 접근했고 해시가 없다면, 첫 번째 강의 로드
+            function loadContentFromHash() { // 강사소개 해시 처리 추가
+                let hash = window.location.hash.substring(1);
+                if (!hash) { // 해시가 없으면 첫 번째 강의 로드 (index.html에서 넘어올 때 해시가 있으므로, spa_page.html 직접 접근 시)
                      const firstLectureLink = desktopNav.querySelector('.nav-section-item a[data-src^="module1_section1"]');
-                     if (firstLectureLink) {
-                         hash = firstLectureLink.dataset.src.split('.')[0]; // 예: "module1_section1"
-                     } else { // 첫 강의도 없으면 그냥 종료
-                         contentDisplay.innerHTML = '<h1>표시할 콘텐츠가 없습니다.</h1><p>메뉴에서 강의를 선택해주세요.</p>';
-                         contentDisplay.classList.add('loaded');
-                         return;
-                     }
+                     if (firstLectureLink) hash = firstLectureLink.dataset.src.split('.')[0];
+                     else { contentDisplay.innerHTML = '<h1>표시할 기본 콘텐츠가 없습니다.</h1>'; contentDisplay.classList.add('loaded'); return; }
                 }
-
-                let targetLink;
-                let isProfile = false;
-                if (hash === 'instructor_profile') {
-                    targetLink = desktopInstructorProfileLink;
-                    isProfile = true;
-                } else {
-                    targetLink = Array.from(desktopNavSectionLinks).find(link => link.dataset.src.split('.')[0] === hash);
-                }
-
-                if (targetLink) {
-                    loadAndDisplayContent(targetLink.dataset.src, targetLink, isProfile);
-                    activateParentModuleOfLink(targetLink);
-                } else {
-                    // 유효한 해시가 아니면 (예: 잘못된 해시), 첫 번째 강의를 로드하거나 에러 메시지
-                    const firstValidLink = desktopNav.querySelector('.nav-section-item a[data-src]');
-                    if (firstValidLink) {
-                        loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink, false);
-                        activateParentModuleOfLink(firstValidLink);
-                    } else {
-                        contentDisplay.innerHTML = '<h1>요청하신 내용을 찾을 수 없습니다.</h1>';
-                        contentDisplay.classList.add('loaded');
-                    }
-                }
+                let targetLink; let isProfile = false;
+                if (hash === 'instructor_profile') { targetLink = desktopInstructorProfileLink; isProfile = true; }
+                else { targetLink = Array.from(desktopNavSectionLinks).find(link => link.dataset.src.split('.')[0] === hash); }
+                if (targetLink) { loadAndDisplayContent(targetLink.dataset.src, targetLink, isProfile); activateParentModuleOfLink(targetLink); }
+                else { const firstValidLink = desktopNav.querySelector('.nav-section-item a[data-src]'); if (firstValidLink) { loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink, false); activateParentModuleOfLink(firstValidLink); } else { contentDisplay.innerHTML = '<h1>요청 내용을 찾을 수 없습니다.</h1>'; contentDisplay.classList.add('loaded');} }
             }
 
-            function updatePageNavigationButtonsState() { /* 원본 또는 이전 SPA 코드의 버튼 상태 업데이트 로직 */
-                if (!currentActiveLinkElement || currentActiveLinkElement.dataset.src === 'instructor_profile.html') {
-                    prevSectionBtn.disabled = true; nextSectionBtn.disabled = true; return;
-                }
-                const allDesktopLinksArray = Array.from(desktopNavSectionLinks);
-                const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
-                prevSectionBtn.disabled = !(currentIndex > 0);
-                prevSectionBtn.onclick = (currentIndex > 0) ? () => {
-                    const prevLink = allDesktopLinksArray[currentIndex - 1];
-                    loadAndDisplayContent(prevLink.dataset.src, prevLink); activateParentModuleOfLink(prevLink);
-                } : null;
-                nextSectionBtn.disabled = !(currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1);
-                nextSectionBtn.onclick = (currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1) ? () => {
-                    const nextLink = allDesktopLinksArray[currentIndex + 1];
-                    loadAndDisplayContent(nextLink.dataset.src, nextLink); activateParentModuleOfLink(nextLink);
-                } : null;
+            function updatePageNavigationButtonsState() { /* 강사소개 시 버튼 비활성화 추가 */
+                if (!currentActiveLinkElement || currentActiveLinkElement.dataset.src === 'instructor_profile.html') { actualPrevSectionBtn.disabled = true; actualNextSectionBtn.disabled = true; return; }
+                const allDesktopLinksArray = Array.from(desktopNavSectionLinks); const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
+                actualPrevSectionBtn.disabled = !(currentIndex > 0);
+                actualPrevSectionBtn.onclick = (currentIndex > 0) ? () => { const prevLink = allDesktopLinksArray[currentIndex - 1]; loadAndDisplayContent(prevLink.dataset.src, prevLink, false); activateParentModuleOfLink(prevLink); } : null;
+                actualNextSectionBtn.disabled = !(currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1);
+                actualNextSectionBtn.onclick = (currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1) ? () => { const nextLink = allDesktopLinksArray[currentIndex + 1]; loadAndDisplayContent(nextLink.dataset.src, nextLink, false); activateParentModuleOfLink(nextLink); } : null;
             }
 
             // 강사소개 페이지에서 '커리큘럼으로 돌아가기' 버튼 클릭 시 첫 강의로 이동
             window.goBackToFirstLecture = function() {
-                const firstLectureLink = desktopNavSectionLinks[0]; // 첫번째 강의 링크
-                if (firstLectureLink) {
-                    // 해시 변경으로 loadContentFromHash 호출 유도
-                    window.location.hash = firstLectureLink.dataset.src.split('.')[0];
-                } else {
-                    window.location.hash = ''; // 기본값
-                }
+                const firstLectureLink = desktopNavSectionLinks[0];
+                if (firstLectureLink) { window.location.hash = firstLectureLink.dataset.src.split('.')[0]; }
+                else { window.location.hash = ''; } // 기본 해시로 (첫 강의가 없다면)
             }
 
             // --- 초기화 실행 ---
@@ -556,8 +381,8 @@
             updateUIBasedOnMode();
             window.addEventListener('resize', updateUIBasedOnMode);
             loadContentFromHash(); // 페이지 로드 시 URL 해시 확인하여 콘텐츠 로드
-            window.addEventListener('hashchange', loadContentFromHash); // 해시 변경 감지
-            window.addEventListener('popstate', loadContentFromHash); // 브라우저 뒤로/앞으로 가기 버튼
+            window.addEventListener('hashchange', loadContentFromHash);
+            window.addEventListener('popstate', loadContentFromHash); // 브라우저 뒤로/앞으로 가기
         });
     </script>
 </body>
