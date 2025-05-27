@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 커리큘럼 목록</title>
+    <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 커리큘럼</title>
     <style>
+        /* ==== 여기서부터 사용자 제공 원본 index.html의 <style> 내용 ==== */
         :root {
             --primary-color: #3155e2;
             --secondary-color: #e0e7ff;
@@ -17,63 +18,91 @@
             --container-max-width: 800px;
             --section-list-bg: #fbfbfc;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+
         body {
             background-color: var(--page-bg); color: var(--dark-text);
-            line-height: 1.7; padding-top: var(--header-height);
+            line-height: 1.7; padding-top: var(--header-height); /* 헤더 높이만큼 패딩 유지 */
         }
+
         body::before {
             content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true');
             background-size: cover; background-position: center; background-repeat: no-repeat;
             opacity: 0.08; z-index: -1;
         }
+
         .site-header {
             position: fixed; top: 0; left: 0; right: 0; height: var(--header-height);
             background-color: rgba(255, 255, 255, 0.97); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            display: flex; align-items: center; justify-content: center; padding: 0 20px;
+            display: flex; align-items: center;
+            justify-content: center; /* 로고 중앙 정렬 */
+            padding: 0 20px;
             z-index: 1000;
         }
-        .site-header .logo { font-size: 1.4em; font-weight: 700; color: var(--primary-color); text-align: center; }
-        .instructor-intro-banner { padding: 35px 20px 25px 20px; text-align: center; background-color: transparent; }
+        .site-header .logo {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
+        /* === 강사 소개 버튼 (커리큘럼 위) 스타일 시작 === */
+        .instructor-intro-banner {
+            padding: 35px 20px 25px 20px; /* 위쪽 패딩 늘림 */
+            text-align: center;
+            background-color: transparent;
+        }
         .instructor-intro-button {
-            display: inline-flex; align-items: center; gap: 18px; background-color: var(--card-bg);
-            color: var(--primary-color); padding: 18px 30px; border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09); text-decoration: none;
-            font-size: 1.3em; font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 18px; /* 이미지와 텍스트 사이 간격 늘림 */
+            background-color: var(--card-bg);
+            color: var(--primary-color);
+            padding: 18px 30px; /* 버튼 내부 패딩 늘림 */
+            border-radius: 12px; /* 둥근 모서리 약간 늘림 */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09); /* 그림자 약간 조정 */
+            text-decoration: none;
+            font-size: 1.3em; /* 폰트 크기 늘림 */
+            font-weight: 600;
             transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
         }
-        .instructor-intro-button:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); background-color: #f8f9fa; }
-        .instructor-button-avatar { width: 75px; height: 75px; border-radius: 50%; object-fit: cover; border: 2px solid var(--border-color); }
-        .curriculum-container { max-width: var(--container-max-width); margin: 0 auto 30px auto; padding: 0 20px; }
-        .module { margin-bottom: 20px; background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); overflow: hidden; }
-        .module-header {
-            background-color: var(--primary-color); color: white; padding: 18px 25px; cursor: pointer;
-            display: flex; justify-content: space-between; align-items: center; transition: background-color 0.2s ease;
+        .instructor-intro-button:hover {
+            transform: translateY(-3px); /* 호버 시 떠오르는 효과 약간 늘림 */
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); /* 호버 시 그림자 강조 */
+            background-color: #f8f9fa;
         }
+        .instructor-button-avatar {
+            width: 75px; /* 이미지 크기 늘림 */
+            height: 75px; /* 이미지 크기 늘림 */
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--border-color); /* 테두리 두께 약간 증가 */
+        }
+        /* === 강사 소개 버튼 (커리큘럼 위) 스타일 끝 === */
+
+        .curriculum-container {
+            max-width: var(--container-max-width);
+            margin: 0 auto 30px auto; /* 상단 마진은 instructor-intro-banner의 패딩으로 조절 */
+            padding: 0 20px;
+        }
+        /* ==== 이하 사용자 제공 원본 index.html의 <style> 내용 그대로 ==== */
+        .module { margin-bottom: 20px; background-color: var(--card-bg); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.07); overflow: hidden; }
+        .module-header { background-color: var(--primary-color); color: white; padding: 18px 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background-color 0.2s ease; }
         .module-header:hover { background-color: #2a49c7; }
         .module-header .title-group { text-align: left; }
         .module-header h2 { font-size: 1.4em; margin: 0; font-weight: 600; }
         .module-header p { font-size: 0.9em; opacity: 0.9; margin-top: 5px; font-weight: 400; line-height: 1.5; }
         .module-header .toggle-icon { font-family: 'Arial', sans-serif; font-size: 1.2em; font-weight: bold; transition: transform 0.3s ease; margin-left: 10px; line-height: 1; }
         .module-header.active .toggle-icon { transform: rotate(90deg); }
-        .section-list {
-            list-style: none; padding: 0 15px; margin: 0; max-height: 0; overflow: hidden;
-            transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out;
-            background-color: var(--section-list-bg); border-top: 1px solid var(--border-color);
-        }
+        .section-list { list-style: none; padding: 0 15px; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out; background-color: var(--section-list-bg); border-top: 1px solid var(--border-color); }
         .section-item { border-radius: 5px; margin-bottom: 8px; border: 1px solid #ddd; background-color: var(--card-bg); transition: background-color 0.2s ease; }
         .section-item:first-child { margin-top: 10px; }
         .section-item:last-child { margin-bottom: 10px; }
         .section-item:hover { background-color: var(--secondary-color); }
-        .section-item a {
-            display: block; padding: 12px 20px; text-decoration: none; color: var(--dark-text);
-            font-size: 1em; font-weight: 500; position: relative; text-align: left; line-height: 1.4;
-        }
-        .section-item a::after {
-            content: '〉'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%);
-            font-size: 1.1em; color: var(--primary-color); opacity: 0.6; transition: opacity 0.2s ease, right 0.2s ease;
-        }
+        .section-item a { display: block; padding: 12px 20px; text-decoration: none; color: var(--dark-text); font-size: 1em; font-weight: 500; position: relative; text-align: left; line-height: 1.4; }
+        .section-item a::after { content: '〉'; position: absolute; right: 20px; top: 50%; transform: translateY(-50%); font-size: 1.1em; color: var(--primary-color); opacity: 0.6; transition: opacity 0.2s ease, right 0.2s ease; }
         .section-item a:hover::after { opacity: 1; right: 15px; }
         @media (max-width: 768px) {
             .site-header .logo { font-size: 1.2em; }
@@ -93,8 +122,8 @@
         <div class="logo">AI, 건설 업무의 시간을 되돌려 드립니다!</div>
     </header>
 
+    <!-- 강사 소개 버튼 추가 -->
     <div class="instructor-intro-banner">
-        <!-- 강사 소개 페이지가 SPA 내부에 있으므로, spa_page.html#instructor_profile 로 연결 -->
         <a href="spa_page.html#instructor_profile" class="instructor-intro-button">
             <img src="https://github.com/miri-orot/ai-lec-250527/blob/main/KakaoTalk_Photo_2025-05-20-17-05-59.jpeg?raw=true" alt="장새롬 강사" class="instructor-button-avatar">
             <span>강사 소개: 장새롬</span>
@@ -102,6 +131,7 @@
     </div>
 
     <div class="curriculum-container">
+        <!-- Module 1 -->
         <div class="module">
             <div class="module-header">
                 <div class="title-group">
@@ -110,12 +140,14 @@
                 </div><span class="toggle-icon">></span>
             </div>
             <ul class="section-list">
-                <!-- 각 섹션 링크는 spa_page.html 로 이동하며, #해시 로 어떤 섹션인지 전달 -->
+                <!-- 링크 수정: spa_page.html#해시 형태로 -->
                 <li class="section-item"><a href="spa_page.html#module1_section1">1. 오프닝: AI로 당신의 업무 시간을 되찾으세요!</a></li>
                 <li class="section-item"><a href="spa_page.html#module1_section2">2. 당신의 하루, 혹시 이렇지 않나요? (업무 Pain Points)</a></li>
                 <li class="section-item"><a href="spa_page.html#module1_section3">3. AI: 당신의 똑똑한 업무 비서 (생성형 AI란?)</a></li>
             </ul>
         </div>
+
+        <!-- Module 2 -->
         <div class="module">
             <div class="module-header">
                 <div class="title-group">
@@ -129,7 +161,9 @@
                 <li class="section-item"><a href="spa_page.html#module2_section3">3. NotebookLM & Gemini 첫걸음</a></li>
             </ul>
         </div>
-         <div class="module">
+
+        <!-- Module 3 -->
+        <div class="module">
             <div class="module-header">
                 <div class="title-group">
                     <h2>Module 3: 실전! AI로 업무 효율 2배 UP! (시연 중심)</h2>
@@ -143,6 +177,8 @@
                 <li class="section-item"><a href="spa_page.html#module3_section4">4. 보고서·기획서 작성: AI로 시간 절반으로 줄이기!</a></li>
             </ul>
         </div>
+
+        <!-- Module 4 -->
         <div class="module">
             <div class="module-header">
                 <div class="title-group">
@@ -163,13 +199,16 @@
     </footer>
 
     <script>
+        // ==== 사용자 제공 원본 index.html의 <script> 내용 그대로 ====
         document.addEventListener('DOMContentLoaded', function () {
             const moduleHeaders = document.querySelectorAll('.module-header');
             const sectionListPadding = 10;
+
             moduleHeaders.forEach(header => {
                 header.addEventListener('click', function () {
                     this.classList.toggle('active');
                     const sectionList = this.nextElementSibling;
+
                     if (sectionList && sectionList.classList.contains('section-list')) {
                         if (this.classList.contains('active')) {
                             sectionList.style.maxHeight = (sectionList.scrollHeight + (sectionListPadding * 2)) + "px";
