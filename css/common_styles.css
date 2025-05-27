@@ -1,3 +1,4 @@
+/* css/common_styles.css */
 :root {
     /* spa_page.html의 기본 공통 변수들 */
     --primary-color: #3155e2;
@@ -8,7 +9,7 @@
     --card-bg: #fff; /* 대부분의 카드 배경 */
     --border-color: #eaeaea;
     --nav-collapsed-width: 15px;
-    --nav-expanded-width: 420px;
+    --nav-expanded-width: 300px; /* 기본 네비게이션 너비 (요청 시 420px 등으로 조정 가능) */
     --nav-bg-expanded: var(--card-bg);
     --nav-active-bg: var(--primary-color);
     --nav-active-text: #ffffff;
@@ -22,186 +23,303 @@
     --warning-color-text: #e65100;
     --slide-card-bg: #fff; /* 대부분의 슬라이드 배경 */
 
-
-
     /* 기본 콘텐츠 영역 너비 (모듈 2, 3, 4는 이 값을 기본으로 사용) */
     --content-max-width: 1100px;
+    --content-max-width-profile: 700px; /* 강사소개 프로필 카드 최대 너비 */
 
-    /* 페이지별 특화 너비 변수 선언 */
-    --content-max-width-m1s2: 1200px;
-    --content-max-width-m1s3: 1200px;
-    --content-max-width-m1s4: 1200px;
-    /* 모듈 2, 3, 4는 기본값을 따르거나, 필요시 각 모듈 CSS에서 재정의 또는 개별 변수 사용 */
-    --content-max-width-m4s1: 900px; /* module4_section1은 예외적으로 900px */
+
+    /* 페이지별 특화 너비 변수 선언 (필요시 각 모듈 CSS에서 사용) */
+    /* --content-max-width-m1s1: 1000px; /* 예시: module1_section1_styles.css 에서 사용 */
+    /* --content-max-width-m1s2: 1200px; */
+    /* --content-max-width-m1s3: 1200px; */
+    /* --content-max-width-m1s4: 1200px; */
+    /* --content-max-width-m4s1: 900px; */
 
     /* 각 모듈별 특화 색상 변수 (필요한 경우 각 모듈 CSS에서 구체적인 값으로 정의하여 사용) */
     /* Module 1 */
-    --dark-text-m1s2_3: #333;
-    --light-text-m1s2_3: #666;
-    --slide-title-color-m1s2_3: #000;
-    --accent-color-visible-m1s4: #c92a2a;
-    --dark-text-m1s4: #212529;
-    --light-text-m1s4: #495057;
-    --border-color-m1s4: #dee2e6;
-    --success-color-m1s4: #2f9e44;
-    --info-color-m1s4: #1971c2;
-    --warning-color-m1s4: #f08c00;
-
-    /* Module 2 */
-    --warning-bg-m2s1: #fff8e1;
-    --warning-border-m2s1: #ffc107;
-    --bad-bg-m2s1: #ffebee;
-    --bad-border-m2s1: #c62828;
-    --good-bg-m2s1: #e8f5e9;
-    --good-border-m2s1: #2e7d32;
-
-    /* Module 3 */
-    --feature-box-bg-m3s2: #f9f9f9;
-
-    /* Module 4 */
-    --danger-color-m4s1: #d9363e;
-    --warning-color-alt-m4s1: #fa8c16;
-    --info-color-alt-m4s1: #1677ff;
-    --danger-bg-m4s1: #fff1f0;
-    --warning-bg-alt-m4s1: #fffbe6;
-    --info-bg-alt-m4s1: #f0f5ff;
-    --sub-card-bg-m4s1: #ffffff;
-
-
-
-
-
-
+    /* --dark-text-m1s2_3: #333; */
+    /* ... (이하 다른 모듈 특화 변수들은 필요에 따라 각 모듈 CSS에서 직접 정의하거나 여기에 추가) ... */
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-body { position: relative; background-color: var(--page-bg); color: var(--dark-text); line-height: 1.6; display: flex; height: 100vh; overflow: hidden; }
-body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.10; z-index: -1; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* --- SPA Page Navigation 스타일 --- */
-.page-navigation { position: relative; height: 100%; width: var(--nav-collapsed-width); background-color: var(--primary-color); opacity: 0.7; z-index: 100; overflow: hidden; transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out; display: flex; flex-direction: column; flex-shrink: 0; border-right: 1px solid var(--border-color); }
-.page-navigation:hover { width: var(--nav-expanded-width); background-color: var(--nav-bg-expanded); box-shadow: 5px 0 15px rgba(0,0,0,0.1); opacity: 1; overflow: visible; }
-.nav-header { font-size: 1.2em; color: var(--primary-color); padding: 20px 15px 15px 15px; border-bottom: 1px solid var(--border-color); flex-shrink: 0; opacity: 0; transition: opacity 0.2s 0.1s ease; white-space: nowrap; }
-.page-navigation:hover .nav-header { opacity: 1; }
-.nav-scroll-wrapper { width: var(--nav-expanded-width); flex-grow: 1; overflow-y: auto; padding: 15px 0; opacity: 0; transition: opacity 0.2s 0.1s ease; display: flex; flex-direction: column;}
-.page-navigation:hover .nav-scroll-wrapper { opacity: 1; }
-
-
-
-
-
-.nav-curriculum-list { list-style: none; padding: 0 20px; margin: 0; flex-grow: 1; }
-.nav-module-group { margin-bottom: 0; border-bottom: 1px solid var(--border-color); }
-
-
-
-.nav-module-group:last-child { border-bottom: none; }
-.nav-module-group:first-child .nav-module-title-wrapper{ border-top: 1px solid var(--border-color); }
-.nav-module-title-wrapper { font-size: 1em; font-weight: 600; color: var(--nav-module-title-color); padding: 12px 15px; background-color: rgba(var(--primary-color-rgb), 0.03); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s ease; border-left: 4px solid transparent; }
-
-
-
-
-
-
-
-
-.nav-module-title-wrapper:hover { background-color: rgba(var(--primary-color-rgb), 0.08); }
-.nav-module-title-wrapper.active { border-left-color: var(--primary-color); }
-.nav-module-title { flex-grow: 1; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
-.nav-toggle-icon { font-family: 'Arial', sans-serif; font-size: 0.8em; font-weight: bold; color: var(--light-text); margin-left: 10px; transition: transform 0.3s ease; flex-shrink: 0; }
-
-
-
-
-
-
-
-.nav-module-title-wrapper.active .nav-toggle-icon { transform: rotate(90deg); }
-.nav-section-list { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out; background-color: var(--section-list-bg); padding-left: 25px; }
-
-
-
-
-
-.nav-section-item { margin: 0; }
-.nav-section-item a { display: block; text-decoration: none; color: #555; padding: 10px 15px; border-radius: 0; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; border-bottom: 1px solid #eee; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
-
-
-
-
-
-
-.nav-section-item:last-child a { border-bottom: none; }
-.nav-section-item a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
-.nav-section-item.current-page a { background-color: var(--nav-active-bg); color: var(--nav-active-text) !important; font-weight: 600; border-radius: 4px; }
-.nav-mainpage-link-wrapper { padding: 15px 20px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
-.nav-mainpage-link { display: block; padding: 12px 15px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: 500; transition: background-color 0.2s ease; }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.nav-mainpage-link:hover { background-color: #2a49c7; }
-
-/* --- Main Content Area & #contentDisplay 기본 스타일 --- */
-.main-content-area { flex-grow: 1; height: 100vh; overflow-y: auto; padding: 30px; position: relative; }
-#contentDisplay { margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; max-width: var(--content-max-width); }
-
-
-
-
-
-
-
-
-#contentDisplay.loaded { opacity: 1; transform: translateY(0); }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+}
+
+body { /* spa_page.html 에 적용될 body 스타일 */
+    position: relative;
+    background-color: var(--page-bg);
+    color: var(--dark-text);
+    line-height: 1.6;
+    display: flex; /* 네비게이션과 메인 콘텐츠 영역을 가로로 배치 */
+    height: 100vh;
+    overflow: hidden; /* body 자체 스크롤 방지, 각 영역에서 스크롤 처리 */
+}
+
+body::before { /* 배경 이미지 효과 */
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.10; /* spa_page.html 에서 사용된 값 */
+    z-index: -1;
+}
+
+/* --- SPA Page Navigation (Desktop) --- */
+.page-navigation {
+    position: relative; /* JS로 left 조정 시 기준 */
+    height: 100%;
+    width: var(--nav-collapsed-width);
+    background-color: var(--primary-color);
+    opacity: 0.7;
+    z-index: 100; /* main-content-area 보다 위에 오도록 */
+    overflow: hidden;
+    transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0; /* body가 flex일 때 줄어들지 않도록 */
+    border-right: 1px solid var(--border-color);
+}
+
+/* 네비게이션이 고정되지 않았을 때 hover 효과 */
+.page-navigation:not(.pinned):hover {
+    width: var(--nav-expanded-width);
+    background-color: var(--nav-bg-expanded);
+    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
+    opacity: 1;
+    overflow: visible; /* 내부 내용 보이도록 */
+}
+.page-navigation:not(.pinned):hover .nav-header,
+.page-navigation:not(.pinned):hover .nav-scroll-wrapper {
+    opacity: 1; /* 내부 요소들도 보이도록 */
+}
+
+.nav-header {
+    font-size: 1.2em;
+    color: var(--primary-color);
+    padding: 20px 15px 15px 15px;
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0; /* 높이 고정 */
+    opacity: 0; /* 기본 숨김, hover/pinned 시 JS로 보이게 */
+    transition: opacity 0.2s 0.1s ease; /* 나타나는 애니메이션 */
+    white-space: nowrap; /* 줄바꿈 방지 */
+}
+
+.nav-scroll-wrapper {
+    width: var(--nav-expanded-width); /* 내부 스크롤 컨텐츠는 항상 확장된 너비 기준 */
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+    overflow-y: auto; /* 내용 많으면 스크롤 */
+    padding: 15px 0;
+    opacity: 0; /* 기본 숨김 */
+    transition: opacity 0.2s 0.1s ease;
+    display: flex; /* 내부 요소(ul, div)를 수직 정렬 */
+    flex-direction: column;
+}
+
+.nav-curriculum-list {
+    list-style: none;
+    padding: 0 20px; /* 좌우 패딩 */
+    margin: 0;
+    flex-grow: 1; /* 가능한 많은 공간 차지 (푸터 링크 밀어내기 위함) */
+}
+
+.nav-module-group {
+    margin-bottom: 0; /* 그룹 간 간격 없음 */
+    border-bottom: 1px solid var(--border-color); /* 그룹 구분선 */
+}
+.nav-module-group:last-of-type { /* 마지막 그룹은 하단선 제거 (강사소개/메인링크와 겹치지 않도록) */
+    border-bottom: none;
+}
+.nav-module-group:first-child .nav-module-title-wrapper{
+    border-top: 1px solid var(--border-color); /* 첫 그룹 상단선 */
+}
+
+.nav-module-title-wrapper {
+    font-size: 1em;
+    font-weight: 600;
+    color: var(--nav-module-title-color);
+    padding: 12px 15px;
+    background-color: rgba(var(--primary-color-rgb), 0.03); /* 연한 배경 */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    border-left: 4px solid transparent; /* 활성 시 색상 표시용 */
+}
+.nav-module-title-wrapper:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.08);
+}
+.nav-module-title-wrapper.active {
+    border-left-color: var(--primary-color); /* 활성 시 왼쪽 테두리 색상 */
+}
+
+.nav-module-title {
+    flex-grow: 1; /* 제목이 남은 공간 차지 */
+    white-space: normal; /* 자동 줄바꿈 */
+    overflow-wrap: break-word; /* 단어 단위 줄바꿈 */
+    word-break: keep-all; /* 한글 단어 유지 */
+}
+
+.nav-toggle-icon {
+    font-family: 'Arial', sans-serif;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: var(--light-text);
+    margin-left: 10px; /* 제목과의 간격 */
+    transition: transform 0.3s ease;
+    flex-shrink: 0; /* 아이콘 크기 고정 */
+}
+.nav-module-title-wrapper.active .nav-toggle-icon {
+    transform: rotate(90deg); /* 활성 시 아이콘 회전 */
+}
+
+.nav-section-list {
+    list-style: none;
+    padding: 0; /* JS에서 패딩 조절 */
+    margin: 0;
+    max-height: 0; /* 기본 숨김 */
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
+    background-color: var(--section-list-bg);
+    padding-left: 25px; /* 들여쓰기 (JS 패딩과 별개로 좌측 들여쓰기) */
+}
+
+.nav-section-item {
+    margin: 0; /* 아이템 간 간격 없음 */
+}
+.nav-section-item a {
+    display: block;
+    text-decoration: none;
+    color: #555; /* 기본 링크 색상 */
+    padding: 10px 15px; /* 내부 패딩 */
+    border-radius: 0; /* 직사각형 형태 */
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid #eee; /* 섹션 간 구분선 */
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: keep-all;
+}
+.nav-section-item:last-child a {
+    border-bottom: none; /* 마지막 섹션은 하단선 제거 */
+}
+.nav-section-item a:hover {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+.nav-section-item.current-page a { /* 현재 보고 있는 페이지 링크 스타일 */
+    background-color: var(--nav-active-bg) !important; /* important로 우선순위 확보 */
+    color: var(--nav-active-text) !important;
+    font-weight: 600;
+    border-radius: 4px; /* 약간 둥글게 */
+}
+
+/* 강사소개 및 메인페이지 링크를 위한 wrapper */
+.nav-instructor-profile-link-wrapper,
+.nav-mainpage-link-wrapper {
+    padding: 10px 20px; /* 다른 그룹과 유사한 패딩 (ul과 동일하게) */
+    border-top: 1px solid var(--border-color); /* 위쪽 구분선 */
+}
+.nav-mainpage-link-wrapper {
+    margin-top: auto; /* 스크롤 가능 영역에서 항상 하단에 위치 */
+    padding-bottom: 20px; /* 하단 여백 추가 */
+}
+
+.nav-instructor-profile-link-wrapper a { /* 강사소개 링크 스타일 (섹션 아이템과 유사하게) */
+    display: block; text-decoration: none; color: #555;
+    padding: 10px 15px; font-size: 0.9rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    white-space: normal; overflow-wrap: break-word; word-break: keep-all;
+    background-color: var(--section-list-bg); /* 섹션리스트와 동일 배경 */
+    padding-left: 10px; /* nav-section-list의 padding-left와 맞추지 않음 (들여쓰기 없음) */
+    border-radius: 0;
+}
+.nav-instructor-profile-link-wrapper a:hover {
+    background-color: var(--secondary-color); color: var(--primary-color);
+}
+.nav-instructor-profile-link-wrapper.current-page a {
+    background-color: var(--nav-active-bg) !important;
+    color: var(--nav-active-text) !important;
+    font-weight: 600; border-radius: 4px;
+}
+
+
+.nav-mainpage-link { /* 메인 페이지로 돌아가는 버튼 스타일 */
+    display: block;
+    padding: 12px 15px;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+.nav-mainpage-link:hover {
+    background-color: #2a49c7; /* primary-color 보다 약간 어둡게 */
+}
+
+
+/* --- Main Content Area & #contentDisplay --- */
+.main-content-area {
+    flex-grow: 1; /* 남은 공간 모두 차지 */
+    height: 100vh;
+    overflow-y: auto; /* 내부 스크롤 */
+    padding: 30px;
+    position: relative; /* JS에서 위치 조정 시 기준 */
+}
+
+#contentDisplay {
+    margin: 0 auto; /* 가로 중앙 정렬 */
+    opacity: 0; /* 초기 숨김, JS로 로드 후 보이게 */
+    transform: translateY(20px); /* 약간 아래에서 나타나는 효과 */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    max-width: var(--content-max-width); /* 기본 최대 너비 */
+}
+#contentDisplay.loaded { /* JS로 콘텐츠 로드 완료 시 */
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* --- #contentDisplay 내부 공통 태그 스타일 --- */
-#contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 { color: var(--primary-color); margin-top: 1.5em; margin-bottom: 0.8em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border-color); }
-#contentDisplay h1:first-child, #contentDisplay h2:first-child, #contentDisplay h3:first-child, #contentDisplay h4:first-child { margin-top: 0; }
-
-
-
-
-
+#contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 {
+    color: var(--primary-color);
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid var(--border-color);
+}
+#contentDisplay h1:first-child, #contentDisplay h2:first-child,
+#contentDisplay h3:first-child, #contentDisplay h4:first-child {
+    margin-top: 0; /* 첫번째 제목은 상단 마진 없음 */
+}
 #contentDisplay h1 { font-size: 1.8em; }
 #contentDisplay h2 { font-size: 1.5em; }
 #contentDisplay h3 { font-size: 1.3em; }
-@@ -115,52 +172,65 @@ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; heigh
+#contentDisplay h4 { font-size: 1.1em; color: var(--dark-text); border-bottom: none; }
+
+#contentDisplay p { margin-bottom: 1rem; line-height: 1.7; }
+#contentDisplay ul, #contentDisplay ol { margin-bottom: 1rem; padding-left: 25px; }
+#contentDisplay li { margin-bottom: 0.5rem; }
 #contentDisplay a { color: var(--primary-color); text-decoration: none; }
 #contentDisplay a:hover { text-decoration: underline; }
 #contentDisplay strong, #contentDisplay b { font-weight: 600; color: var(--primary-color); }
-#contentDisplay img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
-
-
-
+#contentDisplay img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 #contentDisplay code {
     display: inline-block;
     background-color: rgba(0,0,0,0.05);
@@ -212,59 +330,120 @@ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; heigh
     word-break: keep-all;
     color: var(--dark-text);
 }
-#contentDisplay pre code {
+#contentDisplay pre code { /* 블록 코드 스타일 */
     display: block;
     padding: 1em;
     overflow-x: auto;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* 연한 회색 배경 */
 }
 
-/* --- 공통 슬라이드 구조 기본 스타일 --- */
-#contentDisplay .slide-container { max-width: 100%; margin: 0; padding: 0; }
-#contentDisplay .slide { background-color: var(--slide-card-bg); margin-bottom: 30px; overflow: hidden; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
-#contentDisplay .slide.active-slide, #contentDisplay .slide.active { opacity: 1; transform: translateY(0); }
-#contentDisplay .slide-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; background-color: #fdfdff; border-radius: 12px 12px 0 0; }
-
-
-
-
-
-
-
-
-
-#contentDisplay .slide-number { color: var(--light-text); font-size: 0.85em; }
-#contentDisplay .slide-title { font-size: 1.6em; font-weight: 700; color: var(--dark-text); margin-bottom: 0.2rem; border-bottom: none; padding-bottom: 0; }
-
-
-
-#contentDisplay .slide-subtitle { font-size: 1em; color: var(--light-text); margin-bottom: 0; }
-#contentDisplay .slide-content { padding: 1.5rem 2rem; }
-#contentDisplay .text-block { font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; color: var(--dark-text); text-align: center; word-break: keep-all; }
-
-
-
-#contentDisplay .highlight { color: var(--primary-color); font-weight: 600; }
-#contentDisplay .footer { text-align: center; padding: 2rem; color: var(--light-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
-
-
-
+/* --- 공통 슬라이드 구조 (moduleX_sectionY.html 파일 내부에서 사용) --- */
+#contentDisplay .slide-container {
+    max-width: 100%; /* 기본적으로는 콘텐츠 너비를 따름 */
+    margin: 0;
+    padding: 0;
+}
+#contentDisplay .slide {
+    background-color: var(--slide-card-bg);
+    margin-bottom: 30px; /* 슬라이드 간 간격 */
+    overflow: hidden; /* 내부 요소가 넘치지 않도록 */
+    opacity: 0; /* JS로 active 클래스 추가 시 보이도록 */
+    transform: translateY(30px); /* 나타나는 애니메이션 */
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    border-radius: 12px; /* 둥근 모서리 */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* 부드러운 그림자 */
+}
+#contentDisplay .slide.active { /* JS로 활성화된 슬라이드 */
+    opacity: 1;
+    transform: translateY(0);
+}
+#contentDisplay .slide-header {
+    padding: 1.5rem 2rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* 번호가 위로 붙도록 */
+    background-color: #fdfdff; /* 약간 다른 흰색 배경 */
+    border-radius: 12px 12px 0 0; /* 상단 모서리만 둥글게 */
+}
+#contentDisplay .slide-number {
+    color: var(--light-text);
+    font-size: 0.85em;
+}
+#contentDisplay .slide-title { /* 슬라이드 내부 제목 (h1, h2 등과 별개) */
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--dark-text); /* 기본 텍스트 색상 */
+    margin-bottom: 0.2rem;
+    border-bottom: none; /* 슬라이드 제목은 밑줄 없음 */
+    padding-bottom: 0;
+}
+#contentDisplay .slide-subtitle {
+    font-size: 1em;
+    color: var(--light-text);
+    margin-bottom: 0;
+}
+#contentDisplay .slide-content {
+    padding: 1.5rem 2rem; /* 슬라이드 내용 패딩 */
+}
+#contentDisplay .text-block { /* 슬라이드 내 텍스트 블록 */
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+    color: var(--dark-text);
+    text-align: center; /* 기본 중앙 정렬 */
+    word-break: keep-all;
+}
+#contentDisplay .highlight { /* 강조 텍스트 */
+    color: var(--primary-color);
+    font-weight: 600;
+}
+#contentDisplay .footer { /* 슬라이드 컨테이너의 푸터 */
+    text-align: center;
+    padding: 2rem;
+    color: var(--light-text);
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
 
 /* --- 스크롤바 스타일 --- */
-.nav-scroll-wrapper::-webkit-scrollbar, .main-content-area::-webkit-scrollbar { width: 8px; }
-.nav-scroll-wrapper::-webkit-scrollbar-track, .main-content-area::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
-.nav-scroll-wrapper::-webkit-scrollbar-thumb { background-color: rgba(var(--primary-color-rgb), 0.4); border-radius: 10px; }
-.main-content-area::-webkit-scrollbar-thumb { background-color: rgba(var(--dark-text), 0.3); border-radius: 10px; }
+.nav-scroll-wrapper::-webkit-scrollbar,
+.main-content-area::-webkit-scrollbar {
+    width: 8px;
+}
+.nav-scroll-wrapper::-webkit-scrollbar-track,
+.main-content-area::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05); /* 스크롤바 트랙 배경 */
+}
+.nav-scroll-wrapper::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--primary-color-rgb), 0.4); /* 네비 스크롤바 색상 */
+    border-radius: 10px;
+}
+.main-content-area::-webkit-scrollbar-thumb {
+    background-color: rgba(var(--dark-text), 0.3); /* 메인 콘텐츠 스크롤바 색상 */
+    border-radius: 10px;
+}
 
-/* --- 기본 반응형 스타일 --- */
+/* --- 기본 반응형 스타일 (모바일용 UI 요소는 spa_page.html 내 인라인 스타일에서 주로 처리) --- */
 @media (max-width: 768px) {
-    .page-navigation:hover { width: var(--nav-collapsed-width); }
-    .main-content-area { padding: 20px; }
-    #contentDisplay .slide-container { padding:0; }
-    #contentDisplay .slide { margin-bottom: 20px; }
-
-    #contentDisplay .slide-header { padding: 1rem 1.5rem 0.8rem; }
-    #contentDisplay .slide-content { padding: 1rem 1.5rem; }
-    #contentDisplay .slide-title { font-size: 1.8rem; }
-    #contentDisplay .slide-subtitle { font-size: 1rem; }
+    /* .main-content-area 패딩 등은 spa_page.html의 인라인 스타일에서 조정됨 */
+    #contentDisplay .slide-container {
+        padding:0; /* 모바일에서는 슬라이드 컨테이너 패딩 제거 */
+    }
+    #contentDisplay .slide {
+        margin-bottom: 20px; /* 모바일에서 슬라이드 간 간격 줄임 */
+    }
+    #contentDisplay .slide-header {
+        padding: 1rem 1.5rem 0.8rem; /* 모바일 슬라이드 헤더 패딩 */
+    }
+    #contentDisplay .slide-content {
+        padding: 1rem 1.5rem; /* 모바일 슬라이드 콘텐츠 패딩 */
+    }
+    #contentDisplay .slide-title {
+        font-size: 1.4rem; /* 모바일 슬라이드 제목 크기 */
+    }
+    #contentDisplay .slide-subtitle {
+        font-size: 0.9rem; /* 모바일 슬라이드 부제목 크기 */
+    }
 }
