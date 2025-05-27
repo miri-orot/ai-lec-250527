@@ -1,0 +1,165 @@
+/* css/instructor_profile_styles.css */
+
+/* :root 변수는 common_styles.css 또는 메인 HTML에 정의된 것을 사용합니다. */
+/* 이 파일에서는 해당 변수들을 참조하여 스타일을 정의합니다. */
+
+/* #contentDisplay 내부의 프로필 카드에 적용될 스타일 */
+#contentDisplay .profile-card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px; /* 전체 콘텐츠 영역의 패딩 */
+    width: 100%;
+    min-height: calc(100vh - 60px - 60px); /* 헤더/푸터 제외한 높이, 값은 실제에 맞게 조정 */
+                                           /* 모바일에서는 main-content-area 패딩을 고려하여 조정 필요 */
+}
+
+#contentDisplay .profile-card {
+    background-color: var(--card-bg, #fff);
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    padding: 30px 35px;
+    max-width: var(--content-max-width-profile, 700px); /* --content-max-width-profile 변수가 없다면 기본값으로 */
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    opacity: 0; /* JS로 로드 후 opacity: 1; transform: translateY(0); 적용 */
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+#contentDisplay.loaded .profile-card { /* contentDisplay에 loaded 클래스가 추가되면 보이도록 */
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+#contentDisplay .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+#contentDisplay .profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color, #3155e2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+#contentDisplay .profile-name {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--primary-color, #3155e2);
+    margin-bottom: 0;
+}
+
+#contentDisplay .profile-title-text { /* 클래스명 변경 (기존 .profile-title 에서) */
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--dark-text, #333);
+    margin-top: -10px;
+}
+
+#contentDisplay .profile-details {
+    text-align: left;
+    border-top: 1px solid var(--border-color, #eaeaea);
+    padding-top: 25px;
+}
+
+#contentDisplay .profile-details h2 {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--dark-text, #333);
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color, #3155e2);
+    padding-bottom: 8px;
+    display: inline-block;
+}
+#contentDisplay .profile-details ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#contentDisplay .profile-details li {
+    font-size: 1.05em;
+    color: var(--light-text, #666);
+    margin-bottom: 12px;
+    line-height: 1.6;
+    padding-left: 25px;
+    position: relative;
+}
+#contentDisplay .profile-details li::before {
+    content: '✓';
+    color: var(--primary-color, #3155e2);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 1px;
+}
+
+#contentDisplay .back-to-main-spa-button { /* 클래스명 변경 및 SPA에 맞게 수정 */
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: var(--primary-color, #3155e2);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1em;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer; /* a 태그가 아니므로 cursor 추가 */
+}
+
+#contentDisplay .back-to-main-spa-button:hover {
+    background-color: #2a49c7; /* primary-color 보다 약간 어둡게 */
+    transform: translateY(-2px);
+}
+
+/* 반응형 스타일 (기존과 유사하게 적용, #contentDisplay 내부 요소 타겟팅) */
+@media (max-width: 768px) {
+    #contentDisplay .profile-card-container {
+        padding: 20px 15px;
+         min-height: calc(100vh - 60px - 80px); /* 모바일 하단 네비 고려 */
+    }
+    #contentDisplay .profile-card {
+        padding: 25px 20px;
+        gap: 20px;
+    }
+    #contentDisplay .profile-image {
+        width: 120px;
+        height: 120px;
+    }
+    #contentDisplay .profile-name {
+        font-size: 1.9em;
+    }
+    #contentDisplay .profile-title-text {
+        font-size: 1.1em;
+    }
+    #contentDisplay .profile-details h2 {
+        font-size: 1.25em;
+    }
+    #contentDisplay .profile-details li {
+        font-size: 1em;
+        padding-left: 22px;
+    }
+    #contentDisplay .back-to-main-spa-button {
+        font-size: 0.95em;
+        padding: 10px 20px;
+    }
+}
+@media (max-width: 480px) {
+    #contentDisplay .profile-image {
+        width: 100px;
+        height: 100px;
+    }
+    #contentDisplay .profile-name {
+        font-size: 1.7em;
+    }
+}
