@@ -3,317 +3,673 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI, 건설 업무의 시간을 되돌려 드립니다! - 커리큘럼</title>
+    <title>AI, 건설 업무의 시간을 되돌려 드립니다!</title>
+    <link rel="stylesheet" href="css/common_styles.css">
     <style>
-        :root {
-            --primary-color: #3155e2;
-            --secondary-color: #e0e7ff;
-            --dark-text: #333333;
-            --light-text: #666666;
-            --card-bg: #ffffff;
-            --border-color: #eaeaea;
-            --page-bg: #f4f7f9;
-            --header-height: 70px;
-            --container-max-width: 800px;
-            --section-list-bg: #fbfbfc;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
-
-        body {
-            background-color: var(--page-bg); color: var(--dark-text);
-            line-height: 1.7; padding-top: var(--header-height);
-        }
-
-        body::before {
-            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true');
-            background-size: cover; background-position: center; background-repeat: no-repeat;
-            opacity: 0.08; z-index: -1;
-        }
-
-        .site-header {
-            position: fixed; top: 0; left: 0; right: 0; height: var(--header-height);
-            background-color: rgba(255, 255, 255, 0.97); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
-            display: flex; align-items: center;
-            justify-content: center;
-            padding: 0 20px;
-            z-index: 1000;
-        }
-        .site-header .logo {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-align: center;
-        }
-
-        /* === 강사 소개 버튼 (커리큘럼 위) 스타일 시작 === */
-        .instructor-intro-banner {
-            padding: 35px 20px 25px 20px; /* 위쪽 패딩 늘림 */
-            text-align: center;
-            background-color: transparent;
-        }
-
-        .instructor-intro-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px; /* 이미지와 텍스트 사이 간격 늘림 (기존 10px) */
-            background-color: var(--card-bg);
-            color: var(--primary-color);
-            padding: 18px 30px; /* 버튼 내부 패딩 늘림 (기존 12px 22px) */
-            border-radius: 12px; /* 둥근 모서리 약간 늘림 (기존 8px) */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09); /* 그림자 약간 조정 */
-            text-decoration: none;
-            font-size: 1.3em; /* 폰트 크기 늘림 (기존 1.05em) */
-            font-weight: 600;
-            transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
-        }
-
-        .instructor-intro-button:hover {
-            transform: translateY(-3px); /* 호버 시 떠오르는 효과 약간 늘림 */
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14); /* 호버 시 그림자 강조 */
-            background-color: #f8f9fa;
-        }
-
-        .instructor-button-avatar {
-            width: 75px; /* 이미지 크기 늘림 (기존 30px -> 30 * 2.5 = 75px) */
-            height: 75px; /* 이미지 크기 늘림 */
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--border-color); /* 테두리 두께 약간 증가 */
-        }
-        /* === 강사 소개 버튼 (커리큘럼 위) 스타일 끝 === */
-
-        .curriculum-container {
-            max-width: var(--container-max-width);
-            margin: 0 auto 30px auto;
-            padding: 0 20px;
-        }
-
-        .module {
-            margin-bottom: 20px;
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-            overflow: hidden;
-        }
-
-        .module-header {
-            background-color: var(--primary-color);
+        /* --- 데스크탑 햄버거 버튼 (고정 기능용) --- */
+        #desktop-pin-toggle-btn {
+            display: none; /* JS로 데스크탑일 때만 보이도록 제어 */
+            position: fixed;
+            top: 15px;
+            left: 10px;
+            z-index: 105;
+            background-color: var(--primary-color, #3155e2);
             color: white;
-            padding: 18px 25px;
+            border: none;
+            width: 30px;
+            height: 30px;
+            font-size: 16px;
+            line-height: 30px;
+            text-align: center;
             cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: background-color 0.2s ease;
-        }
-        .module-header:hover {
-            background-color: #2a49c7;
-        }
-
-        .module-header .title-group {
-            text-align: left;
-        }
-
-        .module-header h2 {
-            font-size: 1.4em; margin: 0; font-weight: 600;
-        }
-        .module-header p {
-            font-size: 0.9em;
-            opacity: 0.9;
-            margin-top: 5px;
-            font-weight: 400;
-            line-height: 1.5;
-        }
-        .module-header .toggle-icon {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.2em;
-            font-weight: bold;
-            transition: transform 0.3s ease;
-            margin-left: 10px;
-            line-height: 1;
-        }
-        .module-header.active .toggle-icon {
-            transform: rotate(90deg);
-        }
-
-        .section-list {
-            list-style: none;
-            padding: 0 15px;
-            margin: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease-out, padding-top 0.4s ease-out, padding-bottom 0.4s ease-out;
-            background-color: var(--section-list-bg);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .section-item {
             border-radius: 5px;
-            margin-bottom: 8px;
-            border: 1px solid #ddd;
-            background-color: var(--card-bg);
-            transition: background-color 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            transition: left 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
         }
-         .section-item:first-child {
-            margin-top: 10px;
+        #desktop-pin-toggle-btn.pinned-icon::before { content: "📌"; }
+        #desktop-pin-toggle-btn:not(.pinned-icon)::before { content: "☰"; }
+
+        /* 데스크탑 네비게이션 고정 상태 */
+        .page-navigation.pinned {
+            width: var(--nav-expanded-width) !important;
+            opacity: 1 !important;
+            overflow: visible !important;
+            background-color: var(--nav-bg-expanded) !important;
+            box-shadow: 5px 0 15px rgba(0,0,0,0.1) !important;
         }
-         .section-item:last-child {
-            margin-bottom: 10px;
+        .page-navigation.pinned .nav-header,
+        .page-navigation.pinned .nav-scroll-wrapper {
+            opacity: 1 !important;
         }
-        .section-item:hover {
-             background-color: var(--secondary-color);
+        body.desktop-nav-pinned #desktop-pin-toggle-btn {
+             left: calc(var(--nav-expanded-width) - 25px); /* 고정 시 버튼 위치 조정 */
         }
 
-        .section-item a {
-            display: block; padding: 12px 20px; text-decoration: none;
-            color: var(--dark-text); font-size: 1em; font-weight: 500;
-            position: relative; text-align: left;
-            line-height: 1.4;
-        }
-        .section-item a::after {
-            content: '〉'; position: absolute; right: 20px; top: 50%;
-            transform: translateY(-50%); font-size: 1.1em;
-            color: var(--primary-color); opacity: 0.6;
-            transition: opacity 0.2s ease, right 0.2s ease;
-        }
-        .section-item a:hover::after {
-            opacity: 1; right: 15px;
-        }
 
+        /* --- 모바일 전용 스타일 --- */
         @media (max-width: 768px) {
-            .site-header .logo { font-size: 1.2em; }
+            .page-navigation {
+                pointer-events: none !important;
+                opacity: 0 !important; width: 0 !important; border: none !important;
+                padding: 0 !important; margin: 0 !important;  overflow: hidden !important;
+                transition: none !important;
+            }
+            #desktop-pin-toggle-btn { display: none !important; }
 
-            /* === 강사 소개 버튼 (커리큘럼 위) 반응형 스타일 === */
-            .instructor-intro-banner {
-                padding: 25px 15px 15px 15px; /* 모바일 배너 패딩 조정 */
+            #mobile-hamburger-btn {
+                display: block; position: fixed; top: 15px; left: 15px; z-index: 1002;
+                background-color: var(--primary-color, #3155e2); color: white; border: none;
+                padding: 8px 12px; font-size: 20px; cursor: pointer; border-radius: 5px;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             }
-            .instructor-intro-button {
-                padding: 14px 22px; /* 모바일 버튼 패딩 조정 */
-                font-size: 1.1em; /* 모바일 폰트 크기 조정 */
-                gap: 12px; /* 모바일 이미지-텍스트 간격 조정 */
-            }
-            .instructor-button-avatar {
-                width: 50px; /* 모바일 이미지 크기 조정 (75px는 너무 클 수 있음) */
-                height: 50px;
-            }
-             /* === 강사 소개 버튼 (커리큘럼 위) 반응형 스타일 끝 === */
 
-            .curriculum-container { padding: 0 10px; max-width: 100%; margin-top: 0; }
-            .module-header h2 { font-size: 1.25em; }
-            .module-header p { font-size: 0.85em; }
-            .section-item a { font-size: 0.9em; padding: 10px 15px; }
-            .module-header .toggle-icon { font-size: 1.1em; }
+            #mobile-sidebar-container {
+                position: fixed; top: 0; left: 0; width: 280px; height: 100vh;
+                background-color: var(--nav-bg-expanded, #fff); z-index: 1001;
+                transform: translateX(-100%); transition: transform 0.3s ease-in-out;
+                overflow-y: auto; box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+                padding-top: 50px; /* Close button height */
+            }
+            #mobile-sidebar-container.open { transform: translateX(0); }
+
+            #mobile-sidebar-close-btn {
+                position: absolute; top: 15px; right: 15px; font-size: 24px;
+                background: none; border: none; color: var(--primary-color, #3155e2);
+                cursor: pointer;
+            }
+
+            #mobile-sidebar-container .nav-header,
+            #mobile-sidebar-container .nav-scroll-wrapper {
+                opacity: 1 !important; width: 100% !important;
+            }
+            #mobile-sidebar-container .nav-header { padding-top: 10px; border-bottom: 1px solid var(--border-color, #eaeaea); }
+            #mobile-sidebar-container .nav-scroll-wrapper { padding: 15px 0; }
+            #mobile-sidebar-container .nav-section-item.current-page a,
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper.current-page a { /* 강사소개 링크 활성화 스타일 */
+                background-color: var(--nav-active-bg, #3155e2) !important;
+                color: var(--nav-active-text, #fff) !important;
+                font-weight: 600; border-radius: 4px;
+            }
+             /* 강사소개 링크 기본 스타일 for mobile sidebar (nav-section-item a 와 유사하게) */
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a {
+                display: block; text-decoration: none; color: #555; padding: 10px 35px; /* 섹션 아이템과 패딩 맞춤 */
+                font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease;
+                border-bottom: 1px solid #eee; white-space: normal;
+                overflow-wrap: break-word; word-break: keep-all;
+            }
+            #mobile-sidebar-container .nav-instructor-profile-link-wrapper a:hover {
+                background-color: var(--secondary-color); color: var(--primary-color);
+            }
+
+
+            #mobile-overlay {
+                display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+                background-color: rgba(0,0,0,0.5); z-index: 1000;
+            }
+            #mobile-overlay.active { display: block; }
+
+            .main-content-area {
+                padding-top: 60px !important; /* 모바일 햄버거 버튼 높이 고려 */
+                padding-bottom: 80px !important; /* 모바일 하단 네비게이션 버튼 높이 고려 */
+            }
+
+            #page-navigation-buttons {
+                display: flex; position: fixed; bottom: 0; left: 0; width: 100%;
+                padding: 10px 0px; background-color: rgba(250, 250, 250, 0.95);
+                box-shadow: 0 -2px 8px rgba(0,0,0,0.1); z-index: 999;
+                justify-content: space-between; align-items: center;
+                backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            }
+            #page-navigation-buttons button {
+                padding: 10px 15px; font-size: 0.9em; font-weight: 500;
+                background-color: var(--primary-color, #3155e2); color: white; border: none;
+                border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease;
+                min-width: 70px; text-align: center; flex-shrink: 0; margin: 0 10px;
+            }
+            #current-section-name-display {
+                flex-grow: 1; text-align: center; font-size: 0.85em;
+                color: var(--dark-text, #333); padding: 0 5px;
+                overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+            }
+            #page-navigation-buttons button:hover:not(:disabled) { background-color: #2a49c7; }
+            #page-navigation-buttons button:disabled { background-color: #ccc; color: #777; cursor: not-allowed; opacity: 0.7; }
         }
+
+        /* 데스크탑에서는 모바일 UI 요소 숨김 */
+        @media (min-width: 769px) {
+            #mobile-hamburger-btn,
+            #mobile-sidebar-container,
+            #mobile-overlay,
+            #page-navigation-buttons {
+                display: none !important;
+            }
+            .main-content-area { /* 데스크탑 패딩 원상복구 */
+                padding-top: 30px !important;
+                padding-bottom: 30px !important;
+            }
+            #desktop-pin-toggle-btn { display: block; }
+        }
+
+        /* 강사소개 링크 데스크탑 네비게이션 스타일 (nav-section-item a 와 유사하게) */
+        .nav-instructor-profile-link-wrapper {
+            /* margin-bottom으로 그룹 간격과 유사하게 처리하거나, nav-module-group 처럼 border-bottom 적용 */
+            border-bottom: 1px solid var(--border-color);
+        }
+        .nav-instructor-profile-link-wrapper a {
+            display: block; text-decoration: none; color: #555; padding: 10px 15px;
+            font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease;
+             white-space: normal; overflow-wrap: break-word; word-break: keep-all;
+             background-color: var(--section-list-bg); /* nav-section-list와 유사한 배경 */
+             padding-left: 35px; /* nav-section-item a 와 패딩 맞춤 */
+        }
+        .nav-instructor-profile-link-wrapper a:hover {
+            background-color: var(--secondary-color); color: var(--primary-color);
+        }
+        .nav-instructor-profile-link-wrapper.current-page a { /* 활성화 스타일 */
+            background-color: var(--nav-active-bg) !important;
+            color: var(--nav-active-text) !important;
+            font-weight: 600; border-radius: 4px;
+        }
+
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="logo">AI, 건설 업무의 시간을 되돌려 드립니다!</div>
-    </header>
-
-    <div class="instructor-intro-banner">
-        <a href="instructor_intro.html" class="instructor-intro-button">
-            <img src="https://github.com/miri-orot/ai-lec-250527/blob/main/KakaoTalk_Photo_2025-05-20-17-05-59.jpeg?raw=true" alt="장새롬 강사" class="instructor-button-avatar">
-            <span>강사 소개: 장새롬</span>
-        </a>
-    </div>
-
-    <div class="curriculum-container">
-
-        <div class="module">
-            <div class="module-header">
-                <div class="title-group">
-                    <h2>Module 1: 왜 AI인가? 반복 업무 해방의 시작</h2>
-                    <p>건설 사무 업무의 숨겨진 시간 낭비 요소를 찾고, AI가 어떻게 당신의 업무를 바꿀 수 있는지 확인합니다.</p>
-                </div>
-                <span class="toggle-icon">></span>
-            </div>
-            <ul class="section-list">
-                <li class="section-item"><a href="spa_page.html#module1_section1">1. 오프닝: AI로 당신의 업무 시간을 되찾으세요!</a></li>
-                <li class="section-item"><a href="spa_page.html#module1_section2">2. 당신의 하루, 혹시 이렇지 않나요? (업무 Pain Points)</a></li>
-                <li class="section-item"><a href="spa_page.html#module1_section3">3. AI: 당신의 똑똑한 업무 비서 (생성형 AI란?)</a></li>
+    <nav class="page-navigation" id="pageNav">
+        <div class="nav-header">커리큘럼</div>
+        <div class="nav-scroll-wrapper">
+            <ul class="nav-curriculum-list">
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module1">
+                        <span class="nav-module-title">Module 1: 왜 AI인가? 반복 업무 해방의 시작</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module1_section1.html">1. 오프닝: AI로 당신의 업무 시간을 되찾으세요!</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section2.html">2. 당신의 하루, 혹시 이렇지 않나요? (업무 Pain Points)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module1_section3.html">3. AI: 당신의 똑똑한 업무 비서 (생성형 AI란?)</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module2">
+                        <span class="nav-module-title">Module 2: AI와 제대로 소통하기 (ft. 핵심 도구)</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module2_section1.html">1. AI의 능력을 100% 끌어내는 '프롬프트' 작성법</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section2.html">2. AI 특공대, 직접 다뤄보기 (주요 도구 시연)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module2_section3.html">3. NotebookLM & Gemini 첫걸음</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module3">
+                        <span class="nav-module-title">Module 3: 실전! AI로 업무 효율 2배 UP! (시연 중심)</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                         <li class="nav-section-item"><a href="#" data-src="module3_section1.html">1. 정보 검색 & 수집: AI로 10분 만에 끝내기!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section2.html">2. 내 손안의 자료, AI로 지식 자산 만들기 (NotebookLM 활용)</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section3.html">3. 회의록 정리: AI로 5분 만에 핵심만 쏙!</a></li>
+                         <li class="nav-section-item"><a href="#" data-src="module3_section4.html">4. 보고서·기획서 작성: AI로 시간 절반으로 줄이기!</a></li>
+                    </ul>
+                </li>
+                <li class="nav-module-group">
+                    <div class="nav-module-title-wrapper" data-module-id="module4">
+                        <span class="nav-module-title">Module 4: AI, 안전하고 똑똑하게 활용하기</span>
+                        <span class="nav-toggle-icon">></span>
+                    </div>
+                    <ul class="nav-section-list">
+                        <li class="nav-section-item"><a href="#" data-src="module4_section1.html">1. AI, 안전하게 써야 진짜 전문가! (핵심 주의사항)</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section2.html">2. (맛보기) AI로 내 업무 자동화하기 아이디어</a></li>
+                        <li class="nav-section-item"><a href="#" data-src="module4_section3.html">3. 마무리: AI 시대, 당신의 업무는 어떻게 바뀔까요?</a></li>
+                    </ul>
+                </li>
             </ul>
-        </div>
-
-        <div class="module">
-            <div class="module-header">
-                <div class="title-group">
-                    <h2>Module 2: AI와 제대로 소통하기 (ft. 핵심 도구)</h2>
-                    <p>AI에게 똑똑하게 일 시키는 '프롬프트' 작성법을 배우고, 주요 AI 도구들의 실제 활용법을 시연으로 확인합니다.</p>
-                </div>
-                <span class="toggle-icon">></span>
+            <!-- 강사 소개 링크 추가 -->
+            <div class="nav-instructor-profile-link-wrapper">
+                <a href="#" data-src="instructor_profile.html">강사 소개</a>
             </div>
-            <ul class="section-list">
-                <li class="section-item"><a href="spa_page.html#module2_section1">1. AI의 능력을 100% 끌어내는 '프롬프트' 작성법</a></li>
-                <li class="section-item"><a href="spa_page.html#module2_section2">2. AI 특공대, 직접 다뤄보기 (주요 도구 시연)</a></li>
-                <li class="section-item"><a href="spa_page.html#module2_section3">3. NotebookLM & Gemini 첫걸음</a></li>
-            </ul>
-        </div>
-
-        <div class="module">
-            <div class="module-header">
-                <div class="title-group">
-                    <h2>Module 3: 실전! AI로 업무 효율 2배 UP! (시연 중심)</h2>
-                    <p>정보 검색, 자료 분석, 회의록 정리, 문서 작성까지! 실제 건설 업무에 AI를 적용하여 시간을 절약하는 방법을 직접 보여드립니다.</p>
-                </div>
-                <span class="toggle-icon">></span>
+            <div class="nav-mainpage-link-wrapper">
+                <a href="main_curriculum_page.html" class="nav-mainpage-link">메인 커리큘럼</a>
+                <!-- 위 링크는 커리큘럼 메인 페이지로 돌아가는 버튼입니다. 필요에 따라 수정하세요. -->
             </div>
-            <ul class="section-list">
-                <li class="section-item"><a href="spa_page.html#module3_section1">1. 정보 검색 & 수집: AI로 10분 만에 끝내기!</a></li>
-                <li class="section-item"><a href="spa_page.html#module3_section2">2. 내 손안의 자료, AI로 지식 자산 만들기 (NotebookLM 활용)</a></li>
-                <li class="section-item"><a href="spa_page.html#module3_section3">3. 회의록 정리: AI로 5분 만에 핵심만 쏙!</a></li>
-                <li class="section-item"><a href="spa_page.html#module3_section4">4. 보고서·기획서 작성: AI로 시간 절반으로 줄이기!</a></li>
-            </ul>
         </div>
+    </nav>
 
-        <div class="module">
-            <div class="module-header">
-                <div class="title-group">
-                    <h2>Module 4: AI, 안전하고 똑똑하게 활용하기</h2>
-                    <p>AI 사용 시 반드시 알아야 할 정보 보안, 답변 검증, 저작권 문제를 명확히 짚고, 업무 자동화 아이디어로 마무리합니다.</p>
-                </div>
-                <span class="toggle-icon">></span>
-            </div>
-            <ul class="section-list">
-                <li class="section-item"><a href="spa_page.html#module4_section1">1. AI, 안전하게 써야 진짜 전문가! (핵심 주의사항)</a></li>
-                <li class="section-item"><a href="spa_page.html#module4_section2">2. (맛보기) AI로 내 업무 자동화하기 아이디어</a></li>
-                <li class="section-item"><a href="spa_page.html#module4_section3">3. 마무리: AI 시대, 당신의 업무는 어떻게 바뀔까요?</a></li>
-            </ul>
-        </div>
-
-    </div>
-
-    <footer style="text-align: center; padding: 30px 20px; border-top: 1px solid var(--border-color); margin-top: 50px; background-color: #e9ecef; color: var(--light-text);">
-        <p>© 2024 OROT. All Rights Reserved.</p>
-    </footer>
+    <main class="main-content-area" id="mainContent">
+        <article id="contentDisplay">
+            <h1>환영합니다!</h1>
+            <p>왼쪽 메뉴에 마우스를 올리거나 클릭하여 학습할 내용을 선택해주세요.</p>
+            <p>모바일에서는 왼쪽 상단 햄버거 버튼을 이용해 메뉴를 열 수 있습니다.</p>
+        </article>
+    </main>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            const moduleHeaders = document.querySelectorAll('.module-header');
-            const sectionListPadding = 10;
+            const desktopNav = document.getElementById('pageNav');
+            const desktopNavModuleTitles = desktopNav.querySelectorAll('.nav-module-title-wrapper');
+            const desktopNavSectionLinks = desktopNav.querySelectorAll('.nav-section-item a');
+            const desktopInstructorProfileLinkWrapper = desktopNav.querySelector('.nav-instructor-profile-link-wrapper'); // 강사소개 링크 컨테이너
+            const desktopInstructorProfileLink = desktopNav.querySelector('.nav-instructor-profile-link-wrapper a'); // 강사소개 링크
 
-            moduleHeaders.forEach(header => {
-                header.addEventListener('click', function () {
-                    this.classList.toggle('active');
+            const contentDisplay = document.getElementById('contentDisplay');
+            const mainContentArea = document.getElementById('mainContent');
+            const sectionListPadding = 8;
+            let currentActiveLinkElement = null;
+            let currentScrollListener = null;
+            let currentModuleStyleLink = null;
+            let isMobile = window.innerWidth <= 768;
+            let isDesktopNavPinned = false;
+
+            const desktopPinToggleBtn = document.createElement('button');
+            desktopPinToggleBtn.id = 'desktop-pin-toggle-btn';
+            document.body.appendChild(desktopPinToggleBtn);
+
+            const mobileHamburgerBtn = document.createElement('button');
+            mobileHamburgerBtn.id = 'mobile-hamburger-btn';
+            mobileHamburgerBtn.innerHTML = '☰';
+            document.body.appendChild(mobileHamburgerBtn);
+
+            const mobileSidebarContainer = document.createElement('div');
+            mobileSidebarContainer.id = 'mobile-sidebar-container';
+            document.body.appendChild(mobileSidebarContainer);
+
+            const mobileSidebarCloseBtn = document.createElement('button');
+            mobileSidebarCloseBtn.id = 'mobile-sidebar-close-btn';
+            mobileSidebarCloseBtn.innerHTML = '×';
+            mobileSidebarContainer.appendChild(mobileSidebarCloseBtn);
+
+            const mobileOverlay = document.createElement('div');
+            mobileOverlay.id = 'mobile-overlay';
+            document.body.appendChild(mobileOverlay);
+
+            const pageNavButtonsContainer = document.createElement('div');
+            pageNavButtonsContainer.id = 'page-navigation-buttons';
+            const prevSectionBtn = document.createElement('button');
+            prevSectionBtn.id = 'prev-section-button'; prevSectionBtn.textContent = '이전';
+            const currentSectionNameDisplay = document.createElement('span');
+            currentSectionNameDisplay.id = 'current-section-name-display';
+            const nextSectionBtn = document.createElement('button');
+            nextSectionBtn.id = 'next-section-button'; nextSectionBtn.textContent = '다음';
+            pageNavButtonsContainer.appendChild(prevSectionBtn);
+            pageNavButtonsContainer.appendChild(currentSectionNameDisplay);
+            pageNavButtonsContainer.appendChild(nextSectionBtn);
+            document.body.appendChild(pageNavButtonsContainer);
+
+            function initializeMobileSidebar() {
+                const desktopNavHeader = desktopNav.querySelector('.nav-header');
+                const desktopNavScrollWrapper = desktopNav.querySelector('.nav-scroll-wrapper');
+                if (desktopNavHeader) mobileSidebarContainer.appendChild(desktopNavHeader.cloneNode(true));
+                if (desktopNavScrollWrapper) mobileSidebarContainer.appendChild(desktopNavScrollWrapper.cloneNode(true));
+                setupMobileSidebarInteractions();
+            }
+
+            function setupMobileSidebarInteractions() {
+                const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
+                const mobileNavSectionLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
+                const mobileInstructorProfileLink = mobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper a');
+
+                mobileNavModuleTitles.forEach(titleWrapper => {
+                    titleWrapper.addEventListener('click', function () {
+                        // 아코디언 로직 (이전과 동일)
+                        const isActive = this.classList.contains('active');
+                        const sectionList = this.nextElementSibling;
+                        if (!isActive) {
+                            mobileNavModuleTitles.forEach(otherHeader => {
+                                if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                                    otherHeader.classList.remove('active');
+                                    const otherList = otherHeader.nextElementSibling;
+                                    if (otherList && otherList.classList.contains('nav-section-list')) {
+                                        otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
+                                    } } }); }
+                        this.classList.toggle('active');
+                        if (sectionList && sectionList.classList.contains('nav-section-list')) {
+                            if (this.classList.contains('active')) {
+                                sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
+                                sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
+                            } else {
+                                sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
+                            } }
+                    }); });
+
+                mobileNavSectionLinks.forEach(link => {
+                    link.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        const filePath = this.dataset.src;
+                        const originalLink = Array.from(desktopNavSectionLinks).find(dLink => dLink.dataset.src === filePath);
+                        if (originalLink) {
+                            loadAndDisplayContent(filePath, originalLink); // 로드 시 데스크탑 링크 기준으로 하이라이트
+                            // 모바일 사이드바 내의 현재 페이지 스타일 업데이트는 loadAndDisplayContent 에서 처리
+                        }
+                        toggleMobileSidebar(false);
+                    }); });
+
+                if (mobileInstructorProfileLink) {
+                    mobileInstructorProfileLink.addEventListener('click', function(event) {
+                        event.preventDefault();
+                        const filePath = this.dataset.src;
+                        loadAndDisplayContent(filePath, this, true); // isProfilePage = true
+                        toggleMobileSidebar(false);
+                    });
+                }
+            }
+
+            function updateUIBasedOnMode() {
+                isMobile = window.innerWidth <= 768;
+                if (isMobile) {
+                    desktopPinToggleBtn.style.display = 'none';
+                    mobileHamburgerBtn.style.display = 'block';
+                    pageNavButtonsContainer.style.display = 'flex';
+                    desktopNav.classList.remove('pinned');
+                    document.body.classList.remove('desktop-nav-pinned');
+                } else {
+                    desktopPinToggleBtn.style.display = 'block';
+                    mobileHamburgerBtn.style.display = 'none';
+                    mobileSidebarContainer.classList.remove('open');
+                    mobileOverlay.classList.remove('active');
+                    pageNavButtonsContainer.style.display = 'none';
+                    if (isDesktopNavPinned) {
+                        desktopNav.classList.add('pinned');
+                        desktopPinToggleBtn.classList.add('pinned-icon');
+                        desktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정 해제');
+                        document.body.classList.add('desktop-nav-pinned');
+                    } else {
+                        desktopNav.classList.remove('pinned');
+                        desktopPinToggleBtn.classList.remove('pinned-icon');
+                        desktopPinToggleBtn.setAttribute('aria-label', '네비게이션 고정');
+                        document.body.classList.remove('desktop-nav-pinned');
+                    }
+                }
+                updatePageNavigationButtonsState();
+            }
+
+            function toggleMobileSidebar(show) {
+                if (show) {
+                    mobileSidebarContainer.classList.add('open'); mobileOverlay.classList.add('active');
+                } else {
+                    mobileSidebarContainer.classList.remove('open'); mobileOverlay.classList.remove('active');
+                }
+            }
+            mobileHamburgerBtn.addEventListener('click', () => toggleMobileSidebar(true));
+            mobileOverlay.addEventListener('click', () => toggleMobileSidebar(false));
+            mobileSidebarCloseBtn.addEventListener('click', () => toggleMobileSidebar(false));
+
+            desktopPinToggleBtn.addEventListener('click', function() {
+                if (isMobile) return;
+                isDesktopNavPinned = !isDesktopNavPinned;
+                updateUIBasedOnMode();
+            });
+
+            desktopNavModuleTitles.forEach(titleWrapper => {
+                titleWrapper.addEventListener('click', function () {
+                    // 아코디언 로직 (이전과 동일)
+                    if (isMobile) return;
+                    const isActive = this.classList.contains('active');
                     const sectionList = this.nextElementSibling;
-
-                    if (sectionList && sectionList.classList.contains('section-list')) {
+                    if (!isActive) {
+                         desktopNavModuleTitles.forEach(otherHeader => {
+                            if (otherHeader !== this && otherHeader.classList.contains('active')) {
+                                otherHeader.classList.remove('active');
+                                const otherList = otherHeader.nextElementSibling;
+                                if (otherList && otherList.classList.contains('nav-section-list')) {
+                                    otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px";
+                                } } }); }
+                    this.classList.toggle('active');
+                    if (sectionList && sectionList.classList.contains('nav-section-list')) {
                         if (this.classList.contains('active')) {
-                            sectionList.style.maxHeight = (sectionList.scrollHeight + (sectionListPadding * 2)) + "px";
-                            sectionList.style.paddingTop = sectionListPadding + "px";
-                            sectionList.style.paddingBottom = sectionListPadding + "px";
+                            sectionList.style.paddingTop = sectionListPadding + "px"; sectionList.style.paddingBottom = sectionListPadding + "px";
+                            sectionList.style.maxHeight = (sectionList.scrollHeight + sectionListPadding * 2) + "px";
                         } else {
-                            sectionList.style.maxHeight = null;
-                            sectionList.style.paddingTop = null;
-                            sectionList.style.paddingBottom = null;
+                             sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px";
+                        } }
+                }); });
+
+            desktopNavSectionLinks.forEach(link => {
+                 link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    if (isMobile && event.target.closest('#pageNav')) return;
+                    loadAndDisplayContent(this.dataset.src, this);
+                }); });
+
+            if (desktopInstructorProfileLink) {
+                desktopInstructorProfileLink.addEventListener('click', function(event){
+                    event.preventDefault();
+                    if (isMobile && event.target.closest('#pageNav')) return;
+                    loadAndDisplayContent(this.dataset.src, this, true); // isProfilePage = true
+                });
+            }
+
+            async function loadAndDisplayContent(filePath, linkElementToHighlight, isProfilePage = false) {
+                // 이전 활성 링크 및 강사 프로필 링크에서 'current-page' 클래스 제거
+                if (currentActiveLinkElement) {
+                    if(currentActiveLinkElement.parentElement.classList.contains('nav-section-item')) {
+                        currentActiveLinkElement.parentElement.classList.remove('current-page');
+                    } else if (currentActiveLinkElement.parentElement.classList.contains('nav-instructor-profile-link-wrapper')) {
+                         currentActiveLinkElement.parentElement.classList.remove('current-page');
+                    }
+                }
+                // 모든 섹션 링크에서 current-page 제거
+                desktopNavSectionLinks.forEach(l => l.parentElement.classList.remove('current-page'));
+                if (desktopInstructorProfileLinkWrapper) {
+                    desktopInstructorProfileLinkWrapper.classList.remove('current-page');
+                }
+
+
+                if (isProfilePage) {
+                    if(desktopInstructorProfileLinkWrapper) desktopInstructorProfileLinkWrapper.classList.add('current-page');
+                } else {
+                    linkElementToHighlight.parentElement.classList.add('current-page');
+                }
+                currentActiveLinkElement = linkElementToHighlight;
+
+
+                if (isMobile && currentSectionNameDisplay) {
+                    let sectionName = linkElementToHighlight.textContent || "";
+                    const dotIndex = sectionName.indexOf('.');
+                    if (dotIndex !== -1 && sectionName.length > dotIndex + 1 && !isProfilePage) { // 프로필 페이지는 번호 없음
+                        sectionName = sectionName.substring(dotIndex + 1).trim();
+                    }
+                    currentSectionNameDisplay.textContent = sectionName;
+                }
+
+                const newHash = filePath.split('.')[0];
+                if(window.location.hash !== `#${newHash}`) history.replaceState(null, null, `#${newHash}`);
+
+                contentDisplay.classList.remove('loaded');
+                contentDisplay.style.opacity = '0';
+                contentDisplay.innerHTML = '<p style="text-align:center; padding: 20px;">로딩 중...</p>';
+                contentDisplay.dataset.loadedFile = filePath;
+
+                if (currentModuleStyleLink) currentModuleStyleLink.remove();
+                currentModuleStyleLink = null;
+
+                let styleHref = '';
+                if (filePath === 'instructor_profile.html') {
+                    styleHref = 'css/instructor_profile_styles.css';
+                } else {
+                    const moduleMatch = filePath.match(/module(\d+)_section(\w+)\.html/);
+                    if (moduleMatch && moduleMatch[1]) {
+                        styleHref = `css/module${moduleMatch[1]}_section${moduleMatch[2]}_styles.css`;
+                    }
+                }
+
+                if (styleHref) {
+                    const newStyleLink = document.createElement('link');
+                    newStyleLink.rel = 'stylesheet'; newStyleLink.type = 'text/css'; newStyleLink.href = styleHref;
+                    document.head.appendChild(newStyleLink); currentModuleStyleLink = newStyleLink;
+                }
+
+                if (currentScrollListener) mainContentArea.removeEventListener('scroll', currentScrollListener);
+                currentScrollListener = null;
+
+                try {
+                    const response = await fetch(filePath);
+                    if (!response.ok) throw new Error(`HTTP error! status: ${response.status} for ${filePath}`);
+                    contentDisplay.innerHTML = await response.text();
+
+                    if (filePath !== 'instructor_profile.html') { // 강사소개 페이지는 슬라이드 없음
+                        const loadedSlideContainer = contentDisplay.querySelector('.slide-container');
+                        if (loadedSlideContainer) {
+                            currentScrollListener = initializeSlidesForCurrentPage(loadedSlideContainer, mainContentArea, filePath);
+                            if (currentScrollListener) { mainContentArea.addEventListener('scroll', currentScrollListener); currentScrollListener(); }
                         }
                     }
-                });
-            });
+                } catch (error) {
+                    console.error('Error loading content:', error);
+                    contentDisplay.innerHTML = `<div style="padding:20px; text-align:center; color:red;"><h2>오류 발생</h2><p>콘텐츠를 불러오는 중 문제가 발생했습니다.</p><p>${error.message}</p><p>파일 경로(${filePath})를 확인해주세요.</p></div>`;
+                } finally {
+                    setTimeout(() => { contentDisplay.style.opacity = '1'; contentDisplay.classList.add('loaded'); }, 50);
+                    mainContentArea.scrollTop = 0;
+                    updatePageNavigationButtonsState();
+                    if (isMobile) {
+                        const mobileLinks = mobileSidebarContainer.querySelectorAll('.nav-section-item a');
+                        const mobileProfileLinkWrapper = mobileSidebarContainer.querySelector('.nav-instructor-profile-link-wrapper');
+
+                        mobileLinks.forEach(ml => ml.parentElement.classList.remove('current-page'));
+                        if (mobileProfileLinkWrapper) mobileProfileLinkWrapper.classList.remove('current-page');
+
+                        if (isProfilePage) {
+                             if (mobileProfileLinkWrapper) mobileProfileLinkWrapper.classList.add('current-page');
+                        } else {
+                            const activeMobileLink = Array.from(mobileLinks).find(ml => ml.dataset.src === filePath);
+                            if (activeMobileLink) activeMobileLink.parentElement.classList.add('current-page');
+                        }
+                    }
+                }
+            }
+            function initializeSlidesForCurrentPage(container, scroller, filePath) {
+                const slides = container.querySelectorAll('.slide'); if (slides.length === 0) return null;
+                const checkSlidesInView = function() {
+                    slides.forEach(slide => {
+                        const slideRect = slide.getBoundingClientRect(), scrollerRect = scroller.getBoundingClientRect();
+                        const slideTopInScroller = slideRect.top - scrollerRect.top, scrollerHeight = scroller.clientHeight;
+                        if (slideTopInScroller < scrollerHeight * 0.85 && (slideTopInScroller + slide.offsetHeight) > scrollerHeight * 0.15) {
+                            slide.classList.add('active');
+                        } }); }; return checkSlidesInView;
+            }
+
+            function activateParentModuleOfLink(linkElement) {
+                if (linkElement.dataset.src === 'instructor_profile.html') { // 강사소개는 모듈에 속하지 않음
+                    // 모든 모듈 아코디언 닫기
+                    desktopNavModuleTitles.forEach(header => {
+                        if (header.classList.contains('active')) {
+                            header.classList.remove('active');
+                            const sectionList = header.nextElementSibling;
+                            if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; }
+                        }
+                    });
+                    if (isMobile) {
+                        const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
+                        mobileNavModuleTitles.forEach(header => {
+                            if (header.classList.contains('active')) {
+                                header.classList.remove('active');
+                                const sectionList = header.nextElementSibling;
+                                if (sectionList) { sectionList.style.maxHeight = null; sectionList.style.paddingTop = "0px"; sectionList.style.paddingBottom = "0px"; }
+                            }
+                        });
+                    }
+                    return;
+                }
+
+                const parentModuleTitleWrapperDesktop = linkElement.closest('.nav-module-group').querySelector('.nav-module-title-wrapper');
+                if (!parentModuleTitleWrapperDesktop) return;
+                const moduleId = parentModuleTitleWrapperDesktop.dataset.moduleId;
+
+                if (!isMobile && !parentModuleTitleWrapperDesktop.classList.contains('active')) {
+                    desktopNavModuleTitles.forEach(otherHeader => {
+                        if (otherHeader !== parentModuleTitleWrapperDesktop && otherHeader.classList.contains('active')) {
+                            otherHeader.classList.remove('active');
+                            const otherList = otherHeader.nextElementSibling;
+                            if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
+                        } });
+                    parentModuleTitleWrapperDesktop.classList.add('active');
+                    const sectionListToOpenDesktop = parentModuleTitleWrapperDesktop.nextElementSibling;
+                    if (sectionListToOpenDesktop) {
+                        sectionListToOpenDesktop.style.paddingTop = sectionListPadding + "px"; sectionListToOpenDesktop.style.paddingBottom = sectionListPadding + "px";
+                        sectionListToOpenDesktop.style.maxHeight = (sectionListToOpenDesktop.scrollHeight + sectionListPadding * 2) + "px";
+                    }
+                }
+                if (isMobile) {
+                    const mobileNavModuleTitles = mobileSidebarContainer.querySelectorAll('.nav-module-title-wrapper');
+                    const parentModuleTitleMobile = Array.from(mobileNavModuleTitles).find(mTitle => mTitle.dataset.moduleId === moduleId);
+                    if (parentModuleTitleMobile && !parentModuleTitleMobile.classList.contains('active')) {
+                        mobileNavModuleTitles.forEach(otherHeader => {
+                            if (otherHeader !== parentModuleTitleMobile && otherHeader.classList.contains('active')) {
+                                otherHeader.classList.remove('active');
+                                const otherList = otherHeader.nextElementSibling;
+                                if (otherList) { otherList.style.maxHeight = null; otherList.style.paddingTop = "0px"; otherList.style.paddingBottom = "0px"; }
+                            } });
+                        parentModuleTitleMobile.classList.add('active');
+                        const sectionListToOpenMobile = parentModuleTitleMobile.nextElementSibling;
+                        if (sectionListToOpenMobile) {
+                            sectionListToOpenMobile.style.paddingTop = sectionListPadding + "px"; sectionListToOpenMobile.style.paddingBottom = sectionListPadding + "px";
+                            sectionListToOpenMobile.style.maxHeight = (sectionListToOpenMobile.scrollHeight + sectionListPadding * 2) + "px";
+                        } } }
+            }
+            function loadContentFromHash() {
+                const hash = window.location.hash.substring(1);
+                if (hash) {
+                    let targetLink;
+                    if (hash === 'instructor_profile') {
+                        targetLink = desktopInstructorProfileLink;
+                    } else {
+                        targetLink = Array.from(desktopNavSectionLinks).find(link => link.dataset.src.split('.')[0] === hash);
+                    }
+
+                    if (targetLink) {
+                        loadAndDisplayContent(targetLink.dataset.src, targetLink, hash === 'instructor_profile');
+                        activateParentModuleOfLink(targetLink);
+                    } else { loadInitialContent(); }
+                } else { loadInitialContent(); }
+            }
+            function loadInitialContent() {
+                const firstValidLink = desktopNav.querySelector('.nav-section-item a[data-src]');
+                if (firstValidLink) {
+                    loadAndDisplayContent(firstValidLink.dataset.src, firstValidLink);
+                    activateParentModuleOfLink(firstValidLink);
+                }
+                else {
+                    contentDisplay.innerHTML = '<h1>환영합니다!</h1><p>학습할 내용을 선택해주세요.</p>';
+                    contentDisplay.classList.add('loaded');
+                    if (isMobile && currentSectionNameDisplay) currentSectionNameDisplay.textContent = '환영합니다!';
+                    updatePageNavigationButtonsState();
+                }
+            }
+            function updatePageNavigationButtonsState() {
+                if (!currentActiveLinkElement || currentActiveLinkElement.dataset.src === 'instructor_profile.html') { // 강사소개 페이지에서는 이전/다음 비활성화
+                    prevSectionBtn.disabled = true;
+                    nextSectionBtn.disabled = true;
+                    return;
+                }
+                const allDesktopLinksArray = Array.from(desktopNavSectionLinks);
+                const currentIndex = allDesktopLinksArray.findIndex(link => link === currentActiveLinkElement);
+                prevSectionBtn.disabled = !(currentIndex > 0);
+                prevSectionBtn.onclick = (currentIndex > 0) ? () => {
+                    const prevLink = allDesktopLinksArray[currentIndex - 1];
+                    loadAndDisplayContent(prevLink.dataset.src, prevLink); activateParentModuleOfLink(prevLink);
+                } : null;
+                nextSectionBtn.disabled = !(currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1);
+                nextSectionBtn.onclick = (currentIndex >= 0 && currentIndex < allDesktopLinksArray.length - 1) ? () => {
+                    const nextLink = allDesktopLinksArray[currentIndex + 1];
+                    loadAndDisplayContent(nextLink.dataset.src, nextLink); activateParentModuleOfLink(nextLink);
+                } : null;
+            }
+
+            // "커리큘럼으로 돌아가기" 버튼 함수
+            window.goBackToCurriculum = function() { // 전역 스코프에 함수 등록
+                const firstLectureLink = document.querySelector('.nav-section-item a[data-src^="module1_section1"]');
+                if (firstLectureLink) {
+                    window.location.hash = firstLectureLink.dataset.src.split('.')[0];
+                } else {
+                    window.location.hash = ''; // 기본 페이지로
+                }
+            }
+
+            initializeMobileSidebar();
+            updateUIBasedOnMode();
+            window.addEventListener('resize', updateUIBasedOnMode);
+            loadContentFromHash();
+            window.addEventListener('hashchange', loadContentFromHash);
         });
     </script>
-
 </body>
 </html>
