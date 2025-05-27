@@ -1,221 +1,254 @@
-/* css/common_styles.css */
 :root {
+    /* spa_page.html의 기본 공통 변수들 */
     --primary-color: #3155e2;
     --primary-color-rgb: 49, 85, 226;
     --secondary-color: #e0e7ff;
     --dark-text: #333;
     --light-text: #666;
-    --card-bg: #fff;
+    --card-bg: #fff; /* 대부분의 카드 배경 */
     --border-color: #eaeaea;
-    --nav-collapsed-width: 15px; /* 네비 접혔을 때 너비 */
-    --nav-expanded-width: 300px; /* 네비 펼쳤을 때 너비 (요청하신 420px에서 조정) */
+    --nav-collapsed-width: 15px;
+    --nav-expanded-width: 420px;
     --nav-bg-expanded: var(--card-bg);
     --nav-active-bg: var(--primary-color);
     --nav-active-text: #ffffff;
-    --section-list-bg: #f8f9fa;
-    --nav-module-title-color: var(--dark-text);
+    --section-list-bg: #f8f9fa; /* 네비게이션 내부 섹션 목록 배경 */
+    --nav-module-title-color: var(--dark-text); /* 네비게이션 모듈 제목 색상 */
     --page-bg: #f0f2f5;
     --success-color: #28a745;
-    --info-color: #17a2b8;
+    --info-color: #17a2b8; /* 기본 info color */
     --warning-color-bg: #fff8e1;
     --warning-color-border: #ffc107;
     --warning-color-text: #e65100;
-    --slide-card-bg: #fff;
-    --content-max-width: 1100px; /* 기본 콘텐츠 너비 */
-    --content-max-width-profile: 700px; /* 프로필 카드 최대 너비 */
+    --slide-card-bg: #fff; /* 대부분의 슬라이드 배경 */
 
-    /* 페이지별 특화 너비 변수들은 필요시 각 모듈 CSS에서 재정의하거나 사용 */
+
+
+    /* 기본 콘텐츠 영역 너비 (모듈 2, 3, 4는 이 값을 기본으로 사용) */
+    --content-max-width: 1100px;
+
+    /* 페이지별 특화 너비 변수 선언 */
+    --content-max-width-m1s2: 1200px;
+    --content-max-width-m1s3: 1200px;
+    --content-max-width-m1s4: 1200px;
+    /* 모듈 2, 3, 4는 기본값을 따르거나, 필요시 각 모듈 CSS에서 재정의 또는 개별 변수 사용 */
+    --content-max-width-m4s1: 900px; /* module4_section1은 예외적으로 900px */
+
+    /* 각 모듈별 특화 색상 변수 (필요한 경우 각 모듈 CSS에서 구체적인 값으로 정의하여 사용) */
+    /* Module 1 */
+    --dark-text-m1s2_3: #333;
+    --light-text-m1s2_3: #666;
+    --slide-title-color-m1s2_3: #000;
+    --accent-color-visible-m1s4: #c92a2a;
+    --dark-text-m1s4: #212529;
+    --light-text-m1s4: #495057;
+    --border-color-m1s4: #dee2e6;
+    --success-color-m1s4: #2f9e44;
+    --info-color-m1s4: #1971c2;
+    --warning-color-m1s4: #f08c00;
+
+    /* Module 2 */
+    --warning-bg-m2s1: #fff8e1;
+    --warning-border-m2s1: #ffc107;
+    --bad-bg-m2s1: #ffebee;
+    --bad-border-m2s1: #c62828;
+    --good-bg-m2s1: #e8f5e9;
+    --good-border-m2s1: #2e7d32;
+
+    /* Module 3 */
+    --feature-box-bg-m3s2: #f9f9f9;
+
+    /* Module 4 */
+    --danger-color-m4s1: #d9363e;
+    --warning-color-alt-m4s1: #fa8c16;
+    --info-color-alt-m4s1: #1677ff;
+    --danger-bg-m4s1: #fff1f0;
+    --warning-bg-alt-m4s1: #fffbe6;
+    --info-bg-alt-m4s1: #f0f5ff;
+    --sub-card-bg-m4s1: #ffffff;
+
+
+
+
+
+
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Pretendard', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif; }
+body { position: relative; background-color: var(--page-bg); color: var(--dark-text); line-height: 1.6; display: flex; height: 100vh; overflow: hidden; }
+body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true'); background-size: cover; background-position: center; background-repeat: no-repeat; opacity: 0.10; z-index: -1; }
 
-body {
-    position: relative;
-    background-color: var(--page-bg);
-    color: var(--dark-text);
-    line-height: 1.6;
-    display: flex; /* 네비게이션과 메인 콘텐츠 영역을 가로로 배치 */
-    height: 100vh;
-    overflow: hidden; /* body 자체 스크롤 방지, 각 영역에서 스크롤 처리 */
-}
-body::before { /* 배경 이미지 효과 */
-    content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url('https://github.com/miri-orot/ai-lec-image/blob/main/Image_fx%20(30).jpg?raw=true');
-    background-size: cover; background-position: center; background-repeat: no-repeat;
-    opacity: 0.10; z-index: -1;
-}
 
-/* --- SPA Page Navigation (Desktop) --- */
-.page-navigation {
-    position: relative; height: 100%; width: var(--nav-collapsed-width);
-    background-color: var(--primary-color); opacity: 0.7;
-    z-index: 100; overflow: hidden;
-    transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out;
-    display: flex; flex-direction: column; flex-shrink: 0;
-    border-right: 1px solid var(--border-color);
-}
-.page-navigation:not(.pinned):hover { /* 고정되지 않았을 때만 hover로 확장 */
-    width: var(--nav-expanded-width);
-    background-color: var(--nav-bg-expanded);
-    box-shadow: 5px 0 15px rgba(0,0,0,0.1);
-    opacity: 1; overflow: visible;
-}
-.page-navigation:not(.pinned):hover .nav-header,
-.page-navigation:not(.pinned):hover .nav-scroll-wrapper {
-    opacity: 1;
-}
 
-.nav-header {
-    font-size: 1.2em; color: var(--primary-color);
-    padding: 20px 15px 15px 15px;
-    border-bottom: 1px solid var(--border-color);
-    flex-shrink: 0; opacity: 0; transition: opacity 0.2s 0.1s ease; white-space: nowrap;
-}
-.nav-scroll-wrapper {
-    width: var(--nav-expanded-width); /* 내부 스크롤 컨텐츠는 항상 확장된 너비 기준 */
-    flex-grow: 1; overflow-y: auto; padding: 15px 0;
-    opacity: 0; transition: opacity 0.2s 0.1s ease;
-    display: flex; flex-direction: column;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* --- SPA Page Navigation 스타일 --- */
+.page-navigation { position: relative; height: 100%; width: var(--nav-collapsed-width); background-color: var(--primary-color); opacity: 0.7; z-index: 100; overflow: hidden; transition: width 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), background-color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease-in-out; display: flex; flex-direction: column; flex-shrink: 0; border-right: 1px solid var(--border-color); }
+.page-navigation:hover { width: var(--nav-expanded-width); background-color: var(--nav-bg-expanded); box-shadow: 5px 0 15px rgba(0,0,0,0.1); opacity: 1; overflow: visible; }
+.nav-header { font-size: 1.2em; color: var(--primary-color); padding: 20px 15px 15px 15px; border-bottom: 1px solid var(--border-color); flex-shrink: 0; opacity: 0; transition: opacity 0.2s 0.1s ease; white-space: nowrap; }
+.page-navigation:hover .nav-header { opacity: 1; }
+.nav-scroll-wrapper { width: var(--nav-expanded-width); flex-grow: 1; overflow-y: auto; padding: 15px 0; opacity: 0; transition: opacity 0.2s 0.1s ease; display: flex; flex-direction: column;}
+.page-navigation:hover .nav-scroll-wrapper { opacity: 1; }
+
+
+
+
+
 .nav-curriculum-list { list-style: none; padding: 0 20px; margin: 0; flex-grow: 1; }
-.nav-module-group {
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--border-color);
-}
+.nav-module-group { margin-bottom: 0; border-bottom: 1px solid var(--border-color); }
+
+
+
 .nav-module-group:last-child { border-bottom: none; }
-.nav-module-group:first-child .nav-module-title-wrapper{
-    border-top: 1px solid var(--border-color);
-}
-.nav-module-title-wrapper {
-    font-size: 1em; font-weight: 600; color: var(--nav-module-title-color);
-    padding: 12px 15px; background-color: rgba(var(--primary-color-rgb), 0.03);
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; transition: background-color 0.2s ease;
-    border-left: 4px solid transparent;
-}
+.nav-module-group:first-child .nav-module-title-wrapper{ border-top: 1px solid var(--border-color); }
+.nav-module-title-wrapper { font-size: 1em; font-weight: 600; color: var(--nav-module-title-color); padding: 12px 15px; background-color: rgba(var(--primary-color-rgb), 0.03); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background-color 0.2s ease; border-left: 4px solid transparent; }
+
+
+
+
+
+
+
+
 .nav-module-title-wrapper:hover { background-color: rgba(var(--primary-color-rgb), 0.08); }
 .nav-module-title-wrapper.active { border-left-color: var(--primary-color); }
-.nav-module-title {
-    flex-grow: 1; white-space: normal;
-    overflow-wrap: break-word; word-break: keep-all;
-}
-.nav-toggle-icon {
-    font-family: 'Arial', sans-serif; font-size: 0.8em; font-weight: bold;
-    color: var(--light-text); margin-left: 10px;
-    transition: transform 0.3s ease; flex-shrink: 0;
-}
+.nav-module-title { flex-grow: 1; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
+.nav-toggle-icon { font-family: 'Arial', sans-serif; font-size: 0.8em; font-weight: bold; color: var(--light-text); margin-left: 10px; transition: transform 0.3s ease; flex-shrink: 0; }
+
+
+
+
+
+
+
 .nav-module-title-wrapper.active .nav-toggle-icon { transform: rotate(90deg); }
-.nav-section-list {
-    list-style: none; padding: 0; margin: 0; max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out;
-    background-color: var(--section-list-bg); padding-left: 25px; /* 들여쓰기 */
-}
+.nav-section-list { list-style: none; padding: 0; margin: 0; max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out, padding-top 0.3s ease-out, padding-bottom 0.3s ease-out; background-color: var(--section-list-bg); padding-left: 25px; }
+
+
+
+
+
 .nav-section-item { margin: 0; }
-.nav-section-item a {
-    display: block; text-decoration: none; color: #555;
-    padding: 10px 15px; border-radius: 0; font-size: 0.9rem;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    border-bottom: 1px solid #eee;
-    white-space: normal; overflow-wrap: break-word; word-break: keep-all;
-}
+.nav-section-item a { display: block; text-decoration: none; color: #555; padding: 10px 15px; border-radius: 0; font-size: 0.9rem; transition: background-color 0.2s ease, color 0.2s ease; border-bottom: 1px solid #eee; white-space: normal; overflow-wrap: break-word; word-break: keep-all; }
+
+
+
+
+
+
 .nav-section-item:last-child a { border-bottom: none; }
-.nav-section-item a:hover {
-    background-color: var(--secondary-color); color: var(--primary-color);
-}
-.nav-section-item.current-page a {
-    background-color: var(--nav-active-bg) !important; /* important로 우선순위 확보 */
-    color: var(--nav-active-text) !important;
-    font-weight: 600; border-radius: 4px;
-}
-.nav-mainpage-link-wrapper {
-    padding: 15px 20px 20px 20px;
-    border-top: 1px solid var(--border-color);
-    margin-top: auto; /* 푸터처럼 하단에 고정 */
-}
-.nav-mainpage-link {
-    display: block; padding: 12px 15px;
-    background-color: var(--primary-color); color: white;
-    text-decoration: none; border-radius: 5px; text-align: center;
-    font-weight: 500; transition: background-color 0.2s ease;
-}
+.nav-section-item a:hover { background-color: var(--secondary-color); color: var(--primary-color); }
+.nav-section-item.current-page a { background-color: var(--nav-active-bg); color: var(--nav-active-text) !important; font-weight: 600; border-radius: 4px; }
+.nav-mainpage-link-wrapper { padding: 15px 20px 20px 20px; border-top: 1px solid var(--border-color); margin-top: auto; }
+.nav-mainpage-link { display: block; padding: 12px 15px; background-color: var(--primary-color); color: white; text-decoration: none; border-radius: 5px; text-align: center; font-weight: 500; transition: background-color 0.2s ease; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .nav-mainpage-link:hover { background-color: #2a49c7; }
 
-/* --- Main Content Area & #contentDisplay --- */
-.main-content-area {
-    flex-grow: 1; /* 남은 공간 모두 차지 */
-    height: 100vh; overflow-y: auto; /* 내부 스크롤 */
-    padding: 30px; position: relative;
-}
-#contentDisplay {
-    margin: 0 auto; opacity: 0; transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    max-width: var(--content-max-width); /* 기본 최대 너비 */
-}
+/* --- Main Content Area & #contentDisplay 기본 스타일 --- */
+.main-content-area { flex-grow: 1; height: 100vh; overflow-y: auto; padding: 30px; position: relative; }
+#contentDisplay { margin: 0 auto; opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; max-width: var(--content-max-width); }
+
+
+
+
+
+
+
+
 #contentDisplay.loaded { opacity: 1; transform: translateY(0); }
 
 /* --- #contentDisplay 내부 공통 태그 스타일 --- */
-/* (이전 답변의 #contentDisplay h1, p, ul, img 등 스타일을 여기에 포함) */
-#contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 {
-    color: var(--primary-color); margin-top: 1.5em; margin-bottom: 0.8em;
-    padding-bottom: 0.3em; border-bottom: 1px solid var(--border-color);
-}
-#contentDisplay h1:first-child, #contentDisplay h2:first-child,
-#contentDisplay h3:first-child, #contentDisplay h4:first-child { margin-top: 0; }
+#contentDisplay h1, #contentDisplay h2, #contentDisplay h3, #contentDisplay h4 { color: var(--primary-color); margin-top: 1.5em; margin-bottom: 0.8em; padding-bottom: 0.3em; border-bottom: 1px solid var(--border-color); }
+#contentDisplay h1:first-child, #contentDisplay h2:first-child, #contentDisplay h3:first-child, #contentDisplay h4:first-child { margin-top: 0; }
+
+
+
+
+
 #contentDisplay h1 { font-size: 1.8em; }
 #contentDisplay h2 { font-size: 1.5em; }
 #contentDisplay h3 { font-size: 1.3em; }
-#contentDisplay h4 { font-size: 1.1em; color: var(--dark-text); border-bottom: none; }
-#contentDisplay p { margin-bottom: 1rem; line-height: 1.7; }
-#contentDisplay ul, #contentDisplay ol { margin-bottom: 1rem; padding-left: 25px; }
-#contentDisplay li { margin-bottom: 0.5rem; }
+@@ -115,52 +172,65 @@ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; heigh
 #contentDisplay a { color: var(--primary-color); text-decoration: none; }
 #contentDisplay a:hover { text-decoration: underline; }
 #contentDisplay strong, #contentDisplay b { font-weight: 600; color: var(--primary-color); }
-#contentDisplay img {
-    max-width: 100%; height: auto; border-radius: 6px;
-    margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
+#contentDisplay img { max-width: 100%; height: auto; border-radius: 6px; margin: 1rem 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+
+
+
 #contentDisplay code {
-    display: inline-block; background-color: rgba(0,0,0,0.05);
-    padding: 0.2em 0.4em; border-radius: 4px;
+    display: inline-block;
+    background-color: rgba(0,0,0,0.05);
+    padding: 0.2em 0.4em;
+    border-radius: 4px;
     font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
-    font-size: 0.9em; word-break: keep-all; color: var(--dark-text);
+    font-size: 0.9em;
+    word-break: keep-all;
+    color: var(--dark-text);
 }
 #contentDisplay pre code {
-    display: block; padding: 1em; overflow-x: auto; background-color: #f0f0f0;
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    background-color: #f0f0f0;
 }
 
-/* --- 공통 슬라이드 구조 (moduleX_sectionY.html 파일 내부에서 사용) --- */
+/* --- 공통 슬라이드 구조 기본 스타일 --- */
 #contentDisplay .slide-container { max-width: 100%; margin: 0; padding: 0; }
-#contentDisplay .slide {
-    background-color: var(--slide-card-bg); margin-bottom: 30px;
-    overflow: hidden; opacity: 0; transform: translateY(30px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
-    border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-#contentDisplay .slide.active { opacity: 1; transform: translateY(0); } /* 'active-slide' 대신 'active' 사용 */
-#contentDisplay .slide-header {
-    padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--border-color);
-    display: flex; justify-content: space-between; align-items: flex-start;
-    background-color: #fdfdff; border-radius: 12px 12px 0 0;
-}
+#contentDisplay .slide { background-color: var(--slide-card-bg); margin-bottom: 30px; overflow: hidden; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; border-radius: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); }
+#contentDisplay .slide.active-slide, #contentDisplay .slide.active { opacity: 1; transform: translateY(0); }
+#contentDisplay .slide-header { padding: 1.5rem 2rem 1rem; border-bottom: 1px solid var(--border-color); display: flex; justify-content: space-between; align-items: flex-start; background-color: #fdfdff; border-radius: 12px 12px 0 0; }
+
+
+
+
+
+
+
+
+
 #contentDisplay .slide-number { color: var(--light-text); font-size: 0.85em; }
-#contentDisplay .slide-title {
-    font-size: 1.6em; font-weight: 700; color: var(--dark-text);
-    margin-bottom: 0.2rem; border-bottom: none; padding-bottom: 0;
-}
+#contentDisplay .slide-title { font-size: 1.6em; font-weight: 700; color: var(--dark-text); margin-bottom: 0.2rem; border-bottom: none; padding-bottom: 0; }
+
+
+
 #contentDisplay .slide-subtitle { font-size: 1em; color: var(--light-text); margin-bottom: 0; }
 #contentDisplay .slide-content { padding: 1.5rem 2rem; }
-#contentDisplay .text-block {
-    font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7;
-    color: var(--dark-text); text-align: center; word-break: keep-all;
-}
+#contentDisplay .text-block { font-size: 1.1rem; margin-bottom: 1.5rem; line-height: 1.7; color: var(--dark-text); text-align: center; word-break: keep-all; }
+
+
+
 #contentDisplay .highlight { color: var(--primary-color); font-weight: 600; }
-#contentDisplay .footer {
-    text-align: center; padding: 2rem; color: var(--light-text);
-    font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem;
-}
+#contentDisplay .footer { text-align: center; padding: 2rem; color: var(--light-text); font-size: 0.9rem; border-top: 1px solid var(--border-color); margin-top: 2rem; }
+
+
+
 
 /* --- 스크롤바 스타일 --- */
 .nav-scroll-wrapper::-webkit-scrollbar, .main-content-area::-webkit-scrollbar { width: 8px; }
@@ -223,14 +256,15 @@ body::before { /* 배경 이미지 효과 */
 .nav-scroll-wrapper::-webkit-scrollbar-thumb { background-color: rgba(var(--primary-color-rgb), 0.4); border-radius: 10px; }
 .main-content-area::-webkit-scrollbar-thumb { background-color: rgba(var(--dark-text), 0.3); border-radius: 10px; }
 
-/* --- 반응형 (모바일에서는 page-navigation 숨김 처리 등은 메인 HTML의 style 태그에서 처리) --- */
+/* --- 기본 반응형 스타일 --- */
 @media (max-width: 768px) {
-    /* .page-navigation:hover { width: var(--nav-collapsed-width); } /* 모바일에서는 hover 확장 방지 */
-    /* .main-content-area { padding: 20px; } /* 메인 HTML의 style 태그에서 패딩 조정 */
+    .page-navigation:hover { width: var(--nav-collapsed-width); }
+    .main-content-area { padding: 20px; }
     #contentDisplay .slide-container { padding:0; }
     #contentDisplay .slide { margin-bottom: 20px; }
+
     #contentDisplay .slide-header { padding: 1rem 1.5rem 0.8rem; }
     #contentDisplay .slide-content { padding: 1rem 1.5rem; }
-    #contentDisplay .slide-title { font-size: 1.4rem; } /* 모바일용으로 조정 */
-    #contentDisplay .slide-subtitle { font-size: 0.9rem; } /* 모바일용으로 조정 */
+    #contentDisplay .slide-title { font-size: 1.8rem; }
+    #contentDisplay .slide-subtitle { font-size: 1rem; }
 }
